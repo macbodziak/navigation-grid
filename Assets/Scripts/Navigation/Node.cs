@@ -1,6 +1,8 @@
+using System;
+
 namespace Navigation
 {
-
+    [Serializable]
     public struct Node
     {
         int _id;

@@ -1,3 +1,4 @@
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,16 +10,22 @@ namespace Navigation
         [SerializeField] float tileSize;
         [SerializeField] int width;
         [SerializeField] int height;
-        Node[] nodes;
+        [SerializeField] Node[] nodes;
 
 
         private void Start()
         {
-            CreateGrid(width, height);
+            // CreateMap(width, height);
         }
 
 
-        public void CreateGrid(int width, int height)
+        private void Update()
+        {
+            Debug.Log(nodes.Count());
+        }
+
+
+        public void CreateMap(int width, int height)
         {
             nodes = new Node[width * height];
 
