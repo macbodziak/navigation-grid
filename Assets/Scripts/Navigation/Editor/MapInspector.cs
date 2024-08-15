@@ -34,24 +34,25 @@ namespace Navigation
         {
             VisualElement root = new VisualElement();
 
-            Box MapCreationBox = new Box();
-            MapCreationBox.style.borderTopWidth = 2;
-            MapCreationBox.style.borderLeftWidth = 2;
-            MapCreationBox.style.borderRightWidth = 2;
-            MapCreationBox.style.borderBottomWidth = 2;
-            MapCreationBox.style.borderTopColor = new Color(0.35f, 0.35f, 0.35f);
-            MapCreationBox.style.borderLeftColor = new Color(0.35f, 0.35f, 0.35f);
-            MapCreationBox.style.borderRightColor = new Color(0.35f, 0.35f, 0.35f);
-            MapCreationBox.style.borderBottomColor = new Color(0.35f, 0.35f, 0.35f);
-            MapCreationBox.style.paddingTop = 3;
-            MapCreationBox.style.paddingLeft = 3;
-            MapCreationBox.style.paddingRight = 6;
-            MapCreationBox.style.paddingBottom = 3;
-            MapCreationBox.style.marginBottom = 15;
+            Foldout MapCreationFoldout = new Foldout();
+            MapCreationFoldout.text = "Map Generation";
+            MapCreationFoldout.style.borderTopWidth = 1;
+            MapCreationFoldout.style.borderLeftWidth = 1;
+            MapCreationFoldout.style.borderRightWidth = 1;
+            MapCreationFoldout.style.borderBottomWidth = 1;
+            MapCreationFoldout.style.borderTopColor = new Color(0.35f, 0.35f, 0.35f);
+            MapCreationFoldout.style.borderLeftColor = new Color(0.35f, 0.35f, 0.35f);
+            MapCreationFoldout.style.borderRightColor = new Color(0.35f, 0.35f, 0.35f);
+            MapCreationFoldout.style.borderBottomColor = new Color(0.35f, 0.35f, 0.35f);
+            MapCreationFoldout.style.paddingTop = 3;
+            MapCreationFoldout.style.paddingLeft = 3;
+            MapCreationFoldout.style.paddingRight = 6;
+            MapCreationFoldout.style.paddingBottom = 3;
+            MapCreationFoldout.style.marginBottom = 15;
 
-            Label MapCreationLabel = new Label("Map Baking:");
-            MapCreationLabel.style.marginBottom = 6;
-            MapCreationLabel.style.fontSize = 15;
+            // Label MapCreationLabel = new Label("Map Baking:");
+            // MapCreationLabel.style.marginBottom = 6;
+            // MapCreationLabel.style.fontSize = 15;
 
             TileSizeBakeField = new FloatField("Tile Size");
             TileSizeBakeField.AddToClassList("unity-base-field__aligned");
@@ -90,14 +91,13 @@ namespace Navigation
             CreateMapButton.text = "Bake Map";
             CreateMapButton.AddToClassList("unity-base-field__aligned");
 
-            MapCreationBox.Add(MapCreationLabel);
-            MapCreationBox.Add(TileSizeBakeField);
-            MapCreationBox.Add(WidthBakeField);
-            MapCreationBox.Add(HeightBakeField);
-            MapCreationBox.Add(NotWalkableLayerMaskField);
-            MapCreationBox.Add(RayLengthField);
-            MapCreationBox.Add(ColliderSizeField);
-            MapCreationBox.Add(CreateMapButton);
+            MapCreationFoldout.Add(TileSizeBakeField);
+            MapCreationFoldout.Add(WidthBakeField);
+            MapCreationFoldout.Add(HeightBakeField);
+            MapCreationFoldout.Add(NotWalkableLayerMaskField);
+            MapCreationFoldout.Add(RayLengthField);
+            MapCreationFoldout.Add(ColliderSizeField);
+            MapCreationFoldout.Add(CreateMapButton);
 
 
             Box ActualMapDataBox = new Box();
@@ -131,7 +131,7 @@ namespace Navigation
             ActualMapDataBox.Add(WidthField);
             ActualMapDataBox.Add(TileSizeField);
 
-            root.Add(MapCreationBox);
+            root.Add(MapCreationFoldout);
             root.Add(ActualMapDataBox);
 
             return root;
