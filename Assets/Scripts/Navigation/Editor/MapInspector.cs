@@ -3,16 +3,28 @@ using UnityEngine;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using UnityEngine.Tilemaps;
+using System;
 
 namespace Navigation
 {
     [CustomEditor(typeof(Map))]
     public class MapInspector : Editor
     {
+        private const string TILESIZE_PREF_KEY = "TileSizeBakeField";
+        private const string WIDTH_PREF_KEY = "WidthBakeField";
+        private const string HEIGHT_PREF_KEY = "HeightBakeField";
+        private const string NOTWALKABLELAYERMASK_PREF_KEY = "NotWalkableLayerMaskField";
+        private const int MIN_GRID_SIZE = 1;
+        private const int MAX_GRID_SIZE = 100;
+        private const string RAYLENGTH_PREF_KEY = "RayLengthField";
+        private const string COLLIDER_SIZE_PREF_KEY = "ColliderSizeField";
+
         FloatField TileSizeBakeField;
         IntegerField WidthBakeField;
         IntegerField HeightBakeField;
         LayerMaskField NotWalkableLayerMaskField;
+        FloatField RayLengthField;
+        FloatField ColliderSizeField;
         FloatField TileSizeField;
         IntegerField WidthField;
         IntegerField HeightField;
@@ -43,32 +55,48 @@ namespace Navigation
 
             TileSizeBakeField = new FloatField("Tile Size");
             TileSizeBakeField.AddToClassList("unity-base-field__aligned");
-            TileSizeBakeField.value = 2f;
+            TileSizeBakeField.value = EditorPrefs.GetFloat(TILESIZE_PREF_KEY, 2);
             TileSizeBakeField.RegisterValueChangedCallback(OnTileSizeFieldValueChanged);
 
             WidthBakeField = new IntegerField("Width");
             WidthBakeField.AddToClassList("unity-base-field__aligned");
-            WidthBakeField.value = 20;
-            SetRangeOnIntegerField(WidthBakeField, 1, 100);
+            WidthBakeField.value = EditorPrefs.GetInt(WIDTH_PREF_KEY, 10);
+            WidthBakeField.RegisterValueChangedCallback(OnWidthFieldChanged);
 
             HeightBakeField = new IntegerField("Height");
             HeightBakeField.AddToClassList("unity-base-field__aligned");
-            HeightBakeField.value = 20;
-            SetRangeOnIntegerField(HeightBakeField, 1, 100);
+            HeightBakeField.value = EditorPrefs.GetInt(HEIGHT_PREF_KEY, 10);
+            HeightBakeField.RegisterValueChangedCallback(OnHeightFieldChanged);
 
             NotWalkableLayerMaskField = new LayerMaskField("Not Walkable Layers");
             NotWalkableLayerMaskField.AddToClassList("unity-base-field__aligned");
+            NotWalkableLayerMaskField.value = EditorPrefs.GetInt(NOTWALKABLELAYERMASK_PREF_KEY);
+            NotWalkableLayerMaskField.RegisterValueChangedCallback(evt =>
+            {
+                EditorPrefs.SetInt(NOTWALKABLELAYERMASK_PREF_KEY, evt.newValue);
+            });
+
+            RayLengthField = new FloatField("Ray Length");
+            RayLengthField.AddToClassList("unity-base-field__aligned");
+            RayLengthField.value = EditorPrefs.GetFloat(RAYLENGTH_PREF_KEY, 100);
+            RayLengthField.RegisterValueChangedCallback(OnRayLengthChanged);
+
+            ColliderSizeField = new FloatField("Box Collider Size (Normalized)");
+            ColliderSizeField.AddToClassList("unity-base-field__aligned");
+            ColliderSizeField.value = EditorPrefs.GetFloat(COLLIDER_SIZE_PREF_KEY, 0.9f);
+            ColliderSizeField.RegisterValueChangedCallback(OnColliderSizeChanged);
 
             CreateMapButton = new Button(OnCreateMapButtonClicked);
             CreateMapButton.text = "Bake Map";
             CreateMapButton.AddToClassList("unity-base-field__aligned");
-
 
             MapCreationBox.Add(MapCreationLabel);
             MapCreationBox.Add(TileSizeBakeField);
             MapCreationBox.Add(WidthBakeField);
             MapCreationBox.Add(HeightBakeField);
             MapCreationBox.Add(NotWalkableLayerMaskField);
+            MapCreationBox.Add(RayLengthField);
+            MapCreationBox.Add(ColliderSizeField);
             MapCreationBox.Add(CreateMapButton);
 
 
@@ -109,12 +137,45 @@ namespace Navigation
             return root;
         }
 
+        private void OnColliderSizeChanged(ChangeEvent<float> evt)
+        {
+            if (evt.newValue < 0.1f)
+            {
+                ColliderSizeField.value = 0.1f;
+            }
+            else if (evt.newValue > 2.0f)
+            {
+                ColliderSizeField.value = 2.0f;
+            }
+            else
+            {
+                ColliderSizeField.value = evt.newValue;
+            }
+
+            EditorPrefs.SetFloat(COLLIDER_SIZE_PREF_KEY, ColliderSizeField.value);
+        }
+
+
+        private void OnRayLengthChanged(ChangeEvent<float> evt)
+        {
+            if (evt.newValue < 0.1f)
+            {
+                RayLengthField.value = 0.1f;
+            }
+            else
+            {
+                RayLengthField.value = evt.newValue;
+            }
+
+            EditorPrefs.SetFloat(RAYLENGTH_PREF_KEY, RayLengthField.value);
+        }
+
 
         private void OnCreateMapButtonClicked()
         {
             Map map = target as Map;
 
-            map.CreateMap(WidthBakeField.value, HeightBakeField.value, TileSizeBakeField.value, NotWalkableLayerMaskField.value);
+            map.CreateMap(WidthBakeField.value, HeightBakeField.value, TileSizeBakeField.value, NotWalkableLayerMaskField.value, ColliderSizeField.value, RayLengthField.value);
             EditorUtility.SetDirty(map);
         }
 
@@ -124,10 +185,12 @@ namespace Navigation
             if (evt.newValue < 0.1f)
             {
                 TileSizeBakeField.value = 0.1f;
+                EditorPrefs.SetFloat(TILESIZE_PREF_KEY, TileSizeBakeField.value);
                 return;
             }
 
             TileSizeBakeField.value = evt.newValue;
+            EditorPrefs.SetFloat(TILESIZE_PREF_KEY, TileSizeBakeField.value);
         }
 
 
@@ -148,6 +211,42 @@ namespace Navigation
                     integerField.value = evt.newValue;
                 }
             });
+        }
+
+
+        private void OnHeightFieldChanged(ChangeEvent<int> evt)
+        {
+            if (evt.newValue < MIN_GRID_SIZE)
+            {
+                HeightBakeField.value = MIN_GRID_SIZE;
+            }
+            else if (evt.newValue > MAX_GRID_SIZE)
+            {
+                HeightBakeField.value = MAX_GRID_SIZE;
+            }
+            else
+            {
+                HeightBakeField.value = evt.newValue;
+            }
+            EditorPrefs.SetInt(HEIGHT_PREF_KEY, HeightBakeField.value);
+        }
+
+
+        private void OnWidthFieldChanged(ChangeEvent<int> evt)
+        {
+            if (evt.newValue < MIN_GRID_SIZE)
+            {
+                WidthBakeField.value = MIN_GRID_SIZE;
+            }
+            else if (evt.newValue > MAX_GRID_SIZE)
+            {
+                WidthBakeField.value = MAX_GRID_SIZE;
+            }
+            else
+            {
+                WidthBakeField.value = evt.newValue;
+            }
+            EditorPrefs.SetInt(WIDTH_PREF_KEY, WidthBakeField.value);
         }
     }
 }

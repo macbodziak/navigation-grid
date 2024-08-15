@@ -25,7 +25,7 @@ namespace Navigation
         }
 
 
-        public void CreateMap(int width, int height, float tileSize, LayerMask notWalkableLayers)
+        public void CreateMap(int width, int height, float tileSize, LayerMask notWalkableLayers, float colliderSize, float rayLength)
         {
             this.width = width;
             this.height = height;
@@ -40,7 +40,7 @@ namespace Navigation
                 for (int h = 0; h < height; h++)
                 {
                     gridIndex = GridIndex(w, h);
-                    walkable = CheckIfWalkable(w, h, notWalkableLayers);
+                    walkable = CheckIfWalkable(w, h, notWalkableLayers, colliderSize, rayLength);
                     nodes[gridIndex].Setup(gridIndex, w, h, walkable);
                 }
             }
@@ -53,13 +53,13 @@ namespace Navigation
         }
 
 
-        private bool CheckIfWalkable(int x, int z, LayerMask notWalkableLayers)
+        private bool CheckIfWalkable(int x, int z, LayerMask notWalkableLayers, float colliderSize, float rayLength)
         {
             Vector3 nodePosition = GetNodeWorldPosition(x, z);
-            Vector3 center = nodePosition + new Vector3(0f, 100f, 0f);
-            Vector3 halfExtents = Vector3.one * tileSize * 0.45f;
+            Vector3 center = nodePosition + new Vector3(0f, rayLength, 0f);
+            Vector3 halfExtents = Vector3.one * tileSize * 0.5f * colliderSize;
             Vector3 direction = Vector3.down;
-            float maxDistance = 100f;
+            float maxDistance = rayLength;
 
             if (Physics.BoxCast(center, halfExtents, direction, Quaternion.identity, maxDistance, notWalkableLayers))
             {
