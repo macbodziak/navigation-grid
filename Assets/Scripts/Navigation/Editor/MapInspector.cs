@@ -12,6 +12,7 @@ namespace Navigation
         FloatField TileSizeBakeField;
         IntegerField WidthBakeField;
         IntegerField HeightBakeField;
+        LayerMaskField NotWalkableLayerMaskField;
         FloatField TileSizeField;
         IntegerField WidthField;
         IntegerField HeightField;
@@ -55,6 +56,9 @@ namespace Navigation
             HeightBakeField.value = 20;
             SetRangeOnIntegerField(HeightBakeField, 1, 100);
 
+            NotWalkableLayerMaskField = new LayerMaskField("Not Walkable Layers");
+            NotWalkableLayerMaskField.AddToClassList("unity-base-field__aligned");
+
             CreateMapButton = new Button(OnCreateMapButtonClicked);
             CreateMapButton.text = "Bake Map";
             CreateMapButton.AddToClassList("unity-base-field__aligned");
@@ -64,6 +68,7 @@ namespace Navigation
             MapCreationBox.Add(TileSizeBakeField);
             MapCreationBox.Add(WidthBakeField);
             MapCreationBox.Add(HeightBakeField);
+            MapCreationBox.Add(NotWalkableLayerMaskField);
             MapCreationBox.Add(CreateMapButton);
 
 
@@ -100,6 +105,7 @@ namespace Navigation
 
             root.Add(MapCreationBox);
             root.Add(ActualMapDataBox);
+
             return root;
         }
 
@@ -107,9 +113,8 @@ namespace Navigation
         private void OnCreateMapButtonClicked()
         {
             Map map = target as Map;
-            // SerializedObject so = target as SerializedObject;
 
-            map.CreateMap(WidthBakeField.value, HeightBakeField.value, TileSizeBakeField.value);
+            map.CreateMap(WidthBakeField.value, HeightBakeField.value, TileSizeBakeField.value, NotWalkableLayerMaskField.value);
             EditorUtility.SetDirty(map);
         }
 
