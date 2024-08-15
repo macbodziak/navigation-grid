@@ -1,14 +1,15 @@
 using System;
+using UnityEngine;
 
 namespace Navigation
 {
     [Serializable]
     public struct Node
     {
-        int _id;
-        int _x;
-        int _z;
-        bool _walkable;
+        [SerializeField] int _id;
+        [SerializeField] int _x;
+        [SerializeField] int _z;
+        [SerializeField] bool _walkable;
 
 
 

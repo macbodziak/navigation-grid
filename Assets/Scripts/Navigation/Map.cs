@@ -15,18 +15,22 @@ namespace Navigation
 
         private void Start()
         {
-            // CreateMap(width, height);
+            Debug.Log("Map Start()");
         }
 
 
         private void Update()
         {
-            Debug.Log(nodes.Count());
+            Debug.Log($"{tileSize},{width},{height}");
         }
 
 
-        public void CreateMap(int width, int height)
+        public void CreateMap(int width, int height, float tileSize)
         {
+            this.width = width;
+            this.height = height;
+            this.tileSize = tileSize;
+
             nodes = new Node[width * height];
 
             int gridIndex;
