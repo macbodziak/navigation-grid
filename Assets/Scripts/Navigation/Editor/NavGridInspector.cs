@@ -7,7 +7,7 @@ using System;
 
 namespace Navigation
 {
-    [CustomEditor(typeof(Map))]
+    [CustomEditor(typeof(NavGrid))]
     public class MapInspector : Editor
     {
         private const string TILESIZE_PREF_KEY = "TileSizeBakeField";
@@ -59,12 +59,12 @@ namespace Navigation
             TileSizeBakeField.value = EditorPrefs.GetFloat(TILESIZE_PREF_KEY, 2);
             TileSizeBakeField.RegisterValueChangedCallback(OnTileSizeFieldValueChanged);
 
-            WidthBakeField = new IntegerField("Width");
+            WidthBakeField = new IntegerField("Width (X-Axis)");
             WidthBakeField.AddToClassList("unity-base-field__aligned");
             WidthBakeField.value = EditorPrefs.GetInt(WIDTH_PREF_KEY, 10);
             WidthBakeField.RegisterValueChangedCallback(OnWidthFieldChanged);
 
-            HeightBakeField = new IntegerField("Height");
+            HeightBakeField = new IntegerField("Height (Z-Axis)");
             HeightBakeField.AddToClassList("unity-base-field__aligned");
             HeightBakeField.value = EditorPrefs.GetInt(HEIGHT_PREF_KEY, 10);
             HeightBakeField.RegisterValueChangedCallback(OnHeightFieldChanged);
@@ -173,7 +173,7 @@ namespace Navigation
 
         private void OnCreateMapButtonClicked()
         {
-            Map map = target as Map;
+            NavGrid map = target as NavGrid;
 
             map.CreateMap(WidthBakeField.value, HeightBakeField.value, TileSizeBakeField.value, NotWalkableLayerMaskField.value, ColliderSizeField.value, RayLengthField.value);
             EditorUtility.SetDirty(map);

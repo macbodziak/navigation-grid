@@ -7,8 +7,7 @@ namespace Navigation
     public struct Node
     {
         [SerializeField] int _id;
-        [SerializeField] int _x;
-        [SerializeField] int _z;
+        [SerializeField] Vector2Int _gridPosition;
         [SerializeField] bool _walkable;
 
 
@@ -16,28 +15,25 @@ namespace Navigation
         public Node(int id, int x, int z, bool walkable)
         {
             _id = id;
-            _x = x;
-            _z = z;
+            _gridPosition = new Vector2Int(x, z);
             _walkable = walkable;
         }
 
         public int id { get => _id; private set => _id = value; }
-        public int x { get => _x; private set => _x = value; }
-        public int z { get => _z; private set => _z = value; }
+        public Vector2Int gridPosition { get => _gridPosition; private set => _gridPosition = value; }
         public bool walkable { get => _walkable; private set => _walkable = value; }
 
 
         public void Setup(int id, int x, int z, bool walkable = true)
         {
             _id = id;
-            _x = x;
-            _z = z;
+            _gridPosition = new Vector2Int(x, z);
             _walkable = walkable;
         }
 
         public override string ToString()
         {
-            return $"id:{id}, x:{x}, y:{z}, walkable:{walkable}";
+            return $"id:{id}, x:{gridPosition.x}, y:{gridPosition.y}, walkable:{walkable}";
         }
     }
 
