@@ -17,7 +17,11 @@ public class TestScript : MonoBehaviour
 
         stopwatch.Start();
 
-        Path path = Pathfinder.FindPath(navGrid, start.x, start.y, goal.x, goal.y);
+        Path path = null;
+        // for (int i = 0; i < 10; i++)
+        // {
+        path = Pathfinder.FindPath(navGrid, start.x, start.y, goal.x, goal.y);
+        // }
         stopwatch.Stop();
 
         // Get the elapsed time as a TimeSpan value

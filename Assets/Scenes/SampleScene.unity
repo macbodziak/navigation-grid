@@ -983,7 +983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navGrid: {fileID: 1851950131}
   start: {x: 0, y: 0}
-  goal: {x: 25, y: 25}
+  goal: {x: 99, y: 99}
 --- !u!4 &1786885381
 Transform:
   m_ObjectHideFlags: 0

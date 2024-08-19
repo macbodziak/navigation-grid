@@ -53,6 +53,10 @@ namespace Navigation
             while (frontier.Count > 0)
             {
 
+                Vector2Int neighbourGridPosition;
+                int neighbourIndex;
+                int newCost;
+
                 currentIndex = frontier.Dequeue();
                 Debug.Log("Dequeueing index: " + currentIndex + " : " + navGrid.NodeAt(currentIndex).gridPosition.x + "," + navGrid.NodeAt(currentIndex).gridPosition.y);
 
@@ -66,9 +70,8 @@ namespace Navigation
 
                 for (int i = 0; i < 8; i++)
                 {
-                    Vector2Int neighbourGridPosition = currentGridPosition + direction[i];
-                    int neighbourIndex = navGrid.IndexAt(neighbourGridPosition);
-                    int newCost;
+                    neighbourGridPosition = currentGridPosition + direction[i];
+                    neighbourIndex = navGrid.IndexAt(neighbourGridPosition);
 
                     if (neighbourIndex == -1)
                     {
@@ -99,8 +102,9 @@ namespace Navigation
                     {
                         nodeData[neighbourIndex].costSoFar = newCost;
                         nodeData[neighbourIndex].cameFrom = currentIndex;
-                        // Priority - calculate heuristic
-                        frontier.Enqueue(neighbourIndex, newCost);
+
+                        frontier.Enqueue(neighbourIndex, newCost + ManhattanDistance(navGrid, neighbourIndex, goalIndex));
+
                         Debug.Log("Enqueuing index: " + neighbourIndex + " : " + navGrid.NodeAt(neighbourIndex).gridPosition.x + "," + navGrid.NodeAt(neighbourIndex).gridPosition.y);
 
                     }
@@ -143,6 +147,20 @@ namespace Navigation
             }
 
             return new Path(pathElements, totalCost);
+        }
+
+        static private int ManhattanDistance(NavGrid navGrid, int checkedIndex, int goalIndex)
+        {
+            Vector2Int a = navGrid.NodeAt(checkedIndex).gridPosition;
+            Vector2Int b = navGrid.NodeAt(goalIndex).gridPosition;
+            return Mathf.Abs(b.x - a.x) + Mathf.Abs(b.y - a.y);
+        }
+
+        static private int Distance(NavGrid navGrid, int checkedIndex, int goalIndex)
+        {
+            Vector2Int a = navGrid.NodeAt(checkedIndex).gridPosition;
+            Vector2Int b = navGrid.NodeAt(goalIndex).gridPosition;
+            return (int)((b - a).magnitude);
         }
     }
 }
