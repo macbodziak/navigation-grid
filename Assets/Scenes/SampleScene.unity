@@ -123,6 +123,111 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &51868208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 51868212}
+  - component: {fileID: 51868211}
+  - component: {fileID: 51868210}
+  - component: {fileID: 51868209}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &51868209
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51868208}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &51868210
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51868208}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &51868211
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51868208}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &51868212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51868208}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50, y: 0, z: 50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +903,111 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &572502817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 572502821}
+  - component: {fileID: 572502820}
+  - component: {fileID: 572502819}
+  - component: {fileID: 572502818}
+  m_Layer: 6
+  m_Name: Cube (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &572502818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572502817}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &572502819
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572502817}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &572502820
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572502817}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &572502821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572502817}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 112.7, y: 0, z: 116.4}
+  m_LocalScale: {x: 50, y: 1, z: 4.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &610581523
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,6 +1162,426 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1017258936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1017258940}
+  - component: {fileID: 1017258939}
+  - component: {fileID: 1017258938}
+  - component: {fileID: 1017258937}
+  m_Layer: 6
+  m_Name: Cube (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1017258937
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017258936}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1017258938
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017258936}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1017258939
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017258936}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1017258940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017258936}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 42.5, y: 0, z: 50.1}
+  m_LocalScale: {x: 7.2, y: 1, z: 4.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1313447099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1313447103}
+  - component: {fileID: 1313447102}
+  - component: {fileID: 1313447101}
+  - component: {fileID: 1313447100}
+  m_Layer: 6
+  m_Name: Cube (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1313447100
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313447099}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1313447101
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313447099}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1313447102
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313447099}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1313447103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313447099}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 65.4, y: 0, z: 88}
+  m_LocalScale: {x: 50, y: 1, z: 4.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1569941878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1569941882}
+  - component: {fileID: 1569941881}
+  - component: {fileID: 1569941880}
+  - component: {fileID: 1569941879}
+  m_Layer: 6
+  m_Name: Cube (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1569941879
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569941878}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1569941880
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569941878}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1569941881
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569941878}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1569941882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569941878}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 66, y: 0, z: 38.4}
+  m_LocalScale: {x: 16.94, y: 1, z: 4.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1707938309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707938313}
+  - component: {fileID: 1707938312}
+  - component: {fileID: 1707938311}
+  - component: {fileID: 1707938310}
+  m_Layer: 6
+  m_Name: Cube (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1707938310
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707938309}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1707938311
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707938309}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1707938312
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707938309}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1707938313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707938309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 72, y: 0, z: 50.1}
+  m_LocalScale: {x: 16.94, y: 1, z: 4.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1786885379
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,6 +1614,8 @@ MonoBehaviour:
   navGrid: {fileID: 1851950131}
   start: {x: 0, y: 0}
   goal: {x: 99, y: 99}
+  startArea: {x: 25, y: 25}
+  budget: 360
 --- !u!4 &1786885381
 Transform:
   m_ObjectHideFlags: 0
@@ -6521,31 +7153,31 @@ MonoBehaviour:
     _walkable: 1
   - _id: 1829
     _gridPosition: {x: 29, y: 18}
-    _walkable: 1
+    _walkable: 0
   - _id: 1830
     _gridPosition: {x: 30, y: 18}
-    _walkable: 1
+    _walkable: 0
   - _id: 1831
     _gridPosition: {x: 31, y: 18}
-    _walkable: 1
+    _walkable: 0
   - _id: 1832
     _gridPosition: {x: 32, y: 18}
-    _walkable: 1
+    _walkable: 0
   - _id: 1833
     _gridPosition: {x: 33, y: 18}
-    _walkable: 1
+    _walkable: 0
   - _id: 1834
     _gridPosition: {x: 34, y: 18}
-    _walkable: 1
+    _walkable: 0
   - _id: 1835
     _gridPosition: {x: 35, y: 18}
-    _walkable: 1
+    _walkable: 0
   - _id: 1836
     _gridPosition: {x: 36, y: 18}
-    _walkable: 1
+    _walkable: 0
   - _id: 1837
     _gridPosition: {x: 37, y: 18}
-    _walkable: 1
+    _walkable: 0
   - _id: 1838
     _gridPosition: {x: 38, y: 18}
     _walkable: 1
@@ -6821,31 +7453,31 @@ MonoBehaviour:
     _walkable: 1
   - _id: 1929
     _gridPosition: {x: 29, y: 19}
-    _walkable: 1
+    _walkable: 0
   - _id: 1930
     _gridPosition: {x: 30, y: 19}
-    _walkable: 1
+    _walkable: 0
   - _id: 1931
     _gridPosition: {x: 31, y: 19}
-    _walkable: 1
+    _walkable: 0
   - _id: 1932
     _gridPosition: {x: 32, y: 19}
-    _walkable: 1
+    _walkable: 0
   - _id: 1933
     _gridPosition: {x: 33, y: 19}
-    _walkable: 1
+    _walkable: 0
   - _id: 1934
     _gridPosition: {x: 34, y: 19}
-    _walkable: 1
+    _walkable: 0
   - _id: 1935
     _gridPosition: {x: 35, y: 19}
-    _walkable: 1
+    _walkable: 0
   - _id: 1936
     _gridPosition: {x: 36, y: 19}
-    _walkable: 1
+    _walkable: 0
   - _id: 1937
     _gridPosition: {x: 37, y: 19}
-    _walkable: 1
+    _walkable: 0
   - _id: 1938
     _gridPosition: {x: 38, y: 19}
     _walkable: 1
@@ -7121,31 +7753,31 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2029
     _gridPosition: {x: 29, y: 20}
-    _walkable: 1
+    _walkable: 0
   - _id: 2030
     _gridPosition: {x: 30, y: 20}
-    _walkable: 1
+    _walkable: 0
   - _id: 2031
     _gridPosition: {x: 31, y: 20}
-    _walkable: 1
+    _walkable: 0
   - _id: 2032
     _gridPosition: {x: 32, y: 20}
-    _walkable: 1
+    _walkable: 0
   - _id: 2033
     _gridPosition: {x: 33, y: 20}
-    _walkable: 1
+    _walkable: 0
   - _id: 2034
     _gridPosition: {x: 34, y: 20}
-    _walkable: 1
+    _walkable: 0
   - _id: 2035
     _gridPosition: {x: 35, y: 20}
-    _walkable: 1
+    _walkable: 0
   - _id: 2036
     _gridPosition: {x: 36, y: 20}
-    _walkable: 1
+    _walkable: 0
   - _id: 2037
     _gridPosition: {x: 37, y: 20}
-    _walkable: 1
+    _walkable: 0
   - _id: 2038
     _gridPosition: {x: 38, y: 20}
     _walkable: 1
@@ -7439,13 +8071,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2135
     _gridPosition: {x: 35, y: 21}
-    _walkable: 1
+    _walkable: 0
   - _id: 2136
     _gridPosition: {x: 36, y: 21}
-    _walkable: 1
+    _walkable: 0
   - _id: 2137
     _gridPosition: {x: 37, y: 21}
-    _walkable: 1
+    _walkable: 0
   - _id: 2138
     _gridPosition: {x: 38, y: 21}
     _walkable: 1
@@ -7739,13 +8371,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2235
     _gridPosition: {x: 35, y: 22}
-    _walkable: 1
+    _walkable: 0
   - _id: 2236
     _gridPosition: {x: 36, y: 22}
-    _walkable: 1
+    _walkable: 0
   - _id: 2237
     _gridPosition: {x: 37, y: 22}
-    _walkable: 1
+    _walkable: 0
   - _id: 2238
     _gridPosition: {x: 38, y: 22}
     _walkable: 1
@@ -7994,13 +8626,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2320
     _gridPosition: {x: 20, y: 23}
-    _walkable: 1
+    _walkable: 0
   - _id: 2321
     _gridPosition: {x: 21, y: 23}
-    _walkable: 1
+    _walkable: 0
   - _id: 2322
     _gridPosition: {x: 22, y: 23}
-    _walkable: 1
+    _walkable: 0
   - _id: 2323
     _gridPosition: {x: 23, y: 23}
     _walkable: 1
@@ -8039,13 +8671,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2335
     _gridPosition: {x: 35, y: 23}
-    _walkable: 1
+    _walkable: 0
   - _id: 2336
     _gridPosition: {x: 36, y: 23}
-    _walkable: 1
+    _walkable: 0
   - _id: 2337
     _gridPosition: {x: 37, y: 23}
-    _walkable: 1
+    _walkable: 0
   - _id: 2338
     _gridPosition: {x: 38, y: 23}
     _walkable: 1
@@ -8294,13 +8926,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2420
     _gridPosition: {x: 20, y: 24}
-    _walkable: 1
+    _walkable: 0
   - _id: 2421
     _gridPosition: {x: 21, y: 24}
-    _walkable: 1
+    _walkable: 0
   - _id: 2422
     _gridPosition: {x: 22, y: 24}
-    _walkable: 1
+    _walkable: 0
   - _id: 2423
     _gridPosition: {x: 23, y: 24}
     _walkable: 1
@@ -8339,13 +8971,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2435
     _gridPosition: {x: 35, y: 24}
-    _walkable: 1
+    _walkable: 0
   - _id: 2436
     _gridPosition: {x: 36, y: 24}
-    _walkable: 1
+    _walkable: 0
   - _id: 2437
     _gridPosition: {x: 37, y: 24}
-    _walkable: 1
+    _walkable: 0
   - _id: 2438
     _gridPosition: {x: 38, y: 24}
     _walkable: 1
@@ -8594,13 +9226,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2520
     _gridPosition: {x: 20, y: 25}
-    _walkable: 1
+    _walkable: 0
   - _id: 2521
     _gridPosition: {x: 21, y: 25}
-    _walkable: 1
+    _walkable: 0
   - _id: 2522
     _gridPosition: {x: 22, y: 25}
-    _walkable: 1
+    _walkable: 0
   - _id: 2523
     _gridPosition: {x: 23, y: 25}
     _walkable: 1
@@ -8639,13 +9271,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2535
     _gridPosition: {x: 35, y: 25}
-    _walkable: 1
+    _walkable: 0
   - _id: 2536
     _gridPosition: {x: 36, y: 25}
-    _walkable: 1
+    _walkable: 0
   - _id: 2537
     _gridPosition: {x: 37, y: 25}
-    _walkable: 1
+    _walkable: 0
   - _id: 2538
     _gridPosition: {x: 38, y: 25}
     _walkable: 1
@@ -8894,13 +9526,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2620
     _gridPosition: {x: 20, y: 26}
-    _walkable: 1
+    _walkable: 0
   - _id: 2621
     _gridPosition: {x: 21, y: 26}
-    _walkable: 1
+    _walkable: 0
   - _id: 2622
     _gridPosition: {x: 22, y: 26}
-    _walkable: 1
+    _walkable: 0
   - _id: 2623
     _gridPosition: {x: 23, y: 26}
     _walkable: 1
@@ -8939,13 +9571,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2635
     _gridPosition: {x: 35, y: 26}
-    _walkable: 1
+    _walkable: 0
   - _id: 2636
     _gridPosition: {x: 36, y: 26}
-    _walkable: 1
+    _walkable: 0
   - _id: 2637
     _gridPosition: {x: 37, y: 26}
-    _walkable: 1
+    _walkable: 0
   - _id: 2638
     _gridPosition: {x: 38, y: 26}
     _walkable: 1
@@ -9194,13 +9826,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2720
     _gridPosition: {x: 20, y: 27}
-    _walkable: 1
+    _walkable: 0
   - _id: 2721
     _gridPosition: {x: 21, y: 27}
-    _walkable: 1
+    _walkable: 0
   - _id: 2722
     _gridPosition: {x: 22, y: 27}
-    _walkable: 1
+    _walkable: 0
   - _id: 2723
     _gridPosition: {x: 23, y: 27}
     _walkable: 1
@@ -9239,13 +9871,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2735
     _gridPosition: {x: 35, y: 27}
-    _walkable: 1
+    _walkable: 0
   - _id: 2736
     _gridPosition: {x: 36, y: 27}
-    _walkable: 1
+    _walkable: 0
   - _id: 2737
     _gridPosition: {x: 37, y: 27}
-    _walkable: 1
+    _walkable: 0
   - _id: 2738
     _gridPosition: {x: 38, y: 27}
     _walkable: 1
@@ -9539,13 +10171,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2835
     _gridPosition: {x: 35, y: 28}
-    _walkable: 1
+    _walkable: 0
   - _id: 2836
     _gridPosition: {x: 36, y: 28}
-    _walkable: 1
+    _walkable: 0
   - _id: 2837
     _gridPosition: {x: 37, y: 28}
-    _walkable: 1
+    _walkable: 0
   - _id: 2838
     _gridPosition: {x: 38, y: 28}
     _walkable: 1
@@ -9839,13 +10471,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2935
     _gridPosition: {x: 35, y: 29}
-    _walkable: 1
+    _walkable: 0
   - _id: 2936
     _gridPosition: {x: 36, y: 29}
-    _walkable: 1
+    _walkable: 0
   - _id: 2937
     _gridPosition: {x: 37, y: 29}
-    _walkable: 1
+    _walkable: 0
   - _id: 2938
     _gridPosition: {x: 38, y: 29}
     _walkable: 1
@@ -13994,82 +14626,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 4320
     _gridPosition: {x: 20, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4321
     _gridPosition: {x: 21, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4322
     _gridPosition: {x: 22, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4323
     _gridPosition: {x: 23, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4324
     _gridPosition: {x: 24, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4325
     _gridPosition: {x: 25, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4326
     _gridPosition: {x: 26, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4327
     _gridPosition: {x: 27, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4328
     _gridPosition: {x: 28, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4329
     _gridPosition: {x: 29, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4330
     _gridPosition: {x: 30, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4331
     _gridPosition: {x: 31, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4332
     _gridPosition: {x: 32, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4333
     _gridPosition: {x: 33, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4334
     _gridPosition: {x: 34, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4335
     _gridPosition: {x: 35, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4336
     _gridPosition: {x: 36, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4337
     _gridPosition: {x: 37, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4338
     _gridPosition: {x: 38, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4339
     _gridPosition: {x: 39, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4340
     _gridPosition: {x: 40, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4341
     _gridPosition: {x: 41, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4342
     _gridPosition: {x: 42, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4343
     _gridPosition: {x: 43, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4344
     _gridPosition: {x: 44, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4345
     _gridPosition: {x: 45, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4346
     _gridPosition: {x: 46, y: 43}
     _walkable: 1
@@ -14294,82 +14926,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 4420
     _gridPosition: {x: 20, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4421
     _gridPosition: {x: 21, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4422
     _gridPosition: {x: 22, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4423
     _gridPosition: {x: 23, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4424
     _gridPosition: {x: 24, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4425
     _gridPosition: {x: 25, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4426
     _gridPosition: {x: 26, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4427
     _gridPosition: {x: 27, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4428
     _gridPosition: {x: 28, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4429
     _gridPosition: {x: 29, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4430
     _gridPosition: {x: 30, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4431
     _gridPosition: {x: 31, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4432
     _gridPosition: {x: 32, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4433
     _gridPosition: {x: 33, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4434
     _gridPosition: {x: 34, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4435
     _gridPosition: {x: 35, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4436
     _gridPosition: {x: 36, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4437
     _gridPosition: {x: 37, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4438
     _gridPosition: {x: 38, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4439
     _gridPosition: {x: 39, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4440
     _gridPosition: {x: 40, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4441
     _gridPosition: {x: 41, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4442
     _gridPosition: {x: 42, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4443
     _gridPosition: {x: 43, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4444
     _gridPosition: {x: 44, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4445
     _gridPosition: {x: 45, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4446
     _gridPosition: {x: 46, y: 44}
     _walkable: 1
@@ -14594,82 +15226,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 4520
     _gridPosition: {x: 20, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4521
     _gridPosition: {x: 21, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4522
     _gridPosition: {x: 22, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4523
     _gridPosition: {x: 23, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4524
     _gridPosition: {x: 24, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4525
     _gridPosition: {x: 25, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4526
     _gridPosition: {x: 26, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4527
     _gridPosition: {x: 27, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4528
     _gridPosition: {x: 28, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4529
     _gridPosition: {x: 29, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4530
     _gridPosition: {x: 30, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4531
     _gridPosition: {x: 31, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4532
     _gridPosition: {x: 32, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4533
     _gridPosition: {x: 33, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4534
     _gridPosition: {x: 34, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4535
     _gridPosition: {x: 35, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4536
     _gridPosition: {x: 36, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4537
     _gridPosition: {x: 37, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4538
     _gridPosition: {x: 38, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4539
     _gridPosition: {x: 39, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4540
     _gridPosition: {x: 40, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4541
     _gridPosition: {x: 41, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4542
     _gridPosition: {x: 42, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4543
     _gridPosition: {x: 43, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4544
     _gridPosition: {x: 44, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4545
     _gridPosition: {x: 45, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4546
     _gridPosition: {x: 46, y: 45}
     _walkable: 1
@@ -18266,82 +18898,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 5744
     _gridPosition: {x: 44, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5745
     _gridPosition: {x: 45, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5746
     _gridPosition: {x: 46, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5747
     _gridPosition: {x: 47, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5748
     _gridPosition: {x: 48, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5749
     _gridPosition: {x: 49, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5750
     _gridPosition: {x: 50, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5751
     _gridPosition: {x: 51, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5752
     _gridPosition: {x: 52, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5753
     _gridPosition: {x: 53, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5754
     _gridPosition: {x: 54, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5755
     _gridPosition: {x: 55, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5756
     _gridPosition: {x: 56, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5757
     _gridPosition: {x: 57, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5758
     _gridPosition: {x: 58, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5759
     _gridPosition: {x: 59, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5760
     _gridPosition: {x: 60, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5761
     _gridPosition: {x: 61, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5762
     _gridPosition: {x: 62, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5763
     _gridPosition: {x: 63, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5764
     _gridPosition: {x: 64, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5765
     _gridPosition: {x: 65, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5766
     _gridPosition: {x: 66, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5767
     _gridPosition: {x: 67, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5768
     _gridPosition: {x: 68, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5769
     _gridPosition: {x: 69, y: 57}
-    _walkable: 1
+    _walkable: 0
   - _id: 5770
     _gridPosition: {x: 70, y: 57}
     _walkable: 1
@@ -18566,82 +19198,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 5844
     _gridPosition: {x: 44, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5845
     _gridPosition: {x: 45, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5846
     _gridPosition: {x: 46, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5847
     _gridPosition: {x: 47, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5848
     _gridPosition: {x: 48, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5849
     _gridPosition: {x: 49, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5850
     _gridPosition: {x: 50, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5851
     _gridPosition: {x: 51, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5852
     _gridPosition: {x: 52, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5853
     _gridPosition: {x: 53, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5854
     _gridPosition: {x: 54, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5855
     _gridPosition: {x: 55, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5856
     _gridPosition: {x: 56, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5857
     _gridPosition: {x: 57, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5858
     _gridPosition: {x: 58, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5859
     _gridPosition: {x: 59, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5860
     _gridPosition: {x: 60, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5861
     _gridPosition: {x: 61, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5862
     _gridPosition: {x: 62, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5863
     _gridPosition: {x: 63, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5864
     _gridPosition: {x: 64, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5865
     _gridPosition: {x: 65, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5866
     _gridPosition: {x: 66, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5867
     _gridPosition: {x: 67, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5868
     _gridPosition: {x: 68, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5869
     _gridPosition: {x: 69, y: 58}
-    _walkable: 1
+    _walkable: 0
   - _id: 5870
     _gridPosition: {x: 70, y: 58}
     _walkable: 1
@@ -18866,82 +19498,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 5944
     _gridPosition: {x: 44, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5945
     _gridPosition: {x: 45, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5946
     _gridPosition: {x: 46, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5947
     _gridPosition: {x: 47, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5948
     _gridPosition: {x: 48, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5949
     _gridPosition: {x: 49, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5950
     _gridPosition: {x: 50, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5951
     _gridPosition: {x: 51, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5952
     _gridPosition: {x: 52, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5953
     _gridPosition: {x: 53, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5954
     _gridPosition: {x: 54, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5955
     _gridPosition: {x: 55, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5956
     _gridPosition: {x: 56, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5957
     _gridPosition: {x: 57, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5958
     _gridPosition: {x: 58, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5959
     _gridPosition: {x: 59, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5960
     _gridPosition: {x: 60, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5961
     _gridPosition: {x: 61, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5962
     _gridPosition: {x: 62, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5963
     _gridPosition: {x: 63, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5964
     _gridPosition: {x: 64, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5965
     _gridPosition: {x: 65, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5966
     _gridPosition: {x: 66, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5967
     _gridPosition: {x: 67, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5968
     _gridPosition: {x: 68, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5969
     _gridPosition: {x: 69, y: 59}
-    _walkable: 1
+    _walkable: 0
   - _id: 5970
     _gridPosition: {x: 70, y: 59}
     _walkable: 1
@@ -31056,8 +31688,14 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 385824116}
   - {fileID: 375925842}
+  - {fileID: 1569941882}
+  - {fileID: 1707938313}
+  - {fileID: 1017258940}
+  - {fileID: 1313447103}
+  - {fileID: 572502821}
   - {fileID: 558902237}
   - {fileID: 541813486}
   - {fileID: 1851950132}
   - {fileID: 1786885381}
   - {fileID: 610581527}
+  - {fileID: 51868212}

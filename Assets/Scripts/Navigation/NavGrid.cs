@@ -168,6 +168,14 @@ namespace Navigation
         }
 
 
+        public Vector3 GetNodeWorldPosition(int index)
+        {
+            return new Vector3(transform.position.x + nodes[index].gridPosition.x * tileSize,
+                    transform.position.y,
+                    transform.position.z + nodes[index].gridPosition.y * tileSize);
+        }
+
+
         public bool CheckIfInBound(int startX, int startZ)
         {
             if (startX < 0 || startX >= Width || startZ < 0 || startZ >= Height)
