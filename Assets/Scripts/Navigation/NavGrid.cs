@@ -14,6 +14,8 @@ namespace Navigation
         public int Width { get => width; private set => width = value; }
         public int Height { get => height; private set => height = value; }
         public int Count { get => Height * Width; }
+        public Vector3 Position { get => transform.position; }
+        public float TileSize { get => tileSize; private set => tileSize = value; }
 
         private void Start()
         {
@@ -32,7 +34,7 @@ namespace Navigation
         {
             this.Width = width;
             this.Height = height;
-            this.tileSize = tileSize;
+            this.TileSize = tileSize;
 
             nodes = new Node[width * height];
 
@@ -61,7 +63,7 @@ namespace Navigation
         {
             Vector3 nodePosition = GetNodeWorldPosition(x, z);
             Vector3 center = nodePosition + new Vector3(0f, rayLength, 0f);
-            Vector3 halfExtents = Vector3.one * tileSize * 0.5f * colliderSize;
+            Vector3 halfExtents = Vector3.one * TileSize * 0.5f * colliderSize;
             Vector3 direction = Vector3.down;
             float maxDistance = rayLength;
 
@@ -156,9 +158,9 @@ namespace Navigation
 
         public Vector3 GetNodeWorldPosition(int x, int z)
         {
-            return new Vector3(transform.position.x + x * tileSize,
+            return new Vector3(transform.position.x + x * TileSize,
                                 transform.position.y,
-                                transform.position.z + z * tileSize);
+                                transform.position.z + z * TileSize);
         }
 
 
@@ -170,9 +172,9 @@ namespace Navigation
 
         public Vector3 GetNodeWorldPosition(int index)
         {
-            return new Vector3(transform.position.x + nodes[index].gridPosition.x * tileSize,
+            return new Vector3(transform.position.x + nodes[index].gridPosition.x * TileSize,
                     transform.position.y,
-                    transform.position.z + nodes[index].gridPosition.y * tileSize);
+                    transform.position.z + nodes[index].gridPosition.y * TileSize);
         }
 
 

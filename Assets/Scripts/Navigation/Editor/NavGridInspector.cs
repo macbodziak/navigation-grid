@@ -15,7 +15,7 @@ namespace Navigation
         private const string HEIGHT_PREF_KEY = "HeightBakeField";
         private const string NOTWALKABLELAYERMASK_PREF_KEY = "NotWalkableLayerMaskField";
         private const int MIN_GRID_SIZE = 1;
-        private const int MAX_GRID_SIZE = 100;
+        private const int MAX_GRID_SIZE = 250;
         private const string RAYLENGTH_PREF_KEY = "RayLengthField";
         private const string COLLIDER_SIZE_PREF_KEY = "ColliderSizeField";
 

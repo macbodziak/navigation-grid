@@ -1,6 +1,8 @@
 using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
+using Unity.Collections;
+using Unity.Jobs;
+using Unity.Mathematics;
 
 namespace Navigation
 {
@@ -116,6 +118,65 @@ namespace Navigation
             return null;
         }
 
+
+        static public PathQuery StartPathfinding(NavGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition)
+        {
+            // 
+            if (navGrid.CheckIfInBound(startPosition.x, startPosition.y) == false)
+            {
+                return null;
+            }
+
+            if (navGrid.CheckIfInBound(goalPosition.x, goalPosition.y) == false)
+            {
+                return null;
+            }
+
+            PathQuery pathQuery = new PathQuery(navGrid);
+
+            // int gridSize = navGrid.Count;
+
+            // NativeList<int> openList = new NativeList<int>(navGrid.Count / 2, Allocator.Persistent);
+            // NativeArray<AStarSearchNodeDataAsync> nodeData = new NativeArray<AStarSearchNodeDataAsync>(navGrid.Count, Allocator.Persistent);
+            // NativeArray<int> totalPathCost = new NativeArray<int>(1, Allocator.Persistent);
+            // NativeList<PathElement> resultPath = new NativeList<PathElement>(10, Allocator.Persistent);
+
+            for (int i = 0; i < navGrid.Count; i++)
+            {
+                pathQuery.nodeData[i] = new AStarSearchNodeDataAsync
+                {
+                    walkable = navGrid.NodeAt(i).walkable,
+                    gridPosition = new int2(navGrid.NodeAt(i).gridPosition.x, navGrid.NodeAt(i).gridPosition.y),
+                    costSoFar = int.MaxValue,
+                    distanceToGoal = 0,
+                    heuristicScore = int.MaxValue,
+                    cameFrom = -1,
+                    alreadyEvaluated = false
+                };
+            }
+
+            FindPathAStarJob job = new FindPathAStarJob
+            {
+                nodeData = pathQuery.nodeData,
+                openList = pathQuery.openList,
+                startIndex = navGrid.IndexAt(startPosition.x, startPosition.y),
+                goalIndex = navGrid.IndexAt(goalPosition.x, goalPosition.y),
+                resultCost = pathQuery.totalPathCost,
+                resultPath = pathQuery.pathElements,
+                navGridWidth = navGrid.Width,
+                navGridHeight = navGrid.Height,
+                navGridTileSize = navGrid.TileSize,
+                navGridPosition = navGrid.Position
+            };
+
+
+            pathQuery.jobHandle = job.Schedule();
+            // job.Run();
+
+            return pathQuery;
+        }
+
+
         static private void DebugPrintPath(NavGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData)
         {
             int currentIndex = goalIndex;
@@ -141,7 +202,7 @@ namespace Navigation
             {
                 Vector2Int gridPosition = navGrid.NodeAt(currentIndex).gridPosition;
                 Vector3 worldPosition = navGrid.GetNodeWorldPosition(gridPosition);
-                pathElements.Add(new PathElement(currentIndex, gridPosition, worldPosition));
+                pathElements.Add(new PathElement(currentIndex, new int2(gridPosition.x, gridPosition.y), worldPosition));
 
                 currentIndex = nodeData[currentIndex].cameFrom;
             }

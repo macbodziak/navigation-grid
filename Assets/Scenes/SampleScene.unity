@@ -365,6 +365,111 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &375023490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 375023494}
+  - component: {fileID: 375023493}
+  - component: {fileID: 375023492}
+  - component: {fileID: 375023491}
+  m_Layer: 6
+  m_Name: Cube (12)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &375023491
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375023490}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &375023492
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375023490}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &375023493
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375023490}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &375023494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375023490}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 105.6, y: 0, z: 160.5}
+  m_LocalScale: {x: 50, y: 1, z: 26.73}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &375925838
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +798,111 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &511481387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 511481391}
+  - component: {fileID: 511481390}
+  - component: {fileID: 511481389}
+  - component: {fileID: 511481388}
+  m_Layer: 6
+  m_Name: Cube (11)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &511481388
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511481387}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &511481389
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511481387}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &511481390
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511481387}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &511481391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511481387}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 182.3, y: 0, z: 145.9}
+  m_LocalScale: {x: 50, y: 1, z: 26.73}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541813482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,6 +1582,111 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1331502659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1331502663}
+  - component: {fileID: 1331502662}
+  - component: {fileID: 1331502661}
+  - component: {fileID: 1331502660}
+  m_Layer: 6
+  m_Name: Cube (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1331502660
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331502659}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1331502661
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331502659}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1331502662
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331502659}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1331502663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331502659}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 141.3, y: 0, z: 81.3}
+  m_LocalScale: {x: 50, y: 1, z: 26.73}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569941878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,7 +1891,7 @@ Transform:
   m_GameObject: {fileID: 1707938309}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 72, y: 0, z: 50.1}
+  m_LocalPosition: {x: 72, y: 0, z: 5}
   m_LocalScale: {x: 16.94, y: 1, z: 4.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1615,7 +1930,7 @@ MonoBehaviour:
   start: {x: 0, y: 0}
   goal: {x: 99, y: 99}
   startArea: {x: 25, y: 25}
-  budget: 360
+  budget: 10
 --- !u!4 &1786885381
 Transform:
   m_ObjectHideFlags: 0
@@ -1771,13 +2086,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 35
     _gridPosition: {x: 35, y: 0}
-    _walkable: 1
+    _walkable: 0
   - _id: 36
     _gridPosition: {x: 36, y: 0}
-    _walkable: 1
+    _walkable: 0
   - _id: 37
     _gridPosition: {x: 37, y: 0}
-    _walkable: 1
+    _walkable: 0
   - _id: 38
     _gridPosition: {x: 38, y: 0}
     _walkable: 1
@@ -2071,13 +2386,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 135
     _gridPosition: {x: 35, y: 1}
-    _walkable: 1
+    _walkable: 0
   - _id: 136
     _gridPosition: {x: 36, y: 1}
-    _walkable: 1
+    _walkable: 0
   - _id: 137
     _gridPosition: {x: 37, y: 1}
-    _walkable: 1
+    _walkable: 0
   - _id: 138
     _gridPosition: {x: 38, y: 1}
     _walkable: 1
@@ -2371,13 +2686,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 235
     _gridPosition: {x: 35, y: 2}
-    _walkable: 1
+    _walkable: 0
   - _id: 236
     _gridPosition: {x: 36, y: 2}
-    _walkable: 1
+    _walkable: 0
   - _id: 237
     _gridPosition: {x: 37, y: 2}
-    _walkable: 1
+    _walkable: 0
   - _id: 238
     _gridPosition: {x: 38, y: 2}
     _walkable: 1
@@ -2671,13 +2986,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 335
     _gridPosition: {x: 35, y: 3}
-    _walkable: 1
+    _walkable: 0
   - _id: 336
     _gridPosition: {x: 36, y: 3}
-    _walkable: 1
+    _walkable: 0
   - _id: 337
     _gridPosition: {x: 37, y: 3}
-    _walkable: 1
+    _walkable: 0
   - _id: 338
     _gridPosition: {x: 38, y: 3}
     _walkable: 1
@@ -2971,13 +3286,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 435
     _gridPosition: {x: 35, y: 4}
-    _walkable: 1
+    _walkable: 0
   - _id: 436
     _gridPosition: {x: 36, y: 4}
-    _walkable: 1
+    _walkable: 0
   - _id: 437
     _gridPosition: {x: 37, y: 4}
-    _walkable: 1
+    _walkable: 0
   - _id: 438
     _gridPosition: {x: 38, y: 4}
     _walkable: 1
@@ -3271,13 +3586,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 535
     _gridPosition: {x: 35, y: 5}
-    _walkable: 1
+    _walkable: 0
   - _id: 536
     _gridPosition: {x: 36, y: 5}
-    _walkable: 1
+    _walkable: 0
   - _id: 537
     _gridPosition: {x: 37, y: 5}
-    _walkable: 1
+    _walkable: 0
   - _id: 538
     _gridPosition: {x: 38, y: 5}
     _walkable: 1
@@ -3571,13 +3886,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 635
     _gridPosition: {x: 35, y: 6}
-    _walkable: 1
+    _walkable: 0
   - _id: 636
     _gridPosition: {x: 36, y: 6}
-    _walkable: 1
+    _walkable: 0
   - _id: 637
     _gridPosition: {x: 37, y: 6}
-    _walkable: 1
+    _walkable: 0
   - _id: 638
     _gridPosition: {x: 38, y: 6}
     _walkable: 1
@@ -3871,13 +4186,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 735
     _gridPosition: {x: 35, y: 7}
-    _walkable: 1
+    _walkable: 0
   - _id: 736
     _gridPosition: {x: 36, y: 7}
-    _walkable: 1
+    _walkable: 0
   - _id: 737
     _gridPosition: {x: 37, y: 7}
-    _walkable: 1
+    _walkable: 0
   - _id: 738
     _gridPosition: {x: 38, y: 7}
     _walkable: 1
@@ -8071,13 +8386,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2135
     _gridPosition: {x: 35, y: 21}
-    _walkable: 0
+    _walkable: 1
   - _id: 2136
     _gridPosition: {x: 36, y: 21}
-    _walkable: 0
+    _walkable: 1
   - _id: 2137
     _gridPosition: {x: 37, y: 21}
-    _walkable: 0
+    _walkable: 1
   - _id: 2138
     _gridPosition: {x: 38, y: 21}
     _walkable: 1
@@ -8371,13 +8686,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2235
     _gridPosition: {x: 35, y: 22}
-    _walkable: 0
+    _walkable: 1
   - _id: 2236
     _gridPosition: {x: 36, y: 22}
-    _walkable: 0
+    _walkable: 1
   - _id: 2237
     _gridPosition: {x: 37, y: 22}
-    _walkable: 0
+    _walkable: 1
   - _id: 2238
     _gridPosition: {x: 38, y: 22}
     _walkable: 1
@@ -8671,13 +8986,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2335
     _gridPosition: {x: 35, y: 23}
-    _walkable: 0
+    _walkable: 1
   - _id: 2336
     _gridPosition: {x: 36, y: 23}
-    _walkable: 0
+    _walkable: 1
   - _id: 2337
     _gridPosition: {x: 37, y: 23}
-    _walkable: 0
+    _walkable: 1
   - _id: 2338
     _gridPosition: {x: 38, y: 23}
     _walkable: 1
@@ -8971,13 +9286,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2435
     _gridPosition: {x: 35, y: 24}
-    _walkable: 0
+    _walkable: 1
   - _id: 2436
     _gridPosition: {x: 36, y: 24}
-    _walkable: 0
+    _walkable: 1
   - _id: 2437
     _gridPosition: {x: 37, y: 24}
-    _walkable: 0
+    _walkable: 1
   - _id: 2438
     _gridPosition: {x: 38, y: 24}
     _walkable: 1
@@ -9271,13 +9586,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2535
     _gridPosition: {x: 35, y: 25}
-    _walkable: 0
+    _walkable: 1
   - _id: 2536
     _gridPosition: {x: 36, y: 25}
-    _walkable: 0
+    _walkable: 1
   - _id: 2537
     _gridPosition: {x: 37, y: 25}
-    _walkable: 0
+    _walkable: 1
   - _id: 2538
     _gridPosition: {x: 38, y: 25}
     _walkable: 1
@@ -9571,13 +9886,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2635
     _gridPosition: {x: 35, y: 26}
-    _walkable: 0
+    _walkable: 1
   - _id: 2636
     _gridPosition: {x: 36, y: 26}
-    _walkable: 0
+    _walkable: 1
   - _id: 2637
     _gridPosition: {x: 37, y: 26}
-    _walkable: 0
+    _walkable: 1
   - _id: 2638
     _gridPosition: {x: 38, y: 26}
     _walkable: 1
@@ -9871,13 +10186,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2735
     _gridPosition: {x: 35, y: 27}
-    _walkable: 0
+    _walkable: 1
   - _id: 2736
     _gridPosition: {x: 36, y: 27}
-    _walkable: 0
+    _walkable: 1
   - _id: 2737
     _gridPosition: {x: 37, y: 27}
-    _walkable: 0
+    _walkable: 1
   - _id: 2738
     _gridPosition: {x: 38, y: 27}
     _walkable: 1
@@ -10171,13 +10486,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2835
     _gridPosition: {x: 35, y: 28}
-    _walkable: 0
+    _walkable: 1
   - _id: 2836
     _gridPosition: {x: 36, y: 28}
-    _walkable: 0
+    _walkable: 1
   - _id: 2837
     _gridPosition: {x: 37, y: 28}
-    _walkable: 0
+    _walkable: 1
   - _id: 2838
     _gridPosition: {x: 38, y: 28}
     _walkable: 1
@@ -10471,13 +10786,13 @@ MonoBehaviour:
     _walkable: 1
   - _id: 2935
     _gridPosition: {x: 35, y: 29}
-    _walkable: 0
+    _walkable: 1
   - _id: 2936
     _gridPosition: {x: 36, y: 29}
-    _walkable: 0
+    _walkable: 1
   - _id: 2937
     _gridPosition: {x: 37, y: 29}
-    _walkable: 0
+    _walkable: 1
   - _id: 2938
     _gridPosition: {x: 38, y: 29}
     _walkable: 1
@@ -12040,82 +12355,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 3458
     _gridPosition: {x: 58, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3459
     _gridPosition: {x: 59, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3460
     _gridPosition: {x: 60, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3461
     _gridPosition: {x: 61, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3462
     _gridPosition: {x: 62, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3463
     _gridPosition: {x: 63, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3464
     _gridPosition: {x: 64, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3465
     _gridPosition: {x: 65, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3466
     _gridPosition: {x: 66, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3467
     _gridPosition: {x: 67, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3468
     _gridPosition: {x: 68, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3469
     _gridPosition: {x: 69, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3470
     _gridPosition: {x: 70, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3471
     _gridPosition: {x: 71, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3472
     _gridPosition: {x: 72, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3473
     _gridPosition: {x: 73, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3474
     _gridPosition: {x: 74, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3475
     _gridPosition: {x: 75, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3476
     _gridPosition: {x: 76, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3477
     _gridPosition: {x: 77, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3478
     _gridPosition: {x: 78, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3479
     _gridPosition: {x: 79, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3480
     _gridPosition: {x: 80, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3481
     _gridPosition: {x: 81, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3482
     _gridPosition: {x: 82, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3483
     _gridPosition: {x: 83, y: 34}
-    _walkable: 1
+    _walkable: 0
   - _id: 3484
     _gridPosition: {x: 84, y: 34}
     _walkable: 1
@@ -12340,82 +12655,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 3558
     _gridPosition: {x: 58, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3559
     _gridPosition: {x: 59, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3560
     _gridPosition: {x: 60, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3561
     _gridPosition: {x: 61, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3562
     _gridPosition: {x: 62, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3563
     _gridPosition: {x: 63, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3564
     _gridPosition: {x: 64, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3565
     _gridPosition: {x: 65, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3566
     _gridPosition: {x: 66, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3567
     _gridPosition: {x: 67, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3568
     _gridPosition: {x: 68, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3569
     _gridPosition: {x: 69, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3570
     _gridPosition: {x: 70, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3571
     _gridPosition: {x: 71, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3572
     _gridPosition: {x: 72, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3573
     _gridPosition: {x: 73, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3574
     _gridPosition: {x: 74, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3575
     _gridPosition: {x: 75, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3576
     _gridPosition: {x: 76, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3577
     _gridPosition: {x: 77, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3578
     _gridPosition: {x: 78, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3579
     _gridPosition: {x: 79, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3580
     _gridPosition: {x: 80, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3581
     _gridPosition: {x: 81, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3582
     _gridPosition: {x: 82, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3583
     _gridPosition: {x: 83, y: 35}
-    _walkable: 1
+    _walkable: 0
   - _id: 3584
     _gridPosition: {x: 84, y: 35}
     _walkable: 1
@@ -12640,82 +12955,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 3658
     _gridPosition: {x: 58, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3659
     _gridPosition: {x: 59, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3660
     _gridPosition: {x: 60, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3661
     _gridPosition: {x: 61, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3662
     _gridPosition: {x: 62, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3663
     _gridPosition: {x: 63, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3664
     _gridPosition: {x: 64, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3665
     _gridPosition: {x: 65, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3666
     _gridPosition: {x: 66, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3667
     _gridPosition: {x: 67, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3668
     _gridPosition: {x: 68, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3669
     _gridPosition: {x: 69, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3670
     _gridPosition: {x: 70, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3671
     _gridPosition: {x: 71, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3672
     _gridPosition: {x: 72, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3673
     _gridPosition: {x: 73, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3674
     _gridPosition: {x: 74, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3675
     _gridPosition: {x: 75, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3676
     _gridPosition: {x: 76, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3677
     _gridPosition: {x: 77, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3678
     _gridPosition: {x: 78, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3679
     _gridPosition: {x: 79, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3680
     _gridPosition: {x: 80, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3681
     _gridPosition: {x: 81, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3682
     _gridPosition: {x: 82, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3683
     _gridPosition: {x: 83, y: 36}
-    _walkable: 1
+    _walkable: 0
   - _id: 3684
     _gridPosition: {x: 84, y: 36}
     _walkable: 1
@@ -12940,82 +13255,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 3758
     _gridPosition: {x: 58, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3759
     _gridPosition: {x: 59, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3760
     _gridPosition: {x: 60, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3761
     _gridPosition: {x: 61, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3762
     _gridPosition: {x: 62, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3763
     _gridPosition: {x: 63, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3764
     _gridPosition: {x: 64, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3765
     _gridPosition: {x: 65, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3766
     _gridPosition: {x: 66, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3767
     _gridPosition: {x: 67, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3768
     _gridPosition: {x: 68, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3769
     _gridPosition: {x: 69, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3770
     _gridPosition: {x: 70, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3771
     _gridPosition: {x: 71, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3772
     _gridPosition: {x: 72, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3773
     _gridPosition: {x: 73, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3774
     _gridPosition: {x: 74, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3775
     _gridPosition: {x: 75, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3776
     _gridPosition: {x: 76, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3777
     _gridPosition: {x: 77, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3778
     _gridPosition: {x: 78, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3779
     _gridPosition: {x: 79, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3780
     _gridPosition: {x: 80, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3781
     _gridPosition: {x: 81, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3782
     _gridPosition: {x: 82, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3783
     _gridPosition: {x: 83, y: 37}
-    _walkable: 1
+    _walkable: 0
   - _id: 3784
     _gridPosition: {x: 84, y: 37}
     _walkable: 1
@@ -13240,82 +13555,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 3858
     _gridPosition: {x: 58, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3859
     _gridPosition: {x: 59, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3860
     _gridPosition: {x: 60, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3861
     _gridPosition: {x: 61, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3862
     _gridPosition: {x: 62, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3863
     _gridPosition: {x: 63, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3864
     _gridPosition: {x: 64, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3865
     _gridPosition: {x: 65, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3866
     _gridPosition: {x: 66, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3867
     _gridPosition: {x: 67, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3868
     _gridPosition: {x: 68, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3869
     _gridPosition: {x: 69, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3870
     _gridPosition: {x: 70, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3871
     _gridPosition: {x: 71, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3872
     _gridPosition: {x: 72, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3873
     _gridPosition: {x: 73, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3874
     _gridPosition: {x: 74, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3875
     _gridPosition: {x: 75, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3876
     _gridPosition: {x: 76, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3877
     _gridPosition: {x: 77, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3878
     _gridPosition: {x: 78, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3879
     _gridPosition: {x: 79, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3880
     _gridPosition: {x: 80, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3881
     _gridPosition: {x: 81, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3882
     _gridPosition: {x: 82, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3883
     _gridPosition: {x: 83, y: 38}
-    _walkable: 1
+    _walkable: 0
   - _id: 3884
     _gridPosition: {x: 84, y: 38}
     _walkable: 1
@@ -13540,82 +13855,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 3958
     _gridPosition: {x: 58, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3959
     _gridPosition: {x: 59, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3960
     _gridPosition: {x: 60, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3961
     _gridPosition: {x: 61, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3962
     _gridPosition: {x: 62, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3963
     _gridPosition: {x: 63, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3964
     _gridPosition: {x: 64, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3965
     _gridPosition: {x: 65, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3966
     _gridPosition: {x: 66, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3967
     _gridPosition: {x: 67, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3968
     _gridPosition: {x: 68, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3969
     _gridPosition: {x: 69, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3970
     _gridPosition: {x: 70, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3971
     _gridPosition: {x: 71, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3972
     _gridPosition: {x: 72, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3973
     _gridPosition: {x: 73, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3974
     _gridPosition: {x: 74, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3975
     _gridPosition: {x: 75, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3976
     _gridPosition: {x: 76, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3977
     _gridPosition: {x: 77, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3978
     _gridPosition: {x: 78, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3979
     _gridPosition: {x: 79, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3980
     _gridPosition: {x: 80, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3981
     _gridPosition: {x: 81, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3982
     _gridPosition: {x: 82, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3983
     _gridPosition: {x: 83, y: 39}
-    _walkable: 1
+    _walkable: 0
   - _id: 3984
     _gridPosition: {x: 84, y: 39}
     _walkable: 1
@@ -13840,82 +14155,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 4058
     _gridPosition: {x: 58, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4059
     _gridPosition: {x: 59, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4060
     _gridPosition: {x: 60, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4061
     _gridPosition: {x: 61, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4062
     _gridPosition: {x: 62, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4063
     _gridPosition: {x: 63, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4064
     _gridPosition: {x: 64, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4065
     _gridPosition: {x: 65, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4066
     _gridPosition: {x: 66, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4067
     _gridPosition: {x: 67, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4068
     _gridPosition: {x: 68, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4069
     _gridPosition: {x: 69, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4070
     _gridPosition: {x: 70, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4071
     _gridPosition: {x: 71, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4072
     _gridPosition: {x: 72, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4073
     _gridPosition: {x: 73, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4074
     _gridPosition: {x: 74, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4075
     _gridPosition: {x: 75, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4076
     _gridPosition: {x: 76, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4077
     _gridPosition: {x: 77, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4078
     _gridPosition: {x: 78, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4079
     _gridPosition: {x: 79, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4080
     _gridPosition: {x: 80, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4081
     _gridPosition: {x: 81, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4082
     _gridPosition: {x: 82, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4083
     _gridPosition: {x: 83, y: 40}
-    _walkable: 1
+    _walkable: 0
   - _id: 4084
     _gridPosition: {x: 84, y: 40}
     _walkable: 1
@@ -14140,82 +14455,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 4158
     _gridPosition: {x: 58, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4159
     _gridPosition: {x: 59, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4160
     _gridPosition: {x: 60, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4161
     _gridPosition: {x: 61, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4162
     _gridPosition: {x: 62, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4163
     _gridPosition: {x: 63, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4164
     _gridPosition: {x: 64, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4165
     _gridPosition: {x: 65, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4166
     _gridPosition: {x: 66, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4167
     _gridPosition: {x: 67, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4168
     _gridPosition: {x: 68, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4169
     _gridPosition: {x: 69, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4170
     _gridPosition: {x: 70, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4171
     _gridPosition: {x: 71, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4172
     _gridPosition: {x: 72, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4173
     _gridPosition: {x: 73, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4174
     _gridPosition: {x: 74, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4175
     _gridPosition: {x: 75, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4176
     _gridPosition: {x: 76, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4177
     _gridPosition: {x: 77, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4178
     _gridPosition: {x: 78, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4179
     _gridPosition: {x: 79, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4180
     _gridPosition: {x: 80, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4181
     _gridPosition: {x: 81, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4182
     _gridPosition: {x: 82, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4183
     _gridPosition: {x: 83, y: 41}
-    _walkable: 1
+    _walkable: 0
   - _id: 4184
     _gridPosition: {x: 84, y: 41}
     _walkable: 1
@@ -14440,82 +14755,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 4258
     _gridPosition: {x: 58, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4259
     _gridPosition: {x: 59, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4260
     _gridPosition: {x: 60, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4261
     _gridPosition: {x: 61, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4262
     _gridPosition: {x: 62, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4263
     _gridPosition: {x: 63, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4264
     _gridPosition: {x: 64, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4265
     _gridPosition: {x: 65, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4266
     _gridPosition: {x: 66, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4267
     _gridPosition: {x: 67, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4268
     _gridPosition: {x: 68, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4269
     _gridPosition: {x: 69, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4270
     _gridPosition: {x: 70, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4271
     _gridPosition: {x: 71, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4272
     _gridPosition: {x: 72, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4273
     _gridPosition: {x: 73, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4274
     _gridPosition: {x: 74, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4275
     _gridPosition: {x: 75, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4276
     _gridPosition: {x: 76, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4277
     _gridPosition: {x: 77, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4278
     _gridPosition: {x: 78, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4279
     _gridPosition: {x: 79, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4280
     _gridPosition: {x: 80, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4281
     _gridPosition: {x: 81, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4282
     _gridPosition: {x: 82, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4283
     _gridPosition: {x: 83, y: 42}
-    _walkable: 1
+    _walkable: 0
   - _id: 4284
     _gridPosition: {x: 84, y: 42}
     _walkable: 1
@@ -14740,82 +15055,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 4358
     _gridPosition: {x: 58, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4359
     _gridPosition: {x: 59, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4360
     _gridPosition: {x: 60, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4361
     _gridPosition: {x: 61, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4362
     _gridPosition: {x: 62, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4363
     _gridPosition: {x: 63, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4364
     _gridPosition: {x: 64, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4365
     _gridPosition: {x: 65, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4366
     _gridPosition: {x: 66, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4367
     _gridPosition: {x: 67, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4368
     _gridPosition: {x: 68, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4369
     _gridPosition: {x: 69, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4370
     _gridPosition: {x: 70, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4371
     _gridPosition: {x: 71, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4372
     _gridPosition: {x: 72, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4373
     _gridPosition: {x: 73, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4374
     _gridPosition: {x: 74, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4375
     _gridPosition: {x: 75, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4376
     _gridPosition: {x: 76, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4377
     _gridPosition: {x: 77, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4378
     _gridPosition: {x: 78, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4379
     _gridPosition: {x: 79, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4380
     _gridPosition: {x: 80, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4381
     _gridPosition: {x: 81, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4382
     _gridPosition: {x: 82, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4383
     _gridPosition: {x: 83, y: 43}
-    _walkable: 1
+    _walkable: 0
   - _id: 4384
     _gridPosition: {x: 84, y: 43}
     _walkable: 1
@@ -15040,82 +15355,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 4458
     _gridPosition: {x: 58, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4459
     _gridPosition: {x: 59, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4460
     _gridPosition: {x: 60, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4461
     _gridPosition: {x: 61, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4462
     _gridPosition: {x: 62, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4463
     _gridPosition: {x: 63, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4464
     _gridPosition: {x: 64, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4465
     _gridPosition: {x: 65, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4466
     _gridPosition: {x: 66, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4467
     _gridPosition: {x: 67, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4468
     _gridPosition: {x: 68, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4469
     _gridPosition: {x: 69, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4470
     _gridPosition: {x: 70, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4471
     _gridPosition: {x: 71, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4472
     _gridPosition: {x: 72, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4473
     _gridPosition: {x: 73, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4474
     _gridPosition: {x: 74, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4475
     _gridPosition: {x: 75, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4476
     _gridPosition: {x: 76, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4477
     _gridPosition: {x: 77, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4478
     _gridPosition: {x: 78, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4479
     _gridPosition: {x: 79, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4480
     _gridPosition: {x: 80, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4481
     _gridPosition: {x: 81, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4482
     _gridPosition: {x: 82, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4483
     _gridPosition: {x: 83, y: 44}
-    _walkable: 1
+    _walkable: 0
   - _id: 4484
     _gridPosition: {x: 84, y: 44}
     _walkable: 1
@@ -15340,82 +15655,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 4558
     _gridPosition: {x: 58, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4559
     _gridPosition: {x: 59, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4560
     _gridPosition: {x: 60, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4561
     _gridPosition: {x: 61, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4562
     _gridPosition: {x: 62, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4563
     _gridPosition: {x: 63, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4564
     _gridPosition: {x: 64, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4565
     _gridPosition: {x: 65, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4566
     _gridPosition: {x: 66, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4567
     _gridPosition: {x: 67, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4568
     _gridPosition: {x: 68, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4569
     _gridPosition: {x: 69, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4570
     _gridPosition: {x: 70, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4571
     _gridPosition: {x: 71, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4572
     _gridPosition: {x: 72, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4573
     _gridPosition: {x: 73, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4574
     _gridPosition: {x: 74, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4575
     _gridPosition: {x: 75, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4576
     _gridPosition: {x: 76, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4577
     _gridPosition: {x: 77, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4578
     _gridPosition: {x: 78, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4579
     _gridPosition: {x: 79, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4580
     _gridPosition: {x: 80, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4581
     _gridPosition: {x: 81, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4582
     _gridPosition: {x: 82, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4583
     _gridPosition: {x: 83, y: 45}
-    _walkable: 1
+    _walkable: 0
   - _id: 4584
     _gridPosition: {x: 84, y: 45}
     _walkable: 1
@@ -15640,82 +15955,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 4658
     _gridPosition: {x: 58, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4659
     _gridPosition: {x: 59, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4660
     _gridPosition: {x: 60, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4661
     _gridPosition: {x: 61, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4662
     _gridPosition: {x: 62, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4663
     _gridPosition: {x: 63, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4664
     _gridPosition: {x: 64, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4665
     _gridPosition: {x: 65, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4666
     _gridPosition: {x: 66, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4667
     _gridPosition: {x: 67, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4668
     _gridPosition: {x: 68, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4669
     _gridPosition: {x: 69, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4670
     _gridPosition: {x: 70, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4671
     _gridPosition: {x: 71, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4672
     _gridPosition: {x: 72, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4673
     _gridPosition: {x: 73, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4674
     _gridPosition: {x: 74, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4675
     _gridPosition: {x: 75, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4676
     _gridPosition: {x: 76, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4677
     _gridPosition: {x: 77, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4678
     _gridPosition: {x: 78, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4679
     _gridPosition: {x: 79, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4680
     _gridPosition: {x: 80, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4681
     _gridPosition: {x: 81, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4682
     _gridPosition: {x: 82, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4683
     _gridPosition: {x: 83, y: 46}
-    _walkable: 1
+    _walkable: 0
   - _id: 4684
     _gridPosition: {x: 84, y: 46}
     _walkable: 1
@@ -15940,82 +16255,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 4758
     _gridPosition: {x: 58, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4759
     _gridPosition: {x: 59, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4760
     _gridPosition: {x: 60, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4761
     _gridPosition: {x: 61, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4762
     _gridPosition: {x: 62, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4763
     _gridPosition: {x: 63, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4764
     _gridPosition: {x: 64, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4765
     _gridPosition: {x: 65, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4766
     _gridPosition: {x: 66, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4767
     _gridPosition: {x: 67, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4768
     _gridPosition: {x: 68, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4769
     _gridPosition: {x: 69, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4770
     _gridPosition: {x: 70, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4771
     _gridPosition: {x: 71, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4772
     _gridPosition: {x: 72, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4773
     _gridPosition: {x: 73, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4774
     _gridPosition: {x: 74, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4775
     _gridPosition: {x: 75, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4776
     _gridPosition: {x: 76, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4777
     _gridPosition: {x: 77, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4778
     _gridPosition: {x: 78, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4779
     _gridPosition: {x: 79, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4780
     _gridPosition: {x: 80, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4781
     _gridPosition: {x: 81, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4782
     _gridPosition: {x: 82, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4783
     _gridPosition: {x: 83, y: 47}
-    _walkable: 1
+    _walkable: 0
   - _id: 4784
     _gridPosition: {x: 84, y: 47}
     _walkable: 1
@@ -21703,67 +22018,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 6679
     _gridPosition: {x: 79, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6680
     _gridPosition: {x: 80, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6681
     _gridPosition: {x: 81, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6682
     _gridPosition: {x: 82, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6683
     _gridPosition: {x: 83, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6684
     _gridPosition: {x: 84, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6685
     _gridPosition: {x: 85, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6686
     _gridPosition: {x: 86, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6687
     _gridPosition: {x: 87, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6688
     _gridPosition: {x: 88, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6689
     _gridPosition: {x: 89, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6690
     _gridPosition: {x: 90, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6691
     _gridPosition: {x: 91, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6692
     _gridPosition: {x: 92, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6693
     _gridPosition: {x: 93, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6694
     _gridPosition: {x: 94, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6695
     _gridPosition: {x: 95, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6696
     _gridPosition: {x: 96, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6697
     _gridPosition: {x: 97, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6698
     _gridPosition: {x: 98, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6699
     _gridPosition: {x: 99, y: 66}
-    _walkable: 1
+    _walkable: 0
   - _id: 6700
     _gridPosition: {x: 0, y: 67}
     _walkable: 1
@@ -22003,67 +22318,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 6779
     _gridPosition: {x: 79, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6780
     _gridPosition: {x: 80, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6781
     _gridPosition: {x: 81, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6782
     _gridPosition: {x: 82, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6783
     _gridPosition: {x: 83, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6784
     _gridPosition: {x: 84, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6785
     _gridPosition: {x: 85, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6786
     _gridPosition: {x: 86, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6787
     _gridPosition: {x: 87, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6788
     _gridPosition: {x: 88, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6789
     _gridPosition: {x: 89, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6790
     _gridPosition: {x: 90, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6791
     _gridPosition: {x: 91, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6792
     _gridPosition: {x: 92, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6793
     _gridPosition: {x: 93, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6794
     _gridPosition: {x: 94, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6795
     _gridPosition: {x: 95, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6796
     _gridPosition: {x: 96, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6797
     _gridPosition: {x: 97, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6798
     _gridPosition: {x: 98, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6799
     _gridPosition: {x: 99, y: 67}
-    _walkable: 1
+    _walkable: 0
   - _id: 6800
     _gridPosition: {x: 0, y: 68}
     _walkable: 1
@@ -22303,67 +22618,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 6879
     _gridPosition: {x: 79, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6880
     _gridPosition: {x: 80, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6881
     _gridPosition: {x: 81, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6882
     _gridPosition: {x: 82, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6883
     _gridPosition: {x: 83, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6884
     _gridPosition: {x: 84, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6885
     _gridPosition: {x: 85, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6886
     _gridPosition: {x: 86, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6887
     _gridPosition: {x: 87, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6888
     _gridPosition: {x: 88, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6889
     _gridPosition: {x: 89, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6890
     _gridPosition: {x: 90, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6891
     _gridPosition: {x: 91, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6892
     _gridPosition: {x: 92, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6893
     _gridPosition: {x: 93, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6894
     _gridPosition: {x: 94, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6895
     _gridPosition: {x: 95, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6896
     _gridPosition: {x: 96, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6897
     _gridPosition: {x: 97, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6898
     _gridPosition: {x: 98, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6899
     _gridPosition: {x: 99, y: 68}
-    _walkable: 1
+    _walkable: 0
   - _id: 6900
     _gridPosition: {x: 0, y: 69}
     _walkable: 1
@@ -22603,67 +22918,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 6979
     _gridPosition: {x: 79, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6980
     _gridPosition: {x: 80, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6981
     _gridPosition: {x: 81, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6982
     _gridPosition: {x: 82, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6983
     _gridPosition: {x: 83, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6984
     _gridPosition: {x: 84, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6985
     _gridPosition: {x: 85, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6986
     _gridPosition: {x: 86, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6987
     _gridPosition: {x: 87, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6988
     _gridPosition: {x: 88, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6989
     _gridPosition: {x: 89, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6990
     _gridPosition: {x: 90, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6991
     _gridPosition: {x: 91, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6992
     _gridPosition: {x: 92, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6993
     _gridPosition: {x: 93, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6994
     _gridPosition: {x: 94, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6995
     _gridPosition: {x: 95, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6996
     _gridPosition: {x: 96, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6997
     _gridPosition: {x: 97, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6998
     _gridPosition: {x: 98, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 6999
     _gridPosition: {x: 99, y: 69}
-    _walkable: 1
+    _walkable: 0
   - _id: 7000
     _gridPosition: {x: 0, y: 70}
     _walkable: 1
@@ -22903,67 +23218,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7079
     _gridPosition: {x: 79, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7080
     _gridPosition: {x: 80, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7081
     _gridPosition: {x: 81, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7082
     _gridPosition: {x: 82, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7083
     _gridPosition: {x: 83, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7084
     _gridPosition: {x: 84, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7085
     _gridPosition: {x: 85, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7086
     _gridPosition: {x: 86, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7087
     _gridPosition: {x: 87, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7088
     _gridPosition: {x: 88, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7089
     _gridPosition: {x: 89, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7090
     _gridPosition: {x: 90, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7091
     _gridPosition: {x: 91, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7092
     _gridPosition: {x: 92, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7093
     _gridPosition: {x: 93, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7094
     _gridPosition: {x: 94, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7095
     _gridPosition: {x: 95, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7096
     _gridPosition: {x: 96, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7097
     _gridPosition: {x: 97, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7098
     _gridPosition: {x: 98, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7099
     _gridPosition: {x: 99, y: 70}
-    _walkable: 1
+    _walkable: 0
   - _id: 7100
     _gridPosition: {x: 0, y: 71}
     _walkable: 1
@@ -23203,67 +23518,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7179
     _gridPosition: {x: 79, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7180
     _gridPosition: {x: 80, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7181
     _gridPosition: {x: 81, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7182
     _gridPosition: {x: 82, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7183
     _gridPosition: {x: 83, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7184
     _gridPosition: {x: 84, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7185
     _gridPosition: {x: 85, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7186
     _gridPosition: {x: 86, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7187
     _gridPosition: {x: 87, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7188
     _gridPosition: {x: 88, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7189
     _gridPosition: {x: 89, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7190
     _gridPosition: {x: 90, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7191
     _gridPosition: {x: 91, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7192
     _gridPosition: {x: 92, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7193
     _gridPosition: {x: 93, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7194
     _gridPosition: {x: 94, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7195
     _gridPosition: {x: 95, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7196
     _gridPosition: {x: 96, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7197
     _gridPosition: {x: 97, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7198
     _gridPosition: {x: 98, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7199
     _gridPosition: {x: 99, y: 71}
-    _walkable: 1
+    _walkable: 0
   - _id: 7200
     _gridPosition: {x: 0, y: 72}
     _walkable: 1
@@ -23503,67 +23818,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7279
     _gridPosition: {x: 79, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7280
     _gridPosition: {x: 80, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7281
     _gridPosition: {x: 81, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7282
     _gridPosition: {x: 82, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7283
     _gridPosition: {x: 83, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7284
     _gridPosition: {x: 84, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7285
     _gridPosition: {x: 85, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7286
     _gridPosition: {x: 86, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7287
     _gridPosition: {x: 87, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7288
     _gridPosition: {x: 88, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7289
     _gridPosition: {x: 89, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7290
     _gridPosition: {x: 90, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7291
     _gridPosition: {x: 91, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7292
     _gridPosition: {x: 92, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7293
     _gridPosition: {x: 93, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7294
     _gridPosition: {x: 94, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7295
     _gridPosition: {x: 95, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7296
     _gridPosition: {x: 96, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7297
     _gridPosition: {x: 97, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7298
     _gridPosition: {x: 98, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7299
     _gridPosition: {x: 99, y: 72}
-    _walkable: 1
+    _walkable: 0
   - _id: 7300
     _gridPosition: {x: 0, y: 73}
     _walkable: 1
@@ -23803,67 +24118,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7379
     _gridPosition: {x: 79, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7380
     _gridPosition: {x: 80, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7381
     _gridPosition: {x: 81, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7382
     _gridPosition: {x: 82, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7383
     _gridPosition: {x: 83, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7384
     _gridPosition: {x: 84, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7385
     _gridPosition: {x: 85, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7386
     _gridPosition: {x: 86, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7387
     _gridPosition: {x: 87, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7388
     _gridPosition: {x: 88, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7389
     _gridPosition: {x: 89, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7390
     _gridPosition: {x: 90, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7391
     _gridPosition: {x: 91, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7392
     _gridPosition: {x: 92, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7393
     _gridPosition: {x: 93, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7394
     _gridPosition: {x: 94, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7395
     _gridPosition: {x: 95, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7396
     _gridPosition: {x: 96, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7397
     _gridPosition: {x: 97, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7398
     _gridPosition: {x: 98, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7399
     _gridPosition: {x: 99, y: 73}
-    _walkable: 1
+    _walkable: 0
   - _id: 7400
     _gridPosition: {x: 0, y: 74}
     _walkable: 1
@@ -23986,82 +24301,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7440
     _gridPosition: {x: 40, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7441
     _gridPosition: {x: 41, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7442
     _gridPosition: {x: 42, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7443
     _gridPosition: {x: 43, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7444
     _gridPosition: {x: 44, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7445
     _gridPosition: {x: 45, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7446
     _gridPosition: {x: 46, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7447
     _gridPosition: {x: 47, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7448
     _gridPosition: {x: 48, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7449
     _gridPosition: {x: 49, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7450
     _gridPosition: {x: 50, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7451
     _gridPosition: {x: 51, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7452
     _gridPosition: {x: 52, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7453
     _gridPosition: {x: 53, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7454
     _gridPosition: {x: 54, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7455
     _gridPosition: {x: 55, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7456
     _gridPosition: {x: 56, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7457
     _gridPosition: {x: 57, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7458
     _gridPosition: {x: 58, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7459
     _gridPosition: {x: 59, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7460
     _gridPosition: {x: 60, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7461
     _gridPosition: {x: 61, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7462
     _gridPosition: {x: 62, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7463
     _gridPosition: {x: 63, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7464
     _gridPosition: {x: 64, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7465
     _gridPosition: {x: 65, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7466
     _gridPosition: {x: 66, y: 74}
     _walkable: 1
@@ -24103,67 +24418,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7479
     _gridPosition: {x: 79, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7480
     _gridPosition: {x: 80, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7481
     _gridPosition: {x: 81, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7482
     _gridPosition: {x: 82, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7483
     _gridPosition: {x: 83, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7484
     _gridPosition: {x: 84, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7485
     _gridPosition: {x: 85, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7486
     _gridPosition: {x: 86, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7487
     _gridPosition: {x: 87, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7488
     _gridPosition: {x: 88, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7489
     _gridPosition: {x: 89, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7490
     _gridPosition: {x: 90, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7491
     _gridPosition: {x: 91, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7492
     _gridPosition: {x: 92, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7493
     _gridPosition: {x: 93, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7494
     _gridPosition: {x: 94, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7495
     _gridPosition: {x: 95, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7496
     _gridPosition: {x: 96, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7497
     _gridPosition: {x: 97, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7498
     _gridPosition: {x: 98, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7499
     _gridPosition: {x: 99, y: 74}
-    _walkable: 1
+    _walkable: 0
   - _id: 7500
     _gridPosition: {x: 0, y: 75}
     _walkable: 1
@@ -24286,82 +24601,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7540
     _gridPosition: {x: 40, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7541
     _gridPosition: {x: 41, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7542
     _gridPosition: {x: 42, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7543
     _gridPosition: {x: 43, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7544
     _gridPosition: {x: 44, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7545
     _gridPosition: {x: 45, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7546
     _gridPosition: {x: 46, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7547
     _gridPosition: {x: 47, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7548
     _gridPosition: {x: 48, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7549
     _gridPosition: {x: 49, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7550
     _gridPosition: {x: 50, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7551
     _gridPosition: {x: 51, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7552
     _gridPosition: {x: 52, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7553
     _gridPosition: {x: 53, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7554
     _gridPosition: {x: 54, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7555
     _gridPosition: {x: 55, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7556
     _gridPosition: {x: 56, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7557
     _gridPosition: {x: 57, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7558
     _gridPosition: {x: 58, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7559
     _gridPosition: {x: 59, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7560
     _gridPosition: {x: 60, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7561
     _gridPosition: {x: 61, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7562
     _gridPosition: {x: 62, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7563
     _gridPosition: {x: 63, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7564
     _gridPosition: {x: 64, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7565
     _gridPosition: {x: 65, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7566
     _gridPosition: {x: 66, y: 75}
     _walkable: 1
@@ -24403,67 +24718,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7579
     _gridPosition: {x: 79, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7580
     _gridPosition: {x: 80, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7581
     _gridPosition: {x: 81, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7582
     _gridPosition: {x: 82, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7583
     _gridPosition: {x: 83, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7584
     _gridPosition: {x: 84, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7585
     _gridPosition: {x: 85, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7586
     _gridPosition: {x: 86, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7587
     _gridPosition: {x: 87, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7588
     _gridPosition: {x: 88, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7589
     _gridPosition: {x: 89, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7590
     _gridPosition: {x: 90, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7591
     _gridPosition: {x: 91, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7592
     _gridPosition: {x: 92, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7593
     _gridPosition: {x: 93, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7594
     _gridPosition: {x: 94, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7595
     _gridPosition: {x: 95, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7596
     _gridPosition: {x: 96, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7597
     _gridPosition: {x: 97, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7598
     _gridPosition: {x: 98, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7599
     _gridPosition: {x: 99, y: 75}
-    _walkable: 1
+    _walkable: 0
   - _id: 7600
     _gridPosition: {x: 0, y: 76}
     _walkable: 1
@@ -24586,82 +24901,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7640
     _gridPosition: {x: 40, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7641
     _gridPosition: {x: 41, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7642
     _gridPosition: {x: 42, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7643
     _gridPosition: {x: 43, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7644
     _gridPosition: {x: 44, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7645
     _gridPosition: {x: 45, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7646
     _gridPosition: {x: 46, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7647
     _gridPosition: {x: 47, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7648
     _gridPosition: {x: 48, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7649
     _gridPosition: {x: 49, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7650
     _gridPosition: {x: 50, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7651
     _gridPosition: {x: 51, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7652
     _gridPosition: {x: 52, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7653
     _gridPosition: {x: 53, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7654
     _gridPosition: {x: 54, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7655
     _gridPosition: {x: 55, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7656
     _gridPosition: {x: 56, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7657
     _gridPosition: {x: 57, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7658
     _gridPosition: {x: 58, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7659
     _gridPosition: {x: 59, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7660
     _gridPosition: {x: 60, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7661
     _gridPosition: {x: 61, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7662
     _gridPosition: {x: 62, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7663
     _gridPosition: {x: 63, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7664
     _gridPosition: {x: 64, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7665
     _gridPosition: {x: 65, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7666
     _gridPosition: {x: 66, y: 76}
     _walkable: 1
@@ -24703,67 +25018,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7679
     _gridPosition: {x: 79, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7680
     _gridPosition: {x: 80, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7681
     _gridPosition: {x: 81, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7682
     _gridPosition: {x: 82, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7683
     _gridPosition: {x: 83, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7684
     _gridPosition: {x: 84, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7685
     _gridPosition: {x: 85, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7686
     _gridPosition: {x: 86, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7687
     _gridPosition: {x: 87, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7688
     _gridPosition: {x: 88, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7689
     _gridPosition: {x: 89, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7690
     _gridPosition: {x: 90, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7691
     _gridPosition: {x: 91, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7692
     _gridPosition: {x: 92, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7693
     _gridPosition: {x: 93, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7694
     _gridPosition: {x: 94, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7695
     _gridPosition: {x: 95, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7696
     _gridPosition: {x: 96, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7697
     _gridPosition: {x: 97, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7698
     _gridPosition: {x: 98, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7699
     _gridPosition: {x: 99, y: 76}
-    _walkable: 1
+    _walkable: 0
   - _id: 7700
     _gridPosition: {x: 0, y: 77}
     _walkable: 1
@@ -24886,82 +25201,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7740
     _gridPosition: {x: 40, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7741
     _gridPosition: {x: 41, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7742
     _gridPosition: {x: 42, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7743
     _gridPosition: {x: 43, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7744
     _gridPosition: {x: 44, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7745
     _gridPosition: {x: 45, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7746
     _gridPosition: {x: 46, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7747
     _gridPosition: {x: 47, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7748
     _gridPosition: {x: 48, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7749
     _gridPosition: {x: 49, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7750
     _gridPosition: {x: 50, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7751
     _gridPosition: {x: 51, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7752
     _gridPosition: {x: 52, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7753
     _gridPosition: {x: 53, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7754
     _gridPosition: {x: 54, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7755
     _gridPosition: {x: 55, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7756
     _gridPosition: {x: 56, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7757
     _gridPosition: {x: 57, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7758
     _gridPosition: {x: 58, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7759
     _gridPosition: {x: 59, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7760
     _gridPosition: {x: 60, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7761
     _gridPosition: {x: 61, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7762
     _gridPosition: {x: 62, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7763
     _gridPosition: {x: 63, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7764
     _gridPosition: {x: 64, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7765
     _gridPosition: {x: 65, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7766
     _gridPosition: {x: 66, y: 77}
     _walkable: 1
@@ -25003,67 +25318,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7779
     _gridPosition: {x: 79, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7780
     _gridPosition: {x: 80, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7781
     _gridPosition: {x: 81, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7782
     _gridPosition: {x: 82, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7783
     _gridPosition: {x: 83, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7784
     _gridPosition: {x: 84, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7785
     _gridPosition: {x: 85, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7786
     _gridPosition: {x: 86, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7787
     _gridPosition: {x: 87, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7788
     _gridPosition: {x: 88, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7789
     _gridPosition: {x: 89, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7790
     _gridPosition: {x: 90, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7791
     _gridPosition: {x: 91, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7792
     _gridPosition: {x: 92, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7793
     _gridPosition: {x: 93, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7794
     _gridPosition: {x: 94, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7795
     _gridPosition: {x: 95, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7796
     _gridPosition: {x: 96, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7797
     _gridPosition: {x: 97, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7798
     _gridPosition: {x: 98, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7799
     _gridPosition: {x: 99, y: 77}
-    _walkable: 1
+    _walkable: 0
   - _id: 7800
     _gridPosition: {x: 0, y: 78}
     _walkable: 1
@@ -25186,82 +25501,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7840
     _gridPosition: {x: 40, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7841
     _gridPosition: {x: 41, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7842
     _gridPosition: {x: 42, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7843
     _gridPosition: {x: 43, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7844
     _gridPosition: {x: 44, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7845
     _gridPosition: {x: 45, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7846
     _gridPosition: {x: 46, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7847
     _gridPosition: {x: 47, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7848
     _gridPosition: {x: 48, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7849
     _gridPosition: {x: 49, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7850
     _gridPosition: {x: 50, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7851
     _gridPosition: {x: 51, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7852
     _gridPosition: {x: 52, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7853
     _gridPosition: {x: 53, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7854
     _gridPosition: {x: 54, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7855
     _gridPosition: {x: 55, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7856
     _gridPosition: {x: 56, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7857
     _gridPosition: {x: 57, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7858
     _gridPosition: {x: 58, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7859
     _gridPosition: {x: 59, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7860
     _gridPosition: {x: 60, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7861
     _gridPosition: {x: 61, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7862
     _gridPosition: {x: 62, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7863
     _gridPosition: {x: 63, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7864
     _gridPosition: {x: 64, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7865
     _gridPosition: {x: 65, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7866
     _gridPosition: {x: 66, y: 78}
     _walkable: 1
@@ -25303,67 +25618,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7879
     _gridPosition: {x: 79, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7880
     _gridPosition: {x: 80, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7881
     _gridPosition: {x: 81, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7882
     _gridPosition: {x: 82, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7883
     _gridPosition: {x: 83, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7884
     _gridPosition: {x: 84, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7885
     _gridPosition: {x: 85, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7886
     _gridPosition: {x: 86, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7887
     _gridPosition: {x: 87, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7888
     _gridPosition: {x: 88, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7889
     _gridPosition: {x: 89, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7890
     _gridPosition: {x: 90, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7891
     _gridPosition: {x: 91, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7892
     _gridPosition: {x: 92, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7893
     _gridPosition: {x: 93, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7894
     _gridPosition: {x: 94, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7895
     _gridPosition: {x: 95, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7896
     _gridPosition: {x: 96, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7897
     _gridPosition: {x: 97, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7898
     _gridPosition: {x: 98, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7899
     _gridPosition: {x: 99, y: 78}
-    _walkable: 1
+    _walkable: 0
   - _id: 7900
     _gridPosition: {x: 0, y: 79}
     _walkable: 1
@@ -25486,82 +25801,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7940
     _gridPosition: {x: 40, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7941
     _gridPosition: {x: 41, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7942
     _gridPosition: {x: 42, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7943
     _gridPosition: {x: 43, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7944
     _gridPosition: {x: 44, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7945
     _gridPosition: {x: 45, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7946
     _gridPosition: {x: 46, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7947
     _gridPosition: {x: 47, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7948
     _gridPosition: {x: 48, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7949
     _gridPosition: {x: 49, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7950
     _gridPosition: {x: 50, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7951
     _gridPosition: {x: 51, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7952
     _gridPosition: {x: 52, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7953
     _gridPosition: {x: 53, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7954
     _gridPosition: {x: 54, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7955
     _gridPosition: {x: 55, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7956
     _gridPosition: {x: 56, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7957
     _gridPosition: {x: 57, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7958
     _gridPosition: {x: 58, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7959
     _gridPosition: {x: 59, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7960
     _gridPosition: {x: 60, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7961
     _gridPosition: {x: 61, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7962
     _gridPosition: {x: 62, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7963
     _gridPosition: {x: 63, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7964
     _gridPosition: {x: 64, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7965
     _gridPosition: {x: 65, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7966
     _gridPosition: {x: 66, y: 79}
     _walkable: 1
@@ -25603,67 +25918,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 7979
     _gridPosition: {x: 79, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7980
     _gridPosition: {x: 80, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7981
     _gridPosition: {x: 81, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7982
     _gridPosition: {x: 82, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7983
     _gridPosition: {x: 83, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7984
     _gridPosition: {x: 84, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7985
     _gridPosition: {x: 85, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7986
     _gridPosition: {x: 86, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7987
     _gridPosition: {x: 87, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7988
     _gridPosition: {x: 88, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7989
     _gridPosition: {x: 89, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7990
     _gridPosition: {x: 90, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7991
     _gridPosition: {x: 91, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7992
     _gridPosition: {x: 92, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7993
     _gridPosition: {x: 93, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7994
     _gridPosition: {x: 94, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7995
     _gridPosition: {x: 95, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7996
     _gridPosition: {x: 96, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7997
     _gridPosition: {x: 97, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7998
     _gridPosition: {x: 98, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 7999
     _gridPosition: {x: 99, y: 79}
-    _walkable: 1
+    _walkable: 0
   - _id: 8000
     _gridPosition: {x: 0, y: 80}
     _walkable: 1
@@ -25786,82 +26101,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 8040
     _gridPosition: {x: 40, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8041
     _gridPosition: {x: 41, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8042
     _gridPosition: {x: 42, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8043
     _gridPosition: {x: 43, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8044
     _gridPosition: {x: 44, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8045
     _gridPosition: {x: 45, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8046
     _gridPosition: {x: 46, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8047
     _gridPosition: {x: 47, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8048
     _gridPosition: {x: 48, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8049
     _gridPosition: {x: 49, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8050
     _gridPosition: {x: 50, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8051
     _gridPosition: {x: 51, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8052
     _gridPosition: {x: 52, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8053
     _gridPosition: {x: 53, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8054
     _gridPosition: {x: 54, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8055
     _gridPosition: {x: 55, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8056
     _gridPosition: {x: 56, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8057
     _gridPosition: {x: 57, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8058
     _gridPosition: {x: 58, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8059
     _gridPosition: {x: 59, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8060
     _gridPosition: {x: 60, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8061
     _gridPosition: {x: 61, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8062
     _gridPosition: {x: 62, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8063
     _gridPosition: {x: 63, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8064
     _gridPosition: {x: 64, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8065
     _gridPosition: {x: 65, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8066
     _gridPosition: {x: 66, y: 80}
     _walkable: 1
@@ -25903,67 +26218,67 @@ MonoBehaviour:
     _walkable: 1
   - _id: 8079
     _gridPosition: {x: 79, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8080
     _gridPosition: {x: 80, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8081
     _gridPosition: {x: 81, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8082
     _gridPosition: {x: 82, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8083
     _gridPosition: {x: 83, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8084
     _gridPosition: {x: 84, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8085
     _gridPosition: {x: 85, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8086
     _gridPosition: {x: 86, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8087
     _gridPosition: {x: 87, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8088
     _gridPosition: {x: 88, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8089
     _gridPosition: {x: 89, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8090
     _gridPosition: {x: 90, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8091
     _gridPosition: {x: 91, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8092
     _gridPosition: {x: 92, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8093
     _gridPosition: {x: 93, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8094
     _gridPosition: {x: 94, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8095
     _gridPosition: {x: 95, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8096
     _gridPosition: {x: 96, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8097
     _gridPosition: {x: 97, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8098
     _gridPosition: {x: 98, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8099
     _gridPosition: {x: 99, y: 80}
-    _walkable: 1
+    _walkable: 0
   - _id: 8100
     _gridPosition: {x: 0, y: 81}
     _walkable: 1
@@ -26086,82 +26401,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 8140
     _gridPosition: {x: 40, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8141
     _gridPosition: {x: 41, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8142
     _gridPosition: {x: 42, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8143
     _gridPosition: {x: 43, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8144
     _gridPosition: {x: 44, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8145
     _gridPosition: {x: 45, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8146
     _gridPosition: {x: 46, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8147
     _gridPosition: {x: 47, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8148
     _gridPosition: {x: 48, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8149
     _gridPosition: {x: 49, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8150
     _gridPosition: {x: 50, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8151
     _gridPosition: {x: 51, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8152
     _gridPosition: {x: 52, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8153
     _gridPosition: {x: 53, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8154
     _gridPosition: {x: 54, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8155
     _gridPosition: {x: 55, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8156
     _gridPosition: {x: 56, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8157
     _gridPosition: {x: 57, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8158
     _gridPosition: {x: 58, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8159
     _gridPosition: {x: 59, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8160
     _gridPosition: {x: 60, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8161
     _gridPosition: {x: 61, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8162
     _gridPosition: {x: 62, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8163
     _gridPosition: {x: 63, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8164
     _gridPosition: {x: 64, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8165
     _gridPosition: {x: 65, y: 81}
-    _walkable: 1
+    _walkable: 0
   - _id: 8166
     _gridPosition: {x: 66, y: 81}
     _walkable: 1
@@ -26386,82 +26701,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 8240
     _gridPosition: {x: 40, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8241
     _gridPosition: {x: 41, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8242
     _gridPosition: {x: 42, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8243
     _gridPosition: {x: 43, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8244
     _gridPosition: {x: 44, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8245
     _gridPosition: {x: 45, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8246
     _gridPosition: {x: 46, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8247
     _gridPosition: {x: 47, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8248
     _gridPosition: {x: 48, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8249
     _gridPosition: {x: 49, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8250
     _gridPosition: {x: 50, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8251
     _gridPosition: {x: 51, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8252
     _gridPosition: {x: 52, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8253
     _gridPosition: {x: 53, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8254
     _gridPosition: {x: 54, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8255
     _gridPosition: {x: 55, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8256
     _gridPosition: {x: 56, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8257
     _gridPosition: {x: 57, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8258
     _gridPosition: {x: 58, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8259
     _gridPosition: {x: 59, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8260
     _gridPosition: {x: 60, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8261
     _gridPosition: {x: 61, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8262
     _gridPosition: {x: 62, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8263
     _gridPosition: {x: 63, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8264
     _gridPosition: {x: 64, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8265
     _gridPosition: {x: 65, y: 82}
-    _walkable: 1
+    _walkable: 0
   - _id: 8266
     _gridPosition: {x: 66, y: 82}
     _walkable: 1
@@ -26686,82 +27001,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 8340
     _gridPosition: {x: 40, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8341
     _gridPosition: {x: 41, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8342
     _gridPosition: {x: 42, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8343
     _gridPosition: {x: 43, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8344
     _gridPosition: {x: 44, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8345
     _gridPosition: {x: 45, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8346
     _gridPosition: {x: 46, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8347
     _gridPosition: {x: 47, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8348
     _gridPosition: {x: 48, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8349
     _gridPosition: {x: 49, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8350
     _gridPosition: {x: 50, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8351
     _gridPosition: {x: 51, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8352
     _gridPosition: {x: 52, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8353
     _gridPosition: {x: 53, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8354
     _gridPosition: {x: 54, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8355
     _gridPosition: {x: 55, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8356
     _gridPosition: {x: 56, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8357
     _gridPosition: {x: 57, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8358
     _gridPosition: {x: 58, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8359
     _gridPosition: {x: 59, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8360
     _gridPosition: {x: 60, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8361
     _gridPosition: {x: 61, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8362
     _gridPosition: {x: 62, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8363
     _gridPosition: {x: 63, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8364
     _gridPosition: {x: 64, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8365
     _gridPosition: {x: 65, y: 83}
-    _walkable: 1
+    _walkable: 0
   - _id: 8366
     _gridPosition: {x: 66, y: 83}
     _walkable: 1
@@ -26986,82 +27301,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 8440
     _gridPosition: {x: 40, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8441
     _gridPosition: {x: 41, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8442
     _gridPosition: {x: 42, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8443
     _gridPosition: {x: 43, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8444
     _gridPosition: {x: 44, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8445
     _gridPosition: {x: 45, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8446
     _gridPosition: {x: 46, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8447
     _gridPosition: {x: 47, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8448
     _gridPosition: {x: 48, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8449
     _gridPosition: {x: 49, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8450
     _gridPosition: {x: 50, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8451
     _gridPosition: {x: 51, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8452
     _gridPosition: {x: 52, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8453
     _gridPosition: {x: 53, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8454
     _gridPosition: {x: 54, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8455
     _gridPosition: {x: 55, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8456
     _gridPosition: {x: 56, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8457
     _gridPosition: {x: 57, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8458
     _gridPosition: {x: 58, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8459
     _gridPosition: {x: 59, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8460
     _gridPosition: {x: 60, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8461
     _gridPosition: {x: 61, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8462
     _gridPosition: {x: 62, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8463
     _gridPosition: {x: 63, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8464
     _gridPosition: {x: 64, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8465
     _gridPosition: {x: 65, y: 84}
-    _walkable: 1
+    _walkable: 0
   - _id: 8466
     _gridPosition: {x: 66, y: 84}
     _walkable: 1
@@ -27286,82 +27601,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 8540
     _gridPosition: {x: 40, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8541
     _gridPosition: {x: 41, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8542
     _gridPosition: {x: 42, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8543
     _gridPosition: {x: 43, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8544
     _gridPosition: {x: 44, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8545
     _gridPosition: {x: 45, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8546
     _gridPosition: {x: 46, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8547
     _gridPosition: {x: 47, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8548
     _gridPosition: {x: 48, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8549
     _gridPosition: {x: 49, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8550
     _gridPosition: {x: 50, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8551
     _gridPosition: {x: 51, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8552
     _gridPosition: {x: 52, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8553
     _gridPosition: {x: 53, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8554
     _gridPosition: {x: 54, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8555
     _gridPosition: {x: 55, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8556
     _gridPosition: {x: 56, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8557
     _gridPosition: {x: 57, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8558
     _gridPosition: {x: 58, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8559
     _gridPosition: {x: 59, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8560
     _gridPosition: {x: 60, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8561
     _gridPosition: {x: 61, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8562
     _gridPosition: {x: 62, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8563
     _gridPosition: {x: 63, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8564
     _gridPosition: {x: 64, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8565
     _gridPosition: {x: 65, y: 85}
-    _walkable: 1
+    _walkable: 0
   - _id: 8566
     _gridPosition: {x: 66, y: 85}
     _walkable: 1
@@ -27586,82 +27901,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 8640
     _gridPosition: {x: 40, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8641
     _gridPosition: {x: 41, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8642
     _gridPosition: {x: 42, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8643
     _gridPosition: {x: 43, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8644
     _gridPosition: {x: 44, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8645
     _gridPosition: {x: 45, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8646
     _gridPosition: {x: 46, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8647
     _gridPosition: {x: 47, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8648
     _gridPosition: {x: 48, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8649
     _gridPosition: {x: 49, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8650
     _gridPosition: {x: 50, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8651
     _gridPosition: {x: 51, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8652
     _gridPosition: {x: 52, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8653
     _gridPosition: {x: 53, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8654
     _gridPosition: {x: 54, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8655
     _gridPosition: {x: 55, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8656
     _gridPosition: {x: 56, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8657
     _gridPosition: {x: 57, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8658
     _gridPosition: {x: 58, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8659
     _gridPosition: {x: 59, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8660
     _gridPosition: {x: 60, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8661
     _gridPosition: {x: 61, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8662
     _gridPosition: {x: 62, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8663
     _gridPosition: {x: 63, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8664
     _gridPosition: {x: 64, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8665
     _gridPosition: {x: 65, y: 86}
-    _walkable: 1
+    _walkable: 0
   - _id: 8666
     _gridPosition: {x: 66, y: 86}
     _walkable: 1
@@ -27886,82 +28201,82 @@ MonoBehaviour:
     _walkable: 1
   - _id: 8740
     _gridPosition: {x: 40, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8741
     _gridPosition: {x: 41, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8742
     _gridPosition: {x: 42, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8743
     _gridPosition: {x: 43, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8744
     _gridPosition: {x: 44, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8745
     _gridPosition: {x: 45, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8746
     _gridPosition: {x: 46, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8747
     _gridPosition: {x: 47, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8748
     _gridPosition: {x: 48, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8749
     _gridPosition: {x: 49, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8750
     _gridPosition: {x: 50, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8751
     _gridPosition: {x: 51, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8752
     _gridPosition: {x: 52, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8753
     _gridPosition: {x: 53, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8754
     _gridPosition: {x: 54, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8755
     _gridPosition: {x: 55, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8756
     _gridPosition: {x: 56, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8757
     _gridPosition: {x: 57, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8758
     _gridPosition: {x: 58, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8759
     _gridPosition: {x: 59, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8760
     _gridPosition: {x: 60, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8761
     _gridPosition: {x: 61, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8762
     _gridPosition: {x: 62, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8763
     _gridPosition: {x: 63, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8764
     _gridPosition: {x: 64, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8765
     _gridPosition: {x: 65, y: 87}
-    _walkable: 1
+    _walkable: 0
   - _id: 8766
     _gridPosition: {x: 66, y: 87}
     _walkable: 1
@@ -31693,6 +32008,9 @@ SceneRoots:
   - {fileID: 1017258940}
   - {fileID: 1313447103}
   - {fileID: 572502821}
+  - {fileID: 1331502663}
+  - {fileID: 511481391}
+  - {fileID: 375023494}
   - {fileID: 558902237}
   - {fileID: 541813486}
   - {fileID: 1851950132}
