@@ -3,6 +3,7 @@ using UnityEngine;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
+using System;
 
 namespace Navigation
 {
@@ -23,6 +24,9 @@ namespace Navigation
             new Vector2Int(0, 1),
         };
 
+        //<summary>
+        //Synchronous method for finding a Path. Return a Path if one is found
+        //</summary>
         static public Path FindPath(NavGrid navGrid, int start_x, int start_z, int goal_x, int goal_z)
         {
             if (navGrid.CheckIfInBound(start_x, start_z) == false)
@@ -66,7 +70,6 @@ namespace Navigation
 
                 if (currentIndex == goalIndex)
                 {
-                    DebugPrintPath(navGrid, goalIndex, nodeData);
                     return MakePath(navGrid, goalIndex, nodeData);
                 }
 
@@ -107,19 +110,18 @@ namespace Navigation
                         nodeData[neighbourIndex].costSoFar = newCost;
                         nodeData[neighbourIndex].cameFrom = currentIndex;
 
-                        // frontier.Enqueue(neighbourIndex, newCost);
                         frontier.Enqueue(neighbourIndex, newCost + ManhattanDistance(navGrid, neighbourIndex, goalIndex));
-                        // frontier.Enqueue(neighbourIndex, newCost + Distance(navGrid, neighbourIndex, goalIndex));
                     }
-
-
                 }
             }
             return null;
         }
 
 
-        static public PathQuery StartPathfinding(NavGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition)
+        //<summary>
+        //Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
+        //</summary>
+        static public PathQuery SchedulePath(NavGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition)
         {
             // 
             if (navGrid.CheckIfInBound(startPosition.x, startPosition.y) == false)
@@ -133,13 +135,6 @@ namespace Navigation
             }
 
             PathQuery pathQuery = new PathQuery(navGrid);
-
-            // int gridSize = navGrid.Count;
-
-            // NativeList<int> openList = new NativeList<int>(navGrid.Count / 2, Allocator.Persistent);
-            // NativeArray<AStarSearchNodeDataAsync> nodeData = new NativeArray<AStarSearchNodeDataAsync>(navGrid.Count, Allocator.Persistent);
-            // NativeArray<int> totalPathCost = new NativeArray<int>(1, Allocator.Persistent);
-            // NativeList<PathElement> resultPath = new NativeList<PathElement>(10, Allocator.Persistent);
 
             for (int i = 0; i < navGrid.Count; i++)
             {
@@ -169,9 +164,7 @@ namespace Navigation
                 navGridPosition = navGrid.Position
             };
 
-
             pathQuery.jobHandle = job.Schedule();
-            // job.Run();
 
             return pathQuery;
         }
@@ -266,12 +259,6 @@ namespace Navigation
 
                 currentIndex = frontier.Dequeue();
 
-                // if (currentIndex == goalIndex)
-                // {
-                //     DebugPrintPath(navGrid, goalIndex, nodeData);
-                //     return MakePath(navGrid, goalIndex, nodeData);
-                // }
-
                 currentGridPosition = navGrid.NodeAt(currentIndex).gridPosition;
 
                 for (int i = 0; i < 8; i++)
@@ -309,10 +296,8 @@ namespace Navigation
                         nodeData[neighbourIndex].costSoFar = newCost;
                         nodeData[neighbourIndex].cameFrom = currentIndex;
 
-                        // frontier.Enqueue(neighbourIndex, newCost);
                         frontier.Enqueue(neighbourIndex, newCost);
                         areaIndices.Add(neighbourIndex);
-                        // frontier.Enqueue(neighbourIndex, newCost + Distance(navGrid, neighbourIndex, goalIndex));
                     }
 
 
@@ -330,6 +315,12 @@ namespace Navigation
                 walkableAreaElements.Add(new WalkableAreaElement(gridPosition, worldPosition, nodeData[i].costSoFar, nodeData[i].cameFrom));
             }
             return walkableAreaElements;
+        }
+
+        static public List<WalkableAreaElement> ScheduleWalkableArea(NavGrid navGrid, int start_x, int start_z, int budget)
+        {
+            throw new NotImplementedException();
+            // return null;
         }
     }
 }

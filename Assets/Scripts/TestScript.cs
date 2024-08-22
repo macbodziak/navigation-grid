@@ -16,13 +16,13 @@ public class TestScript : MonoBehaviour
     float time_start;
     float time_finish;
     PathQuery pathQuery;
+    Path path;
 
     private void Start()
     {
         stopwatch = new();
         stopwatch.Start();
 
-        Path path = null;
 
         // // for (int i = 0; i < 10; i++)
         // {
@@ -51,37 +51,81 @@ public class TestScript : MonoBehaviour
 
 
         //--------------------
-        stopwatch.Reset();
-        time_start = Time.realtimeSinceStartup;
-        stopwatch.Start();
-        pathQuery = Pathfinder.StartPathfinding(navGrid, new Vector2Int(start.x, start.y), new Vector2Int(goal.x, goal.y));
-        path = pathQuery.Complete();
-        stopwatch.Stop();
-        time_finish = Time.realtimeSinceStartup;
-        System.TimeSpan ts = stopwatch.Elapsed;
-        Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
-        Debug.Log($"path finding took {time_finish - time_start} s");
-        ShowDebugPath(path);
+        // stopwatch.Reset();
+        // time_start = Time.realtimeSinceStartup;
+        // stopwatch.Start();
+        // pathQuery = Pathfinder.SchedulePath(navGrid, new Vector2Int(start.x, start.y), new Vector2Int(goal.x, goal.y));
     }
 
 
     void Update()
     {
 
-        // if (pathQuery != null)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            time_start = Time.realtimeSinceStartup;
+            stopwatch.Reset();
+            stopwatch.Start();
+            pathQuery = Pathfinder.SchedulePath(navGrid, new Vector2Int(start.x, start.y), new Vector2Int(goal.x, goal.y));
+        }
+        if (pathQuery != null)
+        {
+            if (pathQuery.IsComplete)
+            {
+                Path path = pathQuery.Complete();
+                pathQuery = null;
+                stopwatch.Stop();
+                time_finish = Time.realtimeSinceStartup;
+                System.TimeSpan ts = stopwatch.Elapsed;
+                Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
+                Debug.Log($"path finding took {time_finish - time_start} s");
+                ShowDebugPath(path);
+            }
+            else
+            {
+                Debug.Log("...");
+            }
+        }
+
+
+
+        // if (Input.GetKeyDown(KeyCode.Space))
         // {
-        //     if (pathQuery.IsComplete)
+        //     stopwatch.Reset();
+        //     stopwatch.Start();
+        //     // for (int i = 0; i < 10; i++)
         //     {
-        //         Path path = pathQuery.Complete();
-        //         pathQuery = null;
-        //         stopwatch.Stop();
-        //         time_finish = Time.realtimeSinceStartup;
-        //         System.TimeSpan ts = stopwatch.Elapsed;
-        //         Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
-        //         Debug.Log($"path finding took {time_finish - time_start} s");
-        //         ShowDebugPath(path);
+        //         path = Pathfinder.FindPath(navGrid, start.x, start.y, goal.x, goal.y);
         //     }
+        //     stopwatch.Stop();
+
+        //     // Get the elapsed time as a TimeSpan value
+        //     System.TimeSpan ts = stopwatch.Elapsed;
+        //     Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
+        //     ShowDebugPath(path);
         // }
+
+
+
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+
+        //     List<WalkableAreaElement> area = new();
+        //     time_start = Time.realtimeSinceStartup;
+        //     stopwatch.Reset();
+        //     stopwatch.Start();
+        //     // for (int i = 0; i < 10; i++)
+        //     {
+        //         area = Pathfinder.FindWalkableArea(navGrid, startArea.x, startArea.y, budget);
+        //     }
+        //     stopwatch.Stop();
+        //     time_finish = Time.realtimeSinceStartup;
+        //     System.TimeSpan ts = stopwatch.Elapsed;
+        //     Debug.Log($"area finding took {ts.TotalMilliseconds} ms");
+        //     Debug.Log($"path finding took {time_finish - time_start} s");
+        //     ShowDebugArea(area);
+        // }
+
     }
 
     private void ShowDebugPath(Path path)

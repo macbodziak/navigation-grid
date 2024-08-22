@@ -17,19 +17,6 @@ namespace Navigation
         public Vector3 Position { get => transform.position; }
         public float TileSize { get => tileSize; private set => tileSize = value; }
 
-        private void Start()
-        {
-            // Debug.Log("Map Start()");
-
-        }
-
-
-        private void Update()
-        {
-            // Debug.Log($"{tileSize},{Width},{Height}");
-        }
-
-
         public void CreateMap(int width, int height, float tileSize, LayerMask notWalkableLayers, float colliderSize, float rayLength)
         {
             this.Width = width;

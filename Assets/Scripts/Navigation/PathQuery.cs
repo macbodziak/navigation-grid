@@ -16,7 +16,7 @@ namespace Navigation
 
         public PathQuery(NavGrid navGrid)
         {
-            openList = new NativeList<int>(navGrid.Count / 2, Allocator.Persistent);
+            openList = new NativeList<int>(navGrid.Count, Allocator.Persistent);
             nodeData = new NativeArray<AStarSearchNodeDataAsync>(navGrid.Count, Allocator.Persistent);
             totalPathCost = new NativeArray<int>(1, Allocator.Persistent);
             pathElements = new NativeList<PathElement>(10, Allocator.Persistent);
