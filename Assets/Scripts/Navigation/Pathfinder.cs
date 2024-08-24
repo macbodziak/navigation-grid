@@ -9,7 +9,6 @@ namespace Navigation
 {
     public class Pathfinder
     {
-
         static private readonly int DIAGONAL_COST = 14;
         static private readonly int STRAIGHT_COST = 10;
         static private readonly Vector2Int[] direction = {
@@ -25,7 +24,7 @@ namespace Navigation
         };
 
         //<summary>
-        //Synchronous method for finding a Path. Return a Path if one is found
+        //Synchronous method for finding a Path. Return a Path if one is found or null if not
         //</summary>
         static public Path FindPath(NavGrid navGrid, int start_x, int start_z, int goal_x, int goal_z)
         {
@@ -143,10 +142,7 @@ namespace Navigation
                     walkable = navGrid.NodeAt(i).walkable,
                     gridPosition = new int2(navGrid.NodeAt(i).gridPosition.x, navGrid.NodeAt(i).gridPosition.y),
                     costSoFar = int.MaxValue,
-                    distanceToGoal = 0,
-                    heuristicScore = int.MaxValue,
                     cameFrom = -1,
-                    alreadyEvaluated = false
                 };
             }
 

@@ -7,7 +7,7 @@ namespace Navigation
 {
     public class PathQuery
     {
-        public NativeList<int> openList;
+        public NativeHeap<OpenListElement, OpenListComparer> openList;
         public NativeArray<AStarSearchNodeDataAsync> nodeData;
         public NativeArray<int> totalPathCost;
         public NativeList<PathElement> pathElements;
@@ -16,7 +16,7 @@ namespace Navigation
 
         public PathQuery(NavGrid navGrid)
         {
-            openList = new NativeList<int>(navGrid.Count, Allocator.Persistent);
+            openList = new NativeHeap<OpenListElement, OpenListComparer>(Allocator.Persistent, navGrid.Count);
             nodeData = new NativeArray<AStarSearchNodeDataAsync>(navGrid.Count, Allocator.Persistent);
             totalPathCost = new NativeArray<int>(1, Allocator.Persistent);
             pathElements = new NativeList<PathElement>(10, Allocator.Persistent);

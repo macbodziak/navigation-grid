@@ -24,7 +24,7 @@ public struct FindPathAStarJob : IJob
     };
 
     public NativeArray<AStarSearchNodeDataAsync> nodeData;
-    public NativeList<int> openList;
+    public NativeHeap<OpenListElement, OpenListComparer> openList;
     public NativeList<PathElement> resultPath;
     public NativeArray<int> resultCost;
     public int startIndex;
@@ -47,19 +47,19 @@ public struct FindPathAStarJob : IJob
 
         AStarSearchNodeDataAsync temp = nodeData[startIndex];
         temp.costSoFar = 0;
-        temp.heuristicScore = 0;
         nodeData[startIndex] = temp;
 
-        openList.Add(startIndex);
+        openList.Insert(new OpenListElement(startIndex, 0));
 
         resultCost[0] = -1;
 
-        while (openList.Length > 0)
+        while (openList.Count > 0)
         {
-            currentIndex = GetIndexWithLowestScoreFromOpenList();
+            currentIndex = openList.Pop().index;
             if (currentIndex == goalIndex)
             {
                 BuildPath();
+                break;
             }
 
             for (int i = 0; i < 8; i++)
@@ -73,11 +73,6 @@ public struct FindPathAStarJob : IJob
                     continue;
                 }
                 neighbourIndex = GetIndexAtPosition(neighbourGridPosition);
-
-                if (nodeData[neighbourIndex].alreadyEvaluated)
-                {
-                    continue;
-                }
 
                 //if straight movement check only one node
                 if (i % 2 == 0)
@@ -108,33 +103,12 @@ public struct FindPathAStarJob : IJob
                     temp = nodeData[neighbourIndex];
                     temp.costSoFar = newCost;
                     temp.cameFrom = currentIndex;
-                    temp.distanceToGoal = CalculateManhattanDistanceCost(nodeData[neighbourIndex].gridPosition, goalPosition);
-                    temp.heuristicScore = temp.costSoFar + temp.distanceToGoal;
                     nodeData[neighbourIndex] = temp;
-                    openList.Add(neighbourIndex);
+                    openList.Insert(new OpenListElement(neighbourIndex, newCost + CalculateDistanceCost(nodeData[neighbourIndex].gridPosition, goalPosition)));
                 }
             }
         }
 
-    }
-
-    private int GetIndexWithLowestScoreFromOpenList()
-    {
-        int currentGridIndex = openList[0];
-        int currentOpenListIndex = 0;
-        for (int i = 1; i < openList.Length; i++)
-        {
-            if (nodeData[openList[i]].heuristicScore < nodeData[currentGridIndex].heuristicScore)
-            {
-                currentGridIndex = openList[i];
-                currentOpenListIndex = i;
-            }
-        }
-        openList.RemoveAtSwapBack(currentOpenListIndex);
-        var temp = nodeData[currentGridIndex];
-        temp.alreadyEvaluated = true;
-        nodeData[currentGridIndex] = temp;
-        return currentGridIndex;
     }
 
     private int CalculateDistanceCost(int2 a, int2 b)

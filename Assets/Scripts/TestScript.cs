@@ -60,6 +60,7 @@ public class TestScript : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("deltaTime " + Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -78,7 +79,7 @@ public class TestScript : MonoBehaviour
                 time_finish = Time.realtimeSinceStartup;
                 System.TimeSpan ts = stopwatch.Elapsed;
                 Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
-                Debug.Log($"path finding took {time_finish - time_start} s");
+                Debug.Log($"path finding took <color=orange>{time_finish - time_start} s </color>");
                 ShowDebugPath(path);
             }
             else
@@ -89,21 +90,21 @@ public class TestScript : MonoBehaviour
 
 
 
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     stopwatch.Reset();
-        //     stopwatch.Start();
-        //     // for (int i = 0; i < 10; i++)
-        //     {
-        //         path = Pathfinder.FindPath(navGrid, start.x, start.y, goal.x, goal.y);
-        //     }
-        //     stopwatch.Stop();
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            stopwatch.Reset();
+            stopwatch.Start();
+            // for (int i = 0; i < 10; i++)
+            {
+                path = Pathfinder.FindPath(navGrid, start.x, start.y, goal.x, goal.y);
+            }
+            stopwatch.Stop();
 
-        //     // Get the elapsed time as a TimeSpan value
-        //     System.TimeSpan ts = stopwatch.Elapsed;
-        //     Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
-        //     ShowDebugPath(path);
-        // }
+            // Get the elapsed time as a TimeSpan value
+            System.TimeSpan ts = stopwatch.Elapsed;
+            Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
+            ShowDebugPath(path);
+        }
 
 
 
