@@ -5,7 +5,7 @@ using Unity.Jobs;
 
 namespace Navigation
 {
-    public class PathQuery
+    public class PathRequest
     {
         public NativeHeap<OpenListElement, OpenListComparer> openList;
         public NativeArray<AStarSearchNodeDataAsync> nodeData;
@@ -14,7 +14,7 @@ namespace Navigation
         public JobHandle jobHandle;
         private bool m_valid;
 
-        public PathQuery(NavGrid navGrid)
+        public PathRequest(NavGrid navGrid)
         {
             openList = new NativeHeap<OpenListElement, OpenListComparer>(Allocator.Persistent, navGrid.Count);
             nodeData = new NativeArray<AStarSearchNodeDataAsync>(navGrid.Count, Allocator.Persistent);

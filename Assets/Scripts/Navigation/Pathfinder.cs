@@ -120,7 +120,7 @@ namespace Navigation
         //<summary>
         //Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
         //</summary>
-        static public PathQuery SchedulePath(NavGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition)
+        static public PathRequest SchedulePath(NavGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition)
         {
             // 
             if (navGrid.CheckIfInBound(startPosition.x, startPosition.y) == false)
@@ -133,7 +133,7 @@ namespace Navigation
                 return null;
             }
 
-            PathQuery pathQuery = new PathQuery(navGrid);
+            PathRequest pathQuery = new PathRequest(navGrid);
 
             for (int i = 0; i < navGrid.Count; i++)
             {
