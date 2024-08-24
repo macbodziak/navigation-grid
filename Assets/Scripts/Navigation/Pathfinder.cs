@@ -203,7 +203,7 @@ namespace Navigation
         {
             Vector2Int a = navGrid.NodeAt(checkedIndex).gridPosition;
             Vector2Int b = navGrid.NodeAt(goalIndex).gridPosition;
-            return Mathf.Abs(b.x - a.x) + Mathf.Abs(b.y - a.y);
+            return STRAIGHT_COST * (Mathf.Abs(b.x - a.x) + Mathf.Abs(b.y - a.y));
         }
 
         static private int Distance(NavGrid navGrid, int checkedIndex, int goalIndex)

@@ -60,7 +60,6 @@ public class TestScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("deltaTime " + Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -94,15 +93,18 @@ public class TestScript : MonoBehaviour
         {
             stopwatch.Reset();
             stopwatch.Start();
+            time_start = Time.realtimeSinceStartup;
             // for (int i = 0; i < 10; i++)
             {
                 path = Pathfinder.FindPath(navGrid, start.x, start.y, goal.x, goal.y);
             }
             stopwatch.Stop();
+            time_finish = Time.realtimeSinceStartup;
 
             // Get the elapsed time as a TimeSpan value
             System.TimeSpan ts = stopwatch.Elapsed;
             Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
+            Debug.Log($"path finding took <color=orange>{time_finish - time_start} s </color>");
             ShowDebugPath(path);
         }
 

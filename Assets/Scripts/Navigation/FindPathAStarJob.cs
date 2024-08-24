@@ -104,7 +104,7 @@ public struct FindPathAStarJob : IJob
                     temp.costSoFar = newCost;
                     temp.cameFrom = currentIndex;
                     nodeData[neighbourIndex] = temp;
-                    openList.Insert(new OpenListElement(neighbourIndex, newCost + CalculateDistanceCost(nodeData[neighbourIndex].gridPosition, goalPosition)));
+                    openList.Insert(new OpenListElement(neighbourIndex, newCost + CalculateManhattanDistanceCost(nodeData[neighbourIndex].gridPosition, goalPosition)));
                 }
             }
         }
