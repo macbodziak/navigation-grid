@@ -15,7 +15,7 @@ public class TestScript : MonoBehaviour
     System.Diagnostics.Stopwatch stopwatch;
     float time_start;
     float time_finish;
-    PathQuery pathQuery;
+    PathRequest pathQuery;
     Path path;
 
     private void Start()
@@ -110,24 +110,24 @@ public class TestScript : MonoBehaviour
 
 
 
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
 
-        //     List<WalkableAreaElement> area = new();
-        //     time_start = Time.realtimeSinceStartup;
-        //     stopwatch.Reset();
-        //     stopwatch.Start();
-        //     // for (int i = 0; i < 10; i++)
-        //     {
-        //         area = Pathfinder.FindWalkableArea(navGrid, startArea.x, startArea.y, budget);
-        //     }
-        //     stopwatch.Stop();
-        //     time_finish = Time.realtimeSinceStartup;
-        //     System.TimeSpan ts = stopwatch.Elapsed;
-        //     Debug.Log($"area finding took {ts.TotalMilliseconds} ms");
-        //     Debug.Log($"path finding took {time_finish - time_start} s");
-        //     ShowDebugArea(area);
-        // }
+            WalkableArea area;
+            time_start = Time.realtimeSinceStartup;
+            stopwatch.Reset();
+            stopwatch.Start();
+            // for (int i = 0; i < 10; i++)
+            {
+                area = Pathfinder.FindWalkableArea(navGrid, startArea.x, startArea.y, budget);
+            }
+            stopwatch.Stop();
+            time_finish = Time.realtimeSinceStartup;
+            System.TimeSpan ts = stopwatch.Elapsed;
+            Debug.Log($"area finding took {ts.TotalMilliseconds} ms");
+            Debug.Log($"path finding took {time_finish - time_start} s");
+            ShowDebugArea(area);
+        }
 
     }
 
@@ -146,7 +146,7 @@ public class TestScript : MonoBehaviour
         }
     }
 
-    private void ShowDebugArea(List<WalkableAreaElement> area)
+    private void ShowDebugArea(WalkableArea area)
     {
         if (area == null)
         {

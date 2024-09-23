@@ -159,7 +159,7 @@ public struct FindPathAStarJob : IJob
         {
             gridPosition = nodeData[currentIndex].gridPosition;
             worldPosition = navGridPosition + new Vector3(gridPosition.x * navGridTileSize, 0f, gridPosition.y * navGridTileSize);
-            resultPath.Add(new PathElement(currentIndex, gridPosition, worldPosition));
+            resultPath.Add(new PathElement(currentIndex, new Vector2Int(gridPosition.x, gridPosition.y), worldPosition));
 
             currentIndex = nodeData[currentIndex].cameFrom;
         }

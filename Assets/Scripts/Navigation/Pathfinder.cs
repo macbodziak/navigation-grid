@@ -191,7 +191,7 @@ namespace Navigation
             {
                 Vector2Int gridPosition = navGrid.NodeAt(currentIndex).gridPosition;
                 Vector3 worldPosition = navGrid.GetNodeWorldPosition(gridPosition);
-                pathElements.Add(new PathElement(currentIndex, new int2(gridPosition.x, gridPosition.y), worldPosition));
+                pathElements.Add(new PathElement(currentIndex, new Vector2Int(gridPosition.x, gridPosition.y), worldPosition));
 
                 currentIndex = nodeData[currentIndex].cameFrom;
             }
@@ -213,7 +213,7 @@ namespace Navigation
             return (int)((b - a).magnitude);
         }
 
-        static public List<WalkableAreaElement> FindWalkableArea(NavGrid navGrid, int start_x, int start_z, int budget)
+        static public WalkableArea FindWalkableArea(NavGrid navGrid, int start_x, int start_z, int budget)
         {
             if (navGrid.CheckIfInBound(start_x, start_z) == false)
             {
@@ -226,7 +226,6 @@ namespace Navigation
             }
 
             List<int> areaIndices = new();
-            List<WalkableAreaElement> walkableAreaElements = new List<WalkableAreaElement>();
             Utils.PriorityQueue<int, int> frontier = new Utils.PriorityQueue<int, int>();  // <id, priority or heuristic>
             AStarSearchNodeData[] nodeData = new AStarSearchNodeData[navGrid.Count];
 
@@ -296,21 +295,22 @@ namespace Navigation
                         areaIndices.Add(neighbourIndex);
                     }
 
-
                 }
 
-
-
-
-
             }
-            foreach (int i in areaIndices)
+
+            List<WalkableAreaElement> walkableAreaElements = new List<WalkableAreaElement>(areaIndices.Count);
+            Dictionary<int, int> GridToAreaElementsMap = new();
+
+            for (int i = 0; i < areaIndices.Count; i++)
             {
-                Vector2Int gridPosition = navGrid.NodeAt(i).gridPosition;
+                int areaIndex = areaIndices[i];
+                GridToAreaElementsMap.Add(areaIndex, i);
+                Vector2Int gridPosition = navGrid.NodeAt(areaIndex).gridPosition;
                 Vector3 worldPosition = navGrid.GetNodeWorldPosition(gridPosition);
-                walkableAreaElements.Add(new WalkableAreaElement(gridPosition, worldPosition, nodeData[i].costSoFar, nodeData[i].cameFrom));
+                walkableAreaElements.Add(new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
             }
-            return walkableAreaElements;
+            return new WalkableArea(navGrid, walkableAreaElements, GridToAreaElementsMap);
         }
 
         static public List<WalkableAreaElement> ScheduleWalkableArea(NavGrid navGrid, int start_x, int start_z, int budget)

@@ -16,8 +16,8 @@ namespace Navigation
 
         public PathRequest(NavGrid navGrid)
         {
-            openList = new NativeHeap<OpenListElement, OpenListComparer>(Allocator.Persistent, navGrid.Count);
-            nodeData = new NativeArray<AStarSearchNodeDataAsync>(navGrid.Count, Allocator.Persistent);
+            openList = new NativeHeap<OpenListElement, OpenListComparer>(Allocator.TempJob, navGrid.Count);
+            nodeData = new NativeArray<AStarSearchNodeDataAsync>(navGrid.Count, Allocator.TempJob);
             totalPathCost = new NativeArray<int>(1, Allocator.Persistent);
             pathElements = new NativeList<PathElement>(10, Allocator.Persistent);
             m_valid = true;
