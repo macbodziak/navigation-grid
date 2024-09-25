@@ -288,11 +288,17 @@ namespace Navigation
 
                     if (newCost <= budget && newCost < nodeData[neighbourIndex].costSoFar)
                     {
+                        int previousCost = nodeData[neighbourIndex].costSoFar;
+
                         nodeData[neighbourIndex].costSoFar = newCost;
                         nodeData[neighbourIndex].cameFrom = currentIndex;
 
-                        frontier.Enqueue(neighbourIndex, newCost);
-                        areaIndices.Add(neighbourIndex);
+                        //do not add to froniter if already on froniter / already visited
+                        if (previousCost == int.MaxValue)
+                        {
+                            frontier.Enqueue(neighbourIndex, newCost);
+                            areaIndices.Add(neighbourIndex);
+                        }
                     }
 
                 }
