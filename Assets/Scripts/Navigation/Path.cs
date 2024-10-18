@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Navigation
 {
-    public class Path
+    public class Path : IEnumerable
     {
         int m_cost;
         List<PathElement> m_elements;
@@ -20,6 +20,55 @@ namespace Navigation
         {
             m_cost = cost;
             m_elements = elements;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return (IEnumerator)GetEnumerator();
+        }
+
+        public PathEnumerator GetEnumerator()
+        {
+            return new PathEnumerator(m_elements);
+        }
+    }
+
+    public class PathEnumerator : IEnumerator
+    {
+        List<PathElement> m_elements;
+        int position = -1;
+
+        public PathEnumerator(List<PathElement> elements)
+        {
+            m_elements = elements;
+        }
+
+
+        public bool MoveNext()
+        {
+            position++;
+            return (position < m_elements.Count);
+        }
+
+        public void Reset()
+        {
+            position = -1;
+        }
+
+        public PathElement Current
+        {
+            get
+            {
+                return m_elements[position];
+            }
+        }
+
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
         }
     }
 }
