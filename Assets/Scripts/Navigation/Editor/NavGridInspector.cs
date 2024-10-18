@@ -14,6 +14,7 @@ namespace Navigation
         private const string WIDTH_PREF_KEY = "WidthBakeField";
         private const string HEIGHT_PREF_KEY = "HeightBakeField";
         private const string NOTWALKABLELAYERMASK_PREF_KEY = "NotWalkableLayerMaskField";
+        private const string COLLISIONLAYER_PREF_KEY = "CollisionLayerField";
         private const int MIN_GRID_SIZE = 1;
         private const int MAX_GRID_SIZE = 250;
         private const string RAYLENGTH_PREF_KEY = "RayLengthField";
@@ -23,6 +24,7 @@ namespace Navigation
         IntegerField WidthBakeField;
         IntegerField HeightBakeField;
         LayerMaskField NotWalkableLayerMaskField;
+        LayerField CollisionLayerField;
         FloatField RayLengthField;
         FloatField ColliderSizeField;
         FloatField TileSizeField;
@@ -70,6 +72,7 @@ namespace Navigation
             HeightBakeField.RegisterValueChangedCallback(OnHeightFieldChanged);
 
             NotWalkableLayerMaskField = new LayerMaskField("Not Walkable Layers");
+            NotWalkableLayerMaskField.tooltip = "Which layers will make a cell not walkable during baking";
             NotWalkableLayerMaskField.AddToClassList("unity-base-field__aligned");
             NotWalkableLayerMaskField.value = EditorPrefs.GetInt(NOTWALKABLELAYERMASK_PREF_KEY);
             NotWalkableLayerMaskField.RegisterValueChangedCallback(evt =>
@@ -77,12 +80,23 @@ namespace Navigation
                 EditorPrefs.SetInt(NOTWALKABLELAYERMASK_PREF_KEY, evt.newValue);
             });
 
+            CollisionLayerField = new LayerField("Grid Collision Layer");
+            CollisionLayerField.AddToClassList("unity-base-field__aligned");
+            CollisionLayerField.tooltip = "The Layer for detecting clicks with a mouse";
+            CollisionLayerField.value = EditorPrefs.GetInt(COLLISIONLAYER_PREF_KEY);
+            CollisionLayerField.RegisterValueChangedCallback(evt =>
+            {
+                EditorPrefs.SetInt(COLLISIONLAYER_PREF_KEY, evt.newValue);
+            });
+
             RayLengthField = new FloatField("Ray Length");
+            RayLengthField.tooltip = "The length of the ray used for testing if cell is walkable\nIf ray encounters a collider with <color=#add8e6ff>Not Walkable Layer</color> it will mark cell as not walkable";
             RayLengthField.AddToClassList("unity-base-field__aligned");
             RayLengthField.value = EditorPrefs.GetFloat(RAYLENGTH_PREF_KEY, 100);
             RayLengthField.RegisterValueChangedCallback(OnRayLengthChanged);
 
             ColliderSizeField = new FloatField("Box Collider Size (Normalized)");
+            ColliderSizeField.tooltip = "The normalized size of the box collider used for testing if a cell is walkable\nSize of 1 means sieze of cell";
             ColliderSizeField.AddToClassList("unity-base-field__aligned");
             ColliderSizeField.value = EditorPrefs.GetFloat(COLLIDER_SIZE_PREF_KEY, 0.9f);
             ColliderSizeField.RegisterValueChangedCallback(OnColliderSizeChanged);
@@ -90,11 +104,13 @@ namespace Navigation
             CreateMapButton = new Button(OnCreateMapButtonClicked);
             CreateMapButton.text = "Bake Map";
             CreateMapButton.AddToClassList("unity-base-field__aligned");
+            CreateMapButton.SetEnabled(!EditorApplication.isPlaying);
 
             MapCreationFoldout.Add(TileSizeBakeField);
             MapCreationFoldout.Add(WidthBakeField);
             MapCreationFoldout.Add(HeightBakeField);
             MapCreationFoldout.Add(NotWalkableLayerMaskField);
+            MapCreationFoldout.Add(CollisionLayerField);
             MapCreationFoldout.Add(RayLengthField);
             MapCreationFoldout.Add(ColliderSizeField);
             MapCreationFoldout.Add(CreateMapButton);
@@ -175,7 +191,7 @@ namespace Navigation
         {
             NavGrid map = target as NavGrid;
 
-            map.CreateMap(WidthBakeField.value, HeightBakeField.value, TileSizeBakeField.value, NotWalkableLayerMaskField.value, ColliderSizeField.value, RayLengthField.value);
+            map.CreateMap(WidthBakeField.value, HeightBakeField.value, TileSizeBakeField.value, NotWalkableLayerMaskField.value, CollisionLayerField.value, ColliderSizeField.value, RayLengthField.value);
             EditorUtility.SetDirty(map);
         }
 

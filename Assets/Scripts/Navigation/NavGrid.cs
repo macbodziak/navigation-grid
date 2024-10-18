@@ -17,7 +17,7 @@ namespace Navigation
         public Vector3 Position { get => transform.position; }
         public float TileSize { get => tileSize; private set => tileSize = value; }
 
-        public void CreateMap(int width, int height, float tileSize, LayerMask notWalkableLayers, float colliderSize, float rayLength)
+        public void CreateMap(int width, int height, float tileSize, LayerMask notWalkableLayers, int collisionLayer, float colliderSize, float rayLength)
         {
             this.Width = width;
             this.Height = height;
@@ -38,7 +38,7 @@ namespace Navigation
                 }
             }
 
-
+            SetupCollider(collisionLayer);
             foreach (Node n in nodes)
             {
                 Debug.Log(n);
@@ -59,6 +59,24 @@ namespace Navigation
                 return false;
             }
             return true;
+        }
+
+
+        private void SetupCollider(int collisionLayer)
+        {
+            //check if there are already colliders attached and remove them
+            Collider[] colliders = GetComponents<Collider>();
+            foreach (Collider col in colliders)
+            {
+                Debug.Log("<color=#ffa500ff>removing existing NavGrid collider</color>: " + col);
+                DestroyImmediate(col);
+            }
+
+            gameObject.layer = collisionLayer;
+
+            BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
+            boxCollider.size = new Vector3(width * tileSize, 0.2f, height * tileSize);
+            boxCollider.center = new Vector3(width * tileSize * 0.5f, 0.2f, height * tileSize * 0.5f);
         }
 
 
