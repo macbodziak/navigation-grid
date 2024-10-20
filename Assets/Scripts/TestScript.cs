@@ -23,7 +23,6 @@ public class TestScript : MonoBehaviour
         stopwatch = new();
         stopwatch.Start();
 
-
         // // for (int i = 0; i < 10; i++)
         // {
         //     path = Pathfinder.FindPath(navGrid, start.x, start.y, goal.x, goal.y);

@@ -107,23 +107,42 @@ namespace Navigation
 
         public Node NodeAt(int index)
         {
+            if (index < 0 || index >= width * height)
+            {
+                return Node.NullNode();
+            }
             return nodes[index];
         }
 
 
         public Node NodeAt(int x, int z)
         {
+            int index = IndexAt(x, z);
+            if (index < 0 || index >= width * height)
+            {
+                return Node.NullNode();
+            }
             return nodes[IndexAt(x, z)];
         }
 
 
         public Node NodeAt(Vector2Int gridPosition)
         {
+            int index = IndexAt(gridPosition);
+            if (index < 0 || index >= width * height)
+            {
+                return Node.NullNode();
+            }
             return nodes[IndexAt(gridPosition)];
         }
 
         public Node NodeAt(Vector3 worldPosition)
         {
+            int index = IndexAt(worldPosition);
+            if (index < 0 || index >= width * height)
+            {
+                return Node.NullNode();
+            }
             return nodes[IndexAt(worldPosition)];
         }
 

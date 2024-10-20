@@ -19,6 +19,7 @@ namespace Navigation
             _walkable = walkable;
         }
 
+
         public int id { get => _id; private set => _id = value; }
         public Vector2Int gridPosition { get => _gridPosition; private set => _gridPosition = value; }
         public bool walkable { get => _walkable; private set => _walkable = value; }
@@ -34,6 +35,14 @@ namespace Navigation
         public override string ToString()
         {
             return $"id:{id}, x:{gridPosition.x}, y:{gridPosition.y}, walkable:{walkable}";
+        }
+
+
+        public static Node NullNode()
+        {
+            Node nullNode = new Node();
+            nullNode.id = -1;
+            return nullNode;
         }
     }
 
