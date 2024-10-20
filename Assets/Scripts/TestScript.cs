@@ -129,6 +129,8 @@ public class TestScript : MonoBehaviour
             ShowDebugArea(area);
         }
 
+        MousePositionToGripPositionDebug();
+
     }
 
     private void ShowDebugPath(Path path)
@@ -159,5 +161,32 @@ public class TestScript : MonoBehaviour
             Debug.DrawLine(element.worldPosition, navGrid.GetNodeWorldPosition(element.originIndex), Color.yellow, 10.0f);
         }
 
+    }
+
+
+    private void MousePositionToGripPositionDebug()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            // Create a RaycastHit object to store information about what we hit
+            RaycastHit hit;
+
+            // Perform the raycast
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Grid")))
+            // if (Physics.Raycast(ray, out hit))
+            {
+                // Log the name of the object that was hit
+                Debug.Log("Hit object: " + hit.collider.gameObject.name + ", point: " + hit.point);
+                Vector2Int gridPos = navGrid.WorldPositionToGridPosition(hit.point);
+                Node node = navGrid.NodeAt(hit.point);
+
+                Debug.Log("gridPos: " + gridPos + " , node id: " + node.id + " , walkable: " + node.walkable);
+
+                // Do something with the hit object, e.g.:
+                // hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.red;
+            }
+        }
     }
 }

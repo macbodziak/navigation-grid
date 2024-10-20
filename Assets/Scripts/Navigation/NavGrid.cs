@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Utils;
 
@@ -75,8 +76,8 @@ namespace Navigation
             gameObject.layer = collisionLayer;
 
             BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
-            boxCollider.size = new Vector3(width * tileSize, 0.2f, height * tileSize);
-            boxCollider.center = new Vector3(width * tileSize * 0.5f, 0.2f, height * tileSize * 0.5f);
+            boxCollider.size = new Vector3(width * tileSize, 0.1f, height * tileSize);
+            boxCollider.center = new Vector3((width - 1f) * tileSize * 0.5f, 0f, (height - 1f) * tileSize * 0.5f);
         }
 
 
@@ -96,6 +97,14 @@ namespace Navigation
         }
 
 
+        public int IndexAt(Vector3 worldPosition)
+        {
+            int x = (int)((worldPosition.x - transform.position.x) / TileSize + 0.5f);
+            int z = (int)((worldPosition.z - transform.position.z) / TileSize + 0.5f);
+            return IndexAt(x, z);
+        }
+
+
         public Node NodeAt(int index)
         {
             return nodes[index];
@@ -111,6 +120,11 @@ namespace Navigation
         public Node NodeAt(Vector2Int gridPosition)
         {
             return nodes[IndexAt(gridPosition)];
+        }
+
+        public Node NodeAt(Vector3 worldPosition)
+        {
+            return nodes[IndexAt(worldPosition)];
         }
 
 
@@ -182,6 +196,12 @@ namespace Navigation
                     transform.position.z + nodes[index].gridPosition.y * TileSize);
         }
 
+        public Vector2Int WorldPositionToGridPosition(Vector3 worldPosition)
+        {
+            int x = (int)((worldPosition.x - transform.position.x) / TileSize + 0.5f);
+            int z = (int)((worldPosition.z - transform.position.z) / TileSize + 0.5f);
+            return new Vector2Int(x, z);
+        }
 
         public bool CheckIfInBound(int startX, int startZ)
         {
