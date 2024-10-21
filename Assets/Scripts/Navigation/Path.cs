@@ -11,7 +11,7 @@ namespace Navigation
         List<PathElement> m_elements;
 
 
-        public List<PathElement> elements { get => m_elements; private set => m_elements = value; }
+        public IReadOnlyList<PathElement> elements { get => m_elements; }
         public int cost { get => m_cost; private set => m_cost = value; }
         public int Count { get => m_elements.Count; }
 
@@ -21,6 +21,16 @@ namespace Navigation
             m_cost = cost;
             m_elements = elements;
         }
+
+
+        public PathElement this[int index]
+        {
+            get
+            {
+                return m_elements[index];
+            }
+        }
+
 
         IEnumerator IEnumerable.GetEnumerator()
         {

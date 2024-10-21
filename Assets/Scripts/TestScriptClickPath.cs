@@ -73,7 +73,7 @@ public class TestScriptClickPath : MonoBehaviour
 
                 for (int i = 1; i < path.Count - 1; i++)
                 {
-                    pathFlags.Add(Instantiate<GameObject>(pathPrefab, path.elements[i].worldPosition, Quaternion.identity));
+                    pathFlags.Add(Instantiate<GameObject>(pathPrefab, path[i].worldPosition, Quaternion.identity));
                 }
 
             }
