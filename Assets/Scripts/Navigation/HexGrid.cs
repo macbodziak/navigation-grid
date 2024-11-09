@@ -7,21 +7,38 @@ namespace Navigation
 {
     public class HexGrid : MonoBehaviour
     {
-
+        #region Fields
         [SerializeField] float tileSize;
         [SerializeField] int width;
         [SerializeField] int height;
         [SerializeField] Node[] nodes;
         [SerializeField] Vector3[] nodeWorldPositions;
 
+#if UNITY_EDITOR
+        [SerializeField] bool debugDrawHexes = true;
+#endif
+        static private readonly int MOVEMENT_COST = 10;
+        static private readonly Vector2Int[] neighbours = {
+            new Vector2Int(1, 1),
+            new Vector2Int(1, 0),
+            new Vector2Int(1, -1),
+            new Vector2Int(0, -1),
+            new Vector2Int(-1, 0),
+            new Vector2Int(0, 1),
+        };
+
         static private readonly float HEX_HEIGHT = 1.15470054F;
         static private readonly float VERTICAL_SPACING = 0.8660254f;
+
+        #endregion
 
         public int Width { get => width; private set => width = value; }
         public int Height { get => height; private set => height = value; }
         public int Count { get => Height * Width; }
         public Vector3 Position { get => transform.position; }
         public float TileSize { get => tileSize; private set => tileSize = value; }
+
+        public Vector2Int[] Neighbours { get => neighbours; }
 
         public void CreateMap(int width, int height, float tileSize, LayerMask notWalkableLayers, int collisionLayer, float colliderSize, float rayLength)
         {
@@ -196,7 +213,20 @@ namespace Navigation
                     Gizmos.color = Color.red;
                 }
 
+                Vector3 worldPos = nodeWorldPositions[n.id];
                 Gizmos.DrawCube(nodeWorldPositions[n.id], new Vector3(0.1f, 0.1f, 0.1f));
+
+                if (debugDrawHexes)
+                {
+                    Vector3[] points = new Vector3[6];
+                    points[0] = new Vector3(worldPos.x, 0f, worldPos.z + tileSize * HEX_HEIGHT * 0.5f);
+                    points[1] = new Vector3(worldPos.x + tileSize * 0.5f, 0f, worldPos.z + tileSize * HEX_HEIGHT * 0.25f);
+                    points[2] = new Vector3(worldPos.x + tileSize * 0.5f, 0f, worldPos.z + tileSize * HEX_HEIGHT * -0.25f);
+                    points[3] = new Vector3(worldPos.x, 0f, worldPos.z + tileSize * HEX_HEIGHT * -0.5f);
+                    points[4] = new Vector3(worldPos.x + tileSize * -0.5f, 0f, worldPos.z + tileSize * HEX_HEIGHT * -0.25f);
+                    points[5] = new Vector3(worldPos.x + tileSize * -0.5f, 0f, worldPos.z + tileSize * HEX_HEIGHT * 0.25f);
+                    Gizmos.DrawLineStrip(points, true);
+                }
             }
         }
 
@@ -227,28 +257,15 @@ namespace Navigation
 
         public Vector2Int WorldPositionToGridPosition(Vector3 worldPosition)
         {
-            //TO DO
-            // int x = (int)((worldPosition.x - transform.position.x) / TileSize + 0.5f);
-            // int z = (int)((worldPosition.z - transform.position.z) / TileSize + 0.5f);
-            // return new Vector2Int(x, z);
-
-
-            // float GridSpacePositionX = worldPosition.x - transform.position.x + tileSize * 0.5f;
-            // float GridSpacePositionZ = worldPosition.z - transform.position.z + HEX_HEIGHT * tileSize * 0.5f;
 
             float GridSpacePositionX = worldPosition.x - transform.position.x;
             float GridSpacePositionZ = worldPosition.z - transform.position.z;
 
-
-            float q = ((0.57735027f * GridSpacePositionX - 0.33333333f * GridSpacePositionZ) / (HEX_HEIGHT * tileSize * 0.5f) + 0.5f);
-            float r = (0.66666667f * GridSpacePositionZ / (HEX_HEIGHT * tileSize * 0.5f) + 0.5f);
+            float q = (0.57735027f * GridSpacePositionX - 0.33333333f * GridSpacePositionZ) / (HEX_HEIGHT * tileSize * 0.5f) + 0.5f;
+            float r = 0.66666667f * GridSpacePositionZ / (HEX_HEIGHT * tileSize * 0.5f) + 0.5f;
 
             float x = q + (r - r % 2) * 0.5f;
             float z = r;
-
-            Debug.Log("GridSpacePositionX = " + GridSpacePositionX + "  GridSpacePositionZ = " + GridSpacePositionZ);
-
-            Debug.Log("q = " + q + "  r = " + r);
 
             return new Vector2Int((int)x, (int)z);
         }
