@@ -84,6 +84,8 @@ namespace Navigation
                         continue;
                     }
 
+                    //TO DO - not straight or diagonal movement - here it should be probably another cost array etc or seperate method??
+                    //TO DO - account for movement cost in node
                     if (i % 2 == 0) // if straight movement, check only this node
                     {
                         if (navGrid.IsWalkable(neighbourIndex) == false)
@@ -116,6 +118,105 @@ namespace Navigation
             return null;
         }
 
+
+
+
+        static public Path FindPath(HexGrid hexGrid, int start_x, int start_z, int goal_x, int goal_z)
+        {
+            if (hexGrid.CheckIfInBound(start_x, start_z) == false)
+            {
+                return null;
+            }
+
+            if (hexGrid.CheckIfInBound(goal_x, goal_z) == false)
+            {
+                return null;
+            }
+
+            Utils.PriorityQueue<int, int> frontier = new Utils.PriorityQueue<int, int>();  // <id, priority or heuristic>
+            AStarSearchNodeData[] nodeData = new AStarSearchNodeData[hexGrid.Count];
+
+            int currentIndex;
+            int goalIndex = hexGrid.IndexAt(goal_x, goal_z);
+
+            //initilize nodeData
+            for (int i = 0; i < hexGrid.Count; i++)
+            {
+                nodeData[i].costSoFar = int.MaxValue;
+                nodeData[i].cameFrom = -1;              //cameFrom represent the index int nodes array of the predesessor
+            }
+
+            //set the cost so far of the starting position to 0
+            nodeData[hexGrid.IndexAt(start_x, start_z)].costSoFar = 0;
+
+            frontier.Enqueue(hexGrid.IndexAt(start_x, start_z), 0);
+
+            Vector2Int[] neighboursEven = hexGrid.NeighboursEven;
+            Vector2Int[] neighboursOdd = hexGrid.NeighboursOdd;
+            Vector2Int[] neighbours;
+
+            int movementCost = hexGrid.MovementCost;
+
+
+            while (frontier.Count > 0)
+            {
+
+                Vector2Int neighbourGridPosition;
+                int neighbourIndex;
+                int newCost;
+                Vector2Int currentGridPosition;
+
+                currentIndex = frontier.Dequeue();
+
+                if (currentIndex == goalIndex)
+                {
+                    //TO DO
+                    return MakePath(hexGrid, goalIndex, nodeData);
+                }
+
+                currentGridPosition = hexGrid.NodeAt(currentIndex).gridPosition;
+
+                //TO DO - 6 not 8, take directions count
+                if (currentGridPosition.y % 2 == 0)
+                {
+                    neighbours = neighboursEven;
+                }
+                else
+                {
+                    neighbours = neighboursOdd;
+                }
+
+                for (int i = 0; i < 6; i++)
+                {
+                    neighbourGridPosition = currentGridPosition + neighbours[i];
+                    neighbourIndex = hexGrid.IndexAt(neighbourGridPosition);
+
+                    if (neighbourIndex == -1)
+                    {
+                        continue;
+                    }
+
+                    //TO DO - not straight or diagonal movement - here it should be probably another cost array etc or seperate method??
+
+                    if (hexGrid.IsWalkable(neighbourIndex) == false)
+                    {
+                        continue;
+                    }
+                    //TO DO - account for movement cost in node
+                    newCost = nodeData[currentIndex].costSoFar + movementCost;
+
+
+                    if (newCost < nodeData[neighbourIndex].costSoFar)
+                    {
+                        nodeData[neighbourIndex].costSoFar = newCost;
+                        nodeData[neighbourIndex].cameFrom = currentIndex;
+
+                        frontier.Enqueue(neighbourIndex, newCost + Distance(hexGrid, neighbourIndex, goalIndex));
+                    }
+                }
+            }
+            return null;
+        }
 
         //<summary>
         //Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
@@ -179,6 +280,7 @@ namespace Navigation
             }
         }
 
+        //TO DO - refactor MakePath, abstract with square and hex grid
         static private Path MakePath(NavGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData)
         {
 
@@ -199,6 +301,28 @@ namespace Navigation
             return new Path(pathElements, totalCost);
         }
 
+        //TO DO - refactor MakePath, abstract with square and hex grid
+        static private Path MakePath(HexGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData)
+        {
+
+            int currentIndex = goalIndex;
+            int totalCost = nodeData[goalIndex].costSoFar;
+
+            List<PathElement> pathElements = new List<PathElement>();
+
+            while (currentIndex != -1)
+            {
+                Vector2Int gridPosition = navGrid.NodeAt(currentIndex).gridPosition;
+                Vector3 worldPosition = navGrid.GetNodeWorldPosition(gridPosition);
+                pathElements.Add(new PathElement(currentIndex, new Vector2Int(gridPosition.x, gridPosition.y), worldPosition));
+
+                currentIndex = nodeData[currentIndex].cameFrom;
+            }
+
+            return new Path(pathElements, totalCost);
+        }
+
+
         static private int ManhattanDistance(NavGrid navGrid, int checkedIndex, int goalIndex)
         {
             Vector2Int a = navGrid.NodeAt(checkedIndex).gridPosition;
@@ -206,7 +330,16 @@ namespace Navigation
             return STRAIGHT_COST * (Mathf.Abs(b.x - a.x) + Mathf.Abs(b.y - a.y));
         }
 
+        //TO DO - abstract square and hex grid
         static private int Distance(NavGrid navGrid, int checkedIndex, int goalIndex)
+        {
+            Vector2Int a = navGrid.NodeAt(checkedIndex).gridPosition;
+            Vector2Int b = navGrid.NodeAt(goalIndex).gridPosition;
+            return (int)((b - a).magnitude);
+        }
+
+        //TO DO - abstract square and hex grid
+        static private int Distance(HexGrid navGrid, int checkedIndex, int goalIndex)
         {
             Vector2Int a = navGrid.NodeAt(checkedIndex).gridPosition;
             Vector2Int b = navGrid.NodeAt(goalIndex).gridPosition;
