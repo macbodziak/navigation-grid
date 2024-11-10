@@ -30,11 +30,40 @@ public class TestScriptHex : MonoBehaviour
     void Update()
     {
         MousePositionToGripPositionDebug();
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            stopwatch.Reset();
+            stopwatch.Start();
+            time_start = Time.realtimeSinceStartup;
+            // for (int i = 0; i < 10; i++)
+            {
+                path = Pathfinder.FindPath(hexGrid, start.x, start.y, goal.x, goal.y);
+            }
+            stopwatch.Stop();
+            time_finish = Time.realtimeSinceStartup;
+
+            // Get the elapsed time as a TimeSpan value
+            System.TimeSpan ts = stopwatch.Elapsed;
+            Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
+            Debug.Log($"path finding took <color=orange>{time_finish - time_start} s </color>");
+            ShowDebugPath(path);
+        }
     }
 
     private void ShowDebugPath(Path path)
     {
+        if (path == null)
+        {
+            return;
+        }
 
+        Debug.Log("path.cost = " + path.cost);
+
+        for (int i = 1; i < path.Count; i++)
+        {
+            Debug.DrawLine(path.elements[i - 1].worldPosition, path.elements[i].worldPosition, Color.red, 15.0f);
+        }
     }
 
     private void ShowDebugArea(WalkableArea area)
@@ -57,10 +86,9 @@ public class TestScriptHex : MonoBehaviour
             {
                 // Log the name of the object that was hit
                 Debug.Log("Hit object: " + hit.collider.gameObject.name + ", point: " + hit.point);
-                Vector2Int gridPos = hexGrid.WorldPositionToGridPosition(hit.point);
                 Node node = hexGrid.NodeAt(hit.point);
 
-                Debug.Log("gridPos: " + gridPos + " , node id: " + node.id + " , walkable: " + node.walkable);
+                Debug.Log("gridPos: " + node.gridPosition + " , node id: " + node.id + " , walkable: " + node.walkable);
 
                 // Do something with the hit object, e.g.:
                 // hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.red;

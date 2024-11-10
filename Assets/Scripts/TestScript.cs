@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 
 public class TestScript : MonoBehaviour
 {
-    [SerializeField] NavGrid navGrid;
+    [SerializeField] SquareGrid navGrid;
     [SerializeField] Vector2Int start;
     [SerializeField] Vector2Int goal;
 
@@ -157,7 +157,7 @@ public class TestScript : MonoBehaviour
         foreach (var element in area)
         {
 
-            Debug.DrawLine(element.worldPosition, navGrid.GetNodeWorldPosition(element.originIndex), Color.yellow, 10.0f);
+            Debug.DrawLine(element.worldPosition, navGrid.NodeWorldPositionAt(element.originIndex), Color.yellow, 10.0f);
         }
 
     }
@@ -178,7 +178,7 @@ public class TestScript : MonoBehaviour
             {
                 // Log the name of the object that was hit
                 Debug.Log("Hit object: " + hit.collider.gameObject.name + ", point: " + hit.point);
-                Vector2Int gridPos = navGrid.WorldPositionToGridPosition(hit.point);
+                Vector2Int gridPos = navGrid.GridPositionAt(hit.point);
                 Node node = navGrid.NodeAt(hit.point);
 
                 Debug.Log("gridPos: " + gridPos + " , node id: " + node.id + " , walkable: " + node.walkable);

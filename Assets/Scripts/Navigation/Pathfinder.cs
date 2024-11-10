@@ -9,75 +9,63 @@ namespace Navigation
 {
     public class Pathfinder
     {
-        static private readonly int DIAGONAL_COST = 14;
-        static private readonly int STRAIGHT_COST = 10;
-        static private readonly Vector2Int[] direction = {
-            new Vector2Int(0, 1),
-            new Vector2Int(1, 1),
-            new Vector2Int(1, 0),
-            new Vector2Int(1, -1),
-            new Vector2Int(0, -1),
-            new Vector2Int(-1, -1),
-            new Vector2Int(-1, 0),
-            new Vector2Int(-1, 1),
-            new Vector2Int(0, 1),
-        };
-
         //<summary>
-        //Synchronous method for finding a Path. Return a Path if one is found or null if not
+        //Synchronous method for finding a Path on a Square Grid. Return a Path if one is found or null if not
         //</summary>
-        static public Path FindPath(NavGrid navGrid, int start_x, int start_z, int goal_x, int goal_z)
+        static public Path FindPath(SquareGrid grid, int start_x, int start_z, int goal_x, int goal_z)
         {
-            if (navGrid.CheckIfInBound(start_x, start_z) == false)
+            if (grid.CheckIfInBound(start_x, start_z) == false)
             {
                 return null;
             }
 
-            if (navGrid.CheckIfInBound(goal_x, goal_z) == false)
+            if (grid.CheckIfInBound(goal_x, goal_z) == false)
             {
                 return null;
             }
 
             Utils.PriorityQueue<int, int> frontier = new Utils.PriorityQueue<int, int>();  // <id, priority or heuristic>
-            AStarSearchNodeData[] nodeData = new AStarSearchNodeData[navGrid.Count];
+            AStarSearchNodeData[] nodeData = new AStarSearchNodeData[grid.Count];
 
             int currentIndex;
-            int goalIndex = navGrid.IndexAt(goal_x, goal_z);
+            int goalIndex = grid.IndexAt(goal_x, goal_z);
 
             //initilize nodeData
-            for (int i = 0; i < navGrid.Count; i++)
+            for (int i = 0; i < grid.Count; i++)
             {
                 nodeData[i].costSoFar = int.MaxValue;
                 nodeData[i].cameFrom = -1;              //cameFrom represent the index int nodes array of the predesessor
             }
 
             //set the cost so far of the starting position to 0
-            nodeData[navGrid.IndexAt(start_x, start_z)].costSoFar = 0;
+            nodeData[grid.IndexAt(start_x, start_z)].costSoFar = 0;
 
-            frontier.Enqueue(navGrid.IndexAt(start_x, start_z), 0);
+            frontier.Enqueue(grid.IndexAt(start_x, start_z), 0);
 
+            Vector2Int[] neighbours = grid.Neighbours;
+            int DiagonalCost = SquareGrid.DiagonalCost;
+            int StraightCost = SquareGrid.StraightCost;
+            Vector2Int neighbourGridPosition;
+            int neighbourIndex;
+            int newCost;
+            Vector2Int currentGridPosition;
 
             while (frontier.Count > 0)
             {
-
-                Vector2Int neighbourGridPosition;
-                int neighbourIndex;
-                int newCost;
-                Vector2Int currentGridPosition;
-
                 currentIndex = frontier.Dequeue();
 
                 if (currentIndex == goalIndex)
                 {
-                    return MakePath(navGrid, goalIndex, nodeData);
+                    return MakePath(grid, goalIndex, nodeData);
                 }
 
-                currentGridPosition = navGrid.NodeAt(currentIndex).gridPosition;
+                currentGridPosition = grid.NodeAt(currentIndex).gridPosition;
+
 
                 for (int i = 0; i < 8; i++)
                 {
-                    neighbourGridPosition = currentGridPosition + direction[i];
-                    neighbourIndex = navGrid.IndexAt(neighbourGridPosition);
+                    neighbourGridPosition = currentGridPosition + neighbours[i];
+                    neighbourIndex = grid.IndexAt(neighbourGridPosition);
 
                     if (neighbourIndex == -1)
                     {
@@ -88,22 +76,22 @@ namespace Navigation
                     //TO DO - account for movement cost in node
                     if (i % 2 == 0) // if straight movement, check only this node
                     {
-                        if (navGrid.IsWalkable(neighbourIndex) == false)
+                        if (grid.IsWalkable(neighbourIndex) == false)
                         {
                             continue;
                         }
-                        newCost = nodeData[currentIndex].costSoFar + STRAIGHT_COST;
+                        newCost = nodeData[currentIndex].costSoFar + StraightCost;
                     }
                     else //if diagonal movement, check this node and the adjacent nodes
                     {
-                        if (navGrid.IsWalkable(neighbourIndex) == false ||
-                        navGrid.IsWalkable(navGrid.IndexAt(currentGridPosition + direction[i - 1])) == false ||
-                         navGrid.IsWalkable(navGrid.IndexAt(currentGridPosition + direction[i + 1])) == false
+                        if (grid.IsWalkable(neighbourIndex) == false ||
+                        grid.IsWalkable(grid.IndexAt(currentGridPosition + neighbours[i - 1])) == false ||
+                         grid.IsWalkable(grid.IndexAt(currentGridPosition + neighbours[i + 1])) == false
                         )
                         {
                             continue;
                         }
-                        newCost = nodeData[currentIndex].costSoFar + DIAGONAL_COST;
+                        newCost = nodeData[currentIndex].costSoFar + DiagonalCost;
                     }
 
                     if (newCost < nodeData[neighbourIndex].costSoFar)
@@ -111,7 +99,7 @@ namespace Navigation
                         nodeData[neighbourIndex].costSoFar = newCost;
                         nodeData[neighbourIndex].cameFrom = currentIndex;
 
-                        frontier.Enqueue(neighbourIndex, newCost + ManhattanDistance(navGrid, neighbourIndex, goalIndex));
+                        frontier.Enqueue(neighbourIndex, newCost + ManhattanDistance(grid, neighbourIndex, goalIndex));
                     }
                 }
             }
@@ -120,7 +108,9 @@ namespace Navigation
 
 
 
-
+        //<summary>
+        //Synchronous method for finding a Path on a Hex Grid. Return a Path if one is found or null if not
+        //</summary>
         static public Path FindPath(HexGrid hexGrid, int start_x, int start_z, int goal_x, int goal_z)
         {
             if (hexGrid.CheckIfInBound(start_x, start_z) == false)
@@ -154,23 +144,18 @@ namespace Navigation
             Vector2Int[] neighboursEven = hexGrid.NeighboursEven;
             Vector2Int[] neighboursOdd = hexGrid.NeighboursOdd;
             Vector2Int[] neighbours;
-
+            Vector2Int neighbourGridPosition;
+            int neighbourIndex;
+            int newCost;
+            Vector2Int currentGridPosition;
             int movementCost = hexGrid.MovementCost;
-
 
             while (frontier.Count > 0)
             {
-
-                Vector2Int neighbourGridPosition;
-                int neighbourIndex;
-                int newCost;
-                Vector2Int currentGridPosition;
-
                 currentIndex = frontier.Dequeue();
 
                 if (currentIndex == goalIndex)
                 {
-                    //TO DO
                     return MakePath(hexGrid, goalIndex, nodeData);
                 }
 
@@ -221,7 +206,7 @@ namespace Navigation
         //<summary>
         //Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
         //</summary>
-        static public PathRequest SchedulePath(NavGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition)
+        static public PathRequest SchedulePath(SquareGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition)
         {
             // 
             if (navGrid.CheckIfInBound(startPosition.x, startPosition.y) == false)
@@ -267,7 +252,7 @@ namespace Navigation
         }
 
 
-        static private void DebugPrintPath(NavGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData)
+        static private void DebugPrintPath(SquareGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData)
         {
             int currentIndex = goalIndex;
 
@@ -280,7 +265,7 @@ namespace Navigation
             }
         }
 
-        //TO DO - refactor MakePath, abstract with square and hex grid
+
         static private Path MakePath(NavGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData)
         {
 
@@ -292,28 +277,7 @@ namespace Navigation
             while (currentIndex != -1)
             {
                 Vector2Int gridPosition = navGrid.NodeAt(currentIndex).gridPosition;
-                Vector3 worldPosition = navGrid.GetNodeWorldPosition(gridPosition);
-                pathElements.Add(new PathElement(currentIndex, new Vector2Int(gridPosition.x, gridPosition.y), worldPosition));
-
-                currentIndex = nodeData[currentIndex].cameFrom;
-            }
-
-            return new Path(pathElements, totalCost);
-        }
-
-        //TO DO - refactor MakePath, abstract with square and hex grid
-        static private Path MakePath(HexGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData)
-        {
-
-            int currentIndex = goalIndex;
-            int totalCost = nodeData[goalIndex].costSoFar;
-
-            List<PathElement> pathElements = new List<PathElement>();
-
-            while (currentIndex != -1)
-            {
-                Vector2Int gridPosition = navGrid.NodeAt(currentIndex).gridPosition;
-                Vector3 worldPosition = navGrid.GetNodeWorldPosition(gridPosition);
+                Vector3 worldPosition = navGrid.NodeWorldPositionAt(gridPosition);
                 pathElements.Add(new PathElement(currentIndex, new Vector2Int(gridPosition.x, gridPosition.y), worldPosition));
 
                 currentIndex = nodeData[currentIndex].cameFrom;
@@ -323,11 +287,11 @@ namespace Navigation
         }
 
 
-        static private int ManhattanDistance(NavGrid navGrid, int checkedIndex, int goalIndex)
+        static private int ManhattanDistance(SquareGrid squareGrid, int checkedIndex, int goalIndex)
         {
-            Vector2Int a = navGrid.NodeAt(checkedIndex).gridPosition;
-            Vector2Int b = navGrid.NodeAt(goalIndex).gridPosition;
-            return STRAIGHT_COST * (Mathf.Abs(b.x - a.x) + Mathf.Abs(b.y - a.y));
+            Vector2Int a = squareGrid.NodeAt(checkedIndex).gridPosition;
+            Vector2Int b = squareGrid.NodeAt(goalIndex).gridPosition;
+            return SquareGrid.StraightCost * (Mathf.Abs(b.x - a.x) + Mathf.Abs(b.y - a.y));
         }
 
         //TO DO - abstract square and hex grid
@@ -338,17 +302,9 @@ namespace Navigation
             return (int)((b - a).magnitude);
         }
 
-        //TO DO - abstract square and hex grid
-        static private int Distance(HexGrid navGrid, int checkedIndex, int goalIndex)
+        static public WalkableArea FindWalkableArea(SquareGrid grid, int start_x, int start_z, int budget)
         {
-            Vector2Int a = navGrid.NodeAt(checkedIndex).gridPosition;
-            Vector2Int b = navGrid.NodeAt(goalIndex).gridPosition;
-            return (int)((b - a).magnitude);
-        }
-
-        static public WalkableArea FindWalkableArea(NavGrid navGrid, int start_x, int start_z, int budget)
-        {
-            if (navGrid.CheckIfInBound(start_x, start_z) == false)
+            if (grid.CheckIfInBound(start_x, start_z) == false)
             {
                 return null;
             }
@@ -360,39 +316,38 @@ namespace Navigation
 
             List<int> areaIndices = new();
             Utils.PriorityQueue<int, int> frontier = new Utils.PriorityQueue<int, int>();  // <id, priority or heuristic>
-            AStarSearchNodeData[] nodeData = new AStarSearchNodeData[navGrid.Count];
+            AStarSearchNodeData[] nodeData = new AStarSearchNodeData[grid.Count];
 
             int currentIndex;
 
             //initilize nodeData
-            for (int i = 0; i < navGrid.Count; i++)
+            for (int i = 0; i < grid.Count; i++)
             {
                 nodeData[i].costSoFar = int.MaxValue;
                 nodeData[i].cameFrom = -1;              //cameFrom represent the index int nodes array of the predesessor
             }
 
             //set the cost so far of the starting position to 0
-            nodeData[navGrid.IndexAt(start_x, start_z)].costSoFar = 0;
+            nodeData[grid.IndexAt(start_x, start_z)].costSoFar = 0;
 
-            frontier.Enqueue(navGrid.IndexAt(start_x, start_z), 0);
+            frontier.Enqueue(grid.IndexAt(start_x, start_z), 0);
 
+            Vector2Int neighbourGridPosition;
+            Vector2Int[] neighbours = grid.Neighbours;
+            int neighbourIndex;
+            int newCost;
+            Vector2Int currentGridPosition;
 
             while (frontier.Count > 0)
             {
-
-                Vector2Int neighbourGridPosition;
-                int neighbourIndex;
-                int newCost;
-                Vector2Int currentGridPosition;
-
                 currentIndex = frontier.Dequeue();
 
-                currentGridPosition = navGrid.NodeAt(currentIndex).gridPosition;
+                currentGridPosition = grid.NodeAt(currentIndex).gridPosition;
 
                 for (int i = 0; i < 8; i++)
                 {
-                    neighbourGridPosition = currentGridPosition + direction[i];
-                    neighbourIndex = navGrid.IndexAt(neighbourGridPosition);
+                    neighbourGridPosition = currentGridPosition + neighbours[i];
+                    neighbourIndex = grid.IndexAt(neighbourGridPosition);
 
                     if (neighbourIndex == -1)
                     {
@@ -401,22 +356,22 @@ namespace Navigation
 
                     if (i % 2 == 0) // if straight movement, check only this node
                     {
-                        if (navGrid.IsWalkable(neighbourIndex) == false)
+                        if (grid.IsWalkable(neighbourIndex) == false)
                         {
                             continue;
                         }
-                        newCost = nodeData[currentIndex].costSoFar + STRAIGHT_COST;
+                        newCost = nodeData[currentIndex].costSoFar + SquareGrid.StraightCost;
                     }
                     else //if diagonal movement, check this node and the adjacent nodes
                     {
-                        if (navGrid.IsWalkable(neighbourIndex) == false ||
-                        navGrid.IsWalkable(navGrid.IndexAt(currentGridPosition + direction[i - 1])) == false ||
-                         navGrid.IsWalkable(navGrid.IndexAt(currentGridPosition + direction[i + 1])) == false
+                        if (grid.IsWalkable(neighbourIndex) == false ||
+                        grid.IsWalkable(grid.IndexAt(currentGridPosition + neighbours[i - 1])) == false ||
+                         grid.IsWalkable(grid.IndexAt(currentGridPosition + neighbours[i + 1])) == false
                         )
                         {
                             continue;
                         }
-                        newCost = nodeData[currentIndex].costSoFar + DIAGONAL_COST;
+                        newCost = nodeData[currentIndex].costSoFar + SquareGrid.DiagonalCost;
                     }
 
                     if (newCost <= budget && newCost < nodeData[neighbourIndex].costSoFar)
@@ -445,14 +400,14 @@ namespace Navigation
             {
                 int areaIndex = areaIndices[i];
                 GridToAreaElementsMap.Add(areaIndex, i);
-                Vector2Int gridPosition = navGrid.NodeAt(areaIndex).gridPosition;
-                Vector3 worldPosition = navGrid.GetNodeWorldPosition(gridPosition);
+                Vector2Int gridPosition = grid.NodeAt(areaIndex).gridPosition;
+                Vector3 worldPosition = grid.NodeWorldPositionAt(gridPosition);
                 walkableAreaElements.Add(new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
             }
-            return new WalkableArea(navGrid, walkableAreaElements, GridToAreaElementsMap);
+            return new WalkableArea(grid, walkableAreaElements, GridToAreaElementsMap);
         }
 
-        static public List<WalkableAreaElement> ScheduleWalkableArea(NavGrid navGrid, int start_x, int start_z, int budget)
+        static public List<WalkableAreaElement> ScheduleWalkableArea(SquareGrid navGrid, int start_x, int start_z, int budget)
         {
             throw new NotImplementedException();
             // return null;

@@ -9,11 +9,11 @@ namespace Navigation
 {
     public class WalkableArea : IEnumerable
     {
-        NavGrid m_navGrid;
+        SquareGrid m_navGrid;
         Dictionary<int, int> m_gridToAreaMap;
         List<WalkableAreaElement> m_areaElements;
 
-        public WalkableArea(NavGrid navGrid, List<WalkableAreaElement> areaElements, Dictionary<int, int> gridToAreaIndexMap)
+        public WalkableArea(SquareGrid navGrid, List<WalkableAreaElement> areaElements, Dictionary<int, int> gridToAreaIndexMap)
         {
             m_navGrid = navGrid;
             m_areaElements = areaElements;

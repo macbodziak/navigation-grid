@@ -7,7 +7,7 @@ using System;
 
 namespace Navigation
 {
-    [CustomEditor(typeof(NavGrid))]
+    [CustomEditor(typeof(NavGrid), true)]
     public class MapInspector : Editor
     {
         private const string TILESIZE_PREF_KEY = "TileSizeBakeField";
@@ -189,7 +189,7 @@ namespace Navigation
 
         private void OnCreateMapButtonClicked()
         {
-            NavGrid map = target as NavGrid;
+            SquareGrid map = target as SquareGrid;
 
             map.CreateMap(WidthBakeField.value, HeightBakeField.value, TileSizeBakeField.value, NotWalkableLayerMaskField.value, CollisionLayerField.value, ColliderSizeField.value, RayLengthField.value);
             EditorUtility.SetDirty(map);

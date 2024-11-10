@@ -1,22 +1,37 @@
 using System;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using Utils;
 
 namespace Navigation
 {
-    public class NavGrid : MonoBehaviour
+    public abstract class NavGrid : MonoBehaviour
     {
-
+        #region Fields
         [SerializeField] float tileSize;
         [SerializeField] int width;
         [SerializeField] int height;
-        [SerializeField] Node[] nodes;
+        [SerializeField] protected Node[] nodes;
+        [SerializeField] protected Vector3[] nodeWorldPositions;
 
-        public int Width { get => width; private set => width = value; }
-        public int Height { get => height; private set => height = value; }
+#if UNITY_EDITOR
+        [SerializeField] bool debugDrawTileOutline = true;
+        [SerializeField] bool debugDrawTileCenter = true;
+#endif
+        #endregion
+
+        #region Properties
+        public int Width { get => width; protected set => width = value; }
+        public int Height { get => height; protected set => height = value; }
         public int Count { get => Height * Width; }
         public Vector3 Position { get => transform.position; }
-        public float TileSize { get => tileSize; private set => tileSize = value; }
+        public float TileSize { get => tileSize; protected set => tileSize = value; }
+
+#if UNITY_EDITOR
+        protected bool DebugDrawTileOutline { get => debugDrawTileOutline; }
+        protected bool DebugDrawTileCenter { get => debugDrawTileCenter; }
+#endif
+        #endregion
 
         public void CreateMap(int width, int height, float tileSize, LayerMask notWalkableLayers, int collisionLayer, float colliderSize, float rayLength)
         {
@@ -25,6 +40,7 @@ namespace Navigation
             this.TileSize = tileSize;
 
             nodes = new Node[width * height];
+            nodeWorldPositions = new Vector3[width * height];
 
             int gridIndex;
             bool walkable;
@@ -34,52 +50,21 @@ namespace Navigation
                 for (int w = 0; w < width; w++)
                 {
                     gridIndex = IndexAt(w, h);
-                    walkable = TestForWalkability(w, h, notWalkableLayers, colliderSize, rayLength);
+                    nodeWorldPositions[gridIndex] = GridPositionToWorldPosition(w, h);
+                    walkable = TestForWalkability(nodeWorldPositions[gridIndex], notWalkableLayers, colliderSize, rayLength);
                     nodes[gridIndex].Setup(gridIndex, w, h, walkable);
                 }
             }
 
             SetupCollider(collisionLayer);
-            foreach (Node n in nodes)
-            {
-                Debug.Log(n);
-            }
         }
 
 
-        private bool TestForWalkability(int x, int z, LayerMask notWalkableLayers, float colliderSize, float rayLength)
-        {
-            Vector3 nodePosition = GetNodeWorldPosition(x, z);
-            Vector3 center = nodePosition + new Vector3(0f, rayLength, 0f);
-            Vector3 halfExtents = Vector3.one * TileSize * 0.5f * colliderSize;
-            Vector3 direction = Vector3.down;
-            float maxDistance = rayLength;
+        protected abstract bool TestForWalkability(Vector3 nodeWorldPosition, LayerMask notWalkableLayers, float colliderSize, float rayLength);
 
-            if (Physics.BoxCast(center, halfExtents, direction, Quaternion.identity, maxDistance, notWalkableLayers))
-            {
-                return false;
-            }
-            return true;
-        }
+        protected abstract void SetupCollider(int collisionLayer);
 
-
-        private void SetupCollider(int collisionLayer)
-        {
-            //check if there are already colliders attached and remove them
-            Collider[] colliders = GetComponents<Collider>();
-            foreach (Collider col in colliders)
-            {
-                Debug.Log("<color=#ffa500ff>removing existing NavGrid collider</color>: " + col);
-                DestroyImmediate(col);
-            }
-
-            gameObject.layer = collisionLayer;
-
-            BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
-            boxCollider.size = new Vector3(width * tileSize, 0.1f, height * tileSize);
-            boxCollider.center = new Vector3((width - 1f) * tileSize * 0.5f, 0f, (height - 1f) * tileSize * 0.5f);
-        }
-
+        #region Index Getters
 
         public int IndexAt(int x, int z)
         {
@@ -99,12 +84,13 @@ namespace Navigation
 
         public int IndexAt(Vector3 worldPosition)
         {
-            int x = (int)((worldPosition.x - transform.position.x) / TileSize + 0.5f);
-            int z = (int)((worldPosition.z - transform.position.z) / TileSize + 0.5f);
-            return IndexAt(x, z);
+            Vector2Int gridPos = WorldPositionToGridPosition(worldPosition);
+            return IndexAt(gridPos.x, gridPos.y);
         }
+        #endregion
 
 
+        #region Node Getters
         public Node NodeAt(int index)
         {
             if (index < 0 || index >= width * height)
@@ -136,6 +122,7 @@ namespace Navigation
             return nodes[IndexAt(gridPosition)];
         }
 
+
         public Node NodeAt(Vector3 worldPosition)
         {
             int index = IndexAt(worldPosition);
@@ -146,6 +133,51 @@ namespace Navigation
             return nodes[IndexAt(worldPosition)];
         }
 
+        #endregion
+
+
+        #region Grid Position Getters
+
+        public Vector2Int GridPositionAt(int index)
+        {
+            int x = index % width;
+            int z = index / width;
+            return new Vector2Int(x, z);
+        }
+        #endregion
+
+
+        public Vector2Int GridPositionAt(Vector3 worldPosition)
+        {
+            return WorldPositionToGridPosition(worldPosition);
+        }
+
+
+        #region World Position Getters and Conversion
+        public Vector3 NodeWorldPositionAt(int x, int z)
+        {
+            return nodeWorldPositions[IndexAt(x, z)];
+        }
+
+
+        public Vector3 NodeWorldPositionAt(Vector2Int p)
+        {
+            return nodeWorldPositions[IndexAt(p)];
+        }
+
+
+        public Vector3 NodeWorldPositionAt(int index)
+        {
+            return nodeWorldPositions[index];
+        }
+
+        protected abstract Vector2Int WorldPositionToGridPosition(Vector3 worldPosition);
+        protected abstract Vector3 GridPositionToWorldPosition(int x, int z);
+
+        #endregion
+
+
+        #region Walkability Checkers
 
         public bool IsWalkable(int index)
         {
@@ -166,6 +198,9 @@ namespace Navigation
             return nodes[IndexAt(gridPosition)].walkable;
             //TO DO - add more checks, such as is occupied by a character
         }
+
+        #endregion
+
 
 
         private void OnDrawGizmos()
@@ -189,38 +224,16 @@ namespace Navigation
                     Gizmos.color = Color.red;
                 }
 
-                Gizmos.DrawCube(GetNodeWorldPosition(n.gridPosition.x, n.gridPosition.y), new Vector3(0.1f, 0.1f, 0.1f));
+                DrawNodeGizmos(n);
+                // Gizmos.DrawCube(NodeWorldPositionAt(n.gridPosition.x, n.gridPosition.y), new Vector3(0.1f, 0.1f, 0.1f));
             }
         }
 
 
-        public Vector3 GetNodeWorldPosition(int x, int z)
-        {
-            return new Vector3(transform.position.x + x * TileSize,
-                                transform.position.y,
-                                transform.position.z + z * TileSize);
-        }
+        protected abstract void DrawNodeGizmos(Node node);
 
 
-        public Vector3 GetNodeWorldPosition(Vector2Int p)
-        {
-            return GetNodeWorldPosition(p.x, p.y);
-        }
-
-
-        public Vector3 GetNodeWorldPosition(int index)
-        {
-            return new Vector3(transform.position.x + nodes[index].gridPosition.x * TileSize,
-                    transform.position.y,
-                    transform.position.z + nodes[index].gridPosition.y * TileSize);
-        }
-
-        public Vector2Int WorldPositionToGridPosition(Vector3 worldPosition)
-        {
-            int x = (int)((worldPosition.x - transform.position.x) / TileSize + 0.5f);
-            int z = (int)((worldPosition.z - transform.position.z) / TileSize + 0.5f);
-            return new Vector2Int(x, z);
-        }
+        #region Bound Checking
 
         public bool CheckIfInBound(int startX, int startZ)
         {
@@ -231,6 +244,7 @@ namespace Navigation
             return true;
         }
 
+
         public bool CheckIfInBound(Vector2Int start)
         {
             if (start.x < 0 || start.x >= Width || start.y < 0 || start.y >= Height)
@@ -239,5 +253,7 @@ namespace Navigation
             }
             return true;
         }
+
+        #endregion
     }
 }

@@ -14,7 +14,7 @@ namespace Navigation
         public JobHandle jobHandle;
         private bool m_valid;
 
-        public PathRequest(NavGrid navGrid)
+        public PathRequest(SquareGrid navGrid)
         {
             openList = new NativeHeap<OpenListElement, OpenListComparer>(Allocator.TempJob, navGrid.Count);
             nodeData = new NativeArray<AStarSearchNodeDataAsync>(navGrid.Count, Allocator.TempJob);
