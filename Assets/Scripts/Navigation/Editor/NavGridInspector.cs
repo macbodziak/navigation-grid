@@ -19,6 +19,9 @@ namespace Navigation
         private const int MAX_GRID_SIZE = 250;
         private const string RAYLENGTH_PREF_KEY = "RayLengthField";
         private const string COLLIDER_SIZE_PREF_KEY = "ColliderSizeField";
+        private const string SHOW_TILE_CENTER_PREF_KEY = "ShowTileCenterToggle";
+        private const string SHOW_TILE_OUTLINE_PREF_KEY = "ShowTileOutlineToggle";
+        private const string SHOW_TILE_INFOTEXT_PREF_KEY = "ShowTileInfoTextToggle";
 
         FloatField TileSizeBakeField;
         IntegerField WidthBakeField;
@@ -52,9 +55,6 @@ namespace Navigation
             MapCreationFoldout.style.paddingBottom = 3;
             MapCreationFoldout.style.marginBottom = 15;
 
-            // Label MapCreationLabel = new Label("Map Baking:");
-            // MapCreationLabel.style.marginBottom = 6;
-            // MapCreationLabel.style.fontSize = 15;
 
             TileSizeBakeField = new FloatField("Tile Size");
             TileSizeBakeField.AddToClassList("unity-base-field__aligned");
@@ -116,6 +116,56 @@ namespace Navigation
             MapCreationFoldout.Add(CreateMapButton);
 
 
+            Foldout DebugFoldout = new Foldout();
+            DebugFoldout.text = "Debug Visualisation";
+            DebugFoldout.style.borderTopWidth = 1;
+            DebugFoldout.style.borderLeftWidth = 1;
+            DebugFoldout.style.borderRightWidth = 1;
+            DebugFoldout.style.borderBottomWidth = 1;
+            DebugFoldout.style.borderTopColor = new Color(0.35f, 0.35f, 0.35f);
+            DebugFoldout.style.borderLeftColor = new Color(0.35f, 0.35f, 0.35f);
+            DebugFoldout.style.borderRightColor = new Color(0.35f, 0.35f, 0.35f);
+            DebugFoldout.style.borderBottomColor = new Color(0.35f, 0.35f, 0.35f);
+            DebugFoldout.style.paddingTop = 3;
+            DebugFoldout.style.paddingLeft = 3;
+            DebugFoldout.style.paddingRight = 6;
+            DebugFoldout.style.paddingBottom = 3;
+            DebugFoldout.style.marginBottom = 15;
+
+            Toggle ShowTileCenterToggle = new Toggle("Show Tile Center");
+            SerializedProperty ShowTileCenterProp = serializedObject.FindProperty("showTileCenterFlag");
+            ShowTileCenterToggle.BindProperty(ShowTileCenterProp);
+            ShowTileCenterToggle.AddToClassList("unity-base-field__aligned");
+            ShowTileCenterToggle.value = EditorPrefs.GetBool(SHOW_TILE_CENTER_PREF_KEY, true);
+            ShowTileCenterToggle.RegisterValueChangedCallback(evt =>
+            {
+                EditorPrefs.SetBool(SHOW_TILE_CENTER_PREF_KEY, evt.newValue);
+            });
+
+            Toggle ShowTileOutlineToggle = new Toggle("Show Tile Outline");
+            SerializedProperty ShowTileOutlineProp = serializedObject.FindProperty("showTileOutlineFlag");
+            ShowTileOutlineToggle.BindProperty(ShowTileOutlineProp);
+            ShowTileOutlineToggle.AddToClassList("unity-base-field__aligned");
+            ShowTileOutlineToggle.value = EditorPrefs.GetBool(SHOW_TILE_OUTLINE_PREF_KEY, true);
+            ShowTileOutlineToggle.RegisterValueChangedCallback(evt =>
+            {
+                EditorPrefs.SetBool(SHOW_TILE_OUTLINE_PREF_KEY, evt.newValue);
+            });
+
+            Toggle ShowTileInfoTextToggle = new Toggle("Show Tile Info Text");
+            SerializedProperty ShowTileInfoTextProp = serializedObject.FindProperty("showTileInfoTextFlag");
+            ShowTileInfoTextToggle.BindProperty(ShowTileInfoTextProp);
+            ShowTileInfoTextToggle.AddToClassList("unity-base-field__aligned");
+            ShowTileInfoTextToggle.value = EditorPrefs.GetBool(SHOW_TILE_INFOTEXT_PREF_KEY, true);
+            ShowTileInfoTextToggle.RegisterValueChangedCallback(evt =>
+             {
+                 EditorPrefs.SetBool(SHOW_TILE_INFOTEXT_PREF_KEY, evt.newValue);
+             });
+
+            DebugFoldout.Add(ShowTileCenterToggle);
+            DebugFoldout.Add(ShowTileOutlineToggle);
+            DebugFoldout.Add(ShowTileInfoTextToggle);
+
             Box ActualMapDataBox = new Box();
             ActualMapDataBox.style.borderTopWidth = 2;
             ActualMapDataBox.style.borderLeftWidth = 2;
@@ -148,6 +198,7 @@ namespace Navigation
             ActualMapDataBox.Add(TileSizeField);
 
             root.Add(MapCreationFoldout);
+            root.Add(DebugFoldout);
             root.Add(ActualMapDataBox);
 
             return root;

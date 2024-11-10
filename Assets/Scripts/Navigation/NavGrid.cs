@@ -1,5 +1,6 @@
 using System;
 using Unity.IO.LowLevel.Unsafe;
+using UnityEditor;
 using UnityEngine;
 using Utils;
 
@@ -15,8 +16,8 @@ namespace Navigation
         [SerializeField] protected Vector3[] nodeWorldPositions;
 
 #if UNITY_EDITOR
-        [SerializeField] bool debugDrawTileOutline = true;
-        [SerializeField] bool debugDrawTileCenter = true;
+        [SerializeField] bool showTileOutlineFlag = true;
+        [SerializeField] bool showTileCenterFlag = true;
 #endif
         #endregion
 
@@ -28,8 +29,8 @@ namespace Navigation
         public float TileSize { get => tileSize; protected set => tileSize = value; }
 
 #if UNITY_EDITOR
-        protected bool DebugDrawTileOutline { get => debugDrawTileOutline; }
-        protected bool DebugDrawTileCenter { get => debugDrawTileCenter; }
+        protected bool DebugDrawTileOutline { get => showTileOutlineFlag; }
+        protected bool DebugDrawTileCenter { get => showTileCenterFlag; }
 #endif
         #endregion
 
@@ -225,12 +226,28 @@ namespace Navigation
                 }
 
                 DrawNodeGizmos(n);
+                DrawTileInfoText(n);
                 // Gizmos.DrawCube(NodeWorldPositionAt(n.gridPosition.x, n.gridPosition.y), new Vector3(0.1f, 0.1f, 0.1f));
             }
         }
 
 
         protected abstract void DrawNodeGizmos(Node node);
+
+        protected void DrawTileInfoText(Node node)
+        {
+            string infoText = $" {node.gridPosition.x},{node.gridPosition.y} " + $"{node.walkable} ";
+
+            GUIStyle style = new GUIStyle(GUI.skin.label);
+            style.alignment = TextAnchor.MiddleCenter;
+            style.fontSize = 10;
+
+            //remember old color
+            //
+            GUI.color = Color.cyan;
+
+            Handles.Label(nodeWorldPositions[node.id], infoText, style);
+        }
 
 
         #region Bound Checking
