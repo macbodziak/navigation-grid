@@ -270,7 +270,7 @@ namespace Navigation
 
         private void OnCreateMapButtonClicked()
         {
-            SquareGrid map = target as SquareGrid;
+            NavGrid map = target as NavGrid;
 
             map.CreateMap(WidthBakeField.value, HeightBakeField.value, TileSizeBakeField.value, NotWalkableLayerMaskField.value, CollisionLayerField.value, ColliderSizeField.value, RayLengthField.value);
             EditorUtility.SetDirty(map);

@@ -260,22 +260,32 @@ namespace Navigation
 #if UNITY_EDITOR
         protected void DrawTileInfoText(Node node, GUIStyle style)
         {
+            bool addSeperator = false;
             string infoText = " ";
 
             if (ShowNodeGriPositionTextFlag)
             {
-                infoText += $"{node.gridPosition.x},{node.gridPosition.y} ";
+                infoText += $"({node.gridPosition.x},{node.gridPosition.y}) ";
+                addSeperator = true;
             }
 
             if (ShowNodeWalkableTextFlag)
             {
+                if (addSeperator == true)
+                {
+                    infoText += "| ";
+                }
                 infoText += $"{node.walkable} ";
+                addSeperator = true;
             }
 
             if (ShowNodeMovementCostTextFlag)
             {
-                //TO DO - swap with actual movementCost
-                infoText += " MC ";
+                if (addSeperator == true)
+                {
+                    infoText += "| ";
+                }
+                infoText += $"{node.movementCostModifier} ";
             }
 
 

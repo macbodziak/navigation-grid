@@ -9,6 +9,7 @@ namespace Navigation
         [SerializeField] int _id;
         [SerializeField] Vector2Int _gridPosition;
         [SerializeField] bool _walkable;
+        [SerializeField] float _movementCostModifier;
 
 
 
@@ -17,12 +18,14 @@ namespace Navigation
             _id = id;
             _gridPosition = new Vector2Int(x, z);
             _walkable = walkable;
+            _movementCostModifier = 1.0f;
         }
 
 
         public int id { get => _id; private set => _id = value; }
         public Vector2Int gridPosition { get => _gridPosition; private set => _gridPosition = value; }
         public bool walkable { get => _walkable; private set => _walkable = value; }
+        public float movementCostModifier { get => _movementCostModifier; private set => _movementCostModifier = value; }
 
 
         public void Setup(int id, int x, int z, bool walkable = true)
@@ -30,6 +33,7 @@ namespace Navigation
             _id = id;
             _gridPosition = new Vector2Int(x, z);
             _walkable = walkable;
+            _movementCostModifier = 1.0f;
         }
 
         public override string ToString()
