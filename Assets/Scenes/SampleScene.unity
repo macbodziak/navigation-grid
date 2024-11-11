@@ -327,7 +327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &110204159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3117,11 +3117,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 83
     _gridPosition: {x: 3, y: 4}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 84
     _gridPosition: {x: 4, y: 4}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 85
     _gridPosition: {x: 5, y: 4}
@@ -3157,19 +3157,19 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 93
     _gridPosition: {x: 13, y: 4}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 94
     _gridPosition: {x: 14, y: 4}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 95
     _gridPosition: {x: 15, y: 4}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 96
     _gridPosition: {x: 16, y: 4}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 97
     _gridPosition: {x: 17, y: 4}
@@ -3197,11 +3197,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 103
     _gridPosition: {x: 3, y: 5}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 104
     _gridPosition: {x: 4, y: 5}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 105
     _gridPosition: {x: 5, y: 5}
@@ -3233,11 +3233,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 112
     _gridPosition: {x: 12, y: 5}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 113
     _gridPosition: {x: 13, y: 5}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 114
     _gridPosition: {x: 14, y: 5}
@@ -3253,15 +3253,15 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 117
     _gridPosition: {x: 17, y: 5}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 118
     _gridPosition: {x: 18, y: 5}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 119
     _gridPosition: {x: 19, y: 5}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 120
     _gridPosition: {x: 0, y: 6}
@@ -3277,11 +3277,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 123
     _gridPosition: {x: 3, y: 6}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 124
     _gridPosition: {x: 4, y: 6}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 125
     _gridPosition: {x: 5, y: 6}
@@ -3313,11 +3313,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 132
     _gridPosition: {x: 12, y: 6}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 133
     _gridPosition: {x: 13, y: 6}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 134
     _gridPosition: {x: 14, y: 6}
@@ -3389,15 +3389,15 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 151
     _gridPosition: {x: 11, y: 7}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 152
     _gridPosition: {x: 12, y: 7}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 153
     _gridPosition: {x: 13, y: 7}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 154
     _gridPosition: {x: 14, y: 7}
@@ -3469,11 +3469,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 171
     _gridPosition: {x: 11, y: 8}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 172
     _gridPosition: {x: 12, y: 8}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 173
     _gridPosition: {x: 13, y: 8}
@@ -3505,11 +3505,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 180
     _gridPosition: {x: 0, y: 9}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 181
     _gridPosition: {x: 1, y: 9}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 182
     _gridPosition: {x: 2, y: 9}
@@ -3525,11 +3525,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 185
     _gridPosition: {x: 5, y: 9}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 186
     _gridPosition: {x: 6, y: 9}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 187
     _gridPosition: {x: 7, y: 9}
@@ -3549,11 +3549,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 191
     _gridPosition: {x: 11, y: 9}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 192
     _gridPosition: {x: 12, y: 9}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 193
     _gridPosition: {x: 13, y: 9}
@@ -3585,11 +3585,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 200
     _gridPosition: {x: 0, y: 10}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 201
     _gridPosition: {x: 1, y: 10}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 202
     _gridPosition: {x: 2, y: 10}
@@ -3605,11 +3605,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 205
     _gridPosition: {x: 5, y: 10}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 206
     _gridPosition: {x: 6, y: 10}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 207
     _gridPosition: {x: 7, y: 10}
@@ -3625,11 +3625,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 210
     _gridPosition: {x: 10, y: 10}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 211
     _gridPosition: {x: 11, y: 10}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 212
     _gridPosition: {x: 12, y: 10}
@@ -3665,11 +3665,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 220
     _gridPosition: {x: 0, y: 11}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 221
     _gridPosition: {x: 1, y: 11}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 222
     _gridPosition: {x: 2, y: 11}
@@ -3685,11 +3685,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 225
     _gridPosition: {x: 5, y: 11}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 226
     _gridPosition: {x: 6, y: 11}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 227
     _gridPosition: {x: 7, y: 11}
@@ -3705,11 +3705,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 230
     _gridPosition: {x: 10, y: 11}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 231
     _gridPosition: {x: 11, y: 11}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 232
     _gridPosition: {x: 12, y: 11}
@@ -3765,11 +3765,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 245
     _gridPosition: {x: 5, y: 12}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 246
     _gridPosition: {x: 6, y: 12}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 247
     _gridPosition: {x: 7, y: 12}
@@ -3777,7 +3777,7 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 248
     _gridPosition: {x: 8, y: 12}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 249
     _gridPosition: {x: 9, y: 12}
@@ -3785,11 +3785,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 250
     _gridPosition: {x: 10, y: 12}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 251
     _gridPosition: {x: 11, y: 12}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 252
     _gridPosition: {x: 12, y: 12}
@@ -3845,11 +3845,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 265
     _gridPosition: {x: 5, y: 13}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 266
     _gridPosition: {x: 6, y: 13}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 267
     _gridPosition: {x: 7, y: 13}
@@ -3857,7 +3857,7 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 268
     _gridPosition: {x: 8, y: 13}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 269
     _gridPosition: {x: 9, y: 13}
@@ -3869,11 +3869,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 271
     _gridPosition: {x: 11, y: 13}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 272
     _gridPosition: {x: 12, y: 13}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 273
     _gridPosition: {x: 13, y: 13}
@@ -3905,11 +3905,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 280
     _gridPosition: {x: 0, y: 14}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 281
     _gridPosition: {x: 1, y: 14}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 282
     _gridPosition: {x: 2, y: 14}
@@ -3933,11 +3933,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 287
     _gridPosition: {x: 7, y: 14}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 288
     _gridPosition: {x: 8, y: 14}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 289
     _gridPosition: {x: 9, y: 14}
@@ -3957,15 +3957,15 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 293
     _gridPosition: {x: 13, y: 14}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 294
     _gridPosition: {x: 14, y: 14}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 295
     _gridPosition: {x: 15, y: 14}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 296
     _gridPosition: {x: 16, y: 14}
@@ -4005,11 +4005,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 305
     _gridPosition: {x: 5, y: 15}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 306
     _gridPosition: {x: 6, y: 15}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 307
     _gridPosition: {x: 7, y: 15}
@@ -4017,7 +4017,7 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 308
     _gridPosition: {x: 8, y: 15}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 309
     _gridPosition: {x: 9, y: 15}
@@ -4049,11 +4049,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 316
     _gridPosition: {x: 16, y: 15}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 317
     _gridPosition: {x: 17, y: 15}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 318
     _gridPosition: {x: 18, y: 15}
@@ -4085,11 +4085,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 325
     _gridPosition: {x: 5, y: 16}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 326
     _gridPosition: {x: 6, y: 16}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 327
     _gridPosition: {x: 7, y: 16}
@@ -4097,7 +4097,7 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 328
     _gridPosition: {x: 8, y: 16}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 329
     _gridPosition: {x: 9, y: 16}
@@ -4141,15 +4141,15 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 339
     _gridPosition: {x: 19, y: 16}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 340
     _gridPosition: {x: 0, y: 17}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 341
     _gridPosition: {x: 1, y: 17}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 342
     _gridPosition: {x: 2, y: 17}
@@ -4173,11 +4173,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 347
     _gridPosition: {x: 7, y: 17}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 348
     _gridPosition: {x: 8, y: 17}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 349
     _gridPosition: {x: 9, y: 17}
@@ -4345,11 +4345,11 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 390
     _gridPosition: {x: 10, y: 19}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 391
     _gridPosition: {x: 11, y: 19}
-    _walkable: 0
+    _walkable: 1
     _movementCostModifier: 1
   - _id: 392
     _gridPosition: {x: 12, y: 19}
@@ -4357,7 +4357,7 @@ MonoBehaviour:
     _movementCostModifier: 1
   - _id: 393
     _gridPosition: {x: 13, y: 19}
-    _walkable: 1
+    _walkable: 0
     _movementCostModifier: 1
   - _id: 394
     _gridPosition: {x: 14, y: 19}
@@ -4384,406 +4384,406 @@ MonoBehaviour:
     _walkable: 1
     _movementCostModifier: 1
   nodeWorldPositions:
-  - {x: 2.16, y: -1.34, z: 0}
-  - {x: 3.16, y: -1.34, z: 0}
-  - {x: 4.16, y: -1.34, z: 0}
-  - {x: 5.16, y: -1.34, z: 0}
-  - {x: 6.16, y: -1.34, z: 0}
-  - {x: 7.16, y: -1.34, z: 0}
-  - {x: 8.16, y: -1.34, z: 0}
-  - {x: 9.16, y: -1.34, z: 0}
-  - {x: 10.16, y: -1.34, z: 0}
-  - {x: 11.16, y: -1.34, z: 0}
-  - {x: 12.16, y: -1.34, z: 0}
-  - {x: 13.16, y: -1.34, z: 0}
-  - {x: 14.16, y: -1.34, z: 0}
-  - {x: 15.16, y: -1.34, z: 0}
-  - {x: 16.16, y: -1.34, z: 0}
-  - {x: 17.16, y: -1.34, z: 0}
-  - {x: 18.16, y: -1.34, z: 0}
-  - {x: 19.16, y: -1.34, z: 0}
-  - {x: 20.16, y: -1.34, z: 0}
-  - {x: 21.16, y: -1.34, z: 0}
-  - {x: 2.16, y: -1.34, z: 1}
-  - {x: 3.16, y: -1.34, z: 1}
-  - {x: 4.16, y: -1.34, z: 1}
-  - {x: 5.16, y: -1.34, z: 1}
-  - {x: 6.16, y: -1.34, z: 1}
-  - {x: 7.16, y: -1.34, z: 1}
-  - {x: 8.16, y: -1.34, z: 1}
-  - {x: 9.16, y: -1.34, z: 1}
-  - {x: 10.16, y: -1.34, z: 1}
-  - {x: 11.16, y: -1.34, z: 1}
-  - {x: 12.16, y: -1.34, z: 1}
-  - {x: 13.16, y: -1.34, z: 1}
-  - {x: 14.16, y: -1.34, z: 1}
-  - {x: 15.16, y: -1.34, z: 1}
-  - {x: 16.16, y: -1.34, z: 1}
-  - {x: 17.16, y: -1.34, z: 1}
-  - {x: 18.16, y: -1.34, z: 1}
-  - {x: 19.16, y: -1.34, z: 1}
-  - {x: 20.16, y: -1.34, z: 1}
-  - {x: 21.16, y: -1.34, z: 1}
-  - {x: 2.16, y: -1.34, z: 2}
-  - {x: 3.16, y: -1.34, z: 2}
-  - {x: 4.16, y: -1.34, z: 2}
-  - {x: 5.16, y: -1.34, z: 2}
-  - {x: 6.16, y: -1.34, z: 2}
-  - {x: 7.16, y: -1.34, z: 2}
-  - {x: 8.16, y: -1.34, z: 2}
-  - {x: 9.16, y: -1.34, z: 2}
-  - {x: 10.16, y: -1.34, z: 2}
-  - {x: 11.16, y: -1.34, z: 2}
-  - {x: 12.16, y: -1.34, z: 2}
-  - {x: 13.16, y: -1.34, z: 2}
-  - {x: 14.16, y: -1.34, z: 2}
-  - {x: 15.16, y: -1.34, z: 2}
-  - {x: 16.16, y: -1.34, z: 2}
-  - {x: 17.16, y: -1.34, z: 2}
-  - {x: 18.16, y: -1.34, z: 2}
-  - {x: 19.16, y: -1.34, z: 2}
-  - {x: 20.16, y: -1.34, z: 2}
-  - {x: 21.16, y: -1.34, z: 2}
-  - {x: 2.16, y: -1.34, z: 3}
-  - {x: 3.16, y: -1.34, z: 3}
-  - {x: 4.16, y: -1.34, z: 3}
-  - {x: 5.16, y: -1.34, z: 3}
-  - {x: 6.16, y: -1.34, z: 3}
-  - {x: 7.16, y: -1.34, z: 3}
-  - {x: 8.16, y: -1.34, z: 3}
-  - {x: 9.16, y: -1.34, z: 3}
-  - {x: 10.16, y: -1.34, z: 3}
-  - {x: 11.16, y: -1.34, z: 3}
-  - {x: 12.16, y: -1.34, z: 3}
-  - {x: 13.16, y: -1.34, z: 3}
-  - {x: 14.16, y: -1.34, z: 3}
-  - {x: 15.16, y: -1.34, z: 3}
-  - {x: 16.16, y: -1.34, z: 3}
-  - {x: 17.16, y: -1.34, z: 3}
-  - {x: 18.16, y: -1.34, z: 3}
-  - {x: 19.16, y: -1.34, z: 3}
-  - {x: 20.16, y: -1.34, z: 3}
-  - {x: 21.16, y: -1.34, z: 3}
-  - {x: 2.16, y: -1.34, z: 4}
-  - {x: 3.16, y: -1.34, z: 4}
-  - {x: 4.16, y: -1.34, z: 4}
-  - {x: 5.16, y: -1.34, z: 4}
-  - {x: 6.16, y: -1.34, z: 4}
-  - {x: 7.16, y: -1.34, z: 4}
-  - {x: 8.16, y: -1.34, z: 4}
-  - {x: 9.16, y: -1.34, z: 4}
-  - {x: 10.16, y: -1.34, z: 4}
-  - {x: 11.16, y: -1.34, z: 4}
-  - {x: 12.16, y: -1.34, z: 4}
-  - {x: 13.16, y: -1.34, z: 4}
-  - {x: 14.16, y: -1.34, z: 4}
-  - {x: 15.16, y: -1.34, z: 4}
-  - {x: 16.16, y: -1.34, z: 4}
-  - {x: 17.16, y: -1.34, z: 4}
-  - {x: 18.16, y: -1.34, z: 4}
-  - {x: 19.16, y: -1.34, z: 4}
-  - {x: 20.16, y: -1.34, z: 4}
-  - {x: 21.16, y: -1.34, z: 4}
-  - {x: 2.16, y: -1.34, z: 5}
-  - {x: 3.16, y: -1.34, z: 5}
-  - {x: 4.16, y: -1.34, z: 5}
-  - {x: 5.16, y: -1.34, z: 5}
-  - {x: 6.16, y: -1.34, z: 5}
-  - {x: 7.16, y: -1.34, z: 5}
-  - {x: 8.16, y: -1.34, z: 5}
-  - {x: 9.16, y: -1.34, z: 5}
-  - {x: 10.16, y: -1.34, z: 5}
-  - {x: 11.16, y: -1.34, z: 5}
-  - {x: 12.16, y: -1.34, z: 5}
-  - {x: 13.16, y: -1.34, z: 5}
-  - {x: 14.16, y: -1.34, z: 5}
-  - {x: 15.16, y: -1.34, z: 5}
-  - {x: 16.16, y: -1.34, z: 5}
-  - {x: 17.16, y: -1.34, z: 5}
-  - {x: 18.16, y: -1.34, z: 5}
-  - {x: 19.16, y: -1.34, z: 5}
-  - {x: 20.16, y: -1.34, z: 5}
-  - {x: 21.16, y: -1.34, z: 5}
-  - {x: 2.16, y: -1.34, z: 6}
-  - {x: 3.16, y: -1.34, z: 6}
-  - {x: 4.16, y: -1.34, z: 6}
-  - {x: 5.16, y: -1.34, z: 6}
-  - {x: 6.16, y: -1.34, z: 6}
-  - {x: 7.16, y: -1.34, z: 6}
-  - {x: 8.16, y: -1.34, z: 6}
-  - {x: 9.16, y: -1.34, z: 6}
-  - {x: 10.16, y: -1.34, z: 6}
-  - {x: 11.16, y: -1.34, z: 6}
-  - {x: 12.16, y: -1.34, z: 6}
-  - {x: 13.16, y: -1.34, z: 6}
-  - {x: 14.16, y: -1.34, z: 6}
-  - {x: 15.16, y: -1.34, z: 6}
-  - {x: 16.16, y: -1.34, z: 6}
-  - {x: 17.16, y: -1.34, z: 6}
-  - {x: 18.16, y: -1.34, z: 6}
-  - {x: 19.16, y: -1.34, z: 6}
-  - {x: 20.16, y: -1.34, z: 6}
-  - {x: 21.16, y: -1.34, z: 6}
-  - {x: 2.16, y: -1.34, z: 7}
-  - {x: 3.16, y: -1.34, z: 7}
-  - {x: 4.16, y: -1.34, z: 7}
-  - {x: 5.16, y: -1.34, z: 7}
-  - {x: 6.16, y: -1.34, z: 7}
-  - {x: 7.16, y: -1.34, z: 7}
-  - {x: 8.16, y: -1.34, z: 7}
-  - {x: 9.16, y: -1.34, z: 7}
-  - {x: 10.16, y: -1.34, z: 7}
-  - {x: 11.16, y: -1.34, z: 7}
-  - {x: 12.16, y: -1.34, z: 7}
-  - {x: 13.16, y: -1.34, z: 7}
-  - {x: 14.16, y: -1.34, z: 7}
-  - {x: 15.16, y: -1.34, z: 7}
-  - {x: 16.16, y: -1.34, z: 7}
-  - {x: 17.16, y: -1.34, z: 7}
-  - {x: 18.16, y: -1.34, z: 7}
-  - {x: 19.16, y: -1.34, z: 7}
-  - {x: 20.16, y: -1.34, z: 7}
-  - {x: 21.16, y: -1.34, z: 7}
-  - {x: 2.16, y: -1.34, z: 8}
-  - {x: 3.16, y: -1.34, z: 8}
-  - {x: 4.16, y: -1.34, z: 8}
-  - {x: 5.16, y: -1.34, z: 8}
-  - {x: 6.16, y: -1.34, z: 8}
-  - {x: 7.16, y: -1.34, z: 8}
-  - {x: 8.16, y: -1.34, z: 8}
-  - {x: 9.16, y: -1.34, z: 8}
-  - {x: 10.16, y: -1.34, z: 8}
-  - {x: 11.16, y: -1.34, z: 8}
-  - {x: 12.16, y: -1.34, z: 8}
-  - {x: 13.16, y: -1.34, z: 8}
-  - {x: 14.16, y: -1.34, z: 8}
-  - {x: 15.16, y: -1.34, z: 8}
-  - {x: 16.16, y: -1.34, z: 8}
-  - {x: 17.16, y: -1.34, z: 8}
-  - {x: 18.16, y: -1.34, z: 8}
-  - {x: 19.16, y: -1.34, z: 8}
-  - {x: 20.16, y: -1.34, z: 8}
-  - {x: 21.16, y: -1.34, z: 8}
-  - {x: 2.16, y: -1.34, z: 9}
-  - {x: 3.16, y: -1.34, z: 9}
-  - {x: 4.16, y: -1.34, z: 9}
-  - {x: 5.16, y: -1.34, z: 9}
-  - {x: 6.16, y: -1.34, z: 9}
-  - {x: 7.16, y: -1.34, z: 9}
-  - {x: 8.16, y: -1.34, z: 9}
-  - {x: 9.16, y: -1.34, z: 9}
-  - {x: 10.16, y: -1.34, z: 9}
-  - {x: 11.16, y: -1.34, z: 9}
-  - {x: 12.16, y: -1.34, z: 9}
-  - {x: 13.16, y: -1.34, z: 9}
-  - {x: 14.16, y: -1.34, z: 9}
-  - {x: 15.16, y: -1.34, z: 9}
-  - {x: 16.16, y: -1.34, z: 9}
-  - {x: 17.16, y: -1.34, z: 9}
-  - {x: 18.16, y: -1.34, z: 9}
-  - {x: 19.16, y: -1.34, z: 9}
-  - {x: 20.16, y: -1.34, z: 9}
-  - {x: 21.16, y: -1.34, z: 9}
-  - {x: 2.16, y: -1.34, z: 10}
-  - {x: 3.16, y: -1.34, z: 10}
-  - {x: 4.16, y: -1.34, z: 10}
-  - {x: 5.16, y: -1.34, z: 10}
-  - {x: 6.16, y: -1.34, z: 10}
-  - {x: 7.16, y: -1.34, z: 10}
-  - {x: 8.16, y: -1.34, z: 10}
-  - {x: 9.16, y: -1.34, z: 10}
-  - {x: 10.16, y: -1.34, z: 10}
-  - {x: 11.16, y: -1.34, z: 10}
-  - {x: 12.16, y: -1.34, z: 10}
-  - {x: 13.16, y: -1.34, z: 10}
-  - {x: 14.16, y: -1.34, z: 10}
-  - {x: 15.16, y: -1.34, z: 10}
-  - {x: 16.16, y: -1.34, z: 10}
-  - {x: 17.16, y: -1.34, z: 10}
-  - {x: 18.16, y: -1.34, z: 10}
-  - {x: 19.16, y: -1.34, z: 10}
-  - {x: 20.16, y: -1.34, z: 10}
-  - {x: 21.16, y: -1.34, z: 10}
-  - {x: 2.16, y: -1.34, z: 11}
-  - {x: 3.16, y: -1.34, z: 11}
-  - {x: 4.16, y: -1.34, z: 11}
-  - {x: 5.16, y: -1.34, z: 11}
-  - {x: 6.16, y: -1.34, z: 11}
-  - {x: 7.16, y: -1.34, z: 11}
-  - {x: 8.16, y: -1.34, z: 11}
-  - {x: 9.16, y: -1.34, z: 11}
-  - {x: 10.16, y: -1.34, z: 11}
-  - {x: 11.16, y: -1.34, z: 11}
-  - {x: 12.16, y: -1.34, z: 11}
-  - {x: 13.16, y: -1.34, z: 11}
-  - {x: 14.16, y: -1.34, z: 11}
-  - {x: 15.16, y: -1.34, z: 11}
-  - {x: 16.16, y: -1.34, z: 11}
-  - {x: 17.16, y: -1.34, z: 11}
-  - {x: 18.16, y: -1.34, z: 11}
-  - {x: 19.16, y: -1.34, z: 11}
-  - {x: 20.16, y: -1.34, z: 11}
-  - {x: 21.16, y: -1.34, z: 11}
-  - {x: 2.16, y: -1.34, z: 12}
-  - {x: 3.16, y: -1.34, z: 12}
-  - {x: 4.16, y: -1.34, z: 12}
-  - {x: 5.16, y: -1.34, z: 12}
-  - {x: 6.16, y: -1.34, z: 12}
-  - {x: 7.16, y: -1.34, z: 12}
-  - {x: 8.16, y: -1.34, z: 12}
-  - {x: 9.16, y: -1.34, z: 12}
-  - {x: 10.16, y: -1.34, z: 12}
-  - {x: 11.16, y: -1.34, z: 12}
-  - {x: 12.16, y: -1.34, z: 12}
-  - {x: 13.16, y: -1.34, z: 12}
-  - {x: 14.16, y: -1.34, z: 12}
-  - {x: 15.16, y: -1.34, z: 12}
-  - {x: 16.16, y: -1.34, z: 12}
-  - {x: 17.16, y: -1.34, z: 12}
-  - {x: 18.16, y: -1.34, z: 12}
-  - {x: 19.16, y: -1.34, z: 12}
-  - {x: 20.16, y: -1.34, z: 12}
-  - {x: 21.16, y: -1.34, z: 12}
-  - {x: 2.16, y: -1.34, z: 13}
-  - {x: 3.16, y: -1.34, z: 13}
-  - {x: 4.16, y: -1.34, z: 13}
-  - {x: 5.16, y: -1.34, z: 13}
-  - {x: 6.16, y: -1.34, z: 13}
-  - {x: 7.16, y: -1.34, z: 13}
-  - {x: 8.16, y: -1.34, z: 13}
-  - {x: 9.16, y: -1.34, z: 13}
-  - {x: 10.16, y: -1.34, z: 13}
-  - {x: 11.16, y: -1.34, z: 13}
-  - {x: 12.16, y: -1.34, z: 13}
-  - {x: 13.16, y: -1.34, z: 13}
-  - {x: 14.16, y: -1.34, z: 13}
-  - {x: 15.16, y: -1.34, z: 13}
-  - {x: 16.16, y: -1.34, z: 13}
-  - {x: 17.16, y: -1.34, z: 13}
-  - {x: 18.16, y: -1.34, z: 13}
-  - {x: 19.16, y: -1.34, z: 13}
-  - {x: 20.16, y: -1.34, z: 13}
-  - {x: 21.16, y: -1.34, z: 13}
-  - {x: 2.16, y: -1.34, z: 14}
-  - {x: 3.16, y: -1.34, z: 14}
-  - {x: 4.16, y: -1.34, z: 14}
-  - {x: 5.16, y: -1.34, z: 14}
-  - {x: 6.16, y: -1.34, z: 14}
-  - {x: 7.16, y: -1.34, z: 14}
-  - {x: 8.16, y: -1.34, z: 14}
-  - {x: 9.16, y: -1.34, z: 14}
-  - {x: 10.16, y: -1.34, z: 14}
-  - {x: 11.16, y: -1.34, z: 14}
-  - {x: 12.16, y: -1.34, z: 14}
-  - {x: 13.16, y: -1.34, z: 14}
-  - {x: 14.16, y: -1.34, z: 14}
-  - {x: 15.16, y: -1.34, z: 14}
-  - {x: 16.16, y: -1.34, z: 14}
-  - {x: 17.16, y: -1.34, z: 14}
-  - {x: 18.16, y: -1.34, z: 14}
-  - {x: 19.16, y: -1.34, z: 14}
-  - {x: 20.16, y: -1.34, z: 14}
-  - {x: 21.16, y: -1.34, z: 14}
-  - {x: 2.16, y: -1.34, z: 15}
-  - {x: 3.16, y: -1.34, z: 15}
-  - {x: 4.16, y: -1.34, z: 15}
-  - {x: 5.16, y: -1.34, z: 15}
-  - {x: 6.16, y: -1.34, z: 15}
-  - {x: 7.16, y: -1.34, z: 15}
-  - {x: 8.16, y: -1.34, z: 15}
-  - {x: 9.16, y: -1.34, z: 15}
-  - {x: 10.16, y: -1.34, z: 15}
-  - {x: 11.16, y: -1.34, z: 15}
-  - {x: 12.16, y: -1.34, z: 15}
-  - {x: 13.16, y: -1.34, z: 15}
-  - {x: 14.16, y: -1.34, z: 15}
-  - {x: 15.16, y: -1.34, z: 15}
-  - {x: 16.16, y: -1.34, z: 15}
-  - {x: 17.16, y: -1.34, z: 15}
-  - {x: 18.16, y: -1.34, z: 15}
-  - {x: 19.16, y: -1.34, z: 15}
-  - {x: 20.16, y: -1.34, z: 15}
-  - {x: 21.16, y: -1.34, z: 15}
-  - {x: 2.16, y: -1.34, z: 16}
-  - {x: 3.16, y: -1.34, z: 16}
-  - {x: 4.16, y: -1.34, z: 16}
-  - {x: 5.16, y: -1.34, z: 16}
-  - {x: 6.16, y: -1.34, z: 16}
-  - {x: 7.16, y: -1.34, z: 16}
-  - {x: 8.16, y: -1.34, z: 16}
-  - {x: 9.16, y: -1.34, z: 16}
-  - {x: 10.16, y: -1.34, z: 16}
-  - {x: 11.16, y: -1.34, z: 16}
-  - {x: 12.16, y: -1.34, z: 16}
-  - {x: 13.16, y: -1.34, z: 16}
-  - {x: 14.16, y: -1.34, z: 16}
-  - {x: 15.16, y: -1.34, z: 16}
-  - {x: 16.16, y: -1.34, z: 16}
-  - {x: 17.16, y: -1.34, z: 16}
-  - {x: 18.16, y: -1.34, z: 16}
-  - {x: 19.16, y: -1.34, z: 16}
-  - {x: 20.16, y: -1.34, z: 16}
-  - {x: 21.16, y: -1.34, z: 16}
-  - {x: 2.16, y: -1.34, z: 17}
-  - {x: 3.16, y: -1.34, z: 17}
-  - {x: 4.16, y: -1.34, z: 17}
-  - {x: 5.16, y: -1.34, z: 17}
-  - {x: 6.16, y: -1.34, z: 17}
-  - {x: 7.16, y: -1.34, z: 17}
-  - {x: 8.16, y: -1.34, z: 17}
-  - {x: 9.16, y: -1.34, z: 17}
-  - {x: 10.16, y: -1.34, z: 17}
-  - {x: 11.16, y: -1.34, z: 17}
-  - {x: 12.16, y: -1.34, z: 17}
-  - {x: 13.16, y: -1.34, z: 17}
-  - {x: 14.16, y: -1.34, z: 17}
-  - {x: 15.16, y: -1.34, z: 17}
-  - {x: 16.16, y: -1.34, z: 17}
-  - {x: 17.16, y: -1.34, z: 17}
-  - {x: 18.16, y: -1.34, z: 17}
-  - {x: 19.16, y: -1.34, z: 17}
-  - {x: 20.16, y: -1.34, z: 17}
-  - {x: 21.16, y: -1.34, z: 17}
-  - {x: 2.16, y: -1.34, z: 18}
-  - {x: 3.16, y: -1.34, z: 18}
-  - {x: 4.16, y: -1.34, z: 18}
-  - {x: 5.16, y: -1.34, z: 18}
-  - {x: 6.16, y: -1.34, z: 18}
-  - {x: 7.16, y: -1.34, z: 18}
-  - {x: 8.16, y: -1.34, z: 18}
-  - {x: 9.16, y: -1.34, z: 18}
-  - {x: 10.16, y: -1.34, z: 18}
-  - {x: 11.16, y: -1.34, z: 18}
-  - {x: 12.16, y: -1.34, z: 18}
-  - {x: 13.16, y: -1.34, z: 18}
-  - {x: 14.16, y: -1.34, z: 18}
-  - {x: 15.16, y: -1.34, z: 18}
-  - {x: 16.16, y: -1.34, z: 18}
-  - {x: 17.16, y: -1.34, z: 18}
-  - {x: 18.16, y: -1.34, z: 18}
-  - {x: 19.16, y: -1.34, z: 18}
-  - {x: 20.16, y: -1.34, z: 18}
-  - {x: 21.16, y: -1.34, z: 18}
-  - {x: 2.16, y: -1.34, z: 19}
-  - {x: 3.16, y: -1.34, z: 19}
-  - {x: 4.16, y: -1.34, z: 19}
-  - {x: 5.16, y: -1.34, z: 19}
-  - {x: 6.16, y: -1.34, z: 19}
-  - {x: 7.16, y: -1.34, z: 19}
-  - {x: 8.16, y: -1.34, z: 19}
-  - {x: 9.16, y: -1.34, z: 19}
-  - {x: 10.16, y: -1.34, z: 19}
-  - {x: 11.16, y: -1.34, z: 19}
-  - {x: 12.16, y: -1.34, z: 19}
-  - {x: 13.16, y: -1.34, z: 19}
-  - {x: 14.16, y: -1.34, z: 19}
-  - {x: 15.16, y: -1.34, z: 19}
-  - {x: 16.16, y: -1.34, z: 19}
-  - {x: 17.16, y: -1.34, z: 19}
-  - {x: 18.16, y: -1.34, z: 19}
-  - {x: 19.16, y: -1.34, z: 19}
-  - {x: 20.16, y: -1.34, z: 19}
-  - {x: 21.16, y: -1.34, z: 19}
+  - {x: 0, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 3, y: 0, z: 0}
+  - {x: 4, y: 0, z: 0}
+  - {x: 5, y: 0, z: 0}
+  - {x: 6, y: 0, z: 0}
+  - {x: 7, y: 0, z: 0}
+  - {x: 8, y: 0, z: 0}
+  - {x: 9, y: 0, z: 0}
+  - {x: 10, y: 0, z: 0}
+  - {x: 11, y: 0, z: 0}
+  - {x: 12, y: 0, z: 0}
+  - {x: 13, y: 0, z: 0}
+  - {x: 14, y: 0, z: 0}
+  - {x: 15, y: 0, z: 0}
+  - {x: 16, y: 0, z: 0}
+  - {x: 17, y: 0, z: 0}
+  - {x: 18, y: 0, z: 0}
+  - {x: 19, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  - {x: 1, y: 0, z: 1}
+  - {x: 2, y: 0, z: 1}
+  - {x: 3, y: 0, z: 1}
+  - {x: 4, y: 0, z: 1}
+  - {x: 5, y: 0, z: 1}
+  - {x: 6, y: 0, z: 1}
+  - {x: 7, y: 0, z: 1}
+  - {x: 8, y: 0, z: 1}
+  - {x: 9, y: 0, z: 1}
+  - {x: 10, y: 0, z: 1}
+  - {x: 11, y: 0, z: 1}
+  - {x: 12, y: 0, z: 1}
+  - {x: 13, y: 0, z: 1}
+  - {x: 14, y: 0, z: 1}
+  - {x: 15, y: 0, z: 1}
+  - {x: 16, y: 0, z: 1}
+  - {x: 17, y: 0, z: 1}
+  - {x: 18, y: 0, z: 1}
+  - {x: 19, y: 0, z: 1}
+  - {x: 0, y: 0, z: 2}
+  - {x: 1, y: 0, z: 2}
+  - {x: 2, y: 0, z: 2}
+  - {x: 3, y: 0, z: 2}
+  - {x: 4, y: 0, z: 2}
+  - {x: 5, y: 0, z: 2}
+  - {x: 6, y: 0, z: 2}
+  - {x: 7, y: 0, z: 2}
+  - {x: 8, y: 0, z: 2}
+  - {x: 9, y: 0, z: 2}
+  - {x: 10, y: 0, z: 2}
+  - {x: 11, y: 0, z: 2}
+  - {x: 12, y: 0, z: 2}
+  - {x: 13, y: 0, z: 2}
+  - {x: 14, y: 0, z: 2}
+  - {x: 15, y: 0, z: 2}
+  - {x: 16, y: 0, z: 2}
+  - {x: 17, y: 0, z: 2}
+  - {x: 18, y: 0, z: 2}
+  - {x: 19, y: 0, z: 2}
+  - {x: 0, y: 0, z: 3}
+  - {x: 1, y: 0, z: 3}
+  - {x: 2, y: 0, z: 3}
+  - {x: 3, y: 0, z: 3}
+  - {x: 4, y: 0, z: 3}
+  - {x: 5, y: 0, z: 3}
+  - {x: 6, y: 0, z: 3}
+  - {x: 7, y: 0, z: 3}
+  - {x: 8, y: 0, z: 3}
+  - {x: 9, y: 0, z: 3}
+  - {x: 10, y: 0, z: 3}
+  - {x: 11, y: 0, z: 3}
+  - {x: 12, y: 0, z: 3}
+  - {x: 13, y: 0, z: 3}
+  - {x: 14, y: 0, z: 3}
+  - {x: 15, y: 0, z: 3}
+  - {x: 16, y: 0, z: 3}
+  - {x: 17, y: 0, z: 3}
+  - {x: 18, y: 0, z: 3}
+  - {x: 19, y: 0, z: 3}
+  - {x: 0, y: 0, z: 4}
+  - {x: 1, y: 0, z: 4}
+  - {x: 2, y: 0, z: 4}
+  - {x: 3, y: 0, z: 4}
+  - {x: 4, y: 0, z: 4}
+  - {x: 5, y: 0, z: 4}
+  - {x: 6, y: 0, z: 4}
+  - {x: 7, y: 0, z: 4}
+  - {x: 8, y: 0, z: 4}
+  - {x: 9, y: 0, z: 4}
+  - {x: 10, y: 0, z: 4}
+  - {x: 11, y: 0, z: 4}
+  - {x: 12, y: 0, z: 4}
+  - {x: 13, y: 0, z: 4}
+  - {x: 14, y: 0, z: 4}
+  - {x: 15, y: 0, z: 4}
+  - {x: 16, y: 0, z: 4}
+  - {x: 17, y: 0, z: 4}
+  - {x: 18, y: 0, z: 4}
+  - {x: 19, y: 0, z: 4}
+  - {x: 0, y: 0, z: 5}
+  - {x: 1, y: 0, z: 5}
+  - {x: 2, y: 0, z: 5}
+  - {x: 3, y: 0, z: 5}
+  - {x: 4, y: 0, z: 5}
+  - {x: 5, y: 0, z: 5}
+  - {x: 6, y: 0, z: 5}
+  - {x: 7, y: 0, z: 5}
+  - {x: 8, y: 0, z: 5}
+  - {x: 9, y: 0, z: 5}
+  - {x: 10, y: 0, z: 5}
+  - {x: 11, y: 0, z: 5}
+  - {x: 12, y: 0, z: 5}
+  - {x: 13, y: 0, z: 5}
+  - {x: 14, y: 0, z: 5}
+  - {x: 15, y: 0, z: 5}
+  - {x: 16, y: 0, z: 5}
+  - {x: 17, y: 0, z: 5}
+  - {x: 18, y: 0, z: 5}
+  - {x: 19, y: 0, z: 5}
+  - {x: 0, y: 0, z: 6}
+  - {x: 1, y: 0, z: 6}
+  - {x: 2, y: 0, z: 6}
+  - {x: 3, y: 0, z: 6}
+  - {x: 4, y: 0, z: 6}
+  - {x: 5, y: 0, z: 6}
+  - {x: 6, y: 0, z: 6}
+  - {x: 7, y: 0, z: 6}
+  - {x: 8, y: 0, z: 6}
+  - {x: 9, y: 0, z: 6}
+  - {x: 10, y: 0, z: 6}
+  - {x: 11, y: 0, z: 6}
+  - {x: 12, y: 0, z: 6}
+  - {x: 13, y: 0, z: 6}
+  - {x: 14, y: 0, z: 6}
+  - {x: 15, y: 0, z: 6}
+  - {x: 16, y: 0, z: 6}
+  - {x: 17, y: 0, z: 6}
+  - {x: 18, y: 0, z: 6}
+  - {x: 19, y: 0, z: 6}
+  - {x: 0, y: 0, z: 7}
+  - {x: 1, y: 0, z: 7}
+  - {x: 2, y: 0, z: 7}
+  - {x: 3, y: 0, z: 7}
+  - {x: 4, y: 0, z: 7}
+  - {x: 5, y: 0, z: 7}
+  - {x: 6, y: 0, z: 7}
+  - {x: 7, y: 0, z: 7}
+  - {x: 8, y: 0, z: 7}
+  - {x: 9, y: 0, z: 7}
+  - {x: 10, y: 0, z: 7}
+  - {x: 11, y: 0, z: 7}
+  - {x: 12, y: 0, z: 7}
+  - {x: 13, y: 0, z: 7}
+  - {x: 14, y: 0, z: 7}
+  - {x: 15, y: 0, z: 7}
+  - {x: 16, y: 0, z: 7}
+  - {x: 17, y: 0, z: 7}
+  - {x: 18, y: 0, z: 7}
+  - {x: 19, y: 0, z: 7}
+  - {x: 0, y: 0, z: 8}
+  - {x: 1, y: 0, z: 8}
+  - {x: 2, y: 0, z: 8}
+  - {x: 3, y: 0, z: 8}
+  - {x: 4, y: 0, z: 8}
+  - {x: 5, y: 0, z: 8}
+  - {x: 6, y: 0, z: 8}
+  - {x: 7, y: 0, z: 8}
+  - {x: 8, y: 0, z: 8}
+  - {x: 9, y: 0, z: 8}
+  - {x: 10, y: 0, z: 8}
+  - {x: 11, y: 0, z: 8}
+  - {x: 12, y: 0, z: 8}
+  - {x: 13, y: 0, z: 8}
+  - {x: 14, y: 0, z: 8}
+  - {x: 15, y: 0, z: 8}
+  - {x: 16, y: 0, z: 8}
+  - {x: 17, y: 0, z: 8}
+  - {x: 18, y: 0, z: 8}
+  - {x: 19, y: 0, z: 8}
+  - {x: 0, y: 0, z: 9}
+  - {x: 1, y: 0, z: 9}
+  - {x: 2, y: 0, z: 9}
+  - {x: 3, y: 0, z: 9}
+  - {x: 4, y: 0, z: 9}
+  - {x: 5, y: 0, z: 9}
+  - {x: 6, y: 0, z: 9}
+  - {x: 7, y: 0, z: 9}
+  - {x: 8, y: 0, z: 9}
+  - {x: 9, y: 0, z: 9}
+  - {x: 10, y: 0, z: 9}
+  - {x: 11, y: 0, z: 9}
+  - {x: 12, y: 0, z: 9}
+  - {x: 13, y: 0, z: 9}
+  - {x: 14, y: 0, z: 9}
+  - {x: 15, y: 0, z: 9}
+  - {x: 16, y: 0, z: 9}
+  - {x: 17, y: 0, z: 9}
+  - {x: 18, y: 0, z: 9}
+  - {x: 19, y: 0, z: 9}
+  - {x: 0, y: 0, z: 10}
+  - {x: 1, y: 0, z: 10}
+  - {x: 2, y: 0, z: 10}
+  - {x: 3, y: 0, z: 10}
+  - {x: 4, y: 0, z: 10}
+  - {x: 5, y: 0, z: 10}
+  - {x: 6, y: 0, z: 10}
+  - {x: 7, y: 0, z: 10}
+  - {x: 8, y: 0, z: 10}
+  - {x: 9, y: 0, z: 10}
+  - {x: 10, y: 0, z: 10}
+  - {x: 11, y: 0, z: 10}
+  - {x: 12, y: 0, z: 10}
+  - {x: 13, y: 0, z: 10}
+  - {x: 14, y: 0, z: 10}
+  - {x: 15, y: 0, z: 10}
+  - {x: 16, y: 0, z: 10}
+  - {x: 17, y: 0, z: 10}
+  - {x: 18, y: 0, z: 10}
+  - {x: 19, y: 0, z: 10}
+  - {x: 0, y: 0, z: 11}
+  - {x: 1, y: 0, z: 11}
+  - {x: 2, y: 0, z: 11}
+  - {x: 3, y: 0, z: 11}
+  - {x: 4, y: 0, z: 11}
+  - {x: 5, y: 0, z: 11}
+  - {x: 6, y: 0, z: 11}
+  - {x: 7, y: 0, z: 11}
+  - {x: 8, y: 0, z: 11}
+  - {x: 9, y: 0, z: 11}
+  - {x: 10, y: 0, z: 11}
+  - {x: 11, y: 0, z: 11}
+  - {x: 12, y: 0, z: 11}
+  - {x: 13, y: 0, z: 11}
+  - {x: 14, y: 0, z: 11}
+  - {x: 15, y: 0, z: 11}
+  - {x: 16, y: 0, z: 11}
+  - {x: 17, y: 0, z: 11}
+  - {x: 18, y: 0, z: 11}
+  - {x: 19, y: 0, z: 11}
+  - {x: 0, y: 0, z: 12}
+  - {x: 1, y: 0, z: 12}
+  - {x: 2, y: 0, z: 12}
+  - {x: 3, y: 0, z: 12}
+  - {x: 4, y: 0, z: 12}
+  - {x: 5, y: 0, z: 12}
+  - {x: 6, y: 0, z: 12}
+  - {x: 7, y: 0, z: 12}
+  - {x: 8, y: 0, z: 12}
+  - {x: 9, y: 0, z: 12}
+  - {x: 10, y: 0, z: 12}
+  - {x: 11, y: 0, z: 12}
+  - {x: 12, y: 0, z: 12}
+  - {x: 13, y: 0, z: 12}
+  - {x: 14, y: 0, z: 12}
+  - {x: 15, y: 0, z: 12}
+  - {x: 16, y: 0, z: 12}
+  - {x: 17, y: 0, z: 12}
+  - {x: 18, y: 0, z: 12}
+  - {x: 19, y: 0, z: 12}
+  - {x: 0, y: 0, z: 13}
+  - {x: 1, y: 0, z: 13}
+  - {x: 2, y: 0, z: 13}
+  - {x: 3, y: 0, z: 13}
+  - {x: 4, y: 0, z: 13}
+  - {x: 5, y: 0, z: 13}
+  - {x: 6, y: 0, z: 13}
+  - {x: 7, y: 0, z: 13}
+  - {x: 8, y: 0, z: 13}
+  - {x: 9, y: 0, z: 13}
+  - {x: 10, y: 0, z: 13}
+  - {x: 11, y: 0, z: 13}
+  - {x: 12, y: 0, z: 13}
+  - {x: 13, y: 0, z: 13}
+  - {x: 14, y: 0, z: 13}
+  - {x: 15, y: 0, z: 13}
+  - {x: 16, y: 0, z: 13}
+  - {x: 17, y: 0, z: 13}
+  - {x: 18, y: 0, z: 13}
+  - {x: 19, y: 0, z: 13}
+  - {x: 0, y: 0, z: 14}
+  - {x: 1, y: 0, z: 14}
+  - {x: 2, y: 0, z: 14}
+  - {x: 3, y: 0, z: 14}
+  - {x: 4, y: 0, z: 14}
+  - {x: 5, y: 0, z: 14}
+  - {x: 6, y: 0, z: 14}
+  - {x: 7, y: 0, z: 14}
+  - {x: 8, y: 0, z: 14}
+  - {x: 9, y: 0, z: 14}
+  - {x: 10, y: 0, z: 14}
+  - {x: 11, y: 0, z: 14}
+  - {x: 12, y: 0, z: 14}
+  - {x: 13, y: 0, z: 14}
+  - {x: 14, y: 0, z: 14}
+  - {x: 15, y: 0, z: 14}
+  - {x: 16, y: 0, z: 14}
+  - {x: 17, y: 0, z: 14}
+  - {x: 18, y: 0, z: 14}
+  - {x: 19, y: 0, z: 14}
+  - {x: 0, y: 0, z: 15}
+  - {x: 1, y: 0, z: 15}
+  - {x: 2, y: 0, z: 15}
+  - {x: 3, y: 0, z: 15}
+  - {x: 4, y: 0, z: 15}
+  - {x: 5, y: 0, z: 15}
+  - {x: 6, y: 0, z: 15}
+  - {x: 7, y: 0, z: 15}
+  - {x: 8, y: 0, z: 15}
+  - {x: 9, y: 0, z: 15}
+  - {x: 10, y: 0, z: 15}
+  - {x: 11, y: 0, z: 15}
+  - {x: 12, y: 0, z: 15}
+  - {x: 13, y: 0, z: 15}
+  - {x: 14, y: 0, z: 15}
+  - {x: 15, y: 0, z: 15}
+  - {x: 16, y: 0, z: 15}
+  - {x: 17, y: 0, z: 15}
+  - {x: 18, y: 0, z: 15}
+  - {x: 19, y: 0, z: 15}
+  - {x: 0, y: 0, z: 16}
+  - {x: 1, y: 0, z: 16}
+  - {x: 2, y: 0, z: 16}
+  - {x: 3, y: 0, z: 16}
+  - {x: 4, y: 0, z: 16}
+  - {x: 5, y: 0, z: 16}
+  - {x: 6, y: 0, z: 16}
+  - {x: 7, y: 0, z: 16}
+  - {x: 8, y: 0, z: 16}
+  - {x: 9, y: 0, z: 16}
+  - {x: 10, y: 0, z: 16}
+  - {x: 11, y: 0, z: 16}
+  - {x: 12, y: 0, z: 16}
+  - {x: 13, y: 0, z: 16}
+  - {x: 14, y: 0, z: 16}
+  - {x: 15, y: 0, z: 16}
+  - {x: 16, y: 0, z: 16}
+  - {x: 17, y: 0, z: 16}
+  - {x: 18, y: 0, z: 16}
+  - {x: 19, y: 0, z: 16}
+  - {x: 0, y: 0, z: 17}
+  - {x: 1, y: 0, z: 17}
+  - {x: 2, y: 0, z: 17}
+  - {x: 3, y: 0, z: 17}
+  - {x: 4, y: 0, z: 17}
+  - {x: 5, y: 0, z: 17}
+  - {x: 6, y: 0, z: 17}
+  - {x: 7, y: 0, z: 17}
+  - {x: 8, y: 0, z: 17}
+  - {x: 9, y: 0, z: 17}
+  - {x: 10, y: 0, z: 17}
+  - {x: 11, y: 0, z: 17}
+  - {x: 12, y: 0, z: 17}
+  - {x: 13, y: 0, z: 17}
+  - {x: 14, y: 0, z: 17}
+  - {x: 15, y: 0, z: 17}
+  - {x: 16, y: 0, z: 17}
+  - {x: 17, y: 0, z: 17}
+  - {x: 18, y: 0, z: 17}
+  - {x: 19, y: 0, z: 17}
+  - {x: 0, y: 0, z: 18}
+  - {x: 1, y: 0, z: 18}
+  - {x: 2, y: 0, z: 18}
+  - {x: 3, y: 0, z: 18}
+  - {x: 4, y: 0, z: 18}
+  - {x: 5, y: 0, z: 18}
+  - {x: 6, y: 0, z: 18}
+  - {x: 7, y: 0, z: 18}
+  - {x: 8, y: 0, z: 18}
+  - {x: 9, y: 0, z: 18}
+  - {x: 10, y: 0, z: 18}
+  - {x: 11, y: 0, z: 18}
+  - {x: 12, y: 0, z: 18}
+  - {x: 13, y: 0, z: 18}
+  - {x: 14, y: 0, z: 18}
+  - {x: 15, y: 0, z: 18}
+  - {x: 16, y: 0, z: 18}
+  - {x: 17, y: 0, z: 18}
+  - {x: 18, y: 0, z: 18}
+  - {x: 19, y: 0, z: 18}
+  - {x: 0, y: 0, z: 19}
+  - {x: 1, y: 0, z: 19}
+  - {x: 2, y: 0, z: 19}
+  - {x: 3, y: 0, z: 19}
+  - {x: 4, y: 0, z: 19}
+  - {x: 5, y: 0, z: 19}
+  - {x: 6, y: 0, z: 19}
+  - {x: 7, y: 0, z: 19}
+  - {x: 8, y: 0, z: 19}
+  - {x: 9, y: 0, z: 19}
+  - {x: 10, y: 0, z: 19}
+  - {x: 11, y: 0, z: 19}
+  - {x: 12, y: 0, z: 19}
+  - {x: 13, y: 0, z: 19}
+  - {x: 14, y: 0, z: 19}
+  - {x: 15, y: 0, z: 19}
+  - {x: 16, y: 0, z: 19}
+  - {x: 17, y: 0, z: 19}
+  - {x: 18, y: 0, z: 19}
+  - {x: 19, y: 0, z: 19}
   showTileOutlineFlag: 1
   showTileCenterFlag: 0
   showTileInfoTextFlag: 1
@@ -4801,7 +4801,7 @@ Transform:
   m_GameObject: {fileID: 1851950130}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.16, y: -1.34, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

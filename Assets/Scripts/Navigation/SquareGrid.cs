@@ -87,10 +87,10 @@ namespace Navigation
             if (DebugDrawTileOutline)
             {
                 Vector3[] points = new Vector3[4];
-                points[0] = new Vector3(worldPos.x - TileSize * 0.49f, 0f, worldPos.z + TileSize * 0.49f);
-                points[1] = new Vector3(worldPos.x + TileSize * 0.49f, 0f, worldPos.z + TileSize * 0.49f);
-                points[2] = new Vector3(worldPos.x + TileSize * 0.49f, 0f, worldPos.z - TileSize * 0.49f);
-                points[3] = new Vector3(worldPos.x - TileSize * 0.49f, 0f, worldPos.z - TileSize * 0.49f);
+                points[0] = new Vector3(worldPos.x - TileSize * 0.49f, worldPos.y, worldPos.z + TileSize * 0.49f);
+                points[1] = new Vector3(worldPos.x + TileSize * 0.49f, worldPos.y, worldPos.z + TileSize * 0.49f);
+                points[2] = new Vector3(worldPos.x + TileSize * 0.49f, worldPos.y, worldPos.z - TileSize * 0.49f);
+                points[3] = new Vector3(worldPos.x - TileSize * 0.49f, worldPos.y, worldPos.z - TileSize * 0.49f);
                 Gizmos.DrawLineStrip(points, true);
             }
         }
