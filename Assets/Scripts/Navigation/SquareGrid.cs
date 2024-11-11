@@ -75,7 +75,7 @@ namespace Navigation
                     transform.position.z + z * TileSize);
         }
 
-        protected override void DrawNodeGizmos(Node n)
+        protected override void DrawNodeCenterOutineGizmos(Node n)
         {
             Vector3 worldPos = nodeWorldPositions[n.id];
 

@@ -18,6 +18,11 @@ namespace Navigation
 #if UNITY_EDITOR
         [SerializeField] bool showTileOutlineFlag = true;
         [SerializeField] bool showTileCenterFlag = true;
+        [SerializeField] bool showTileInfoTextFlag = false;
+        [SerializeField] bool ShowNodeGriPositionTextFlag = false;
+        [SerializeField] bool ShowNodeWalkableTextFlag = false;
+        [SerializeField] bool ShowNodeMovementCostTextFlag = false;
+        [SerializeField] int TileInfoTextFontSize = 10;
 #endif
         #endregion
 
@@ -203,9 +208,27 @@ namespace Navigation
         #endregion
 
 
-
         private void OnDrawGizmos()
         {
+
+            if (showTileInfoTextFlag)
+            {
+                GUIStyle style = new GUIStyle(GUI.skin.label);
+                style.alignment = TextAnchor.MiddleCenter;
+                style.fontStyle = FontStyle.Bold;
+                style.fontSize = TileInfoTextFontSize;
+
+                Color cachedColor = GUI.color;
+                GUI.color = GUI.color = new Color(0.9f, 0.3f, 0.9f);
+
+                foreach (Node n in nodes)
+                {
+                    DrawTileInfoText(n, style);
+                }
+
+                GUI.color = cachedColor;
+            }
+
             Gizmos.color = Color.white;
 
             if (nodes == null)
@@ -224,30 +247,42 @@ namespace Navigation
                 {
                     Gizmos.color = Color.red;
                 }
-
-                DrawNodeGizmos(n);
-                DrawTileInfoText(n);
-                // Gizmos.DrawCube(NodeWorldPositionAt(n.gridPosition.x, n.gridPosition.y), new Vector3(0.1f, 0.1f, 0.1f));
+                DrawNodeCenterOutineGizmos(n);
             }
+
+
         }
 
 
-        protected abstract void DrawNodeGizmos(Node node);
+        protected abstract void DrawNodeCenterOutineGizmos(Node node);
 
-        protected void DrawTileInfoText(Node node)
+#if UNITY_EDITOR
+        protected void DrawTileInfoText(Node node, GUIStyle style)
         {
-            string infoText = $" {node.gridPosition.x},{node.gridPosition.y} " + $"{node.walkable} ";
+            string infoText = " ";
 
-            GUIStyle style = new GUIStyle(GUI.skin.label);
-            style.alignment = TextAnchor.MiddleCenter;
-            style.fontSize = 10;
+            if (ShowNodeGriPositionTextFlag)
+            {
+                infoText += $"{node.gridPosition.x},{node.gridPosition.y} ";
+            }
 
-            //remember old color
-            //
-            GUI.color = Color.cyan;
+            if (ShowNodeWalkableTextFlag)
+            {
+                infoText += $"{node.walkable} ";
+            }
+
+            if (ShowNodeMovementCostTextFlag)
+            {
+                //TO DO - swap with actual movementCost
+                infoText += " MC ";
+            }
+
+
+
 
             Handles.Label(nodeWorldPositions[node.id], infoText, style);
         }
+#endif
 
 
         #region Bound Checking

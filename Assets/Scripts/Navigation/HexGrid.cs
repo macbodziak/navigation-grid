@@ -101,7 +101,7 @@ namespace Navigation
             return new Vector2Int((int)x, (int)z);
         }
 
-        protected override void DrawNodeGizmos(Node n)
+        protected override void DrawNodeCenterOutineGizmos(Node n)
         {
             Vector3 worldPos = nodeWorldPositions[n.id];
 

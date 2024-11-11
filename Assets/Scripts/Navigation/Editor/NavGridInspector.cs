@@ -22,6 +22,10 @@ namespace Navigation
         private const string SHOW_TILE_CENTER_PREF_KEY = "ShowTileCenterToggle";
         private const string SHOW_TILE_OUTLINE_PREF_KEY = "ShowTileOutlineToggle";
         private const string SHOW_TILE_INFOTEXT_PREF_KEY = "ShowTileInfoTextToggle";
+        private const string SHOW_NODE_GRIDPOSITION_PREF_KEY = "ShowNodeGriPositionTextToggle";
+        private const string SHOW_NODE_WALKABLE_PREF_KEY = "ShowNodeWalkableTextToggle";
+        private const string SHOW_NODE_MOVEMENT_COST_PREF_KEY = "ShowTShowNodeMovementCostTextToggleileInfoTextToggle";
+        private const string TILE_INFOTEXT_SIZE_PREF_KEY = "TileInfoTextFontSizeSlider";
 
         FloatField TileSizeBakeField;
         IntegerField WidthBakeField;
@@ -34,6 +38,15 @@ namespace Navigation
         IntegerField WidthField;
         IntegerField HeightField;
         Button CreateMapButton;
+        Toggle ShowTileCenterToggle;
+        Toggle ShowTileOutlineToggle;
+        Toggle ShowTileInfoTextToggle;
+        SliderInt TileInfoTextSizeSlider;
+        Toggle ShowNodeGriPositionTextToggle;
+        Toggle ShowNodeWalkableTextToggle;
+        Toggle ShowNodeMovementCostTextToggle;
+        Foldout TextInfoDetailsBox;
+
 
         public override VisualElement CreateInspectorGUI()
         {
@@ -116,6 +129,7 @@ namespace Navigation
             MapCreationFoldout.Add(CreateMapButton);
 
 
+            #region Debug 
             Foldout DebugFoldout = new Foldout();
             DebugFoldout.text = "Debug Visualisation";
             DebugFoldout.style.borderTopWidth = 1;
@@ -132,7 +146,7 @@ namespace Navigation
             DebugFoldout.style.paddingBottom = 3;
             DebugFoldout.style.marginBottom = 15;
 
-            Toggle ShowTileCenterToggle = new Toggle("Show Tile Center");
+            ShowTileCenterToggle = new Toggle("Show Tile Center");
             SerializedProperty ShowTileCenterProp = serializedObject.FindProperty("showTileCenterFlag");
             ShowTileCenterToggle.BindProperty(ShowTileCenterProp);
             ShowTileCenterToggle.AddToClassList("unity-base-field__aligned");
@@ -142,7 +156,7 @@ namespace Navigation
                 EditorPrefs.SetBool(SHOW_TILE_CENTER_PREF_KEY, evt.newValue);
             });
 
-            Toggle ShowTileOutlineToggle = new Toggle("Show Tile Outline");
+            ShowTileOutlineToggle = new Toggle("Show Tile Outline");
             SerializedProperty ShowTileOutlineProp = serializedObject.FindProperty("showTileOutlineFlag");
             ShowTileOutlineToggle.BindProperty(ShowTileOutlineProp);
             ShowTileOutlineToggle.AddToClassList("unity-base-field__aligned");
@@ -152,19 +166,66 @@ namespace Navigation
                 EditorPrefs.SetBool(SHOW_TILE_OUTLINE_PREF_KEY, evt.newValue);
             });
 
-            Toggle ShowTileInfoTextToggle = new Toggle("Show Tile Info Text");
+            ShowTileInfoTextToggle = new Toggle("Show Tile Info Text");
             SerializedProperty ShowTileInfoTextProp = serializedObject.FindProperty("showTileInfoTextFlag");
             ShowTileInfoTextToggle.BindProperty(ShowTileInfoTextProp);
             ShowTileInfoTextToggle.AddToClassList("unity-base-field__aligned");
             ShowTileInfoTextToggle.value = EditorPrefs.GetBool(SHOW_TILE_INFOTEXT_PREF_KEY, true);
-            ShowTileInfoTextToggle.RegisterValueChangedCallback(evt =>
+            ShowTileInfoTextToggle.RegisterValueChangedCallback(OnShowTileInfoTextValueChanged);
+
+            ShowNodeGriPositionTextToggle = new Toggle("Grid Position");
+            SerializedProperty ShowNodeGriPositionTextProp = serializedObject.FindProperty("ShowNodeGriPositionTextFlag");
+            ShowNodeGriPositionTextToggle.BindProperty(ShowNodeGriPositionTextProp);
+            ShowNodeGriPositionTextToggle.AddToClassList("unity-base-field__aligned");
+            ShowNodeGriPositionTextToggle.value = EditorPrefs.GetBool(SHOW_NODE_GRIDPOSITION_PREF_KEY, true);
+            ShowNodeGriPositionTextToggle.RegisterValueChangedCallback(evt =>
              {
-                 EditorPrefs.SetBool(SHOW_TILE_INFOTEXT_PREF_KEY, evt.newValue);
+                 EditorPrefs.SetBool(SHOW_NODE_GRIDPOSITION_PREF_KEY, evt.newValue);
              });
+
+            ShowNodeMovementCostTextToggle = new Toggle("Movement Cost");
+            SerializedProperty ShowNodeMovementCostTextProp = serializedObject.FindProperty("ShowNodeMovementCostTextFlag");
+            ShowNodeMovementCostTextToggle.BindProperty(ShowNodeMovementCostTextProp);
+            ShowNodeMovementCostTextToggle.AddToClassList("unity-base-field__aligned");
+            ShowNodeMovementCostTextToggle.value = EditorPrefs.GetBool(SHOW_NODE_GRIDPOSITION_PREF_KEY, true);
+            ShowNodeMovementCostTextToggle.RegisterValueChangedCallback(evt =>
+             {
+                 EditorPrefs.SetBool(SHOW_NODE_MOVEMENT_COST_PREF_KEY, evt.newValue);
+             });
+
+            ShowNodeWalkableTextToggle = new Toggle("Walkable");
+            SerializedProperty ShowNodeWalkableTextProp = serializedObject.FindProperty("ShowNodeWalkableTextFlag");
+            ShowNodeWalkableTextToggle.BindProperty(ShowNodeWalkableTextProp);
+            ShowNodeWalkableTextToggle.AddToClassList("unity-base-field__aligned");
+            ShowNodeWalkableTextToggle.value = EditorPrefs.GetBool(SHOW_NODE_WALKABLE_PREF_KEY, true);
+            ShowNodeWalkableTextToggle.RegisterValueChangedCallback(evt =>
+             {
+                 EditorPrefs.SetBool(SHOW_NODE_WALKABLE_PREF_KEY, evt.newValue);
+             });
+
+            TileInfoTextSizeSlider = new SliderInt("Font Size", 8, 20);
+            SerializedProperty TileInfoTextSizeProp = serializedObject.FindProperty("TileInfoTextFontSize");
+            TileInfoTextSizeSlider.BindProperty(TileInfoTextSizeProp);
+            TileInfoTextSizeSlider.AddToClassList("unity-base-field__aligned");
+            TileInfoTextSizeSlider.value = EditorPrefs.GetInt(TILE_INFOTEXT_SIZE_PREF_KEY, 12);
+            TileInfoTextSizeSlider.RegisterValueChangedCallback(evt =>
+             {
+                 EditorPrefs.SetInt(TILE_INFOTEXT_SIZE_PREF_KEY, evt.newValue);
+             });
+
+            TextInfoDetailsBox = new Foldout();
+            TextInfoDetailsBox.text = "Info Text Details";
+            TextInfoDetailsBox.Add(TileInfoTextSizeSlider);
+            TextInfoDetailsBox.Add(ShowNodeGriPositionTextToggle);
+            TextInfoDetailsBox.Add(ShowNodeMovementCostTextToggle);
+            TextInfoDetailsBox.Add(ShowNodeWalkableTextToggle);
 
             DebugFoldout.Add(ShowTileCenterToggle);
             DebugFoldout.Add(ShowTileOutlineToggle);
             DebugFoldout.Add(ShowTileInfoTextToggle);
+            DebugFoldout.Add(TextInfoDetailsBox);
+
+            #endregion
 
             Box ActualMapDataBox = new Box();
             ActualMapDataBox.style.borderTopWidth = 2;
@@ -260,6 +321,16 @@ namespace Navigation
             EditorPrefs.SetFloat(TILESIZE_PREF_KEY, TileSizeBakeField.value);
         }
 
+
+        private void OnShowTileInfoTextValueChanged(ChangeEvent<bool> evt)
+        {
+            EditorPrefs.SetBool(SHOW_TILE_INFOTEXT_PREF_KEY, evt.newValue);
+
+            TileInfoTextSizeSlider.SetEnabled(evt.newValue);
+            ShowNodeGriPositionTextToggle.SetEnabled(evt.newValue);
+            ShowNodeWalkableTextToggle.SetEnabled(evt.newValue);
+            ShowNodeMovementCostTextToggle.SetEnabled(evt.newValue);
+        }
 
         private void SetRangeOnIntegerField(IntegerField integerField, int min, int max)
         {
