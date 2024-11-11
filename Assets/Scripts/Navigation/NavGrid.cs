@@ -23,6 +23,7 @@ namespace Navigation
         [SerializeField] bool ShowNodeWalkableTextFlag = false;
         [SerializeField] bool ShowNodeMovementCostTextFlag = false;
         [SerializeField] int TileInfoTextFontSize = 10;
+        [SerializeField] Color TileInfoTextColor;
 #endif
         #endregion
 
@@ -219,7 +220,7 @@ namespace Navigation
                 style.fontSize = TileInfoTextFontSize;
 
                 Color cachedColor = GUI.color;
-                GUI.color = GUI.color = new Color(0.9f, 0.3f, 0.9f);
+                GUI.color = GUI.color = TileInfoTextColor;
 
                 foreach (Node n in nodes)
                 {
