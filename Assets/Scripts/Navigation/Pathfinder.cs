@@ -72,15 +72,13 @@ namespace Navigation
                         continue;
                     }
 
-                    //TO DO - not straight or diagonal movement - here it should be probably another cost array etc or seperate method??
-                    //TO DO - account for movement cost in node
                     if (i % 2 == 0) // if straight movement, check only this node
                     {
                         if (grid.IsWalkable(neighbourIndex) == false)
                         {
                             continue;
                         }
-                        newCost = nodeData[currentIndex].costSoFar + StraightCost;
+                        newCost = nodeData[currentIndex].costSoFar + (int)(StraightCost * grid.NodeAt(currentIndex).movementCostModifier);
                     }
                     else //if diagonal movement, check this node and the adjacent nodes
                     {
@@ -91,7 +89,7 @@ namespace Navigation
                         {
                             continue;
                         }
-                        newCost = nodeData[currentIndex].costSoFar + DiagonalCost;
+                        newCost = nodeData[currentIndex].costSoFar + (int)(DiagonalCost * grid.NodeAt(currentIndex).movementCostModifier);
                     }
 
                     if (newCost < nodeData[neighbourIndex].costSoFar)
@@ -161,7 +159,6 @@ namespace Navigation
 
                 currentGridPosition = hexGrid.NodeAt(currentIndex).gridPosition;
 
-                //TO DO - 6 not 8, take directions count
                 if (currentGridPosition.y % 2 == 0)
                 {
                     neighbours = neighboursEven;
@@ -181,14 +178,13 @@ namespace Navigation
                         continue;
                     }
 
-                    //TO DO - not straight or diagonal movement - here it should be probably another cost array etc or seperate method??
 
                     if (hexGrid.IsWalkable(neighbourIndex) == false)
                     {
                         continue;
                     }
-                    //TO DO - account for movement cost in node
-                    newCost = nodeData[currentIndex].costSoFar + movementCost;
+
+                    newCost = nodeData[currentIndex].costSoFar + (int)(movementCost * hexGrid.NodeAt(currentIndex).movementCostModifier);
 
 
                     if (newCost < nodeData[neighbourIndex].costSoFar)
@@ -360,7 +356,7 @@ namespace Navigation
                         {
                             continue;
                         }
-                        newCost = nodeData[currentIndex].costSoFar + SquareGrid.StraightCost;
+                        newCost = nodeData[currentIndex].costSoFar + (int)(SquareGrid.StraightCost * grid.NodeAt(currentIndex).movementCostModifier);
                     }
                     else //if diagonal movement, check this node and the adjacent nodes
                     {
@@ -371,7 +367,7 @@ namespace Navigation
                         {
                             continue;
                         }
-                        newCost = nodeData[currentIndex].costSoFar + SquareGrid.DiagonalCost;
+                        newCost = nodeData[currentIndex].costSoFar + (int)(SquareGrid.DiagonalCost * grid.NodeAt(currentIndex).movementCostModifier);
                     }
 
                     if (newCost <= budget && newCost < nodeData[neighbourIndex].costSoFar)

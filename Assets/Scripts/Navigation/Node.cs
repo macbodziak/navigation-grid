@@ -25,7 +25,7 @@ namespace Navigation
         public int id { get => _id; private set => _id = value; }
         public Vector2Int gridPosition { get => _gridPosition; private set => _gridPosition = value; }
         public bool walkable { get => _walkable; private set => _walkable = value; }
-        public float movementCostModifier { get => _movementCostModifier; private set => _movementCostModifier = value; }
+        public float movementCostModifier { get => _movementCostModifier; set => _movementCostModifier = value; }
 
 
         public void Setup(int id, int x, int z, bool walkable = true)
