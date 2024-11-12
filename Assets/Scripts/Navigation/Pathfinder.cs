@@ -4,31 +4,21 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using System;
+using UnityEditor.ShaderGraph;
 
 namespace Navigation
 {
     public class Pathfinder
     {
         //<summary>
-        //Synchronous method for finding a Path on a Square Grid. Return a Path if one is found or null if not
+        //Synchronous method for finding a Path on a Square Grid that takes start and goal node indexes as arguments. Return a Path if one is found or null if not
         //</summary>
-        static public Path FindPath(SquareGrid grid, int start_x, int start_z, int goal_x, int goal_z)
+        static public Path FindPath(SquareGrid grid, int startIndex, int goalIndex)
         {
-            if (grid.CheckIfInBound(start_x, start_z) == false)
-            {
-                return null;
-            }
-
-            if (grid.CheckIfInBound(goal_x, goal_z) == false)
-            {
-                return null;
-            }
+            int currentIndex;
 
             Utils.PriorityQueue<int, int> frontier = new Utils.PriorityQueue<int, int>();  // <id, priority or heuristic>
             AStarSearchNodeData[] nodeData = new AStarSearchNodeData[grid.Count];
-
-            int currentIndex;
-            int goalIndex = grid.IndexAt(goal_x, goal_z);
 
             //initilize nodeData
             for (int i = 0; i < grid.Count; i++)
@@ -38,9 +28,9 @@ namespace Navigation
             }
 
             //set the cost so far of the starting position to 0
-            nodeData[grid.IndexAt(start_x, start_z)].costSoFar = 0;
+            nodeData[startIndex].costSoFar = 0;
 
-            frontier.Enqueue(grid.IndexAt(start_x, start_z), 0);
+            frontier.Enqueue(startIndex, 0);
 
             Vector2Int[] neighbours = grid.Neighbours;
             int DiagonalCost = SquareGrid.DiagonalCost;
@@ -105,27 +95,35 @@ namespace Navigation
         }
 
 
+        //<summary>
+        //Synchronous method for finding a Path on a Square Grid that takes start and goal grid coordinates as arguments. Return a Path if one is found or null if not
+        //</summary>
+        static public Path FindPath(SquareGrid grid, int start_x, int start_z, int goal_x, int goal_z)
+        {
+            if (grid.CheckIfInBound(start_x, start_z) == false)
+            {
+                return null;
+            }
+
+            if (grid.CheckIfInBound(goal_x, goal_z) == false)
+            {
+                return null;
+            }
+
+            return FindPath(grid, grid.NodeAt(start_x, start_z).id, grid.NodeAt(goal_x, goal_z).id);
+        }
+
 
         //<summary>
-        //Synchronous method for finding a Path on a Hex Grid. Return a Path if one is found or null if not
+        //Synchronous method for finding a Path on a Hex Grid that takes start and goal node indexes as arguments. Return a Path if one is found or null if not
         //</summary>
-        static public Path FindPath(HexGrid hexGrid, int start_x, int start_z, int goal_x, int goal_z)
+        static public Path FindPath(HexGrid hexGrid, int startIndex, int goalIndex)
         {
-            if (hexGrid.CheckIfInBound(start_x, start_z) == false)
-            {
-                return null;
-            }
-
-            if (hexGrid.CheckIfInBound(goal_x, goal_z) == false)
-            {
-                return null;
-            }
 
             Utils.PriorityQueue<int, int> frontier = new Utils.PriorityQueue<int, int>();  // <id, priority or heuristic>
             AStarSearchNodeData[] nodeData = new AStarSearchNodeData[hexGrid.Count];
 
             int currentIndex;
-            int goalIndex = hexGrid.IndexAt(goal_x, goal_z);
 
             //initilize nodeData
             for (int i = 0; i < hexGrid.Count; i++)
@@ -135,9 +133,9 @@ namespace Navigation
             }
 
             //set the cost so far of the starting position to 0
-            nodeData[hexGrid.IndexAt(start_x, start_z)].costSoFar = 0;
+            nodeData[startIndex].costSoFar = 0;
 
-            frontier.Enqueue(hexGrid.IndexAt(start_x, start_z), 0);
+            frontier.Enqueue(startIndex, 0);
 
             Vector2Int[] neighboursEven = hexGrid.NeighboursEven;
             Vector2Int[] neighboursOdd = hexGrid.NeighboursOdd;
@@ -200,6 +198,25 @@ namespace Navigation
         }
 
         //<summary>
+        //Synchronous method for finding a Path on a Hex Grid that takes start and goal grid coordinates as arguments. Return a Path if one is found or null if not
+        //</summary>
+        static public Path FindPath(HexGrid hexGrid, int start_x, int start_z, int goal_x, int goal_z)
+        {
+            if (hexGrid.CheckIfInBound(start_x, start_z) == false)
+            {
+                return null;
+            }
+
+            if (hexGrid.CheckIfInBound(goal_x, goal_z) == false)
+            {
+                return null;
+            }
+
+            return FindPath(hexGrid, hexGrid.NodeAt(start_x, start_z).id, hexGrid.NodeAt(goal_x, goal_z).id);
+        }
+
+
+        //<summary>
         //Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
         //</summary>
         static public PathRequest SchedulePath(SquareGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition)
@@ -248,6 +265,11 @@ namespace Navigation
         }
 
 
+        static public PathRequest SchedulePath(HexGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition)
+        {
+            throw new NotImplementedException();
+            // return null;
+        }
         static private void DebugPrintPath(SquareGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData)
         {
             int currentIndex = goalIndex;
@@ -297,6 +319,9 @@ namespace Navigation
             return (int)((b - a).magnitude);
         }
 
+        //<summary>
+        //Synchronous method for finding Reachable Nodes on a Square Grid, given start grid coordinates and movement budget. Returns a Walkable Area if one is found or null if not
+        //</summary>
         static public WalkableArea FindWalkableArea(SquareGrid grid, int start_x, int start_z, int budget)
         {
             if (grid.CheckIfInBound(start_x, start_z) == false)
@@ -402,7 +427,9 @@ namespace Navigation
             return new WalkableArea(grid, walkableAreaElements, GridToAreaElementsMap);
         }
 
-
+        //<summary>
+        //Synchronous method for finding Reachable Nodes on a Hex Grid, given start grid coordinates and movement budget. Returns a Walkable Area if one is found or null if not
+        //</summary>
         static public WalkableArea FindWalkableArea(HexGrid grid, int start_x, int start_z, int budget)
         {
             if (grid.CheckIfInBound(start_x, start_z) == false)
@@ -509,7 +536,13 @@ namespace Navigation
         }
 
 
-        static public List<WalkableAreaElement> ScheduleWalkableArea(SquareGrid navGrid, int start_x, int start_z, int budget)
+        static public List<WalkableAreaElement> ScheduleWalkableArea(SquareGrid grid, int start_x, int start_z, int budget)
+        {
+            throw new NotImplementedException();
+            // return null;
+        }
+
+        static public List<WalkableAreaElement> ScheduleWalkableArea(HexGrid grid, int start_x, int start_z, int budget)
         {
             throw new NotImplementedException();
             // return null;
