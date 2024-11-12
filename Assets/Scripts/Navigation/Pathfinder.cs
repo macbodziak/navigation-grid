@@ -290,7 +290,6 @@ namespace Navigation
             return SquareGrid.StraightCost * (Mathf.Abs(b.x - a.x) + Mathf.Abs(b.y - a.y));
         }
 
-        //TO DO - abstract square and hex grid
         static private int Distance(NavGrid navGrid, int checkedIndex, int goalIndex)
         {
             Vector2Int a = navGrid.NodeAt(checkedIndex).gridPosition;
@@ -402,6 +401,113 @@ namespace Navigation
             }
             return new WalkableArea(grid, walkableAreaElements, GridToAreaElementsMap);
         }
+
+
+        static public WalkableArea FindWalkableArea(HexGrid grid, int start_x, int start_z, int budget)
+        {
+            if (grid.CheckIfInBound(start_x, start_z) == false)
+            {
+                return null;
+            }
+
+            if (budget <= 0)
+            {
+                return null;
+            }
+
+            List<int> areaIndices = new();
+            Utils.PriorityQueue<int, int> frontier = new Utils.PriorityQueue<int, int>();  // <id, priority or heuristic>
+            AStarSearchNodeData[] nodeData = new AStarSearchNodeData[grid.Count];
+
+            int currentIndex;
+
+            //initilize nodeData
+            for (int i = 0; i < grid.Count; i++)
+            {
+                nodeData[i].costSoFar = int.MaxValue;
+                nodeData[i].cameFrom = -1;              //cameFrom represent the index int nodes array of the predesessor
+            }
+
+            //set the cost so far of the starting position to 0
+            nodeData[grid.IndexAt(start_x, start_z)].costSoFar = 0;
+
+            frontier.Enqueue(grid.IndexAt(start_x, start_z), 0);
+
+            Vector2Int[] neighboursEven = grid.NeighboursEven;
+            Vector2Int[] neighboursOdd = grid.NeighboursOdd;
+            Vector2Int[] neighbours;
+            Vector2Int neighbourGridPosition;
+            int neighbourIndex;
+            int newCost;
+            Vector2Int currentGridPosition;
+            int movementCost = grid.MovementCost;
+
+            while (frontier.Count > 0)
+            {
+                currentIndex = frontier.Dequeue();
+
+                currentGridPosition = grid.NodeAt(currentIndex).gridPosition;
+
+                if (currentGridPosition.y % 2 == 0)
+                {
+                    neighbours = neighboursEven;
+                }
+                else
+                {
+                    neighbours = neighboursOdd;
+                }
+
+                for (int i = 0; i < 6; i++)
+                {
+                    neighbourGridPosition = currentGridPosition + neighbours[i];
+                    neighbourIndex = grid.IndexAt(neighbourGridPosition);
+
+                    if (neighbourIndex == -1)
+                    {
+                        continue;
+                    }
+
+                    if (grid.IsWalkable(neighbourIndex) == false)
+                    {
+                        continue;
+                    }
+
+                    newCost = nodeData[currentIndex].costSoFar + (int)(movementCost * grid.NodeAt(currentIndex).movementCostModifier);
+
+
+                    if (newCost <= budget && newCost < nodeData[neighbourIndex].costSoFar)
+                    {
+                        int previousCost = nodeData[neighbourIndex].costSoFar;
+
+                        nodeData[neighbourIndex].costSoFar = newCost;
+                        nodeData[neighbourIndex].cameFrom = currentIndex;
+
+                        //do not add to froniter if already on froniter / already visited
+                        if (previousCost == int.MaxValue)
+                        {
+                            frontier.Enqueue(neighbourIndex, newCost);
+                            areaIndices.Add(neighbourIndex);
+                        }
+                    }
+
+                }
+
+            }
+
+            List<WalkableAreaElement> walkableAreaElements = new List<WalkableAreaElement>(areaIndices.Count);
+            Dictionary<int, int> GridToAreaElementsMap = new();
+
+            for (int i = 0; i < areaIndices.Count; i++)
+            {
+                int areaIndex = areaIndices[i];
+                GridToAreaElementsMap.Add(areaIndex, i);
+                Vector2Int gridPosition = grid.NodeAt(areaIndex).gridPosition;
+                Vector3 worldPosition = grid.NodeWorldPositionAt(gridPosition);
+                walkableAreaElements.Add(new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
+            }
+            return new WalkableArea(grid, walkableAreaElements, GridToAreaElementsMap);
+        }
+
 
         static public List<WalkableAreaElement> ScheduleWalkableArea(SquareGrid navGrid, int start_x, int start_z, int budget)
         {
