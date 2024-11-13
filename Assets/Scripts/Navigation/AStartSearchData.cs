@@ -4,5 +4,6 @@ namespace Navigation
     {
         public int costSoFar;
         public int cameFrom;
+        public bool walkable;
     }
 }

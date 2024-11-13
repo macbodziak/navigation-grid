@@ -13,7 +13,7 @@ namespace Navigation
         //<summary>
         //Synchronous method for finding a Path on a Square Grid that takes start and goal node indexes as arguments. Return a Path if one is found or null if not
         //</summary>
-        static public Path FindPath(SquareGrid grid, int startIndex, int goalIndex)
+        static public Path FindPath(SquareGrid grid, int startIndex, int goalIndex, bool excludeGoal = false)
         {
             int currentIndex;
 
@@ -25,6 +25,12 @@ namespace Navigation
             {
                 nodeData[i].costSoFar = int.MaxValue;
                 nodeData[i].cameFrom = -1;              //cameFrom represent the index int nodes array of the predesessor
+                nodeData[i].walkable = grid.IsWalkable(i);
+            }
+
+            if (excludeGoal)
+            {
+                nodeData[goalIndex].walkable = true;
             }
 
             //set the cost so far of the starting position to 0
@@ -46,7 +52,7 @@ namespace Navigation
 
                 if (currentIndex == goalIndex)
                 {
-                    return MakePath(grid, goalIndex, nodeData);
+                    return MakePath(grid, goalIndex, nodeData, excludeGoal);
                 }
 
                 currentGridPosition = grid.NodeAt(currentIndex).gridPosition;
@@ -64,7 +70,7 @@ namespace Navigation
 
                     if (i % 2 == 0) // if straight movement, check only this node
                     {
-                        if (grid.IsWalkable(neighbourIndex) == false)
+                        if (nodeData[neighbourIndex].walkable == false)
                         {
                             continue;
                         }
@@ -72,9 +78,9 @@ namespace Navigation
                     }
                     else //if diagonal movement, check this node and the adjacent nodes
                     {
-                        if (grid.IsWalkable(neighbourIndex) == false ||
-                        grid.IsWalkable(grid.IndexAt(currentGridPosition + neighbours[i - 1])) == false ||
-                         grid.IsWalkable(grid.IndexAt(currentGridPosition + neighbours[i + 1])) == false
+                        if (nodeData[neighbourIndex].walkable == false ||
+                        nodeData[grid.IndexAt(currentGridPosition + neighbours[i - 1])].walkable == false ||
+                        nodeData[grid.IndexAt(currentGridPosition + neighbours[i + 1])].walkable == false
                         )
                         {
                             continue;
@@ -98,7 +104,7 @@ namespace Navigation
         //<summary>
         //Synchronous method for finding a Path on a Square Grid that takes start and goal grid coordinates as arguments. Return a Path if one is found or null if not
         //</summary>
-        static public Path FindPath(SquareGrid grid, int start_x, int start_z, int goal_x, int goal_z)
+        static public Path FindPath(SquareGrid grid, int start_x, int start_z, int goal_x, int goal_z, bool excludeGoal = false)
         {
             if (grid.CheckIfInBound(start_x, start_z) == false)
             {
@@ -110,26 +116,32 @@ namespace Navigation
                 return null;
             }
 
-            return FindPath(grid, grid.NodeAt(start_x, start_z).id, grid.NodeAt(goal_x, goal_z).id);
+            return FindPath(grid, grid.NodeAt(start_x, start_z).id, grid.NodeAt(goal_x, goal_z).id, excludeGoal);
         }
 
 
         //<summary>
         //Synchronous method for finding a Path on a Hex Grid that takes start and goal node indexes as arguments. Return a Path if one is found or null if not
         //</summary>
-        static public Path FindPath(HexGrid hexGrid, int startIndex, int goalIndex)
+        static public Path FindPath(HexGrid grid, int startIndex, int goalIndex, bool excludeGoal = false)
         {
 
             Utils.PriorityQueue<int, int> frontier = new Utils.PriorityQueue<int, int>();  // <id, priority or heuristic>
-            AStarSearchNodeData[] nodeData = new AStarSearchNodeData[hexGrid.Count];
+            AStarSearchNodeData[] nodeData = new AStarSearchNodeData[grid.Count];
 
             int currentIndex;
 
             //initilize nodeData
-            for (int i = 0; i < hexGrid.Count; i++)
+            for (int i = 0; i < grid.Count; i++)
             {
                 nodeData[i].costSoFar = int.MaxValue;
                 nodeData[i].cameFrom = -1;              //cameFrom represent the index int nodes array of the predesessor
+                nodeData[i].walkable = grid.IsWalkable(i);
+            }
+
+            if (excludeGoal)
+            {
+                nodeData[goalIndex].walkable = true;
             }
 
             //set the cost so far of the starting position to 0
@@ -137,14 +149,14 @@ namespace Navigation
 
             frontier.Enqueue(startIndex, 0);
 
-            Vector2Int[] neighboursEven = hexGrid.NeighboursEven;
-            Vector2Int[] neighboursOdd = hexGrid.NeighboursOdd;
+            Vector2Int[] neighboursEven = grid.NeighboursEven;
+            Vector2Int[] neighboursOdd = grid.NeighboursOdd;
             Vector2Int[] neighbours;
             Vector2Int neighbourGridPosition;
             int neighbourIndex;
             int newCost;
             Vector2Int currentGridPosition;
-            int movementCost = hexGrid.MovementCost;
+            int movementCost = grid.MovementCost;
 
             while (frontier.Count > 0)
             {
@@ -152,10 +164,10 @@ namespace Navigation
 
                 if (currentIndex == goalIndex)
                 {
-                    return MakePath(hexGrid, goalIndex, nodeData);
+                    return MakePath(grid, goalIndex, nodeData, excludeGoal);
                 }
 
-                currentGridPosition = hexGrid.NodeAt(currentIndex).gridPosition;
+                currentGridPosition = grid.NodeAt(currentIndex).gridPosition;
 
                 if (currentGridPosition.y % 2 == 0)
                 {
@@ -169,7 +181,7 @@ namespace Navigation
                 for (int i = 0; i < 6; i++)
                 {
                     neighbourGridPosition = currentGridPosition + neighbours[i];
-                    neighbourIndex = hexGrid.IndexAt(neighbourGridPosition);
+                    neighbourIndex = grid.IndexAt(neighbourGridPosition);
 
                     if (neighbourIndex == -1)
                     {
@@ -177,12 +189,12 @@ namespace Navigation
                     }
 
 
-                    if (hexGrid.IsWalkable(neighbourIndex) == false)
+                    if (nodeData[neighbourIndex].walkable == false)
                     {
                         continue;
                     }
 
-                    newCost = nodeData[currentIndex].costSoFar + (int)(movementCost * hexGrid.NodeAt(currentIndex).movementCostModifier);
+                    newCost = nodeData[currentIndex].costSoFar + (int)(movementCost * grid.NodeAt(currentIndex).movementCostModifier);
 
 
                     if (newCost < nodeData[neighbourIndex].costSoFar)
@@ -190,7 +202,7 @@ namespace Navigation
                         nodeData[neighbourIndex].costSoFar = newCost;
                         nodeData[neighbourIndex].cameFrom = currentIndex;
 
-                        frontier.Enqueue(neighbourIndex, newCost + Distance(hexGrid, neighbourIndex, goalIndex));
+                        frontier.Enqueue(neighbourIndex, newCost + Distance(grid, neighbourIndex, goalIndex));
                     }
                 }
             }
@@ -200,7 +212,7 @@ namespace Navigation
         //<summary>
         //Synchronous method for finding a Path on a Hex Grid that takes start and goal grid coordinates as arguments. Return a Path if one is found or null if not
         //</summary>
-        static public Path FindPath(HexGrid hexGrid, int start_x, int start_z, int goal_x, int goal_z)
+        static public Path FindPath(HexGrid hexGrid, int start_x, int start_z, int goal_x, int goal_z, bool excludeGoal = false)
         {
             if (hexGrid.CheckIfInBound(start_x, start_z) == false)
             {
@@ -212,7 +224,7 @@ namespace Navigation
                 return null;
             }
 
-            return FindPath(hexGrid, hexGrid.NodeAt(start_x, start_z).id, hexGrid.NodeAt(goal_x, goal_z).id);
+            return FindPath(hexGrid, hexGrid.NodeAt(start_x, start_z).id, hexGrid.NodeAt(goal_x, goal_z).id, excludeGoal);
         }
 
 
@@ -238,7 +250,7 @@ namespace Navigation
             {
                 pathQuery.nodeData[i] = new AStarSearchNodeDataAsync
                 {
-                    walkable = navGrid.NodeAt(i).walkable,
+                    walkable = navGrid.IsWalkable(i),
                     gridPosition = new int2(navGrid.NodeAt(i).gridPosition.x, navGrid.NodeAt(i).gridPosition.y),
                     costSoFar = int.MaxValue,
                     cameFrom = -1,
@@ -284,13 +296,19 @@ namespace Navigation
         }
 
 
-        static private Path MakePath(NavGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData)
+        static private Path MakePath(NavGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData, bool excludeGoal = false)
         {
 
             int currentIndex = goalIndex;
             int totalCost = nodeData[goalIndex].costSoFar;
 
             List<PathElement> pathElements = new List<PathElement>();
+
+            if (excludeGoal)
+            {
+                currentIndex = nodeData[currentIndex].cameFrom;
+                totalCost = nodeData[currentIndex].costSoFar;
+            }
 
             while (currentIndex != -1)
             {
@@ -345,6 +363,7 @@ namespace Navigation
             {
                 nodeData[i].costSoFar = int.MaxValue;
                 nodeData[i].cameFrom = -1;              //cameFrom represent the index int nodes array of the predesessor
+                nodeData[i].walkable = grid.IsWalkable(i);
             }
 
             //set the cost so far of the starting position to 0
@@ -376,7 +395,7 @@ namespace Navigation
 
                     if (i % 2 == 0) // if straight movement, check only this node
                     {
-                        if (grid.IsWalkable(neighbourIndex) == false)
+                        if (nodeData[neighbourIndex].walkable == false)
                         {
                             continue;
                         }
@@ -384,9 +403,9 @@ namespace Navigation
                     }
                     else //if diagonal movement, check this node and the adjacent nodes
                     {
-                        if (grid.IsWalkable(neighbourIndex) == false ||
-                        grid.IsWalkable(grid.IndexAt(currentGridPosition + neighbours[i - 1])) == false ||
-                         grid.IsWalkable(grid.IndexAt(currentGridPosition + neighbours[i + 1])) == false
+                        if (nodeData[neighbourIndex].walkable == false ||
+                        nodeData[grid.IndexAt(currentGridPosition + neighbours[i - 1])].walkable == false ||
+                        nodeData[grid.IndexAt(currentGridPosition + neighbours[i + 1])].walkable == false
                         )
                         {
                             continue;
@@ -453,6 +472,7 @@ namespace Navigation
             {
                 nodeData[i].costSoFar = int.MaxValue;
                 nodeData[i].cameFrom = -1;              //cameFrom represent the index int nodes array of the predesessor
+                nodeData[i].walkable = grid.IsWalkable(i);
             }
 
             //set the cost so far of the starting position to 0
@@ -494,7 +514,7 @@ namespace Navigation
                         continue;
                     }
 
-                    if (grid.IsWalkable(neighbourIndex) == false)
+                    if (nodeData[neighbourIndex].walkable == false)
                     {
                         continue;
                     }
