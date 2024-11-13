@@ -76,10 +76,10 @@ namespace Navigation
 
             _path = path;
 
-            StartCoroutine(MoveAlongPathRoutine());
+            StartCoroutine(MoveAlongPathCoroutine());
         }
 
-        private IEnumerator MoveAlongPathRoutine()
+        private IEnumerator MoveAlongPathCoroutine()
         {
             OnMovmentStarted();
             _state = MovementControllerState.Moving;
@@ -119,6 +119,32 @@ namespace Navigation
                     _state = MovementControllerState.Idle;
                 }
             }
+        }
+
+        public void FaceTowards(Vector3 worldPosition)
+        {
+            if (_state != MovementControllerState.Idle)
+            {
+                return;
+            }
+            StartCoroutine(FaceTowardsCoroutine(worldPosition));
+        }
+
+        private IEnumerator FaceTowardsCoroutine(Vector3 worldPosition)
+        {
+            _state = MovementControllerState.Moving;
+            Quaternion startRotation = transform.rotation;
+            Quaternion targetRotation = Quaternion.LookRotation(worldPosition - transform.position);
+            float progress = _speedModifier * Time.deltaTime * 2f;
+
+            while (progress < 1)
+            {
+                transform.rotation = Quaternion.Slerp(startRotation, targetRotation, progress);
+                progress += _speedModifier * Time.deltaTime * 2f;
+                yield return null;
+            }
+            _state = MovementControllerState.Idle;
+            yield return null;
         }
 
         public void Pause()
