@@ -14,6 +14,7 @@ namespace Navigation
         [SerializeField] int height;
         [SerializeField] protected Node[] nodes;
         [SerializeField] protected Vector3[] nodeWorldPositions;
+        [SerializeField] MovementController[] movementControllers;
 
 #if UNITY_EDITOR
         [SerializeField] bool showTileOutlineFlag = true;
@@ -48,6 +49,7 @@ namespace Navigation
 
             nodes = new Node[width * height];
             nodeWorldPositions = new Vector3[width * height];
+            movementControllers = new MovementController[width * height];
 
             int gridIndex;
             bool walkable;
@@ -60,6 +62,7 @@ namespace Navigation
                     nodeWorldPositions[gridIndex] = GridPositionToWorldPosition(w, h);
                     walkable = TestForWalkability(nodeWorldPositions[gridIndex], notWalkableLayers, colliderSize, rayLength);
                     nodes[gridIndex].Setup(gridIndex, w, h, walkable);
+                    movementControllers[gridIndex] = null;
                 }
             }
 
@@ -188,22 +191,19 @@ namespace Navigation
 
         public bool IsWalkable(int index)
         {
-            return nodes[index].walkable;
-            //TO DO - add more checks, such as is occupied by a character
+            return nodes[index].walkable && movementControllers[index] == null;
         }
 
 
         public bool IsWalkable(int x, int z)
         {
-            return nodes[IndexAt(x, z)].walkable;
-            //TO DO - add more checks, such as is occupied by a character
+            return IsWalkable(IndexAt(x, z));
         }
 
 
         public bool IsWalkable(Vector2Int gridPosition)
         {
-            return nodes[IndexAt(gridPosition)].walkable;
-            //TO DO - add more checks, such as is occupied by a character
+            return IsWalkable(IndexAt(gridPosition));
         }
 
         #endregion
@@ -318,5 +318,11 @@ namespace Navigation
         }
 
         #endregion
+
+
+        public void SetMovementModifier(int x, int z, float value)
+        {
+            nodes[IndexAt(x, z)].movementCostModifier = value;
+        }
     }
 }

@@ -17,7 +17,12 @@ namespace Navigation
         bool _cancelFlag = false;
         [SerializeField] MovementControllerState _state;
         Path _path;
+        int _pathIndex;
+        Vector3 _targetPosition;
+        Quaternion _targetRotation;
+        #endregion
 
+        #region Properties
         public float Speed { get => _speed; set => _speed = value; }
         public float SpeedModifier
         {
@@ -51,7 +56,13 @@ namespace Navigation
                 }
             }
         }
+        #endregion
 
+        #region Events
+        public event EventHandler MovementStartedEvent;
+        public event EventHandler MovementFinishedEvent;
+        public event EventHandler<int> NodeEnteredEvent;
+        public event EventHandler<int> NodeExitedEvent;
 
         #endregion
 
@@ -82,42 +93,27 @@ namespace Navigation
         private IEnumerator MoveAlongPathCoroutine()
         {
             OnMovmentStarted();
-            _state = MovementControllerState.Moving;
-            int pathIndex = _path.Count - 1;
-            _cancelFlag = false;
-            Vector3 targetPosition;
-            Quaternion targetRotation;
 
-            while (pathIndex >= 0)
+            while (_pathIndex >= 0)
             {
-                OnNodeExited();
+                OnNodeLeaving();
 
-                targetPosition = _path[pathIndex].worldPosition;
-                targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+                _targetPosition = _path[_pathIndex].worldPosition;
+                _targetRotation = Quaternion.LookRotation(_targetPosition - transform.position);
 
-                while (transform.position != targetPosition)
+                while (transform.position != _targetPosition)
                 {
                     if (_state == MovementControllerState.Moving)
                     {
                         float delta = _speed * _speedModifier * Time.deltaTime;
                         float rotationDelta = _rotationSpeed * _speedModifier * Time.deltaTime;
-                        transform.position = Vector3.MoveTowards(transform.position, targetPosition, delta);
-                        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationDelta);
+                        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, delta);
+                        transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, rotationDelta);
                     }
                     yield return null;
                 }
 
                 OnNodeEntered();
-                _gridPosition = _path[pathIndex].gridPosition;
-                //update nav grid 
-                pathIndex--;
-
-                if (_cancelFlag || pathIndex < 0)
-                {
-                    OnMovementFinished();
-                    _cancelFlag = false;
-                    _state = MovementControllerState.Idle;
-                }
             }
         }
 
@@ -170,24 +166,40 @@ namespace Navigation
 
         private void OnMovmentStarted()
         {
-            Debug.Log(gameObject + "OnMovmentStarted() ");
+            _state = MovementControllerState.Moving;
+            _pathIndex = _path.Count - 1;
+            _cancelFlag = false;
+
+            MovementStartedEvent?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnMovementFinished()
         {
-            Debug.Log(gameObject + "OnMovementFinished() ");
+            _cancelFlag = false;
+            _state = MovementControllerState.Idle;
+            MovementFinishedEvent?.Invoke(this, EventArgs.Empty);
         }
 
-        private void OnNodeExited()
+        private void OnNodeLeaving()
         {
-            Debug.Log(gameObject + "OnNodeExit() ");
+            //TO DO - inform navGrid about it
+            NodeExitedEvent?.Invoke(this, _path[_pathIndex].gridIndex);
         }
 
         private void OnNodeEntered()
         {
-            Debug.Log(gameObject + "OnNodeEnter() ");
-        }
+            _gridPosition = _path[_pathIndex].gridPosition;
+            //TO-DO update nav grid 
 
+            NodeEnteredEvent?.Invoke(this, _path[_pathIndex].gridIndex);
+
+            _pathIndex--;
+
+            if (_cancelFlag || _pathIndex < 0)
+            {
+                OnMovementFinished();
+            }
+        }
         #endregion
 
     }
