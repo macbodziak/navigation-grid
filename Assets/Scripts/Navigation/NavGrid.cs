@@ -14,7 +14,7 @@ namespace Navigation
         [SerializeField] int height;
         [SerializeField] protected Node[] nodes;
         [SerializeField] protected Vector3[] nodeWorldPositions;
-        [SerializeField] SerializableDictionary<int, MovementController> actors;
+        [SerializeField] SerializableDictionary<int, Actor> actors;
 
 #if UNITY_EDITOR
         [SerializeField] bool showTileOutlineFlag = true;
