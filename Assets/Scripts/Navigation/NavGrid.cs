@@ -1,5 +1,5 @@
-using System;
-using Unity.IO.LowLevel.Unsafe;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using Utils;
@@ -14,7 +14,7 @@ namespace Navigation
         [SerializeField] int height;
         [SerializeField] protected Node[] nodes;
         [SerializeField] protected Vector3[] nodeWorldPositions;
-        [SerializeField] MovementController[] movementControllers;
+        [SerializeField] SerializableDictionary<int, MovementController> actors;
 
 #if UNITY_EDITOR
         [SerializeField] bool showTileOutlineFlag = true;
@@ -49,7 +49,7 @@ namespace Navigation
 
             nodes = new Node[width * height];
             nodeWorldPositions = new Vector3[width * height];
-            movementControllers = new MovementController[width * height];
+            actors = new();
 
             int gridIndex;
             bool walkable;
@@ -62,7 +62,6 @@ namespace Navigation
                     nodeWorldPositions[gridIndex] = GridPositionToWorldPosition(w, h);
                     walkable = TestForWalkability(nodeWorldPositions[gridIndex], notWalkableLayers, colliderSize, rayLength);
                     nodes[gridIndex].Setup(gridIndex, w, h, walkable);
-                    movementControllers[gridIndex] = null;
                 }
             }
 
@@ -191,7 +190,7 @@ namespace Navigation
 
         public bool IsWalkable(int index)
         {
-            return nodes[index].walkable && movementControllers[index] == null;
+            return nodes[index].walkable && actors.ContainsKey(index) == false;
         }
 
 
