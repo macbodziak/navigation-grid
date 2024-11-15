@@ -31,6 +31,23 @@ namespace Navigation
             }
         }
 
+        public List<Vector3> WorldPositions()
+        {
+            List<Vector3> worldPositions = new List<Vector3>(m_elements.Count);
+
+            if (m_elements.Count == 0)
+            {
+                return null;
+            }
+
+            for (int i = m_elements.Count - 1; i >= 0; i--)
+            {
+                worldPositions.Add(m_elements[i].worldPosition);
+            }
+
+            return worldPositions;
+        }
+
 
         IEnumerator IEnumerable.GetEnumerator()
         {
