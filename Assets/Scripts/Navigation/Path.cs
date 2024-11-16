@@ -14,6 +14,29 @@ namespace Navigation
         public IReadOnlyList<PathElement> elements { get => m_elements; }
         public int cost { get => m_cost; private set => m_cost = value; }
         public int Count { get => m_elements.Count; }
+        public PathElement Start
+        {
+            get
+            {
+                if (m_elements == null || m_elements.Count == 0)
+                {
+                    return new PathElement(-1, new Vector2Int(-1, -1), Vector3.zero);
+                }
+                return m_elements[m_elements.Count - 1];
+            }
+        }
+
+        public PathElement Goal
+        {
+            get
+            {
+                if (m_elements == null || m_elements.Count == 0)
+                {
+                    return new PathElement(-1, new Vector2Int(-1, -1), Vector3.zero);
+                }
+                return m_elements[0];
+            }
+        }
 
 
         public Path(List<PathElement> elements, int cost)
