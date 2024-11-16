@@ -427,6 +427,16 @@ namespace Navigation
         }
 
 
+        public void UninstallAllActors()
+        {
+            foreach (var pair in actors)
+            {
+                pair.Value.Deinitialize();
+            }
+            actors.Clear();
+        }
+
+
         public void OnActorExitsNode(Actor actor, int FromIndex, int ToIndex)
         {
             if (FromIndex != -1)

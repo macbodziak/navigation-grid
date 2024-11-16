@@ -8,8 +8,8 @@ namespace Navigation
     public class Actor : MonoBehaviour
     {
         #region Fields
-        NavGrid _grid;
-        int _gridIndex;
+        [SerializeField] NavGrid _grid;
+        [SerializeField] int _gridIndex;
         [SerializeField] float _speed;
         [SerializeField] float _speedModifier;
         [SerializeField] float _rotationSpeed;

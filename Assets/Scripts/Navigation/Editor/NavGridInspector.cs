@@ -19,6 +19,7 @@ namespace Navigation
         private const int MAX_GRID_SIZE = 250;
         private const string RAYLENGTH_PREF_KEY = "RayLengthField";
         private const string COLLIDER_SIZE_PREF_KEY = "ColliderSizeField";
+        private const string SCAN_ACTORS_PREF_KEY = "ScanActorsToggle";
 
         FloatField TileSizeBakeField;
         IntegerField WidthBakeField;
@@ -30,7 +31,9 @@ namespace Navigation
         FloatField TileSizeField;
         IntegerField WidthField;
         IntegerField HeightField;
+        Toggle ScanActorsToggle;
         Button CreateMapButton;
+        Button ScanActorsButton;
         Toggle ShowTileCenterToggle;
         Toggle ShowTileOutlineToggle;
         Toggle ShowTileInfoTextToggle;
@@ -109,10 +112,26 @@ namespace Navigation
             ColliderSizeField.value = EditorPrefs.GetFloat(COLLIDER_SIZE_PREF_KEY, 0.9f);
             ColliderSizeField.RegisterValueChangedCallback(OnColliderSizeChanged);
 
+            ScanActorsToggle = new Toggle("Install Actors");
+            ScanActorsToggle.tooltip = "If checked, the baking process will look for Actors in the scene and Install them on the grid if possible";
+            ScanActorsToggle.AddToClassList("unity-base-field__aligned");
+            ScanActorsToggle.value = EditorPrefs.GetBool(SCAN_ACTORS_PREF_KEY, true);
+            ScanActorsToggle.RegisterValueChangedCallback(evt =>
+            {
+                EditorPrefs.SetBool(SCAN_ACTORS_PREF_KEY, evt.newValue);
+            });
+
+
             CreateMapButton = new Button(OnCreateMapButtonClicked);
             CreateMapButton.text = "Bake Map";
             CreateMapButton.AddToClassList("unity-base-field__aligned");
             CreateMapButton.SetEnabled(!EditorApplication.isPlaying);
+
+            ScanActorsButton = new Button(OnScnaActorsButtonClicked);
+            ScanActorsButton.text = "Install Actors";
+            ScanActorsButton.tooltip = "Look for Actors in the scene and Install them on the grid if possible";
+            ScanActorsButton.AddToClassList("unity-base-field__aligned");
+            ScanActorsButton.SetEnabled(!EditorApplication.isPlaying);
 
             MapCreationFoldout.Add(TileSizeBakeField);
             MapCreationFoldout.Add(WidthBakeField);
@@ -121,7 +140,9 @@ namespace Navigation
             MapCreationFoldout.Add(CollisionLayerField);
             MapCreationFoldout.Add(RayLengthField);
             MapCreationFoldout.Add(ColliderSizeField);
+            MapCreationFoldout.Add(ScanActorsToggle);
             MapCreationFoldout.Add(CreateMapButton);
+            MapCreationFoldout.Add(ScanActorsButton);
 
 
             #region Debug 
@@ -277,10 +298,24 @@ namespace Navigation
 
         private void OnCreateMapButtonClicked()
         {
-            NavGrid map = target as NavGrid;
+            NavGrid grid = target as NavGrid;
 
-            map.CreateMap(WidthBakeField.value, HeightBakeField.value, TileSizeBakeField.value, NotWalkableLayerMaskField.value, CollisionLayerField.value, ColliderSizeField.value, RayLengthField.value);
-            EditorUtility.SetDirty(map);
+            grid.CreateMap(WidthBakeField.value, HeightBakeField.value, TileSizeBakeField.value, NotWalkableLayerMaskField.value, CollisionLayerField.value, ColliderSizeField.value, RayLengthField.value);
+
+            if (ScanActorsToggle.value == true)
+            {
+                grid.ScanForActors(RayLengthField.value);
+            }
+            EditorUtility.SetDirty(grid);
+        }
+
+
+        private void OnScnaActorsButtonClicked()
+        {
+            NavGrid grid = target as NavGrid;
+            grid.UninstallAllActors();
+            grid.ScanForActors(RayLengthField.value);
+            EditorUtility.SetDirty(grid);
         }
 
 
@@ -305,6 +340,7 @@ namespace Navigation
             ShowNodeGriPositionTextToggle.SetEnabled(evt.newValue);
             ShowNodeWalkableTextToggle.SetEnabled(evt.newValue);
             ShowNodeMovementCostTextToggle.SetEnabled(evt.newValue);
+            ShowOccupyingActorTextToggle.SetEnabled(evt.newValue);
         }
 
         private void SetRangeOnIntegerField(IntegerField integerField, int min, int max)
