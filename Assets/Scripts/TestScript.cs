@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Navigation;
@@ -9,7 +10,9 @@ public class TestScript : MonoBehaviour
     [SerializeField] SquareGrid navGrid;
     [SerializeField] Vector2Int start;
     [SerializeField] Vector2Int goal;
-
+    [SerializeField] bool excludeGoal;
+    [SerializeField] Actor actor_1;
+    [SerializeField] Actor actor_2;
     [SerializeField] Vector2Int startArea;
     [SerializeField] int budget;
     System.Diagnostics.Stopwatch stopwatch;
@@ -22,6 +25,18 @@ public class TestScript : MonoBehaviour
     {
         stopwatch = new();
         stopwatch.Start();
+
+
+        path = Pathfinder.FindPath(navGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
+        actor_1.MoveAlongPath(path);
+
+        navGrid.SetMovementModifier(9, 12, 4f);
+        navGrid.SetMovementModifier(10, 12, 4f);
+        navGrid.SetMovementModifier(11, 12, 4f);
+        // navGrid.SetMovementModifier(0, 4, 3f);
+        navGrid.SetMovementModifier(9, 10, 4f);
+        // navGrid.SetMovementModifier(1, 5, 3f);
+        // navGrid.SetMovementModifier(2, 5, 3f);
 
         // // for (int i = 0; i < 10; i++)
         // {
@@ -95,7 +110,7 @@ public class TestScript : MonoBehaviour
             time_start = Time.realtimeSinceStartup;
             // for (int i = 0; i < 10; i++)
             {
-                path = Pathfinder.FindPath(navGrid, start.x, start.y, goal.x, goal.y);
+                path = Pathfinder.FindPath(navGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
             }
             stopwatch.Stop();
             time_finish = Time.realtimeSinceStartup;

@@ -58,7 +58,7 @@ public class TestScriptClickPath : MonoBehaviour
             }
             else
             {
-                Path path = Pathfinder.FindPath(navGrid, start.gridPosition.x, start.gridPosition.y, goal.gridPosition.x, goal.gridPosition.y);
+                Path path = Pathfinder.FindPath(navGrid, start.id, goal.id);
                 if (path == null)
                 {
                     Debug.Log("<color=orange>No Path Found</color>");
