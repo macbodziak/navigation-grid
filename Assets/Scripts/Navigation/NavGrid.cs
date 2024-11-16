@@ -385,7 +385,8 @@ namespace Navigation
         {
             if (actors.ContainsKey(index))
             {
-
+                Actor actor = actors[index];
+                actor.Deinitialize();
             }
             actors.Remove(index);
         }
