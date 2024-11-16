@@ -201,6 +201,7 @@ namespace Navigation
         {
             _cancelFlag = false;
             _state = ActorState.Idle;
+            _pathIndex = -1;
 
             MovementFinishedEvent?.Invoke(this, new ActorFinishedMovementEventArgs(_gridIndex));
         }
