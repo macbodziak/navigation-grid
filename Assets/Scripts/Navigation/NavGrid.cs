@@ -438,7 +438,10 @@ namespace Navigation
         {
             foreach (var pair in actors)
             {
-                pair.Value.Deinitialize();
+                if (pair.Value != null)
+                {
+                    pair.Value.Deinitialize();
+                }
             }
             actors.Clear();
         }
