@@ -39,7 +39,7 @@ namespace Navigation
         Toggle ShowTileInfoTextToggle;
         SliderInt TileInfoTextSizeSlider;
         ColorField TileInfoTextColorField;
-        Toggle ShowNodeGriPositionTextToggle;
+        Toggle ShowNodeGridCoordinatesTextToggle;
         Toggle ShowNodeWalkableTextToggle;
         Toggle ShowNodeMovementCostTextToggle;
         Toggle ShowOccupyingActorTextToggle;
@@ -200,10 +200,10 @@ namespace Navigation
             ShowTileInfoTextToggle.AddToClassList("unity-base-field__aligned");
             ShowTileInfoTextToggle.RegisterValueChangedCallback(OnShowTileInfoTextValueChanged);
 
-            ShowNodeGriPositionTextToggle = new Toggle("Grid Position");
-            SerializedProperty ShowNodeGriPositionTextProp = serializedObject.FindProperty("ShowNodeGriPositionTextFlag");
-            ShowNodeGriPositionTextToggle.BindProperty(ShowNodeGriPositionTextProp);
-            ShowNodeGriPositionTextToggle.AddToClassList("unity-base-field__aligned");
+            ShowNodeGridCoordinatesTextToggle = new Toggle("Grid Coordinates");
+            SerializedProperty ShowNodeGridCoordinatesTextProp = serializedObject.FindProperty("ShowNodeGridCoordinatesTextFlag");
+            ShowNodeGridCoordinatesTextToggle.BindProperty(ShowNodeGridCoordinatesTextProp);
+            ShowNodeGridCoordinatesTextToggle.AddToClassList("unity-base-field__aligned");
 
             ShowNodeMovementCostTextToggle = new Toggle("Movement Cost");
             SerializedProperty ShowNodeMovementCostTextProp = serializedObject.FindProperty("ShowNodeMovementCostTextFlag");
@@ -234,7 +234,7 @@ namespace Navigation
             TextInfoDetailsBox.text = "Info Text Details";
             TextInfoDetailsBox.Add(TileInfoTextSizeSlider);
             TextInfoDetailsBox.Add(TileInfoTextColorField);
-            TextInfoDetailsBox.Add(ShowNodeGriPositionTextToggle);
+            TextInfoDetailsBox.Add(ShowNodeGridCoordinatesTextToggle);
             TextInfoDetailsBox.Add(ShowNodeMovementCostTextToggle);
             TextInfoDetailsBox.Add(ShowNodeWalkableTextToggle);
             TextInfoDetailsBox.Add(ShowOccupyingActorTextToggle);
@@ -316,9 +316,9 @@ namespace Navigation
                 numberLabel.style.minWidth = 22;
                 row.Add(numberLabel);
 
-                Label positionLabel = new Label($"{grid.GridPositionAt(keysProp.GetArrayElementAtIndex(i).intValue)}");
-                positionLabel.style.minWidth = 70;
-                row.Add(positionLabel);
+                Label coordinatesLabel = new Label($"{grid.GridCoordinatesAt(keysProp.GetArrayElementAtIndex(i).intValue)}");
+                coordinatesLabel.style.minWidth = 70;
+                row.Add(coordinatesLabel);
 
                 UnityEngine.Object obj = valuesProp.GetArrayElementAtIndex(i).objectReferenceValue;
                 if (obj != null)
@@ -411,7 +411,7 @@ namespace Navigation
         {
             TileInfoTextSizeSlider.SetEnabled(evt.newValue);
             TileInfoTextColorField.SetEnabled(evt.newValue);
-            ShowNodeGriPositionTextToggle.SetEnabled(evt.newValue);
+            ShowNodeGridCoordinatesTextToggle.SetEnabled(evt.newValue);
             ShowNodeWalkableTextToggle.SetEnabled(evt.newValue);
             ShowNodeMovementCostTextToggle.SetEnabled(evt.newValue);
             ShowOccupyingActorTextToggle.SetEnabled(evt.newValue);

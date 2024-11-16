@@ -151,7 +151,7 @@ public class TestScriptHex : MonoBehaviour
         foreach (var element in area)
         {
 
-            Debug.DrawLine(element.worldPosition, grid.NodeWorldPositionAt(element.originIndex), Color.yellow, 10.0f);
+            Debug.DrawLine(element.worldPosition, grid.WorldPositionAt(element.originIndex), Color.yellow, 10.0f);
         }
 
     }
@@ -174,7 +174,7 @@ public class TestScriptHex : MonoBehaviour
                 Debug.Log("Hit object: " + hit.collider.gameObject.name + ", point: " + hit.point);
                 Node node = grid.NodeAt(hit.point);
 
-                Debug.Log("gridPos: " + node.gridPosition + " , node id: " + node.id + " , walkable: " + node.walkable);
+                Debug.Log("gridPos: " + node.gridCoordinates + " , node id: " + node.id + " , walkable: " + node.walkable);
 
                 // Do something with the hit object, e.g.:
                 // hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.red;
@@ -186,6 +186,6 @@ public class TestScriptHex : MonoBehaviour
     {
         Actor actor = sender as Actor;
         // grid.UninstallActor(args.GoalIndex);
-        Debug.Log(actor.gameObject.name + " finished movement at " + grid.GridPositionAt(args.GoalIndex));
+        Debug.Log(actor.gameObject.name + " finished movement at " + grid.GridCoordinatesAt(args.GoalIndex));
     }
 }

@@ -172,7 +172,7 @@ public class TestScript : MonoBehaviour
         foreach (var element in area)
         {
 
-            Debug.DrawLine(element.worldPosition, navGrid.NodeWorldPositionAt(element.originIndex), Color.yellow, 10.0f);
+            Debug.DrawLine(element.worldPosition, navGrid.WorldPositionAt(element.originIndex), Color.yellow, 10.0f);
         }
 
     }
@@ -193,7 +193,7 @@ public class TestScript : MonoBehaviour
             {
                 // Log the name of the object that was hit
                 Debug.Log("Hit object: " + hit.collider.gameObject.name + ", point: " + hit.point);
-                Vector2Int gridPos = navGrid.GridPositionAt(hit.point);
+                Vector2Int gridPos = navGrid.GridCoordinatesAt(hit.point);
                 Node node = navGrid.NodeAt(hit.point);
 
                 Debug.Log("gridPos: " + gridPos + " , node id: " + node.id + " , walkable: " + node.walkable);

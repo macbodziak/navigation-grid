@@ -41,7 +41,7 @@ public class TestScriptClickPath : MonoBehaviour
                     if (temp.walkable)
                     {
                         start = temp;
-                        startFlag = Instantiate<GameObject>(startPrefab, navGrid.NodeWorldPositionAt(start.id), Quaternion.identity);
+                        startFlag = Instantiate<GameObject>(startPrefab, navGrid.WorldPositionAt(start.id), Quaternion.identity);
                     }
                 }
             }
@@ -52,7 +52,7 @@ public class TestScriptClickPath : MonoBehaviour
                     if (temp.id != start.id)
                     {
                         goal = temp;
-                        goalFlag = Instantiate<GameObject>(goalPrefab, navGrid.NodeWorldPositionAt(goal.id), Quaternion.identity);
+                        goalFlag = Instantiate<GameObject>(goalPrefab, navGrid.WorldPositionAt(goal.id), Quaternion.identity);
                     }
                 }
             }
@@ -104,7 +104,7 @@ public class TestScriptClickPath : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Grid")))
         {
             Debug.Log("Hit object: " + hit.collider.gameObject.name + ", point: " + hit.point);
-            Vector2Int gridPos = navGrid.GridPositionAt(hit.point);
+            Vector2Int gridPos = navGrid.GridCoordinatesAt(hit.point);
             node = navGrid.NodeAt(hit.point);
             Debug.Log("gridPos: " + gridPos + " , node id: " + node.id + " , walkable: " + node.walkable);
             if (node.id == -1)

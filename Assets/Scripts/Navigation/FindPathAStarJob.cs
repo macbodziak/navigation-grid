@@ -64,7 +64,7 @@ public struct FindPathAStarJob : IJob
 
             for (int i = 0; i < 8; i++)
             {
-                currentGridPosition = nodeData[currentIndex].gridPosition;
+                currentGridPosition = nodeData[currentIndex].gridCoordinates;
                 neighbourGridPosition = new int2(currentGridPosition.x + direction[i].x, currentGridPosition.y + direction[i].y);
 
                 //check if neighbourIndex is within bounds
@@ -104,7 +104,7 @@ public struct FindPathAStarJob : IJob
                     temp.costSoFar = newCost;
                     temp.cameFrom = currentIndex;
                     nodeData[neighbourIndex] = temp;
-                    openList.Insert(new OpenListElement(neighbourIndex, newCost + CalculateManhattanDistanceCost(nodeData[neighbourIndex].gridPosition, goalPosition)));
+                    openList.Insert(new OpenListElement(neighbourIndex, newCost + CalculateManhattanDistanceCost(nodeData[neighbourIndex].gridCoordinates, goalPosition)));
                 }
             }
         }
@@ -157,7 +157,7 @@ public struct FindPathAStarJob : IJob
 
         while (currentIndex != -1)
         {
-            gridPosition = nodeData[currentIndex].gridPosition;
+            gridPosition = nodeData[currentIndex].gridCoordinates;
             worldPosition = navGridPosition + new Vector3(gridPosition.x * navGridTileSize, 0f, gridPosition.y * navGridTileSize);
             resultPath.Add(new PathElement(currentIndex, new Vector2Int(gridPosition.x, gridPosition.y), worldPosition));
 

@@ -21,7 +21,7 @@ namespace Navigation
         }
 
 
-        public Path GetPathFromGridPosition(Vector2Int position)
+        public Path GetPathFromGridCoordinates(Vector2Int position)
         {
             int elementListIndex = m_gridToAreaMap[m_navGrid.IndexAt(position)];
             return GetPathFromInternalIndex(elementListIndex);
@@ -41,7 +41,7 @@ namespace Navigation
 
             while (m_areaElements[index].originIndex != -1)
             {
-                pathElements.Add(new PathElement(m_areaElements[index].gridIndex, m_areaElements[index].gridPosition, m_areaElements[index].worldPosition));
+                pathElements.Add(new PathElement(m_areaElements[index].gridIndex, m_areaElements[index].gridCoordinates, m_areaElements[index].worldPosition));
             }
 
             return new Path(pathElements, totalCost);

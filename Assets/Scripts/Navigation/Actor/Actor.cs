@@ -73,7 +73,7 @@ namespace Navigation
         {
             _grid = navGrid;
             _gridIndex = gridIndex;
-            transform.position = _grid.NodeWorldPositionAt(_gridIndex);
+            transform.position = _grid.WorldPositionAt(_gridIndex);
             _state = ActorState.Idle;
         }
 

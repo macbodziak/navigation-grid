@@ -21,7 +21,7 @@ namespace Navigation
         [SerializeField] bool showTileOutlineFlag = true;
         [SerializeField] bool showTileCenterFlag = true;
         [SerializeField] bool showTileInfoTextFlag = false;
-        [SerializeField] bool ShowNodeGriPositionTextFlag = false;
+        [SerializeField] bool ShowNodeGridCoordinatesTextFlag = false;
         [SerializeField] bool ShowNodeWalkableTextFlag = false;
         [SerializeField] bool ShowNodeMovementCostTextFlag = false;
         [SerializeField] bool ShowOccupyingActorTextFlag = false;
@@ -65,7 +65,7 @@ namespace Navigation
                 for (int w = 0; w < width; w++)
                 {
                     gridIndex = IndexAt(w, h);
-                    nodeWorldPositions[gridIndex] = GridPositionToWorldPosition(w, h);
+                    nodeWorldPositions[gridIndex] = GridCoordinatesToWorldPosition(w, h);
                     walkable = TestForWalkability(nodeWorldPositions[gridIndex], notWalkableLayers, colliderSize, rayLength);
                     nodes[gridIndex].Setup(gridIndex, w, h, walkable);
                 }
@@ -130,7 +130,7 @@ namespace Navigation
 
         public int IndexAt(Vector3 worldPosition)
         {
-            Vector2Int gridPos = WorldPositionToGridPosition(worldPosition);
+            Vector2Int gridPos = WorldPositionToGridCoordinates(worldPosition);
             return IndexAt(gridPos.x, gridPos.y);
         }
         #endregion
@@ -184,7 +184,7 @@ namespace Navigation
 
         #region Grid Position Getters
 
-        public Vector2Int GridPositionAt(int index)
+        public Vector2Int GridCoordinatesAt(int index)
         {
             int x = index % width;
             int z = index / width;
@@ -193,32 +193,32 @@ namespace Navigation
         #endregion
 
 
-        public Vector2Int GridPositionAt(Vector3 worldPosition)
+        public Vector2Int GridCoordinatesAt(Vector3 worldPosition)
         {
-            return WorldPositionToGridPosition(worldPosition);
+            return WorldPositionToGridCoordinates(worldPosition);
         }
 
 
         #region World Position Getters and Conversion
-        public Vector3 NodeWorldPositionAt(int x, int z)
+        public Vector3 WorldPositionAt(int x, int z)
         {
             return nodeWorldPositions[IndexAt(x, z)];
         }
 
 
-        public Vector3 NodeWorldPositionAt(Vector2Int p)
+        public Vector3 WorldPositionAt(Vector2Int p)
         {
             return nodeWorldPositions[IndexAt(p)];
         }
 
 
-        public Vector3 NodeWorldPositionAt(int index)
+        public Vector3 WorldPositionAt(int index)
         {
             return nodeWorldPositions[index];
         }
 
-        protected abstract Vector2Int WorldPositionToGridPosition(Vector3 worldPosition);
-        protected abstract Vector3 GridPositionToWorldPosition(int x, int z);
+        protected abstract Vector2Int WorldPositionToGridCoordinates(Vector3 worldPosition);
+        protected abstract Vector3 GridCoordinatesToWorldPosition(int x, int z);
 
         #endregion
 
@@ -299,9 +299,9 @@ namespace Navigation
             bool addSeperator = false;
             string infoText = " ";
 
-            if (ShowNodeGriPositionTextFlag)
+            if (ShowNodeGridCoordinatesTextFlag)
             {
-                infoText += $"({node.gridPosition.x},{node.gridPosition.y}) ";
+                infoText += $"({node.gridCoordinates.x},{node.gridCoordinates.y}) ";
                 addSeperator = true;
             }
 

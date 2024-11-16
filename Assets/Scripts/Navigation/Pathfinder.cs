@@ -55,7 +55,7 @@ namespace Navigation
                     return MakePath(grid, goalIndex, nodeData, excludeGoal);
                 }
 
-                currentGridPosition = grid.NodeAt(currentIndex).gridPosition;
+                currentGridPosition = grid.NodeAt(currentIndex).gridCoordinates;
 
 
                 for (int i = 0; i < 8; i++)
@@ -167,7 +167,7 @@ namespace Navigation
                     return MakePath(grid, goalIndex, nodeData, excludeGoal);
                 }
 
-                currentGridPosition = grid.NodeAt(currentIndex).gridPosition;
+                currentGridPosition = grid.NodeAt(currentIndex).gridCoordinates;
 
                 if (currentGridPosition.y % 2 == 0)
                 {
@@ -251,7 +251,7 @@ namespace Navigation
                 pathQuery.nodeData[i] = new AStarSearchNodeDataAsync
                 {
                     walkable = navGrid.IsWalkable(i),
-                    gridPosition = new int2(navGrid.NodeAt(i).gridPosition.x, navGrid.NodeAt(i).gridPosition.y),
+                    gridCoordinates = new int2(navGrid.NodeAt(i).gridCoordinates.x, navGrid.NodeAt(i).gridCoordinates.y),
                     costSoFar = int.MaxValue,
                     cameFrom = -1,
                 };
@@ -290,7 +290,7 @@ namespace Navigation
             Debug.Log("Total cost: " + nodeData[goalIndex].costSoFar);
             while (currentIndex != -1)
             {
-                Debug.Log(navGrid.NodeAt(currentIndex).gridPosition.x + " , " + navGrid.NodeAt(currentIndex).gridPosition.y);
+                Debug.Log(navGrid.NodeAt(currentIndex).gridCoordinates.x + " , " + navGrid.NodeAt(currentIndex).gridCoordinates.y);
                 currentIndex = nodeData[currentIndex].cameFrom;
             }
         }
@@ -312,8 +312,8 @@ namespace Navigation
 
             while (currentIndex != -1)
             {
-                Vector2Int gridPosition = navGrid.NodeAt(currentIndex).gridPosition;
-                Vector3 worldPosition = navGrid.NodeWorldPositionAt(gridPosition);
+                Vector2Int gridPosition = navGrid.NodeAt(currentIndex).gridCoordinates;
+                Vector3 worldPosition = navGrid.WorldPositionAt(gridPosition);
                 pathElements.Add(new PathElement(currentIndex, new Vector2Int(gridPosition.x, gridPosition.y), worldPosition));
 
                 currentIndex = nodeData[currentIndex].cameFrom;
@@ -325,15 +325,15 @@ namespace Navigation
 
         static private int ManhattanDistance(SquareGrid squareGrid, int checkedIndex, int goalIndex)
         {
-            Vector2Int a = squareGrid.NodeAt(checkedIndex).gridPosition;
-            Vector2Int b = squareGrid.NodeAt(goalIndex).gridPosition;
+            Vector2Int a = squareGrid.NodeAt(checkedIndex).gridCoordinates;
+            Vector2Int b = squareGrid.NodeAt(goalIndex).gridCoordinates;
             return SquareGrid.StraightCost * (Mathf.Abs(b.x - a.x) + Mathf.Abs(b.y - a.y));
         }
 
         static private int Distance(NavGrid navGrid, int checkedIndex, int goalIndex)
         {
-            Vector2Int a = navGrid.NodeAt(checkedIndex).gridPosition;
-            Vector2Int b = navGrid.NodeAt(goalIndex).gridPosition;
+            Vector2Int a = navGrid.NodeAt(checkedIndex).gridCoordinates;
+            Vector2Int b = navGrid.NodeAt(goalIndex).gridCoordinates;
             return (int)((b - a).magnitude);
         }
 
@@ -381,7 +381,7 @@ namespace Navigation
             {
                 currentIndex = frontier.Dequeue();
 
-                currentGridPosition = grid.NodeAt(currentIndex).gridPosition;
+                currentGridPosition = grid.NodeAt(currentIndex).gridCoordinates;
 
                 for (int i = 0; i < 8; i++)
                 {
@@ -439,8 +439,8 @@ namespace Navigation
             {
                 int areaIndex = areaIndices[i];
                 GridToAreaElementsMap.Add(areaIndex, i);
-                Vector2Int gridPosition = grid.NodeAt(areaIndex).gridPosition;
-                Vector3 worldPosition = grid.NodeWorldPositionAt(gridPosition);
+                Vector2Int gridPosition = grid.NodeAt(areaIndex).gridCoordinates;
+                Vector3 worldPosition = grid.WorldPositionAt(gridPosition);
                 walkableAreaElements.Add(new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
             }
             return new WalkableArea(grid, walkableAreaElements, GridToAreaElementsMap);
@@ -493,7 +493,7 @@ namespace Navigation
             {
                 currentIndex = frontier.Dequeue();
 
-                currentGridPosition = grid.NodeAt(currentIndex).gridPosition;
+                currentGridPosition = grid.NodeAt(currentIndex).gridCoordinates;
 
                 if (currentGridPosition.y % 2 == 0)
                 {
@@ -548,8 +548,8 @@ namespace Navigation
             {
                 int areaIndex = areaIndices[i];
                 GridToAreaElementsMap.Add(areaIndex, i);
-                Vector2Int gridPosition = grid.NodeAt(areaIndex).gridPosition;
-                Vector3 worldPosition = grid.NodeWorldPositionAt(gridPosition);
+                Vector2Int gridPosition = grid.NodeAt(areaIndex).gridCoordinates;
+                Vector3 worldPosition = grid.WorldPositionAt(gridPosition);
                 walkableAreaElements.Add(new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
             }
             return new WalkableArea(grid, walkableAreaElements, GridToAreaElementsMap);

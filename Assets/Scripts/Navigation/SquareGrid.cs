@@ -61,14 +61,14 @@ namespace Navigation
             boxCollider.center = new Vector3((Width - 1f) * TileSize * 0.5f, 0f, (Height - 1f) * TileSize * 0.5f);
         }
 
-        protected override Vector2Int WorldPositionToGridPosition(Vector3 worldPosition)
+        protected override Vector2Int WorldPositionToGridCoordinates(Vector3 worldPosition)
         {
             int x = (int)((worldPosition.x - transform.position.x) / TileSize + 0.5f);
             int z = (int)((worldPosition.z - transform.position.z) / TileSize + 0.5f);
             return new Vector2Int(x, z);
         }
 
-        protected override Vector3 GridPositionToWorldPosition(int x, int z)
+        protected override Vector3 GridCoordinatesToWorldPosition(int x, int z)
         {
             return new Vector3(transform.position.x + x * TileSize,
                     transform.position.y,

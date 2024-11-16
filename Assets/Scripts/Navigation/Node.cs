@@ -7,7 +7,7 @@ namespace Navigation
     public struct Node
     {
         [SerializeField] int _id;
-        [SerializeField] Vector2Int _gridPosition;
+        [SerializeField] Vector2Int _gridCoordinates;
         [SerializeField] bool _walkable;
         [SerializeField] float _movementCostModifier;
 
@@ -16,14 +16,14 @@ namespace Navigation
         public Node(int id, int x, int z, bool walkable)
         {
             _id = id;
-            _gridPosition = new Vector2Int(x, z);
+            _gridCoordinates = new Vector2Int(x, z);
             _walkable = walkable;
             _movementCostModifier = 1.0f;
         }
 
 
         public int id { get => _id; private set => _id = value; }
-        public Vector2Int gridPosition { get => _gridPosition; private set => _gridPosition = value; }
+        public Vector2Int gridCoordinates { get => _gridCoordinates; private set => _gridCoordinates = value; }
         public bool walkable { get => _walkable; private set => _walkable = value; }
         public float movementCostModifier { get => _movementCostModifier; set => _movementCostModifier = value; }
 
@@ -31,14 +31,14 @@ namespace Navigation
         public void Setup(int id, int x, int z, bool walkable = true)
         {
             _id = id;
-            _gridPosition = new Vector2Int(x, z);
+            _gridCoordinates = new Vector2Int(x, z);
             _walkable = walkable;
             _movementCostModifier = 1.0f;
         }
 
         public override string ToString()
         {
-            return $"id:{id}, x:{gridPosition.x}, y:{gridPosition.y}, walkable:{walkable}";
+            return $"id:{id}, x:{gridCoordinates.x}, y:{gridCoordinates.y}, walkable:{walkable}";
         }
 
 

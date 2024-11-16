@@ -78,7 +78,7 @@ namespace Navigation
 
 
 
-        protected override Vector3 GridPositionToWorldPosition(int x, int z)
+        protected override Vector3 GridCoordinatesToWorldPosition(int x, int z)
         {
             float worldX = transform.position.x + x * TileSize + z % 2 * TileSize * 0.5f;
             float worldZ = transform.position.z + z * TileSize * VERTICAL_SPACING;
@@ -86,7 +86,7 @@ namespace Navigation
         }
 
 
-        protected override Vector2Int WorldPositionToGridPosition(Vector3 worldPosition)
+        protected override Vector2Int WorldPositionToGridCoordinates(Vector3 worldPosition)
         {
 
             float GridSpacePositionX = worldPosition.x - transform.position.x;
