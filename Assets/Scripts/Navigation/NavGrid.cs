@@ -333,7 +333,14 @@ namespace Navigation
                     {
                         infoText += "| ";
                     }
-                    infoText += actors[node.id].gameObject.name;
+                    if (actors[node.id] != null)
+                    {
+                        infoText += actors[node.id].gameObject.name;
+                    }
+                    else
+                    {
+                        infoText += "NULL";
+                    }
                 }
             }
 

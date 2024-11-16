@@ -50,6 +50,23 @@ namespace Navigation
         {
             VisualElement root = new VisualElement();
 
+            Foldout MapCreationFoldout = CreateMapCreationSection();
+
+            Foldout DebugFoldout = CreateDebugSection();
+
+            Box ActualMapDataBox = CreateActualMapDataSection();
+
+
+            root.Add(MapCreationFoldout);
+            root.Add(DebugFoldout);
+            root.Add(ActualMapDataBox);
+
+            return root;
+        }
+
+
+        private Foldout CreateMapCreationSection()
+        {
             Foldout MapCreationFoldout = new Foldout();
             MapCreationFoldout.text = "Map Generation";
             MapCreationFoldout.style.borderTopWidth = 1;
@@ -128,8 +145,8 @@ namespace Navigation
             CreateMapButton.SetEnabled(!EditorApplication.isPlaying);
 
             ScanActorsButton = new Button(OnScnaActorsButtonClicked);
-            ScanActorsButton.text = "Install Actors";
-            ScanActorsButton.tooltip = "Look for Actors in the scene and Install them on the grid if possible";
+            ScanActorsButton.text = "Scan Actors";
+            ScanActorsButton.tooltip = "Look for Actors in the scene and Install them on the grid if possible. Will clear null references if previously installed Actor has been deleted";
             ScanActorsButton.AddToClassList("unity-base-field__aligned");
             ScanActorsButton.SetEnabled(!EditorApplication.isPlaying);
 
@@ -144,9 +161,14 @@ namespace Navigation
             MapCreationFoldout.Add(CreateMapButton);
             MapCreationFoldout.Add(ScanActorsButton);
 
+            return MapCreationFoldout;
+        }
 
-            #region Debug 
+
+        private Foldout CreateDebugSection()
+        {
             Foldout DebugFoldout = new Foldout();
+
             DebugFoldout.text = "Debug Visualisation";
             DebugFoldout.style.borderTopWidth = 1;
             DebugFoldout.style.borderLeftWidth = 1;
@@ -222,9 +244,14 @@ namespace Navigation
             DebugFoldout.Add(ShowTileInfoTextToggle);
             DebugFoldout.Add(TextInfoDetailsBox);
 
-            #endregion
+            return DebugFoldout;
+        }
 
+
+        private Box CreateActualMapDataSection()
+        {
             Box ActualMapDataBox = new Box();
+
             ActualMapDataBox.style.borderTopWidth = 2;
             ActualMapDataBox.style.borderLeftWidth = 2;
             ActualMapDataBox.style.borderRightWidth = 2;
@@ -251,13 +278,60 @@ namespace Navigation
             TileSizeField.bindingPath = "tileSize";
             TileSizeField.SetEnabled(false);
 
+            // VisualElement ActorInfoElement = CreateActorInfoElement();
+
             ActualMapDataBox.Add(HeightField);
             ActualMapDataBox.Add(WidthField);
             ActualMapDataBox.Add(TileSizeField);
+            // ActualMapDataBox.Add(ActorInfoElement);
 
-            root.Add(MapCreationFoldout);
-            root.Add(DebugFoldout);
-            root.Add(ActualMapDataBox);
+            return ActualMapDataBox;
+        }
+
+        private VisualElement CreateActorInfoElement()
+        {
+            Foldout root = new Foldout();
+            root.style.paddingLeft = 12;
+
+            SerializedProperty actorsDictionaryProperty = serializedObject.FindProperty("actors");
+            SerializedProperty keysProp = actorsDictionaryProperty.FindPropertyRelative("keys");
+            SerializedProperty valuesProp = actorsDictionaryProperty.FindPropertyRelative("values");
+
+            NavGrid grid = target as NavGrid;
+
+            if (keysProp.arraySize == 0)
+            {
+                root.text = "No Actors";
+            }
+            else
+            {
+                root.text = "Total Actors on Grid = " + keysProp.arraySize;
+            }
+            for (int i = 0; i < keysProp.arraySize; i++)
+            {
+                VisualElement row = new();
+                row.style.flexDirection = FlexDirection.Row;
+
+                Label numberLabel = new Label($"{i}");
+                numberLabel.style.minWidth = 22;
+                row.Add(numberLabel);
+
+                Label positionLabel = new Label($"{grid.GridPositionAt(keysProp.GetArrayElementAtIndex(i).intValue)}");
+                positionLabel.style.minWidth = 70;
+                row.Add(positionLabel);
+
+                UnityEngine.Object obj = valuesProp.GetArrayElementAtIndex(i).objectReferenceValue;
+                if (obj != null)
+                {
+                    row.Add(new Label($"{obj.name}"));
+                }
+                else
+                {
+                    row.Add(new Label("NULL"));
+                }
+
+                root.Add(row);
+            }
 
             return root;
         }
