@@ -14,9 +14,10 @@ namespace Navigation
         [SerializeField] float _speedModifier;
         [SerializeField] float _rotationSpeed;
         bool _cancelFlag = false;
-        [SerializeField] ActorState _state = ActorState.Uninitiated;
+        [SerializeField] ActorState _state = ActorState.Uninitilized;
         Path _path;
         int _pathIndex;
+        int _previousGridIndex;
         Vector3 _targetPosition;
         Quaternion _targetRotation;
         #endregion
@@ -59,10 +60,10 @@ namespace Navigation
         #endregion
 
         #region Events
-        public event EventHandler MovementStartedEvent;
-        public event EventHandler MovementFinishedEvent;
-        public event EventHandler<int> NodeEnteredEvent;
-        public event EventHandler<int> NodeExitedEvent;
+        public event EventHandler<ActorStartedMovementEventArgs> MovementStartedEvent;
+        public event EventHandler<ActorFinishedMovementEventArgs> MovementFinishedEvent;
+        public event EventHandler<ActorEnteredNodeEventArgs> NodeEnteredEvent;
+        public event EventHandler<ActorExitedNodeEventArgs> NodeExitedEvent;
 
         #endregion
 
@@ -70,11 +71,18 @@ namespace Navigation
 
         public void Initilize(NavGrid navGrid, int gridIndex)
         {
-            //TO DO add starting rotation, which direction is it facing
             _grid = navGrid;
             _gridIndex = gridIndex;
             transform.position = _grid.NodeWorldPositionAt(_gridIndex);
             _state = ActorState.Idle;
+        }
+
+        public void Deinitialize()
+        {
+            _grid = null;
+            _gridIndex = -1;
+            _previousGridIndex = -1;
+            _state = ActorState.Uninitilized;
         }
 
         public void MoveAlongPath(Path path)
@@ -118,6 +126,14 @@ namespace Navigation
                 }
 
                 OnNodeEntered();
+
+                _previousGridIndex = _path[_pathIndex].gridIndex;
+                _pathIndex--;
+
+                if (_cancelFlag || _pathIndex < 0)
+                {
+                    OnMovementFinished();
+                }
             }
         }
 
@@ -171,38 +187,35 @@ namespace Navigation
         private void OnMovmentStarted()
         {
             _state = ActorState.Moving;
-            _pathIndex = _path.Count - 1;
+
+            // -2 becuase the last entry is the starting point, which should be the point the actor is at right now
+            _pathIndex = _path.Count - 2;
+            _previousGridIndex = _gridIndex;
+
             _cancelFlag = false;
 
-            MovementStartedEvent?.Invoke(this, EventArgs.Empty);
+            MovementStartedEvent?.Invoke(this, new ActorStartedMovementEventArgs(_gridIndex));
         }
 
         private void OnMovementFinished()
         {
             _cancelFlag = false;
             _state = ActorState.Idle;
-            MovementFinishedEvent?.Invoke(this, EventArgs.Empty);
+
+            MovementFinishedEvent?.Invoke(this, new ActorFinishedMovementEventArgs(_gridIndex));
         }
 
         private void OnNodeExiting()
         {
-            //TO DO - inform navGrid about it
-            NodeExitedEvent?.Invoke(this, _path[_pathIndex].gridIndex);
+            _grid.OnActorExitsNode(this, _previousGridIndex, _path[_pathIndex].gridIndex);
+            _gridIndex = _path[_pathIndex].gridIndex;
+
+            NodeExitedEvent?.Invoke(this, new ActorExitedNodeEventArgs(_previousGridIndex, _path[_pathIndex].gridIndex));
         }
 
         private void OnNodeEntered()
         {
-            _gridIndex = _path[_pathIndex].gridIndex;
-            //TO-DO update nav grid 
-
-            NodeEnteredEvent?.Invoke(this, _path[_pathIndex].gridIndex);
-
-            _pathIndex--;
-
-            if (_cancelFlag || _pathIndex < 0)
-            {
-                OnMovementFinished();
-            }
+            NodeEnteredEvent?.Invoke(this, new ActorEnteredNodeEventArgs(_previousGridIndex, _path[_pathIndex].gridIndex));
         }
         #endregion
 

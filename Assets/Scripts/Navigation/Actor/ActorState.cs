@@ -5,6 +5,6 @@ namespace Navigation
         Idle,
         Moving,
         Paused,
-        Uninitiated
+        Uninitilized
     }
 }

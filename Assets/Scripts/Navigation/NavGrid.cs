@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using System;
 using Utils;
 
 namespace Navigation
@@ -23,6 +24,7 @@ namespace Navigation
         [SerializeField] bool ShowNodeGriPositionTextFlag = false;
         [SerializeField] bool ShowNodeWalkableTextFlag = false;
         [SerializeField] bool ShowNodeMovementCostTextFlag = false;
+        [SerializeField] bool ShowOccupyingActorTextFlag = false;
         [SerializeField] int TileInfoTextFontSize = 10;
         [SerializeField] Color TileInfoTextColor;
 #endif
@@ -285,9 +287,20 @@ namespace Navigation
                     infoText += "| ";
                 }
                 infoText += $"{node.movementCostModifier} ";
+                addSeperator = true;
             }
 
-
+            if (ShowOccupyingActorTextFlag)
+            {
+                if (actors.ContainsKey(node.id))
+                {
+                    if (addSeperator == true)
+                    {
+                        infoText += "| ";
+                    }
+                    infoText += actors[node.id].gameObject.name;
+                }
+            }
 
 
             Handles.Label(nodeWorldPositions[node.id], infoText, style);
@@ -323,5 +336,75 @@ namespace Navigation
         {
             nodes[IndexAt(x, z)].movementCostModifier = value;
         }
+
+        //<summary>
+        // This method places the provided actor on the map at the given node index, registers it and sets it up
+        //</summary>
+        public bool InstallActor(Actor actor, int index)
+        {
+            if (index < 0 || index >= width * height)
+            {
+                return false;
+            }
+
+            if (actors.ContainsKey(index))
+            {
+                return false;
+            }
+
+            actors[index] = actor;
+            actor.Initilize(this, index);
+            return true;
+        }
+
+
+        //<summary>
+        // This method places the provided actor on the map at the given x,y coordinates, registers it and sets it up
+        //</summary>
+        public bool InstallActor(Actor actor, int x, int z)
+        {
+            return InstallActor(actor, IndexAt(x, z));
+        }
+
+
+        //<summary>
+        // This method places the removes actor refernece on the map at the given node index. 
+        // It does not alter the actor fields, thus should be used when actor gets Destoroyed
+        //</summary>
+        public void RemoveActor(int index)
+        {
+            actors.Remove(index);
+        }
+
+
+        //<summary>
+        // This method places the removes actor refernece on the map at the given node index 
+        // and resets the actor
+        //</summary>
+        public void UninstallActor(int index)
+        {
+            if (actors.ContainsKey(index))
+            {
+
+            }
+            actors.Remove(index);
+        }
+
+
+        public void OnActorExitsNode(Actor actor, int FromIndex, int ToIndex)
+        {
+            if (FromIndex != -1)
+            {
+                actors.Remove(FromIndex);
+            }
+
+            if (actors.ContainsKey(ToIndex) == false)
+            {
+                actors[ToIndex] = actor;
+            }
+        }
+
+
+
     }
 }

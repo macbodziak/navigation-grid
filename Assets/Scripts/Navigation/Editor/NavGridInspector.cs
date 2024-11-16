@@ -39,6 +39,7 @@ namespace Navigation
         Toggle ShowNodeGriPositionTextToggle;
         Toggle ShowNodeWalkableTextToggle;
         Toggle ShowNodeMovementCostTextToggle;
+        Toggle ShowOccupyingActorTextToggle;
         Foldout TextInfoDetailsBox;
 
 
@@ -171,6 +172,11 @@ namespace Navigation
             ShowNodeWalkableTextToggle.BindProperty(ShowNodeWalkableTextProp);
             ShowNodeWalkableTextToggle.AddToClassList("unity-base-field__aligned");
 
+            ShowOccupyingActorTextToggle = new Toggle("Actor");
+            SerializedProperty ShowOccupyingActorTextProp = serializedObject.FindProperty("ShowOccupyingActorTextFlag");
+            ShowOccupyingActorTextToggle.BindProperty(ShowOccupyingActorTextProp);
+            ShowOccupyingActorTextToggle.AddToClassList("unity-base-field__aligned");
+
             TileInfoTextSizeSlider = new SliderInt("Font Size", 8, 20);
             SerializedProperty TileInfoTextSizeProp = serializedObject.FindProperty("TileInfoTextFontSize");
             TileInfoTextSizeSlider.BindProperty(TileInfoTextSizeProp);
@@ -188,6 +194,7 @@ namespace Navigation
             TextInfoDetailsBox.Add(ShowNodeGriPositionTextToggle);
             TextInfoDetailsBox.Add(ShowNodeMovementCostTextToggle);
             TextInfoDetailsBox.Add(ShowNodeWalkableTextToggle);
+            TextInfoDetailsBox.Add(ShowOccupyingActorTextToggle);
 
             DebugFoldout.Add(ShowTileCenterToggle);
             DebugFoldout.Add(ShowTileOutlineToggle);
