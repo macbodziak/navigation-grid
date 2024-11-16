@@ -43,6 +43,10 @@ namespace Navigation
 #endif
         #endregion
 
+        //<summary>
+        //This method initializes the grid. It creates the node array and configures each node with its index, position, and walkability status.
+        //It also configures the map's collision box. 
+        //</summary>
         public void CreateMap(int width, int height, float tileSize, LayerMask notWalkableLayers, int collisionLayer, float colliderSize, float rayLength)
         {
             this.Width = width;
@@ -73,7 +77,38 @@ namespace Navigation
 
         protected abstract bool TestForWalkability(Vector3 nodeWorldPosition, LayerMask notWalkableLayers, float colliderSize, float rayLength);
 
+
+        //<summary>
+        // This method sets up the collider
+        //</summary>
         protected abstract void SetupCollider(int collisionLayer);
+
+
+        //<summary>
+        // This method scans the scene for Actors. If it finds actors above the grid, it tries to Intall them on the grid
+        //</summary>
+        public void ScanForActors(float rayLength = 100f)
+        {
+            Actor[] actorsInScene = FindObjectsByType<Actor>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            foreach (Actor actor in actorsInScene)
+            {
+                Ray ray = new Ray(actor.transform.position + Vector3.up, Vector3.down * rayLength);
+                RaycastHit hitInfo;
+                LayerMask layerMask = 1 << gameObject.layer;
+
+                if (Physics.Raycast(ray, out hitInfo, rayLength, layerMask))
+                {
+                    int nodeIndex = IndexAt(hitInfo.point);
+                    if (nodeIndex != -1)
+                    {
+                        if (IsWalkable(nodeIndex))
+                        {
+                            InstallActor(actor, nodeIndex);
+                        }
+                    }
+                }
+            }
+        }
 
         #region Index Getters
 
