@@ -48,7 +48,6 @@ public struct FindPathOnHexGridAStarJob : IJob
         int2 currentGridPosition;
         int2 neighbourGridPosition;
         int2 goalPosition = GetPositionAtIndex(goalIndex);
-        int2[] direction;
 
         currentIndex = startIndex;
 
@@ -80,18 +79,16 @@ public struct FindPathOnHexGridAStarJob : IJob
 
             currentGridPosition = nodeData[currentIndex].gridCoordinates;
 
-            if (currentGridPosition.y % 2 == 0)
-            {
-                direction = neighboursEvenRow;
-            }
-            else
-            {
-                direction = neighboursOddRow;
-            }
-
             for (int i = 0; i < 6; i++)
             {
-                neighbourGridPosition = new int2(currentGridPosition.x + direction[i].x, currentGridPosition.y + direction[i].y);
+                if (currentGridPosition.y % 2 == 0)
+                {
+                    neighbourGridPosition = new int2(currentGridPosition.x + neighboursEvenRow[i].x, currentGridPosition.y + neighboursEvenRow[i].y);
+                }
+                else
+                {
+                    neighbourGridPosition = new int2(currentGridPosition.x + neighboursOddRow[i].x, currentGridPosition.y + neighboursOddRow[i].y);
+                }
 
                 //check if neighbourIndex is within bounds
                 if (PositionInBounds(neighbourGridPosition) == false)
