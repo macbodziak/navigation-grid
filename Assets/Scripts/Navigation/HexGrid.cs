@@ -101,6 +101,7 @@ namespace Navigation
             return new Vector2Int((int)x, (int)z);
         }
 
+#if UNITY_EDITOR
         protected override void DrawNodeCenterOutineGizmos(Node n)
         {
             Vector3 worldPos = nodeWorldPositions[n.id];
@@ -122,5 +123,6 @@ namespace Navigation
                 Gizmos.DrawLineStrip(points, true);
             }
         }
+#endif
     }
 }

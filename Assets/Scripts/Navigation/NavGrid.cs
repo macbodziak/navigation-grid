@@ -247,7 +247,7 @@ namespace Navigation
 
         private void OnDrawGizmos()
         {
-
+#if UNITY_EDITOR
             if (showTileInfoTextFlag)
             {
                 GUIStyle style = new GUIStyle(GUI.skin.label);
@@ -267,7 +267,6 @@ namespace Navigation
             }
 
             Gizmos.color = Color.white;
-
             if (nodes == null)
             {
                 Gizmos.DrawSphere(transform.position, 1.0f);
@@ -286,12 +285,12 @@ namespace Navigation
                 }
                 DrawNodeCenterOutineGizmos(n);
             }
-
-
+#endif
         }
 
-
+#if UNITY_EDITOR
         protected abstract void DrawNodeCenterOutineGizmos(Node node);
+# endif
 
 #if UNITY_EDITOR
         protected void DrawTileInfoText(Node node, GUIStyle style)
@@ -373,10 +372,24 @@ namespace Navigation
 
         #endregion
 
+        public void SetMovementCostModifierAt(int index, float value)
+        {
+            nodes[index].movementCostModifier = value;
+        }
 
-        public void SetMovementModifier(int x, int z, float value)
+        public void SetMovementCostModifierAt(int x, int z, float value)
         {
             nodes[IndexAt(x, z)].movementCostModifier = value;
+        }
+
+        public float MovementCostModifierAt(int index)
+        {
+            return nodes[index].movementCostModifier;
+        }
+
+        public float MovementCostModifierAt(int x, int z)
+        {
+            return nodes[IndexAt(x, z)].movementCostModifier;
         }
 
         //<summary>

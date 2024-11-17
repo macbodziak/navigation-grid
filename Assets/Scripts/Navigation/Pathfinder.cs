@@ -4,7 +4,7 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using System;
-using UnityEditor.ShaderGraph;
+
 
 namespace Navigation
 {
@@ -231,7 +231,7 @@ namespace Navigation
         //<summary>
         //Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
         //</summary>
-        static public PathRequest SchedulePath(SquareGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition)
+        static public PathRequest SchedulePath(SquareGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition, bool excludeGoal = false)
         {
             // 
             if (navGrid.CheckIfInBound(startPosition.x, startPosition.y) == false)
@@ -254,10 +254,11 @@ namespace Navigation
                     gridCoordinates = new int2(navGrid.NodeAt(i).gridCoordinates.x, navGrid.NodeAt(i).gridCoordinates.y),
                     costSoFar = int.MaxValue,
                     cameFrom = -1,
+                    movementCostModifier = navGrid.MovementCostModifierAt(i)
                 };
             }
 
-            FindPathAStarJob job = new FindPathAStarJob
+            FindPathOnSquareGridAStarJob job = new FindPathOnSquareGridAStarJob
             {
                 nodeData = pathQuery.nodeData,
                 openList = pathQuery.openList,
@@ -268,7 +269,8 @@ namespace Navigation
                 navGridWidth = navGrid.Width,
                 navGridHeight = navGrid.Height,
                 navGridTileSize = navGrid.TileSize,
-                navGridPosition = navGrid.Position
+                navGridPosition = navGrid.Position,
+                excludeGoal = excludeGoal
             };
 
             pathQuery.jobHandle = job.Schedule();
@@ -277,11 +279,57 @@ namespace Navigation
         }
 
 
-        static public PathRequest SchedulePath(HexGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition)
+        static public PathRequest SchedulePath(HexGrid grid, Vector2Int startPosition, Vector2Int goalPosition, bool excludeGoal = false)
         {
-            throw new NotImplementedException();
-            // return null;
+            if (grid.CheckIfInBound(startPosition.x, startPosition.y) == false)
+            {
+                return null;
+            }
+
+            if (grid.CheckIfInBound(goalPosition.x, goalPosition.y) == false)
+            {
+                return null;
+            }
+
+            return SchedulePath(grid, grid.IndexAt(startPosition), grid.IndexAt(goalPosition), excludeGoal);
         }
+
+        static public PathRequest SchedulePath(HexGrid grid, int startIndex, int goalIndex, bool excludeGoal = false)
+        {
+            PathRequest pathQuery = new PathRequest(grid);
+
+            for (int i = 0; i < grid.Count; i++)
+            {
+                pathQuery.nodeData[i] = new AStarSearchNodeDataAsync
+                {
+                    walkable = grid.IsWalkable(i),
+                    gridCoordinates = new int2(grid.NodeAt(i).gridCoordinates.x, grid.NodeAt(i).gridCoordinates.y),
+                    costSoFar = int.MaxValue,
+                    cameFrom = -1,
+                    movementCostModifier = grid.MovementCostModifierAt(i)
+                };
+            }
+
+            FindPathOnHexGridAStarJob job = new FindPathOnHexGridAStarJob
+            {
+                nodeData = pathQuery.nodeData,
+                openList = pathQuery.openList,
+                startIndex = startIndex,
+                goalIndex = goalIndex,
+                resultCost = pathQuery.totalPathCost,
+                resultPath = pathQuery.pathElements,
+                navGridWidth = grid.Width,
+                navGridHeight = grid.Height,
+                navGridTileSize = grid.TileSize,
+                navGridPosition = grid.Position,
+                excludeGoal = excludeGoal
+            };
+
+            pathQuery.jobHandle = job.Schedule();
+
+            return pathQuery;
+        }
+
         static private void DebugPrintPath(SquareGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData)
         {
             int currentIndex = goalIndex;

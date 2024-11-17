@@ -74,7 +74,7 @@ namespace Navigation
                     transform.position.y,
                     transform.position.z + z * TileSize);
         }
-
+#if UNITY_EDITOR
         protected override void DrawNodeCenterOutineGizmos(Node n)
         {
             Vector3 worldPos = nodeWorldPositions[n.id];
@@ -94,5 +94,6 @@ namespace Navigation
                 Gizmos.DrawLineStrip(points, true);
             }
         }
+#endif
     }
 }

@@ -236,8 +236,10 @@ namespace Unity.Collections
         public bool IsValidIndex(NativeHeapIndex index)
         {
             var isValid = true;
+#if ENABLE_UNITY_COLLECTIONS_CHECKS
             var errorCode = 0;
             IsValidIndexInternal(index, ref isValid, ref errorCode);
+#endif
             return isValid;
         }
 
@@ -246,7 +248,7 @@ namespace Unity.Collections
         /// 
         /// This method will never throw if Unity safety checks is turned off.
         /// </summary>
-        [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
+#if ENABLE_UNITY_COLLECTIONS_CHECKS
         public void AssertValidIndex(NativeHeapIndex index)
         {
             var isValid = true;
@@ -269,6 +271,7 @@ namespace Unity.Collections
                                                 "The item it pointed to might have already been removed.");
             }
         }
+#endif
 
         /// <summary>
         /// Returns the next element that would be obtained if Pop was called.  This is the first/smallest
@@ -623,7 +626,8 @@ namespace Unity.Collections
             Data->Table[node.TableIndex].HeapIndex = insertIndex;
         }
 
-        [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
+        // [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
+#if ENABLE_UNITY_COLLECTIONS_CHECKS
         internal unsafe void IsValidIndexInternal(NativeHeapIndex index, ref bool result, ref int errorCode)
         {
             AtomicSafetyHandle.CheckReadAndThrow(m_Safety);
@@ -650,6 +654,7 @@ namespace Unity.Collections
                 return;
             }
         }
+#endif
 
         #endregion
     }

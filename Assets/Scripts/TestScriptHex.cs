@@ -27,23 +27,27 @@ public class TestScriptHex : MonoBehaviour
         grid.ScanForActors(100f);
         // grid.InstallActor(actor_1, 0);
         // grid.InstallActor(actor_2, 1, 3);
-        HexGrid hexGrid = grid as HexGrid;
-        if (hexGrid != null)
-        {
-            path = Pathfinder.FindPath(hexGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
-        }
-        SquareGrid squareGrid = grid as SquareGrid;
-        if (squareGrid != null)
-        {
-            path = Pathfinder.FindPath(squareGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
-        }
-        ShowDebugPath(path);
-        actor_1.MovementFinishedEvent += OnMovementFinished;
-        actor_1.MoveAlongPath(path);
+
+
+        // HexGrid hexGrid = grid as HexGrid;
+        // if (hexGrid != null)
+        // {
+        //     path = Pathfinder.FindPath(hexGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
+        // }
+        // SquareGrid squareGrid = grid as SquareGrid;
+        // if (squareGrid != null)
+        // {
+        //     path = Pathfinder.FindPath(squareGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
+        // }
+        // ShowDebugPath(path);
+        // actor_1.MovementFinishedEvent += OnMovementFinished;
+        // actor_1.MoveAlongPath(path);
+
+
         // mc.FaceTowards(hexGrid.NodeWorldPositionAt(1, 1));
-        // hexGrid.SetMovementModifier(9, 9, 6f);
-        // hexGrid.SetMovementModifier(9, 10, 6f);
-        // hexGrid.SetMovementModifier(9, 11, 6f);
+        grid.SetMovementCostModifierAt(0, 4, 100f);
+        grid.SetMovementCostModifierAt(1, 4, 100f);
+        grid.SetMovementCostModifierAt(2, 4, 100f);
         // hexGrid.SetMovementModifier(9, 8, 6f);
         // hexGrid.SetMovementModifier(2, 0, 6f);
     }
@@ -58,7 +62,7 @@ public class TestScriptHex : MonoBehaviour
             stopwatch.Reset();
             stopwatch.Start();
             time_start = Time.realtimeSinceStartup;
-            // for (int i = 0; i < 10; i++)
+
             HexGrid hexGrid = grid as HexGrid;
             if (hexGrid != null)
             {
@@ -77,6 +81,44 @@ public class TestScriptHex : MonoBehaviour
             Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
             Debug.Log($"path finding took <color=orange>{time_finish - time_start} s </color>");
             ShowDebugPath(path);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            time_start = Time.realtimeSinceStartup;
+            stopwatch.Reset();
+            stopwatch.Start();
+            HexGrid hexGrid = grid as HexGrid;
+            if (hexGrid != null)
+            {
+                pathQuery = Pathfinder.SchedulePath(hexGrid, new Vector2Int(start.x, start.y), new Vector2Int(goal.x, goal.y), excludeGoal);
+            }
+            SquareGrid squareGrid = grid as SquareGrid;
+            if (squareGrid != null)
+            {
+                pathQuery = Pathfinder.SchedulePath(squareGrid, new Vector2Int(start.x, start.y), new Vector2Int(goal.x, goal.y), excludeGoal);
+            }
+        }
+
+
+        if (pathQuery != null)
+        {
+            if (pathQuery.IsComplete)
+            {
+                path = pathQuery.Complete();
+                pathQuery = null;
+                stopwatch.Stop();
+                time_finish = Time.realtimeSinceStartup;
+                System.TimeSpan ts = stopwatch.Elapsed;
+                Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
+                Debug.Log($"path finding took <color=orange>{time_finish - time_start} s </color>");
+                ShowDebugPath(path);
+                pathQuery = null;
+            }
+            else
+            {
+                Debug.Log("...");
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -137,8 +179,10 @@ public class TestScriptHex : MonoBehaviour
 
         for (int i = 1; i < path.Count; i++)
         {
-            Debug.DrawLine(path.elements[i - 1].worldPosition, path.elements[i].worldPosition, Color.red, 15.0f);
+            Debug.DrawLine(path.elements[i - 1].worldPosition, path.elements[i].worldPosition, Color.red, 2.0f);
         }
+
+        path = null;
     }
 
     private void ShowDebugArea(WalkableArea area)

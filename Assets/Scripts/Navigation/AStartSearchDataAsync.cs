@@ -8,5 +8,6 @@ namespace Navigation
         public int2 gridCoordinates;
         public int costSoFar;
         public int cameFrom;
+        public float movementCostModifier;
     }
 }

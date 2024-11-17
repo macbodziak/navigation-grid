@@ -30,11 +30,11 @@ public class TestScript : MonoBehaviour
         path = Pathfinder.FindPath(navGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
         actor_1.MoveAlongPath(path);
 
-        navGrid.SetMovementModifier(9, 12, 4f);
-        navGrid.SetMovementModifier(10, 12, 4f);
-        navGrid.SetMovementModifier(11, 12, 4f);
+        navGrid.SetMovementCostModifierAt(9, 12, 4f);
+        navGrid.SetMovementCostModifierAt(10, 12, 4f);
+        navGrid.SetMovementCostModifierAt(11, 12, 4f);
         // navGrid.SetMovementModifier(0, 4, 3f);
-        navGrid.SetMovementModifier(9, 10, 4f);
+        navGrid.SetMovementCostModifierAt(9, 10, 4f);
         // navGrid.SetMovementModifier(1, 5, 3f);
         // navGrid.SetMovementModifier(2, 5, 3f);
 

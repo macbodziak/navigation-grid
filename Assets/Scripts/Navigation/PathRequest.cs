@@ -14,12 +14,12 @@ namespace Navigation
         public JobHandle jobHandle;
         private bool m_valid;
 
-        public PathRequest(SquareGrid navGrid)
+        public PathRequest(NavGrid navGrid)
         {
             openList = new NativeHeap<OpenListElement, OpenListComparer>(Allocator.TempJob, navGrid.Count);
             nodeData = new NativeArray<AStarSearchNodeDataAsync>(navGrid.Count, Allocator.TempJob);
             totalPathCost = new NativeArray<int>(1, Allocator.Persistent);
-            pathElements = new NativeList<PathElement>(10, Allocator.Persistent);
+            pathElements = new NativeList<PathElement>(100, Allocator.Persistent);
             m_valid = true;
         }
 
