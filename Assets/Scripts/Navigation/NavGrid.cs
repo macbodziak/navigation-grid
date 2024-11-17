@@ -392,6 +392,24 @@ namespace Navigation
             return nodes[IndexAt(x, z)].movementCostModifier;
         }
 
+
+        public abstract List<int> AdjacentNodeIndexes(int index);
+
+        public List<int> AdjacentNodeIndexes(int x, int z)
+        {
+            return AdjacentNodeIndexes(IndexAt(x, z));
+        }
+
+        public List<int> AdjacentNodeIndexes(Vector2Int coordinates)
+        {
+            return AdjacentNodeIndexes(IndexAt(coordinates));
+        }
+
+        public List<int> AdjacentNodeIndexes(Vector3 worldPosition)
+        {
+            return AdjacentNodeIndexes(IndexAt(worldPosition));
+        }
+
         //<summary>
         // This method places the provided actor on the map at the given node index, registers it and sets it up
         //</summary>

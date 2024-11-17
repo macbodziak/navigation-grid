@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Utils;
@@ -122,6 +123,32 @@ namespace Navigation
                 points[5] = new Vector3(worldPos.x + TileSize * -0.49f, worldPos.y, worldPos.z + TileSize * HEX_HEIGHT * 0.245f);
                 Gizmos.DrawLineStrip(points, true);
             }
+        }
+
+        public override List<int> AdjacentNodeIndexes(int index)
+        {
+            List<int> result = new();
+            Vector2Int[] neighbours;
+
+            Vector2Int currentCoordinates = GridCoordinatesAt(index);
+            if (currentCoordinates.y % 2 == 0)
+            {
+                neighbours = neighboursEvenRow;
+            }
+            else
+            {
+                neighbours = neighboursOddRow;
+            }
+
+            for (int i = 0; i < 6; i++)
+            {
+                if (CheckIfInBound(currentCoordinates + neighbours[i]))
+                {
+                    result.Add(IndexAt(currentCoordinates + neighbours[i]));
+                }
+            }
+
+            return result;
         }
 #endif
     }
