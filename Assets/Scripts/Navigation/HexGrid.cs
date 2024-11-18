@@ -150,6 +150,37 @@ namespace Navigation
 
             return result;
         }
+
+        public override List<Actor> AdjacentActors(int index)
+        {
+            List<Actor> result = new();
+            Vector2Int[] neighbours;
+            int neighbourIndex;
+
+            Vector2Int currentCoordinates = GridCoordinatesAt(index);
+            if (currentCoordinates.y % 2 == 0)
+            {
+                neighbours = neighboursEvenRow;
+            }
+            else
+            {
+                neighbours = neighboursOddRow;
+            }
+
+            for (int i = 0; i < 6; i++)
+            {
+                neighbourIndex = IndexAt(currentCoordinates + neighbours[i]);
+                if (neighbourIndex != -1)
+                {
+                    if (actors.ContainsKey(neighbourIndex))
+                    {
+                        result.Add(actors[neighbourIndex]);
+                    }
+                }
+            }
+
+            return result;
+        }
 #endif
     }
 }

@@ -15,7 +15,7 @@ namespace Navigation
         [SerializeField] int height;
         [SerializeField] protected Node[] nodes;
         [SerializeField] protected Vector3[] nodeWorldPositions;
-        [SerializeField] SerializableDictionary<int, Actor> actors;
+        [SerializeField] protected SerializableDictionary<int, Actor> actors;
 
 #if UNITY_EDITOR
         [SerializeField] bool showTileOutlineFlag = true;
@@ -475,6 +475,55 @@ namespace Navigation
                 }
             }
             actors.Clear();
+        }
+
+
+        public Actor ActorAt(int index)
+        {
+            if (actors.ContainsKey(index))
+            {
+                return actors[index];
+            }
+
+            return null;
+        }
+
+
+        public Actor ActorAt(int x, int z)
+        {
+            return ActorAt(IndexAt(x, z));
+        }
+
+
+        public Actor ActorAt(Vector2Int coordinates)
+        {
+            return ActorAt(IndexAt(coordinates));
+        }
+
+
+        public Actor ActorAt(Vector3 worldPosition)
+        {
+            return ActorAt(IndexAt(worldPosition));
+        }
+
+
+        public abstract List<Actor> AdjacentActors(int index);
+
+        public List<Actor> AdjacentActors(int x, int z)
+        {
+            return AdjacentActors(IndexAt(x, z));
+        }
+
+
+        public List<Actor> AdjacentActors(Vector2Int coordinates)
+        {
+            return AdjacentActors(IndexAt(coordinates));
+        }
+
+
+        public List<Actor> AdjacentActors(Vector3 worldPosition)
+        {
+            return AdjacentActors(IndexAt(worldPosition));
         }
 
 

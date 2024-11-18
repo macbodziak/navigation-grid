@@ -95,6 +95,7 @@ namespace Navigation
                 Gizmos.DrawLineStrip(points, true);
             }
         }
+#endif
 
         public override List<int> AdjacentNodeIndexes(int index)
         {
@@ -111,6 +112,27 @@ namespace Navigation
 
             return result;
         }
-#endif
+
+        public override List<Actor> AdjacentActors(int index)
+        {
+            List<Actor> result = new();
+            Vector2Int currentCoordinates = GridCoordinatesAt(index);
+            int neighbourIndex;
+
+            for (int i = 0; i < 8; i++)
+            {
+                neighbourIndex = IndexAt(currentCoordinates + neighbours[i]);
+                if (neighbourIndex != -1)
+                {
+                    if (actors.ContainsKey(neighbourIndex))
+                    {
+                        result.Add(actors[neighbourIndex]);
+                    }
+                }
+            }
+
+            return result;
+        }
+
     }
 }
