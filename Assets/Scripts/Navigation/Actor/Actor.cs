@@ -163,6 +163,14 @@ namespace Navigation
             yield return null;
         }
 
+        public void FaceTowardsInstantly(Vector3 worldPosition)
+        {
+            if (_state != ActorState.Moving || _state != ActorState.Paused)
+            {
+                transform.rotation = Quaternion.LookRotation(worldPosition - transform.position);
+            }
+        }
+
         public void Pause()
         {
             if (_state == ActorState.Moving)
