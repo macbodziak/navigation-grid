@@ -105,12 +105,12 @@ namespace Navigation
 
         private IEnumerator MoveAlongPathCoroutine()
         {
-            OnMovmentStarted();
+            OnMovementStarted();
 
-            while (_pathIndex >= 0)
+            while (_pathIndex < _path.Count)
             {
                 _previousNodeIndex = _currentNodeIndex;
-                _currentNodeIndex = _path[_pathIndex].gridIndex;
+                _currentNodeIndex = _path[_pathIndex].nodeIndex;
                 OnNodeExiting();
 
                 _targetPosition = _path[_pathIndex].worldPosition;
@@ -130,13 +130,15 @@ namespace Navigation
 
                 OnNodeEntered();
 
-                _pathIndex--;
+                _pathIndex++;
 
-                if (_cancelFlag || _pathIndex < 0)
+                if (_cancelFlag || _pathIndex == _path.Count)
                 {
-                    OnMovementFinished();
+                    _cancelFlag = false;
+                    _state = ActorState.Idle;
                 }
             }
+            MovementFinishedEvent?.Invoke(this, new ActorFinishedMovementEventArgs(_currentNodeIndex));
         }
 
 
@@ -239,12 +241,12 @@ namespace Navigation
             _cancelFlag = true;
         }
 
-        private void OnMovmentStarted()
+        private void OnMovementStarted()
         {
             _state = ActorState.Moving;
 
-            // -2 becuase the last entry is the starting point, which should be the point the actor is at right now
-            _pathIndex = _path.Count - 2;
+            // we start at 1, as 0 is the point we already are at 
+            _pathIndex = 1;
             _previousNodeIndex = _currentNodeIndex;
 
             _cancelFlag = false;
@@ -252,14 +254,6 @@ namespace Navigation
             MovementStartedEvent?.Invoke(this, new ActorStartedMovementEventArgs(_currentNodeIndex));
         }
 
-        private void OnMovementFinished()
-        {
-            _cancelFlag = false;
-            _state = ActorState.Idle;
-            _pathIndex = -1;
-
-            MovementFinishedEvent?.Invoke(this, new ActorFinishedMovementEventArgs(_currentNodeIndex));
-        }
 
         private void OnNodeExiting()
         {

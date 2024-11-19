@@ -175,5 +175,19 @@ public struct FindPathOnSquareGridAStarJob : IJob
 
             currentIndex = nodeData[currentIndex].cameFrom;
         }
+
+        ReversePath(resultPath);
     }
+
+    private void ReversePath(NativeArray<PathElement> _path)
+    {
+        int length = _path.Length;
+        for (int i = 0; i < length / 2; i++)
+        {
+            PathElement temp = _path[i];
+            _path[i] = _path[length - i - 1];
+            _path[length - i - 1] = temp;
+        }
+    }
+
 }

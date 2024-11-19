@@ -366,7 +366,7 @@ namespace Navigation
 
                 currentIndex = nodeData[currentIndex].cameFrom;
             }
-
+            pathElements.Reverse();
             return new Path(pathElements, totalCost);
         }
 

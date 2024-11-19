@@ -14,7 +14,8 @@ namespace Navigation
         public IReadOnlyList<PathElement> elements { get => m_elements; }
         public int cost { get => m_cost; private set => m_cost = value; }
         public int Count { get => m_elements.Count; }
-        public PathElement Start
+
+        public PathElement Goal
         {
             get
             {
@@ -26,7 +27,7 @@ namespace Navigation
             }
         }
 
-        public PathElement Goal
+        public PathElement Start
         {
             get
             {
