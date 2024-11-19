@@ -18,8 +18,5 @@ namespace Navigation
                 _path[length - i - 1] = temp;
             }
         }
-
     }
-
-
 }

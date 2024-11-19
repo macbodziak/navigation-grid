@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Navigation
 {
-    public class WalkableAreaElement
+    public struct WalkableAreaElement
     {
         int m_gridIndex;
         Vector2Int m_gridCoordinates;
@@ -19,11 +19,11 @@ namespace Navigation
 
         public WalkableAreaElement(int gridIndex, Vector2Int gridCoordinates, Vector3 worldPosition, int cost, int originIndex)
         {
-            this.gridIndex = gridIndex;
-            this.gridCoordinates = gridCoordinates;
-            this.worldPosition = worldPosition;
-            this.cost = cost;
-            this.originIndex = originIndex;
+            m_gridIndex = gridIndex;
+            m_gridCoordinates = gridCoordinates;
+            m_worldPosition = worldPosition;
+            m_cost = cost;
+            m_originIndex = originIndex;
         }
     }
 }

@@ -610,10 +610,41 @@ namespace Navigation
             // return null;
         }
 
-        static public List<WalkableAreaElement> ScheduleWalkableArea(HexGrid grid, int start_x, int start_z, int budget)
+        static public WalkableAreaRequest ScheduleWalkableArea(HexGrid grid, int _startIndex, int _budget)
         {
-            throw new NotImplementedException();
-            // return null;
+            WalkableAreaRequest areaRequest = new WalkableAreaRequest(grid);
+
+            for (int i = 0; i < grid.Count; i++)
+            {
+                areaRequest.nodeData[i] = new AStarSearchNodeDataAsync
+                {
+                    walkable = grid.IsWalkable(i),
+                    gridCoordinates = new int2(grid.NodeAt(i).gridCoordinates.x, grid.NodeAt(i).gridCoordinates.y),
+                    costSoFar = int.MaxValue,
+                    cameFrom = -1,
+                    movementCostModifier = grid.MovementCostModifierAt(i)
+                };
+            }
+
+            FindWalkableAreaOnHexGridAStarJob job = new FindWalkableAreaOnHexGridAStarJob
+            {
+                nodeData = areaRequest.nodeData,
+                openList = areaRequest.openList,
+                walkableAreaElements = areaRequest.walkableAreaElements,
+                gridToAreaKeys = areaRequest.gridToAreaKeys,
+                gridToAreaValues = areaRequest.gridToAreaValues,
+                areaIndices = areaRequest.areaIndices,
+                budget = _budget,
+                startIndex = _startIndex,
+                navGridWidth = grid.Width,
+                navGridHeight = grid.Height,
+                navGridTileSize = grid.TileSize,
+                navGridPosition = grid.Position,
+            };
+
+            areaRequest.m_jobHandle = job.Schedule();
+
+            return areaRequest;
         }
     }
 }
