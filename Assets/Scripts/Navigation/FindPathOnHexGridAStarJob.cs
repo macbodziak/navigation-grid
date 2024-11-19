@@ -162,7 +162,7 @@ public struct FindPathOnHexGridAStarJob : IJob
             currentIndex = nodeData[currentIndex].cameFrom;
         }
 
-        ReversePath(resultPath);
+        PathfindingJobUtilities.ReversePath(resultPath);
     }
 
     private Vector3 GridCooridnatesToWorldPosition(Vector3 navGridPosition, int2 griCoordinates)
@@ -172,16 +172,7 @@ public struct FindPathOnHexGridAStarJob : IJob
         return new Vector3(worldX, navGridPosition.y, worldZ);
     }
 
-    private void ReversePath(NativeArray<PathElement> _path)
-    {
-        int length = _path.Length;
-        for (int i = 0; i < length / 2; i++)
-        {
-            PathElement temp = _path[i];
-            _path[i] = _path[length - i - 1];
-            _path[length - i - 1] = temp;
-        }
-    }
+
 
 
 }
