@@ -10,6 +10,7 @@ public class TestScriptHex : MonoBehaviour
     [SerializeField] Vector2Int start;
     [SerializeField] Vector2Int goal;
     [SerializeField] bool excludeGoal;
+    [SerializeField] Vector2Int teleportGoal;
     [SerializeField] Vector2Int startArea;
     [SerializeField] int budget;
     [SerializeField] Actor actor_1;
@@ -24,30 +25,54 @@ public class TestScriptHex : MonoBehaviour
     {
         stopwatch = new();
         stopwatch.Start();
-        grid.ScanForActors(100f);
+
+        actor_2.NodeExitedEvent += OnActorExitedNode;
+        actor_2.NodeEnteredEvent += OnActorEnteredNode;
+        actor_1.NodeExitedEvent += OnActorExitedNode;
+        actor_1.NodeEnteredEvent += OnActorEnteredNode;
+        // grid.ScanForActors(100f);
+
+
+        // actorList = grid.AdjacentActors(13);
+        // Debug.Log("ACTORS   ---  ");
+        // if (actorList != null)
+        // {
+
+        //     foreach (var act in actorList)
+        //     {
+        //         Debug.Log("ACTOR  ---  " + act.gameObject.name);
+        //     }
+        // }
         // grid.InstallActor(actor_1, 0);
         // grid.InstallActor(actor_2, 1, 3);
 
 
-        // HexGrid hexGrid = grid as HexGrid;
-        // if (hexGrid != null)
-        // {
-        //     path = Pathfinder.FindPath(hexGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
-        // }
-        // SquareGrid squareGrid = grid as SquareGrid;
-        // if (squareGrid != null)
-        // {
-        //     path = Pathfinder.FindPath(squareGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
-        // }
-        // ShowDebugPath(path);
-        // actor_1.MovementFinishedEvent += OnMovementFinished;
-        // actor_1.MoveAlongPath(path);
+
+
+
+
+        HexGrid hexGrid = grid as HexGrid;
+        if (hexGrid != null)
+        {
+            path = Pathfinder.FindPath(hexGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
+        }
+        SquareGrid squareGrid = grid as SquareGrid;
+        if (squareGrid != null)
+        {
+            path = Pathfinder.FindPath(squareGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
+        }
+        ShowDebugPath(path);
+        actor_1.MovementFinishedEvent += OnMovementFinished;
+        actor_1.MoveAlongPath(path);
+
+
+
 
 
         // mc.FaceTowards(hexGrid.NodeWorldPositionAt(1, 1));
-        grid.SetMovementCostModifierAt(0, 4, 100f);
-        grid.SetMovementCostModifierAt(1, 4, 100f);
-        grid.SetMovementCostModifierAt(2, 4, 100f);
+        // grid.SetMovementCostModifierAt(0, 4, 100f);
+        // grid.SetMovementCostModifierAt(1, 4, 100f);
+        // grid.SetMovementCostModifierAt(2, 4, 100f);
         // hexGrid.SetMovementModifier(9, 8, 6f);
         // hexGrid.SetMovementModifier(2, 0, 6f);
     }
@@ -166,6 +191,11 @@ public class TestScriptHex : MonoBehaviour
             actor_1.Cancel();
         }
 
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            actor_2.Teleport(grid.IndexAt(teleportGoal.x, teleportGoal.y));
+        }
+
     }
 
     private void ShowDebugPath(Path path)
@@ -231,5 +261,17 @@ public class TestScriptHex : MonoBehaviour
         Actor actor = sender as Actor;
         // grid.UninstallActor(args.GoalIndex);
         Debug.Log(actor.gameObject.name + " finished movement at " + grid.GridCoordinatesAt(args.GoalIndex));
+    }
+
+    private void OnActorExitedNode(object sender, ActorExitedNodeEventArgs args)
+    {
+        Actor actor = sender as Actor;
+        Debug.Log(actor.gameObject.name + " exited from " + grid.GridCoordinatesAt(args.FromIndex));
+    }
+
+    private void OnActorEnteredNode(object sender, ActorEnteredNodeEventArgs args)
+    {
+        Actor actor = sender as Actor;
+        Debug.Log(actor.gameObject.name + " entered at " + grid.GridCoordinatesAt(args.ToIndex));
     }
 }

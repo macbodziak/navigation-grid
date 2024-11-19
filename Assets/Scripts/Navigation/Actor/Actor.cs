@@ -9,7 +9,8 @@ namespace Navigation
     {
         #region Fields
         [SerializeField] NavGrid _grid;
-        [SerializeField] int _gridIndex;
+        [SerializeField] int _currentNodeIndex;
+        int _previousNodeIndex = -1;
         [SerializeField] float _speed;
         [SerializeField] float _speedModifier;
         [SerializeField] float _rotationSpeed;
@@ -17,7 +18,6 @@ namespace Navigation
         [SerializeField] ActorState _state = ActorState.Uninitilized;
         Path _path;
         int _pathIndex;
-        int _previousGridIndex;
         Vector3 _targetPosition;
         Quaternion _targetRotation;
         #endregion
@@ -40,7 +40,7 @@ namespace Navigation
             }
         }
         public ActorState State { get => _state; }
-        public int GridIndex { get => _gridIndex; }
+        public int NodeIndex { get => _currentNodeIndex; }
 
         public float RotationSpeed
         {
@@ -69,19 +69,20 @@ namespace Navigation
 
         #region Methods
 
-        public void Initilize(NavGrid navGrid, int gridIndex)
+        public void Initilize(NavGrid navGrid, int nodeIndex)
         {
             _grid = navGrid;
-            _gridIndex = gridIndex;
-            transform.position = _grid.WorldPositionAt(_gridIndex);
+            _previousNodeIndex = -1;
+            _currentNodeIndex = nodeIndex;
+            transform.position = _grid.WorldPositionAt(_currentNodeIndex);
             _state = ActorState.Idle;
         }
 
         public void Deinitialize()
         {
             _grid = null;
-            _gridIndex = -1;
-            _previousGridIndex = -1;
+            _currentNodeIndex = -1;
+            _previousNodeIndex = -1;
             _state = ActorState.Uninitilized;
         }
 
@@ -108,6 +109,8 @@ namespace Navigation
 
             while (_pathIndex >= 0)
             {
+                _previousNodeIndex = _currentNodeIndex;
+                _currentNodeIndex = _path[_pathIndex].gridIndex;
                 OnNodeExiting();
 
                 _targetPosition = _path[_pathIndex].worldPosition;
@@ -127,7 +130,6 @@ namespace Navigation
 
                 OnNodeEntered();
 
-                _previousGridIndex = _path[_pathIndex].gridIndex;
                 _pathIndex--;
 
                 if (_cancelFlag || _pathIndex < 0)
@@ -136,6 +138,51 @@ namespace Navigation
                 }
             }
         }
+
+
+        public void Teleport(int nodeIndex)
+        {
+            if (_state != ActorState.Idle)
+            {
+                return;
+            }
+
+            if (nodeIndex == _currentNodeIndex)
+            {
+                return;
+            }
+
+            if (_grid.CheckIfInBound(nodeIndex) == false)
+            {
+                return;
+            }
+
+            if (_grid.IsWalkable(nodeIndex) == false)
+            {
+                return;
+            }
+
+            _previousNodeIndex = _currentNodeIndex;
+            _currentNodeIndex = nodeIndex;
+
+            OnNodeExiting();
+            transform.position = _grid.WorldPositionAt(nodeIndex);
+
+            OnNodeEntered();
+
+        }
+
+        public void Teleport(Vector2Int coordinates)
+        {
+            Teleport(_grid.IndexAt(coordinates));
+        }
+
+
+        public void Teleport(int x, int z)
+        {
+            Teleport(_grid.IndexAt(x, z));
+        }
+
 
         public void FaceTowards(Vector3 worldPosition)
         {
@@ -198,11 +245,11 @@ namespace Navigation
 
             // -2 becuase the last entry is the starting point, which should be the point the actor is at right now
             _pathIndex = _path.Count - 2;
-            _previousGridIndex = _gridIndex;
+            _previousNodeIndex = _currentNodeIndex;
 
             _cancelFlag = false;
 
-            MovementStartedEvent?.Invoke(this, new ActorStartedMovementEventArgs(_gridIndex));
+            MovementStartedEvent?.Invoke(this, new ActorStartedMovementEventArgs(_currentNodeIndex));
         }
 
         private void OnMovementFinished()
@@ -211,20 +258,19 @@ namespace Navigation
             _state = ActorState.Idle;
             _pathIndex = -1;
 
-            MovementFinishedEvent?.Invoke(this, new ActorFinishedMovementEventArgs(_gridIndex));
+            MovementFinishedEvent?.Invoke(this, new ActorFinishedMovementEventArgs(_currentNodeIndex));
         }
 
         private void OnNodeExiting()
         {
-            _grid.OnActorExitsNode(this, _previousGridIndex, _path[_pathIndex].gridIndex);
-            _gridIndex = _path[_pathIndex].gridIndex;
+            _grid.OnActorExitsNode(this, _previousNodeIndex, _currentNodeIndex);
 
-            NodeExitedEvent?.Invoke(this, new ActorExitedNodeEventArgs(_previousGridIndex, _path[_pathIndex].gridIndex));
+            NodeExitedEvent?.Invoke(this, new ActorExitedNodeEventArgs(_previousNodeIndex, _currentNodeIndex));
         }
 
         private void OnNodeEntered()
         {
-            NodeEnteredEvent?.Invoke(this, new ActorEnteredNodeEventArgs(_previousGridIndex, _path[_pathIndex].gridIndex));
+            NodeEnteredEvent?.Invoke(this, new ActorEnteredNodeEventArgs(_previousNodeIndex, _currentNodeIndex));
         }
         #endregion
 

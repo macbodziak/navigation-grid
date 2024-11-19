@@ -370,6 +370,15 @@ namespace Navigation
             return true;
         }
 
+        public bool CheckIfInBound(int index)
+        {
+            if (index < 0 || index >= width * height)
+            {
+                return false;
+            }
+            return true;
+        }
+
         #endregion
 
         public void SetMovementCostModifierAt(int index, float value)
