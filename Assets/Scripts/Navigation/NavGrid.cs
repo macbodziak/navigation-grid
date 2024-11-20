@@ -258,9 +258,16 @@ namespace Navigation
                 Color cachedColor = GUI.color;
                 GUI.color = GUI.color = TileInfoTextColor;
 
+                Plane[] planes = GetEditorCameraFrustrumPlanes();
+
                 foreach (Node n in nodes)
                 {
-                    DrawTileInfoText(n, style);
+                    //check if the label will be visible on screen, otherwise do not print
+                    //this is to prevent lag in case of many nodes (more than 10,000)
+                    if (GeometryUtility.TestPlanesAABB(planes, new Bounds(nodeWorldPositions[n.id], Vector3.one)))
+                    {
+                        DrawTileInfoText(n, style);
+                    }
                 }
 
                 GUI.color = cachedColor;
@@ -286,6 +293,23 @@ namespace Navigation
                 DrawNodeCenterOutineGizmos(n);
             }
 #endif
+        }
+
+        private Plane[] GetEditorCameraFrustrumPlanes()
+        {
+            Camera sceneCamera = SceneView.lastActiveSceneView.camera;
+            Plane[] planes = GeometryUtility.CalculateFrustumPlanes(sceneCamera);
+            float customFarDistance = 25f * tileSize;
+
+            Vector3 cameraPosition = sceneCamera.transform.position;
+            Vector3 cameraForward = sceneCamera.transform.forward;
+
+            // Create a new far clipping plane closer to the camera
+            Plane customFarPlane = new Plane(-cameraForward, cameraPosition + cameraForward * customFarDistance);
+
+            // Replace the far plane (assuming index 5 is the far plane, based on order)
+            planes[5] = customFarPlane;
+            return planes;
         }
 
 #if UNITY_EDITOR
