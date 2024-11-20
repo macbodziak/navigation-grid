@@ -550,6 +550,24 @@ namespace Navigation
         }
 
 
+        public string NodeDebugString(int index)
+        {
+            string debugText;
+            debugText = "ID: " + nodes[index].id;
+            debugText += $" ;   ({nodes[index].gridCoordinates.x},{nodes[index].gridCoordinates.y})";
+            debugText += " ;   movement cost modifier: " + nodes[index].movementCostModifier;
+            debugText += " ;   walkable: " + IsWalkable(index);
+            if (actors.ContainsKey(index))
+            {
+                debugText += " ;   Actor: " + actors[index].gameObject.name;
+            }
+            else
+            {
+                debugText += " ;   Actor: NULL";
+            }
+
+            return debugText;
+        }
 
     }
 }
