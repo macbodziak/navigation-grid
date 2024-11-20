@@ -19,7 +19,9 @@ public class TestScriptHex : MonoBehaviour
     float time_start;
     float time_finish;
     PathRequest pathQuery;
+    WalkableAreaRequest areaRequest;
     Path path;
+    WalkableArea area;
 
     private void Start()
     {
@@ -51,30 +53,30 @@ public class TestScriptHex : MonoBehaviour
 
 
 
-        HexGrid hexGrid = grid as HexGrid;
-        if (hexGrid != null)
-        {
-            path = Pathfinder.FindPath(hexGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
-        }
-        SquareGrid squareGrid = grid as SquareGrid;
-        if (squareGrid != null)
-        {
-            path = Pathfinder.FindPath(squareGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
-        }
-        ShowDebugPath(path);
-        actor_1.MovementFinishedEvent += OnMovementFinished;
-        actor_1.MoveAlongPath(path);
+        // HexGrid hexGrid = grid as HexGrid;
+        // if (hexGrid != null)
+        // {
+        //     path = Pathfinder.FindPath(hexGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
+        // }
+        // SquareGrid squareGrid = grid as SquareGrid;
+        // if (squareGrid != null)
+        // {
+        //     path = Pathfinder.FindPath(squareGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
+        // }
+        // ShowDebugPath(path);
+        // actor_1.MovementFinishedEvent += OnMovementFinished;
+        // actor_1.MoveAlongPath(path);
 
 
 
 
 
         // mc.FaceTowards(hexGrid.NodeWorldPositionAt(1, 1));
-        // grid.SetMovementCostModifierAt(0, 4, 100f);
-        // grid.SetMovementCostModifierAt(1, 4, 100f);
-        // grid.SetMovementCostModifierAt(2, 4, 100f);
-        // hexGrid.SetMovementModifier(9, 8, 6f);
-        // hexGrid.SetMovementModifier(2, 0, 6f);
+        grid.SetMovementCostModifierAt(11, 10, 2);
+        grid.SetMovementCostModifierAt(12, 10, 2);
+        grid.SetMovementCostModifierAt(11, 9, 2);
+        grid.SetMovementCostModifierAt(12, 9, 2f);
+        // grid.SetMovementCostModifierAt(19, 11, 2f);
     }
 
 
@@ -105,7 +107,8 @@ public class TestScriptHex : MonoBehaviour
             System.TimeSpan ts = stopwatch.Elapsed;
             Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
             Debug.Log($"path finding took <color=orange>{time_finish - time_start} s </color>");
-            ShowDebugPath(path);
+            Debug.Log("path.cost = " + path.cost);
+            Pathfinder.DebugDrawPath(path, Color.red, 3f);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -137,7 +140,8 @@ public class TestScriptHex : MonoBehaviour
                 System.TimeSpan ts = stopwatch.Elapsed;
                 Debug.Log($"path finding took {ts.TotalMilliseconds} ms");
                 Debug.Log($"path finding took <color=orange>{time_finish - time_start} s </color>");
-                ShowDebugPath(path);
+                Debug.Log("path.cost = " + path.cost);
+                Pathfinder.DebugDrawPath(path, new Color(1f, 0.2f, 0.2f), 3f);
                 pathQuery = null;
             }
             else
@@ -173,7 +177,49 @@ public class TestScriptHex : MonoBehaviour
             System.TimeSpan ts = stopwatch.Elapsed;
             Debug.Log($"area finding took {ts.TotalMilliseconds} ms");
             Debug.Log($"path finding took {time_finish - time_start} s");
-            ShowDebugArea(area);
+            Pathfinder.DebugDrawArea(grid, area, Color.yellow, 2.5f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            time_start = Time.realtimeSinceStartup;
+            stopwatch.Reset();
+            stopwatch.Start();
+            HexGrid hexGrid = grid as HexGrid;
+            if (hexGrid != null)
+            {
+                areaRequest = Pathfinder.ScheduleWalkableArea(hexGrid, hexGrid.IndexAt(startArea.x, startArea.y), budget);
+            }
+            SquareGrid squareGrid = grid as SquareGrid;
+            if (squareGrid != null)
+            {
+                areaRequest = Pathfinder.ScheduleWalkableArea(squareGrid, squareGrid.IndexAt(startArea.x, startArea.y), budget);
+            }
+        }
+
+
+        if (areaRequest != null)
+        {
+            if (areaRequest.IsComplete)
+            {
+                var time_start_ = Time.realtimeSinceStartup;
+                area = areaRequest.Complete();
+                var time_finish_ = Time.realtimeSinceStartup;
+
+                Debug.Log($"           ----- stage complete() <color=cyan>{(time_finish_ - time_start_) * 1000} ms </color>");
+
+                areaRequest = null;
+                stopwatch.Stop();
+                time_finish = Time.realtimeSinceStartup;
+                System.TimeSpan ts = stopwatch.Elapsed;
+                Debug.Log($"area finding took <color=orange>{ts.TotalMilliseconds} ms </color>");
+                Debug.Log($"area finding took <color=orange>{time_finish - time_start} s </color>");
+                Pathfinder.DebugDrawArea(grid, area, new Color(0.5f, 0.5f, 0f), 3.75f);
+            }
+            else
+            {
+                Debug.Log("...");
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -198,37 +244,9 @@ public class TestScriptHex : MonoBehaviour
 
     }
 
-    private void ShowDebugPath(Path path)
-    {
-        if (path == null)
-        {
-            return;
-        }
 
-        Debug.Log("path.cost = " + path.cost);
 
-        for (int i = 1; i < path.Count; i++)
-        {
-            Debug.DrawLine(path.elements[i - 1].worldPosition, path.elements[i].worldPosition, Color.red, 2.0f);
-        }
 
-        path = null;
-    }
-
-    private void ShowDebugArea(WalkableArea area)
-    {
-        if (area == null)
-        {
-            return;
-        }
-
-        foreach (var element in area)
-        {
-
-            Debug.DrawLine(element.worldPosition, grid.WorldPositionAt(element.originIndex), Color.yellow, 10.0f);
-        }
-
-    }
 
 
     private void MousePositionToGripPositionDebug()
@@ -246,9 +264,10 @@ public class TestScriptHex : MonoBehaviour
             {
                 // Log the name of the object that was hit
                 Debug.Log("Hit object: " + hit.collider.gameObject.name + ", point: " + hit.point);
-                Node node = grid.NodeAt(hit.point);
+                // Node node = grid.NodeAt(hit.point);
 
-                Debug.Log("gridPos: " + node.gridCoordinates + " , node id: " + node.id + " , walkable: " + node.walkable);
+                // Debug.Log("gridPos: " + node.gridCoordinates + " , node id: " + node.id + " , walkable: " + node.walkable);
+                Debug.Log(grid.NodeDebugString(grid.IndexAt(hit.point)));
 
                 // Do something with the hit object, e.g.:
                 // hit.collider.gameObject.GetComponent<Renderer>().material.color = Color.red;
@@ -261,6 +280,23 @@ public class TestScriptHex : MonoBehaviour
         Actor actor = sender as Actor;
         // grid.UninstallActor(args.GoalIndex);
         Debug.Log(actor.gameObject.name + " finished movement at " + grid.GridCoordinatesAt(args.GoalIndex));
+        Debug.Break();
+
+        int nodeIndex = actor.NodeIndex;
+        Vector2Int start = grid.GridCoordinatesAt(nodeIndex);
+        HexGrid hexGrid = grid as HexGrid;
+        if (hexGrid != null)
+        {
+            path = Pathfinder.FindPath(hexGrid, start.x, start.y, 0, 0, excludeGoal);
+        }
+        SquareGrid squareGrid = grid as SquareGrid;
+        if (squareGrid != null)
+        {
+            path = Pathfinder.FindPath(squareGrid, start.x, start.y, 0, 0, excludeGoal);
+        }
+
+        actor.MoveAlongPath(path);
+
     }
 
     private void OnActorExitedNode(object sender, ActorExitedNodeEventArgs args)
