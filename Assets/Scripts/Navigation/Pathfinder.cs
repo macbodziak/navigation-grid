@@ -646,5 +646,32 @@ namespace Navigation
 
             return areaRequest;
         }
+
+        public static void DebugDrawPath(Path path, Color color, float duration = 1f)
+        {
+            if (path == null)
+            {
+                return;
+            }
+
+            for (int i = 1; i < path.Count; i++)
+            {
+                Debug.DrawLine(path.elements[i - 1].worldPosition, path.elements[i].worldPosition, color, duration);
+            }
+        }
+
+        public static void DebugDrawArea(NavGrid grid, WalkableArea area, Color color, float duration = 1)
+        {
+            if (area == null)
+            {
+                return;
+            }
+
+            foreach (var element in area)
+            {
+                Debug.DrawLine(element.worldPosition, grid.WorldPositionAt(element.originIndex), color, duration);
+            }
+        }
+
     }
 }

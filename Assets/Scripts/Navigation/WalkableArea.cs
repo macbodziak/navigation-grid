@@ -21,16 +21,16 @@ namespace Navigation
         }
 
 
-        public Path GetPathFromGridCoordinates(Vector2Int position)
+        public Path GetPathFromGridCoordinates(Vector2Int gridCoordinates)
         {
-            int elementListIndex = m_gridToAreaMap[m_navGrid.IndexAt(position)];
+            int elementListIndex = m_gridToAreaMap[m_navGrid.IndexAt(gridCoordinates)];
             return GetPathFromInternalIndex(elementListIndex);
 
         }
 
-        public Path GetPathFromGridIndex(int index)
+        public Path GetPathFromNodeIndex(int nodeIndex)
         {
-            int elementListIndex = m_gridToAreaMap[index];
+            int elementListIndex = m_gridToAreaMap[nodeIndex];
             return GetPathFromInternalIndex(elementListIndex);
         }
 
