@@ -47,6 +47,11 @@ namespace Navigation
             return new Path(pathElements, totalCost);
         }
 
+        public int Count()
+        {
+            return m_areaElements.Count;
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return (IEnumerator)GetEnumerator();
