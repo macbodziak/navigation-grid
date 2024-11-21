@@ -52,6 +52,11 @@ namespace Navigation
             return m_areaElements.Count;
         }
 
+        public bool ContainsNode(int nodeIndex)
+        {
+            return m_gridToAreaMap.ContainsKey(nodeIndex);
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return (IEnumerator)GetEnumerator();
