@@ -460,6 +460,9 @@ namespace Navigation
 
             actors[index] = actor;
             actor.Initilize(this, index);
+#if UNITY_EDITOR
+            EditorUtility.SetDirty(actor);
+#endif
             return true;
         }
 
