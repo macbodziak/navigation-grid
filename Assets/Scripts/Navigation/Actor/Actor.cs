@@ -2,20 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.ComponentModel;
 
 namespace Navigation
 {
     public class Actor : MonoBehaviour
     {
         #region Fields
-        [SerializeField] NavGrid _grid;
-        [SerializeField] int _currentNodeIndex;
+        [ReadOnly][SerializeField] NavGrid _grid;
+        [ReadOnly][SerializeField] int _currentNodeIndex;
         int _previousNodeIndex = -1;
         [SerializeField] float _speed;
         [SerializeField] float _speedModifier;
         [SerializeField] float _rotationSpeed;
         bool _cancelFlag = false;
-        [SerializeField] ActorState _state = ActorState.Uninitilized;
+        [ReadOnly][SerializeField] ActorState _state = ActorState.Uninitilized;
         Path _path;
         int _pathIndex;
         Vector3 _targetPosition;
