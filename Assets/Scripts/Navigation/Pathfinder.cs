@@ -386,11 +386,19 @@ namespace Navigation
         }
 
         //<summary>
-        //Synchronous method for finding Reachable Nodes on a Square Grid, given start grid coordinates and movement budget. Returns a Walkable Area if one is found or null if not
+        //Synchronous method for finding Reachable Nodes on a Square Grid, given origin grid coordinates and movement budget. Returns a Walkable Area if one is found or null if not
         //</summary>
         static public WalkableArea FindWalkableArea(SquareGrid grid, int start_x, int start_z, int budget)
         {
-            if (grid.CheckIfInBound(start_x, start_z) == false)
+            return FindWalkableArea(grid, grid.IndexAt(start_x, start_z), budget);
+        }
+
+        //<summary>
+        //Synchronous method for finding Reachable Nodes on a Square Grid, given origin node index and movement budget. Returns a Walkable Area if one is found or null if not
+        //</summary>
+        static public WalkableArea FindWalkableArea(SquareGrid grid, int startIndex, int budget)
+        {
+            if (grid.CheckIfInBound(startIndex) == false)
             {
                 return null;
             }
@@ -415,9 +423,9 @@ namespace Navigation
             }
 
             //set the cost so far of the starting position to 0
-            nodeData[grid.IndexAt(start_x, start_z)].costSoFar = 0;
+            nodeData[startIndex].costSoFar = 0;
 
-            frontier.Enqueue(grid.IndexAt(start_x, start_z), 0);
+            frontier.Enqueue(startIndex, 0);
 
             Vector2Int neighbourGridPosition;
             Vector2Int[] neighbours = grid.Neighbours;
@@ -495,11 +503,19 @@ namespace Navigation
         }
 
         //<summary>
-        //Synchronous method for finding Reachable Nodes on a Hex Grid, given start grid coordinates and movement budget. Returns a Walkable Area if one is found or null if not
+        //Synchronous method for finding Reachable Nodes on a Hex Grid, given origin grid coordinates and movement budget. Returns a Walkable Area if one is found or null if not
         //</summary>
         static public WalkableArea FindWalkableArea(HexGrid grid, int start_x, int start_z, int budget)
         {
-            if (grid.CheckIfInBound(start_x, start_z) == false)
+            return FindWalkableArea(grid, grid.IndexAt(start_x, start_z), budget);
+        }
+
+        //<summary>
+        //Synchronous method for finding Reachable Nodes on a Hex Grid, given origin node index and movement budget. Returns a Walkable Area if one is found or null if not
+        //</summary>
+        static public WalkableArea FindWalkableArea(HexGrid grid, int startIndex, int budget)
+        {
+            if (grid.CheckIfInBound(startIndex) == false)
             {
                 return null;
             }
@@ -524,9 +540,9 @@ namespace Navigation
             }
 
             //set the cost so far of the starting position to 0
-            nodeData[grid.IndexAt(start_x, start_z)].costSoFar = 0;
+            nodeData[startIndex].costSoFar = 0;
 
-            frontier.Enqueue(grid.IndexAt(start_x, start_z), 0);
+            frontier.Enqueue(startIndex, 0);
 
             Vector2Int[] neighboursEven = grid.NeighboursEven;
             Vector2Int[] neighboursOdd = grid.NeighboursOdd;
