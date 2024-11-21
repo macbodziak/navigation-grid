@@ -68,7 +68,7 @@ namespace Navigation
         private Foldout CreateMapCreationSection()
         {
             Foldout MapCreationFoldout = new Foldout();
-            MapCreationFoldout.text = "Map Generation";
+            MapCreationFoldout.text = "Navigation Grid Generation";
             MapCreationFoldout.style.borderTopWidth = 1;
             MapCreationFoldout.style.borderLeftWidth = 1;
             MapCreationFoldout.style.borderRightWidth = 1;
@@ -140,7 +140,7 @@ namespace Navigation
 
 
             CreateMapButton = new Button(OnCreateMapButtonClicked);
-            CreateMapButton.text = "Bake Map";
+            CreateMapButton.text = "Bake Grid";
             CreateMapButton.AddToClassList("unity-base-field__aligned");
             CreateMapButton.SetEnabled(!EditorApplication.isPlaying);
 
