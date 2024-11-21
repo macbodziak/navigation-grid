@@ -39,9 +39,21 @@ namespace Navigation
             List<PathElement> pathElements = new();
             int totalCost = m_areaElements[index].cost;
 
+            int nodeIndex = m_areaElements[index].gridIndex;
+            Vector2Int gridCoordinates = m_areaElements[index].gridCoordinates;
+            Vector3 worldPosition = m_areaElements[index].worldPosition;
+
             while (m_areaElements[index].originIndex != -1)
             {
-                pathElements.Add(new PathElement(m_areaElements[index].gridIndex, m_areaElements[index].gridCoordinates, m_areaElements[index].worldPosition));
+                pathElements.Add(new PathElement(nodeIndex, gridCoordinates, worldPosition));
+
+                index = m_areaElements[index].originIndex;
+
+                nodeIndex = m_areaElements[index].gridIndex;
+                gridCoordinates = m_areaElements[index].gridCoordinates;
+                worldPosition = m_areaElements[index].worldPosition;
+
+
             }
 
             return new Path(pathElements, totalCost);
