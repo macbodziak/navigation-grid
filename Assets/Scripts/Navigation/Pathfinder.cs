@@ -269,22 +269,29 @@ namespace Navigation
             return null;
         }
 
+        //<summary>
+        //Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
+        //</summary>
+        static public PathRequest SchedulePath(SquareGrid navGrid, int start_x, int start_z, int goal_x, int goal_z, bool excludeGoal = false)
+        {
+            if (navGrid.CheckIfInBound(start_x, start_z) == false)
+            {
+                return null;
+            }
+
+            if (navGrid.CheckIfInBound(goal_x, goal_z) == false)
+            {
+                return null;
+            }
+
+            return SchedulePath(navGrid, navGrid.IndexAt(start_x, start_z), navGrid.IndexAt(goal_x, goal_z), excludeGoal);
+        }
 
         //<summary>
         //Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
         //</summary>
-        static public PathRequest SchedulePath(SquareGrid navGrid, Vector2Int startPosition, Vector2Int goalPosition, bool excludeGoal = false)
+        static public PathRequest SchedulePath(SquareGrid navGrid, int startIndex, int goalIndex, bool excludeGoal = false)
         {
-            // 
-            if (navGrid.CheckIfInBound(startPosition.x, startPosition.y) == false)
-            {
-                return null;
-            }
-
-            if (navGrid.CheckIfInBound(goalPosition.x, goalPosition.y) == false)
-            {
-                return null;
-            }
 
             PathRequest pathQuery = new PathRequest(navGrid);
 
@@ -304,8 +311,8 @@ namespace Navigation
             {
                 nodeData = pathQuery.nodeData,
                 openList = pathQuery.openList,
-                startIndex = navGrid.IndexAt(startPosition.x, startPosition.y),
-                goalIndex = navGrid.IndexAt(goalPosition.x, goalPosition.y),
+                startIndex = startIndex,
+                goalIndex = goalIndex,
                 resultCost = pathQuery.totalPathCost,
                 resultPath = pathQuery.pathElements,
                 navGridWidth = navGrid.Width,
@@ -321,19 +328,19 @@ namespace Navigation
         }
 
 
-        static public PathRequest SchedulePath(HexGrid grid, Vector2Int startPosition, Vector2Int goalPosition, bool excludeGoal = false)
+        static public PathRequest SchedulePath(HexGrid grid, int start_x, int start_z, int goal_x, int goal_z, bool excludeGoal = false)
         {
-            if (grid.CheckIfInBound(startPosition.x, startPosition.y) == false)
+            if (grid.CheckIfInBound(start_x, start_z) == false)
             {
                 return null;
             }
 
-            if (grid.CheckIfInBound(goalPosition.x, goalPosition.y) == false)
+            if (grid.CheckIfInBound(goal_x, goal_z) == false)
             {
                 return null;
             }
 
-            return SchedulePath(grid, grid.IndexAt(startPosition), grid.IndexAt(goalPosition), excludeGoal);
+            return SchedulePath(grid, grid.IndexAt(start_x, start_z), grid.IndexAt(goal_x, goal_z), excludeGoal);
         }
 
         static public PathRequest SchedulePath(HexGrid grid, int startIndex, int goalIndex, bool excludeGoal = false)
