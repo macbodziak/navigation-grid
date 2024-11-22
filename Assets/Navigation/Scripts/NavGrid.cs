@@ -21,12 +21,12 @@ namespace Navigation
         [SerializeField] bool showTileOutlineFlag = true;
         [SerializeField] bool showTileCenterFlag = true;
         [SerializeField] bool showTileInfoTextFlag = false;
-        [SerializeField] bool ShowNodeGridCoordinatesTextFlag = false;
+        [SerializeField] bool ShowNodeGridCoordinatesTextFlag = true;
         [SerializeField] bool ShowNodeWalkableTextFlag = false;
         [SerializeField] bool ShowNodeMovementCostTextFlag = false;
         [SerializeField] bool ShowOccupyingActorTextFlag = false;
         [SerializeField] int TileInfoTextFontSize = 10;
-        [SerializeField] Color TileInfoTextColor;
+        [SerializeField] Color TileInfoTextColor = Color.white;
 #endif
         #endregion
 
