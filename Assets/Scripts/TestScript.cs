@@ -169,7 +169,7 @@ public class TestScript : MonoBehaviour
             return;
         }
 
-        foreach (var element in area)
+        foreach (var element in area.GetWalkableAreaElements())
         {
 
             Debug.DrawLine(element.worldPosition, navGrid.WorldPositionAt(element.originIndex), Color.yellow, 10.0f);

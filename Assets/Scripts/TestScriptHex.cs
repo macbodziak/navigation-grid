@@ -214,7 +214,7 @@ public class TestScriptHex : MonoBehaviour
                 System.TimeSpan ts = stopwatch.Elapsed;
                 Debug.Log($"area finding took <color=orange>{ts.TotalMilliseconds} ms </color>");
                 Debug.Log($"area finding took <color=orange>{time_finish - time_start} s </color>");
-                Pathfinder.DebugDrawArea(grid, area, new Color(0.5f, 0.5f, 0f), 3.75f);
+                Pathfinder.DebugDrawArea(grid, area, new Color(0.8f, 0.8f, 0.2f), 3.75f);
             }
             else
             {
