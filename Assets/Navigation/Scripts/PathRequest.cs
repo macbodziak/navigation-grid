@@ -28,6 +28,10 @@ namespace Navigation
 
         public Path Complete()
         {
+            if (m_valid == false)
+            {
+                return null;
+            }
             jobHandle.Complete();
             List<PathElement> pathElementList = new List<PathElement>(pathElements.Length);
             for (int i = 0; i < pathElements.Length; i++)
