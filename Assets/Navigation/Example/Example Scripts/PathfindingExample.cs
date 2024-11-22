@@ -53,6 +53,8 @@ public class PathfindingExample : MonoBehaviour
                 Actor clickedActor = hit.collider.gameObject.GetComponent<Actor>();
                 if (clickedActor != null)
                 {
+                    path = null;
+                    ClearPathPreview();
                     selectedActor = clickedActor;
                     return;
                 }
