@@ -8,7 +8,7 @@ namespace Navigation
 {
     public static class PathfindingJobUtilities
     {
-        public static void ReversePath(NativeArray<PathElement> _path)
+        public static void ReversePath(NativeList<PathElement> _path)
         {
             int length = _path.Length;
             for (int i = 0; i < length / 2; i++)
