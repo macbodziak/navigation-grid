@@ -44,6 +44,7 @@ namespace Navigation
                 index = element.originIndex;
             }
 
+            pathElements.Reverse();
             return new Path(pathElements, totalCost);
         }
 
