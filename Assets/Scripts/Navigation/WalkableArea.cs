@@ -58,6 +58,16 @@ namespace Navigation
             return m_areaElements.ContainsKey(nodeIndex);
         }
 
+        public WalkableAreaElement WalkableElementAt(int nodeIndex)
+        {
+            if (m_areaElements.ContainsKey(nodeIndex))
+            {
+                return m_areaElements[nodeIndex];
+            }
+
+            return new WalkableAreaElement(-1, Vector2Int.zero, Vector3.zero, 0, -1);
+        }
+
         public WalkableAreaElement[] GetWalkableAreaElements()
         {
             return m_areaElements.Values.ToArray();
