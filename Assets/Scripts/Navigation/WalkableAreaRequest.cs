@@ -13,11 +13,12 @@ namespace Navigation
         public NativeList<int> walkableAreaKeys;
         public NativeList<int> gridToAreaValues;
         public NativeList<int> areaIndices;
-        NavGrid m_navGrid;
+        private int m_startIndex;
+        private NavGrid m_navGrid;
         public JobHandle m_jobHandle;
         private bool m_valid;
 
-        public WalkableAreaRequest(NavGrid navGrid)
+        public WalkableAreaRequest(NavGrid navGrid, int startIndex)
         {
             openList = new NativeHeap<OpenListElement, OpenListComparer>(Allocator.TempJob, navGrid.Count);
             nodeData = new NativeArray<AStarSearchNodeDataAsync>(navGrid.Count, Allocator.TempJob);
@@ -28,10 +29,12 @@ namespace Navigation
 
             m_navGrid = navGrid;
             m_valid = true;
+            m_startIndex = startIndex;
         }
 
         public bool IsComplete { get => m_jobHandle.IsCompleted; }
         public bool Valid { get => m_valid; private set => m_valid = value; }
+        public int StartIndex { get => m_startIndex; private set => m_startIndex = value; }
 
         public WalkableArea Complete()
         {
@@ -44,7 +47,7 @@ namespace Navigation
                 walkableAreaElementList.Add(walkableAreaKeys[i], walkableAreaValues[i]);
             }
 
-            WalkableArea area = new WalkableArea(m_navGrid, walkableAreaElementList);
+            WalkableArea area = new WalkableArea(m_navGrid, m_startIndex, walkableAreaElementList);
 
             openList.Dispose();
             nodeData.Dispose();
@@ -54,8 +57,6 @@ namespace Navigation
             areaIndices.Dispose();
             m_valid = false;
             return area;
-            // return null;
-
         }
     }
 }

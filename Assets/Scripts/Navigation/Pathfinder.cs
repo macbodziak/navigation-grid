@@ -546,7 +546,7 @@ namespace Navigation
                 Vector3 worldPosition = grid.WorldPositionAt(gridPosition);
                 walkableAreaElements.Add(areaIndex, new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
             }
-            return new WalkableArea(grid, walkableAreaElements);
+            return new WalkableArea(grid, startIndex, walkableAreaElements);
         }
 
         //<summary>
@@ -701,13 +701,13 @@ namespace Navigation
                 Vector3 worldPosition = grid.WorldPositionAt(gridPosition);
                 walkableAreaElements.Add(areaIndex, new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
             }
-            return new WalkableArea(grid, walkableAreaElements);
+            return new WalkableArea(grid, startIndex, walkableAreaElements);
         }
 
 
         static public WalkableAreaRequest ScheduleWalkableArea(SquareGrid grid, int _startIndex, int _budget)
         {
-            WalkableAreaRequest areaRequest = new WalkableAreaRequest(grid);
+            WalkableAreaRequest areaRequest = new WalkableAreaRequest(grid, _startIndex);
 
             for (int i = 0; i < grid.Count; i++)
             {
@@ -748,7 +748,7 @@ namespace Navigation
 
         static public WalkableAreaRequest ScheduleWalkableArea(HexGrid grid, int _startIndex, int _budget)
         {
-            WalkableAreaRequest areaRequest = new WalkableAreaRequest(grid);
+            WalkableAreaRequest areaRequest = new WalkableAreaRequest(grid, _startIndex);
 
             for (int i = 0; i < grid.Count; i++)
             {

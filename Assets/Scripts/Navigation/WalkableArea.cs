@@ -11,11 +11,15 @@ namespace Navigation
     public class WalkableArea
     {
         NavGrid m_navGrid;
+        int m_startIndex;
         Dictionary<int, WalkableAreaElement> m_areaElements;
 
-        public WalkableArea(NavGrid navGrid, Dictionary<int, WalkableAreaElement> areaElements)
+        public int StartIndex { get => m_startIndex; private set => m_startIndex = value; }
+
+        public WalkableArea(NavGrid navGrid, int startIndex, Dictionary<int, WalkableAreaElement> areaElements)
         {
             m_navGrid = navGrid;
+            m_startIndex = startIndex;
             m_areaElements = areaElements;
         }
 
@@ -27,7 +31,7 @@ namespace Navigation
 
         }
 
-        public Path GetPathFromNodeIndex(int index)
+        public Path GetPathFromNodeIndex(int index, bool includeStart = true)
         {
             if (m_areaElements.ContainsKey(index) == false)
             {
@@ -43,6 +47,9 @@ namespace Navigation
                 pathElements.Add(new PathElement(index, element.gridCoordinates, element.worldPosition));
                 index = element.originIndex;
             }
+
+            if (index == m_startIndex && includeStart)
+                pathElements.Add(new PathElement(index, m_navGrid.GridCoordinatesAt(index), m_navGrid.WorldPositionAt(index)));
 
             pathElements.Reverse();
             return new Path(pathElements, totalCost);
