@@ -9,8 +9,8 @@ namespace Navigation
     {
         public NativeArray<AStarSearchNodeDataAsync> nodeData;
         public NativeHeap<OpenListElement, OpenListComparer> openList;
-        public NativeList<WalkableAreaElement> walkableAreaElements;
-        public NativeList<int> gridToAreaKeys;
+        public NativeList<WalkableAreaElement> walkableAreaValues;
+        public NativeList<int> walkableAreaKeys;
         public NativeList<int> gridToAreaValues;
         public NativeList<int> areaIndices;
         NavGrid m_navGrid;
@@ -21,8 +21,8 @@ namespace Navigation
         {
             openList = new NativeHeap<OpenListElement, OpenListComparer>(Allocator.TempJob, navGrid.Count);
             nodeData = new NativeArray<AStarSearchNodeDataAsync>(navGrid.Count, Allocator.TempJob);
-            walkableAreaElements = new NativeList<WalkableAreaElement>(100, Allocator.Persistent);
-            gridToAreaKeys = new NativeList<int>(Allocator.Persistent);
+            walkableAreaValues = new NativeList<WalkableAreaElement>(100, Allocator.Persistent);
+            walkableAreaKeys = new NativeList<int>(Allocator.Persistent);
             gridToAreaValues = new NativeList<int>(Allocator.Persistent);
             areaIndices = new NativeList<int>(Allocator.TempJob);
 
@@ -37,29 +37,24 @@ namespace Navigation
         {
             m_jobHandle.Complete();
 
-            List<WalkableAreaElement> walkableAreaElementList = new List<WalkableAreaElement>(walkableAreaElements.Length);
-            Dictionary<int, int> gridToAreaMap = new Dictionary<int, int>(gridToAreaKeys.Length);
+            Dictionary<int, WalkableAreaElement> walkableAreaElementList = new Dictionary<int, WalkableAreaElement>(walkableAreaValues.Length);
 
-            for (int i = 0; i < walkableAreaElements.Length; i++)
+            for (int i = 0; i < walkableAreaKeys.Length; i++)
             {
-                walkableAreaElementList.Add(walkableAreaElements[i]);
+                walkableAreaElementList.Add(walkableAreaKeys[i], walkableAreaValues[i]);
             }
 
-            for (int i = 0; i < gridToAreaKeys.Length; i++)
-            {
-                gridToAreaMap.Add(gridToAreaKeys[i], gridToAreaValues[i]);
-            }
-
-            WalkableArea area = new WalkableArea(m_navGrid, walkableAreaElementList, gridToAreaMap);
+            WalkableArea area = new WalkableArea(m_navGrid, walkableAreaElementList);
 
             openList.Dispose();
             nodeData.Dispose();
-            walkableAreaElements.Dispose();
-            gridToAreaKeys.Dispose();
+            walkableAreaValues.Dispose();
+            walkableAreaKeys.Dispose();
             gridToAreaValues.Dispose();
             areaIndices.Dispose();
             m_valid = false;
             return area;
+            // return null;
 
         }
     }

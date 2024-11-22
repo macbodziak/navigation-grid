@@ -27,8 +27,7 @@ namespace Navigation
         public NativeArray<AStarSearchNodeDataAsync> nodeData;
         public NativeHeap<OpenListElement, OpenListComparer> openList;
         public NativeList<WalkableAreaElement> walkableAreaElements;
-        public NativeList<int> gridToAreaKeys;
-        public NativeList<int> gridToAreaValues;
+        public NativeList<int> areaKeys;
         public NativeList<int> areaIndices;
         public int startIndex;
         public int budget;
@@ -139,8 +138,7 @@ namespace Navigation
             for (int i = 0; i < areaIndices.Length; i++)
             {
                 int areaIndex = areaIndices[i];
-                gridToAreaKeys.Add(areaIndex);
-                gridToAreaValues.Add(i);
+                areaKeys.Add(areaIndex);
                 int2 gridPosition = nodeData[areaIndex].gridCoordinates;
                 worldPosition = navGridPosition + new Vector3(gridPosition.x * navGridTileSize, 0f, gridPosition.y * navGridTileSize);
                 walkableAreaElements.Add(new WalkableAreaElement(areaIndex, new Vector2Int(gridPosition.x, gridPosition.y), worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));

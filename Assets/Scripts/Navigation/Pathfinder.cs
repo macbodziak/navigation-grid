@@ -488,18 +488,16 @@ namespace Navigation
 
             }
 
-            List<WalkableAreaElement> walkableAreaElements = new List<WalkableAreaElement>(areaIndices.Count);
-            Dictionary<int, int> GridToAreaElementsMap = new();
+            Dictionary<int, WalkableAreaElement> walkableAreaElements = new Dictionary<int, WalkableAreaElement>(areaIndices.Count);
 
             for (int i = 0; i < areaIndices.Count; i++)
             {
                 int areaIndex = areaIndices[i];
-                GridToAreaElementsMap.Add(areaIndex, i);
                 Vector2Int gridPosition = grid.NodeAt(areaIndex).gridCoordinates;
                 Vector3 worldPosition = grid.WorldPositionAt(gridPosition);
-                walkableAreaElements.Add(new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
+                walkableAreaElements.Add(areaIndex, new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
             }
-            return new WalkableArea(grid, walkableAreaElements, GridToAreaElementsMap);
+            return new WalkableArea(grid, walkableAreaElements);
         }
 
         //<summary>
@@ -605,18 +603,16 @@ namespace Navigation
 
             }
 
-            List<WalkableAreaElement> walkableAreaElements = new List<WalkableAreaElement>(areaIndices.Count);
-            Dictionary<int, int> GridToAreaElementsMap = new();
+            Dictionary<int, WalkableAreaElement> walkableAreaElements = new Dictionary<int, WalkableAreaElement>(areaIndices.Count);
 
             for (int i = 0; i < areaIndices.Count; i++)
             {
                 int areaIndex = areaIndices[i];
-                GridToAreaElementsMap.Add(areaIndex, i);
                 Vector2Int gridPosition = grid.NodeAt(areaIndex).gridCoordinates;
                 Vector3 worldPosition = grid.WorldPositionAt(gridPosition);
-                walkableAreaElements.Add(new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
+                walkableAreaElements.Add(areaIndex, new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
             }
-            return new WalkableArea(grid, walkableAreaElements, GridToAreaElementsMap);
+            return new WalkableArea(grid, walkableAreaElements);
         }
 
 
@@ -640,9 +636,8 @@ namespace Navigation
             {
                 nodeData = areaRequest.nodeData,
                 openList = areaRequest.openList,
-                walkableAreaElements = areaRequest.walkableAreaElements,
-                gridToAreaKeys = areaRequest.gridToAreaKeys,
-                gridToAreaValues = areaRequest.gridToAreaValues,
+                walkableAreaElements = areaRequest.walkableAreaValues,
+                areaKeys = areaRequest.walkableAreaKeys,
                 areaIndices = areaRequest.areaIndices,
                 budget = _budget,
                 startIndex = _startIndex,
@@ -677,9 +672,8 @@ namespace Navigation
             {
                 nodeData = areaRequest.nodeData,
                 openList = areaRequest.openList,
-                walkableAreaElements = areaRequest.walkableAreaElements,
-                gridToAreaKeys = areaRequest.gridToAreaKeys,
-                gridToAreaValues = areaRequest.gridToAreaValues,
+                walkableAreaElements = areaRequest.walkableAreaValues,
+                areaKeys = areaRequest.walkableAreaKeys,
                 areaIndices = areaRequest.areaIndices,
                 budget = _budget,
                 startIndex = _startIndex,
@@ -714,7 +708,7 @@ namespace Navigation
                 return;
             }
 
-            foreach (var element in area)
+            foreach (var element in area.GetWalkableAreaElements())
             {
                 Debug.DrawLine(element.worldPosition, grid.WorldPositionAt(element.originIndex), color, duration);
             }

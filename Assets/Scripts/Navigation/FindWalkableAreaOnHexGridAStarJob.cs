@@ -32,8 +32,7 @@ public struct FindWalkableAreaOnHexGridAStarJob : IJob
     public NativeArray<AStarSearchNodeDataAsync> nodeData;
     public NativeHeap<OpenListElement, OpenListComparer> openList;
     public NativeList<WalkableAreaElement> walkableAreaElements;
-    public NativeList<int> gridToAreaKeys;
-    public NativeList<int> gridToAreaValues;
+    public NativeList<int> areaKeys;
     public NativeList<int> areaIndices;
     public int startIndex;
     public int budget;
@@ -132,8 +131,7 @@ public struct FindWalkableAreaOnHexGridAStarJob : IJob
         for (int i = 0; i < areaIndices.Length; i++)
         {
             int areaIndex = areaIndices[i];
-            gridToAreaKeys.Add(areaIndex);
-            gridToAreaValues.Add(i);
+            areaKeys.Add(areaIndex);
             int2 gridPosition = nodeData[areaIndex].gridCoordinates;
             Vector3 worldPosition = GridCooridnatesToWorldPosition(navGridPosition, gridPosition);
             walkableAreaElements.Add(new WalkableAreaElement(areaIndex, new Vector2Int(gridPosition.x, gridPosition.y), worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
