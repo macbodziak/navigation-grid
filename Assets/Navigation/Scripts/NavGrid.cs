@@ -276,7 +276,7 @@ namespace Navigation
             Gizmos.color = Color.white;
             if (nodes == null)
             {
-                Gizmos.DrawSphere(transform.position, 1.0f);
+                Handles.Label(transform.position, "No Map Generated");
                 return;
             }
 
