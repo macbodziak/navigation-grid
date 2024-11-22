@@ -734,6 +734,11 @@ namespace Navigation
             return areaRequest;
         }
 
+        static public WalkableAreaRequest ScheduleWalkableArea(SquareGrid grid, int start_x, int start_z, int _budget)
+        {
+            return ScheduleWalkableArea(grid, grid.IndexAt(start_x, start_z), _budget);
+        }
+
         static public WalkableAreaRequest ScheduleWalkableArea(HexGrid grid, int _startIndex, int _budget)
         {
             WalkableAreaRequest areaRequest = new WalkableAreaRequest(grid);
@@ -768,6 +773,43 @@ namespace Navigation
             areaRequest.m_jobHandle = job.Schedule();
 
             return areaRequest;
+        }
+
+        static public WalkableAreaRequest ScheduleWalkableArea(HexGrid grid, int start_x, int start_z, int _budget)
+        {
+            return ScheduleWalkableArea(grid, grid.IndexAt(start_x, start_z), _budget);
+        }
+
+        static public WalkableAreaRequest ScheduleWalkableArea(NavGrid grid, int start_x, int start_z, int _budget)
+        {
+            HexGrid hexGrid = grid as HexGrid;
+            if (hexGrid != null)
+            {
+                return Pathfinder.ScheduleWalkableArea(hexGrid, hexGrid.IndexAt(start_x, start_z), _budget);
+            }
+
+            SquareGrid squareGrid = grid as SquareGrid;
+            if (squareGrid != null)
+            {
+                return Pathfinder.ScheduleWalkableArea(squareGrid, squareGrid.IndexAt(start_x, start_z), _budget);
+            }
+            return null;
+        }
+
+        static public WalkableAreaRequest ScheduleWalkableArea(NavGrid grid, int startIndex, int _budget)
+        {
+            HexGrid hexGrid = grid as HexGrid;
+            if (hexGrid != null)
+            {
+                return Pathfinder.ScheduleWalkableArea(hexGrid, startIndex, _budget);
+            }
+
+            SquareGrid squareGrid = grid as SquareGrid;
+            if (squareGrid != null)
+            {
+                return Pathfinder.ScheduleWalkableArea(squareGrid, startIndex, _budget);
+            }
+            return null;
         }
 
         public static void DebugDrawPath(Path path, Color color, float duration = 1f)
