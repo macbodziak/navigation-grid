@@ -227,6 +227,48 @@ namespace Navigation
             return FindPath(hexGrid, hexGrid.NodeAt(start_x, start_z).id, hexGrid.NodeAt(goal_x, goal_z).id, excludeGoal);
         }
 
+        //<summary>
+        //Method for finding a Path on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
+        //It also takes start and goal grid coordinates as arguments.
+        //</summary>
+        static public Path FindPath(NavGrid navGrid, int start_x, int start_z, int goal_x, int goal_z, bool excludeGoal = false)
+        {
+            HexGrid hexGrid = navGrid as HexGrid;
+            if (hexGrid != null)
+            {
+                return Pathfinder.FindPath(hexGrid, hexGrid.IndexAt(start_x, start_z), hexGrid.IndexAt(goal_x, goal_z), excludeGoal);
+            }
+
+            SquareGrid squareGrid = navGrid as SquareGrid;
+            if (squareGrid != null)
+            {
+                return Pathfinder.FindPath(squareGrid, squareGrid.IndexAt(start_x, start_z), squareGrid.IndexAt(goal_x, goal_z), excludeGoal);
+            }
+
+            return null;
+        }
+
+        //<summary>
+        //Method for finding a Path on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
+        //It also takes node Indexes of the start and goal node as arguments.
+        //</summary>
+        static public Path FindPath(NavGrid navGrid, int startIndex, int goalIndex, bool excludeGoal = false)
+        {
+            HexGrid hexGrid = navGrid as HexGrid;
+            if (hexGrid != null)
+            {
+                return Pathfinder.FindPath(hexGrid, startIndex, goalIndex, excludeGoal);
+            }
+
+            SquareGrid squareGrid = navGrid as SquareGrid;
+            if (squareGrid != null)
+            {
+                return Pathfinder.FindPath(squareGrid, startIndex, goalIndex, excludeGoal);
+            }
+
+            return null;
+        }
+
 
         //<summary>
         //Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
@@ -498,6 +540,46 @@ namespace Navigation
                 walkableAreaElements.Add(areaIndex, new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
             }
             return new WalkableArea(grid, walkableAreaElements);
+        }
+
+        //<summary>
+        //Method for finding a Walkable Area on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
+        //It also takes node Index of the start node and the budget as arguments.
+        //</summary>
+        static public WalkableArea FindWalkableArea(NavGrid grid, int startIndex, int budget)
+        {
+            HexGrid hexGrid = grid as HexGrid;
+            if (hexGrid != null)
+            {
+                return Pathfinder.FindWalkableArea(hexGrid, startIndex, budget);
+            }
+            SquareGrid squareGrid = grid as SquareGrid;
+            if (squareGrid != null)
+            {
+                return Pathfinder.FindWalkableArea(squareGrid, startIndex, budget);
+            }
+
+            return null;
+        }
+
+        //<summary>
+        //Method for finding a Walkable Area on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
+        //It also takes node Coordinates of the start node and the budget as arguments.
+        //</summary>
+        static public WalkableArea FindWalkableArea(NavGrid grid, int start_x, int start_z, int budget)
+        {
+            HexGrid hexGrid = grid as HexGrid;
+            if (hexGrid != null)
+            {
+                return Pathfinder.FindWalkableArea(hexGrid, hexGrid.IndexAt(start_x, start_z), budget);
+            }
+            SquareGrid squareGrid = grid as SquareGrid;
+            if (squareGrid != null)
+            {
+                return Pathfinder.FindWalkableArea(squareGrid, hexGrid.IndexAt(start_x, start_z), budget);
+            }
+
+            return null;
         }
 
         //<summary>
