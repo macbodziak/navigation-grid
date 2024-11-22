@@ -80,7 +80,7 @@ public class TestScript : MonoBehaviour
             time_start = Time.realtimeSinceStartup;
             stopwatch.Reset();
             stopwatch.Start();
-            pathQuery = Pathfinder.SchedulePath(navGrid, new Vector2Int(start.x, start.y), new Vector2Int(goal.x, goal.y));
+            pathQuery = Pathfinder.SchedulePath(navGrid, start.x, start.y, goal.x, goal.y);
         }
         if (pathQuery != null)
         {

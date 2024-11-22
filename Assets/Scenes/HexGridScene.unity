@@ -3569,7 +3569,7 @@ MonoBehaviour:
   excludeGoal: 0
   teleportGoal: {x: 0, y: 0}
   startArea: {x: 15, y: 15}
-  budget: 10
+  budget: 250
   actor_1: {fileID: 955754831}
   actor_2: {fileID: 1130923945}
 --- !u!4 &1268388067
@@ -17431,7 +17431,7 @@ MonoBehaviour:
     - {fileID: 955754831}
   showTileOutlineFlag: 1
   showTileCenterFlag: 0
-  showTileInfoTextFlag: 1
+  showTileInfoTextFlag: 0
   ShowNodeGridCoordinatesTextFlag: 1
   ShowNodeWalkableTextFlag: 0
   ShowNodeMovementCostTextFlag: 0

@@ -119,12 +119,12 @@ public class TestScriptHex : MonoBehaviour
             HexGrid hexGrid = grid as HexGrid;
             if (hexGrid != null)
             {
-                pathQuery = Pathfinder.SchedulePath(hexGrid, new Vector2Int(start.x, start.y), new Vector2Int(goal.x, goal.y), excludeGoal);
+                pathQuery = Pathfinder.SchedulePath(hexGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
             }
             SquareGrid squareGrid = grid as SquareGrid;
             if (squareGrid != null)
             {
-                pathQuery = Pathfinder.SchedulePath(squareGrid, new Vector2Int(start.x, start.y), new Vector2Int(goal.x, goal.y), excludeGoal);
+                pathQuery = Pathfinder.SchedulePath(squareGrid, start.x, start.y, goal.x, goal.y, excludeGoal);
             }
         }
 
