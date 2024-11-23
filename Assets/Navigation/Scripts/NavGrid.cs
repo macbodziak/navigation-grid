@@ -443,6 +443,9 @@ namespace Navigation
             return AdjacentNodeIndexes(IndexAt(worldPosition));
         }
 
+        public abstract bool AreAdjacent(int firstIndex, int secondIndex);
+
+
         //<summary>
         // This method places the provided actor on the map at the given node index, registers it and sets it up
         //</summary>

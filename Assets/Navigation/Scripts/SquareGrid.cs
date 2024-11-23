@@ -113,6 +113,24 @@ namespace Navigation
             return result;
         }
 
+        public override bool AreAdjacent(int firstIndex, int secondIndex)
+        {
+            Vector2Int currentCoordinates = GridCoordinatesAt(firstIndex);
+
+            int index;
+            for (int i = 0; i < 8; i++)
+            {
+                index = IndexAt(currentCoordinates + neighbours[i]);
+
+                if (index == secondIndex)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public override List<Actor> AdjacentActors(int index)
         {
             List<Actor> result = new();

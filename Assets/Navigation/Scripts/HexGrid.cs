@@ -151,6 +151,32 @@ namespace Navigation
             return result;
         }
 
+        public override bool AreAdjacent(int firstIndex, int secondIndex)
+        {
+            Vector2Int[] neighbours;
+            Vector2Int currentCoordinates = GridCoordinatesAt(firstIndex);
+
+            if (currentCoordinates.y % 2 == 0)
+            {
+                neighbours = neighboursEvenRow;
+            }
+            else
+            {
+                neighbours = neighboursOddRow;
+            }
+
+            for (int i = 0; i < 6; i++)
+            {
+                int index = IndexAt(currentCoordinates + neighbours[i]);
+                if (index == secondIndex)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public override List<Actor> AdjacentActors(int index)
         {
             List<Actor> result = new();
