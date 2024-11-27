@@ -28,6 +28,18 @@ namespace Navigation
         public Vector2Int[] Neighbours { get => neighbours; }
         public static int DiagonalCost { get => DIAGONAL_COST; }
         public static int StraightCost { get => STRAIGHT_COST; }
+        public override Bounds WorldBounds
+        {
+            get
+            {
+                Bounds bounds = new Bounds();
+                bounds.size = new Vector3(Width * TileSize, 1f, Height * TileSize);
+                bounds.center = new Vector3((Width - 1f) * TileSize * 0.5f + transform.position.x,
+                 0.5f + transform.position.y,
+                (Height - 1f) * TileSize * 0.5f + transform.position.z);
+                return bounds;
+            }
+        }
         #endregion
 
         protected override bool TestForWalkability(Vector3 nodeWorldPosition, LayerMask notWalkableLayers, float colliderSize, float rayLength)

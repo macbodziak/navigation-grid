@@ -38,7 +38,22 @@ namespace Navigation
         public Vector2Int[] NeighboursOdd { get => neighboursOddRow; }
         public Vector2Int[] NeighboursEven { get => neighboursEvenRow; }
         public int MovementCost { get => MOVEMENT_COST; }
+        public override Bounds WorldBounds
+        {
+            get
+            {
+                Bounds bounds = new Bounds();
+                bounds.size = new Vector3((Width + 0.5f) * TileSize, 1f, (Height - 1) * TileSize * VERTICAL_SPACING + HEX_HEIGHT);
+                bounds.center = new Vector3(
+                    (Width - 0.5f) * TileSize * 0.5f + transform.position.x,
+                    0.5f + transform.position.y,
+                    (Height - 1) * TileSize * VERTICAL_SPACING * 0.5f + +transform.position.z);
+                return bounds;
+            }
+        }
+
         #endregion
+
 
 
 

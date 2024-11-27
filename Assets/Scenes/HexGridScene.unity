@@ -17431,7 +17431,7 @@ MonoBehaviour:
     - {fileID: 955754831}
   showTileOutlineFlag: 1
   showTileCenterFlag: 0
-  showTileInfoTextFlag: 0
+  showTileInfoTextFlag: 1
   ShowNodeGridCoordinatesTextFlag: 1
   ShowNodeWalkableTextFlag: 0
   ShowNodeMovementCostTextFlag: 0

@@ -32,6 +32,13 @@ public class TestScriptHex : MonoBehaviour
         actor_2.NodeEnteredEvent += OnActorEnteredNode;
         actor_1.NodeExitedEvent += OnActorExitedNode;
         actor_1.NodeEnteredEvent += OnActorEnteredNode;
+        Debug.Log("1 " + grid.AreAdjacent(grid.IndexAt(0, 0), grid.IndexAt(1, 5)));
+        Debug.Log("2 " + grid.AreAdjacent(grid.IndexAt(1, 1), grid.IndexAt(0, 1)));
+        Debug.Log("3 " + grid.AreAdjacent(grid.IndexAt(1, 1), grid.IndexAt(1, 2)));
+        Debug.Log("4 " + grid.AreAdjacent(grid.IndexAt(1, 1), grid.IndexAt(2, 2)));
+        Debug.Log("5 " + grid.AreAdjacent(grid.IndexAt(1, 1), grid.IndexAt(2, 1)));
+        Debug.Log("6 " + grid.AreAdjacent(grid.IndexAt(1, 1), grid.IndexAt(2, 0)));
+        Debug.Log("7 " + grid.AreAdjacent(grid.IndexAt(1, 1), grid.IndexAt(0, 0)));
         // grid.ScanForActors(100f);
 
 

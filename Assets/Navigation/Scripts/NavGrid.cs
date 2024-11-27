@@ -36,6 +36,7 @@ namespace Navigation
         public int Count { get => Height * Width; }
         public Vector3 Position { get => transform.position; }
         public float TileSize { get => tileSize; protected set => tileSize = value; }
+        public abstract Bounds WorldBounds { get; }
 
 #if UNITY_EDITOR
         protected bool DebugDrawTileOutline { get => showTileOutlineFlag; }
@@ -314,7 +315,7 @@ namespace Navigation
 
 #if UNITY_EDITOR
         protected abstract void DrawNodeCenterOutineGizmos(Node node);
-# endif
+#endif
 
 #if UNITY_EDITOR
         protected void DrawTileInfoText(Node node, GUIStyle style)
