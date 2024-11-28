@@ -14,6 +14,24 @@ namespace Navigation
         public IReadOnlyList<PathElement> elements { get => m_elements; }
         public int cost { get => m_cost; private set => m_cost = value; }
         public int Count { get => m_elements.Count; }
+        public Vector3[] worldPositions
+        {
+            get
+            {
+                if (m_elements == null || m_elements.Count == 0)
+                {
+                    return null;
+                }
+
+                Vector3[] returnValue = new Vector3[m_elements.Count];
+
+                for (int i = 0; i < m_elements.Count; i++)
+                {
+                    returnValue[i] = m_elements[i].worldPosition;
+                }
+                return returnValue;
+            }
+        }
 
         public PathElement Goal
         {
