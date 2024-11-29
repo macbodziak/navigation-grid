@@ -600,5 +600,21 @@ namespace Navigation
             return debugText;
         }
 
+        public List<Actor> GetActors()
+        {
+            List<Actor> actorList = new();
+            if (actors == null)
+            {
+                return actorList;
+            }
+
+            foreach (var kvp in actors)
+            {
+                actorList.Add(kvp.Value);
+            }
+
+            return actorList;
+        }
+
     }
 }
