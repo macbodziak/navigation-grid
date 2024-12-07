@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace Navigation
 {
@@ -90,6 +91,62 @@ namespace Navigation
             _state = ActorState.Uninitilized;
         }
 
+        public async Task MoveAlongPathAsync(Path path)
+        {
+            if (path == null)
+            {
+                return;
+            }
+
+            if (_state != ActorState.Idle)
+            {
+                return;
+            }
+
+            _path = path;
+
+            OnMovementStarted();
+
+            Quaternion previousRotation = transform.rotation;
+            float rotationProgress = 0f;
+
+            while (_pathIndex < _path.Count)
+            {
+                _previousNodeIndex = _currentNodeIndex;
+                _currentNodeIndex = _path[_pathIndex].nodeIndex;
+                OnNodeExiting();
+
+                _targetPosition = _path[_pathIndex].worldPosition;
+
+                UpdateRotationTarget(ref rotationProgress, ref previousRotation);
+
+
+                while (transform.position != _targetPosition)
+                {
+                    if (_state == ActorState.Moving)
+                    {
+                        float delta = _speed * _speedModifier * Time.deltaTime;
+                        rotationProgress += _rotationSpeed * _speedModifier * Time.deltaTime;
+                        transform.position = Vector3.MoveTowards(transform.position, _targetPosition, delta);
+                        transform.rotation = Quaternion.Slerp(previousRotation, _targetRotation, rotationProgress);
+                    }
+                    await Awaitable.NextFrameAsync();
+                }
+
+                OnNodeEntered();
+
+                _pathIndex++;
+
+                if (_cancelFlag || _pathIndex == _path.Count)
+                {
+                    _cancelFlag = false;
+                    _state = ActorState.Idle;
+                }
+            }
+            MovementFinishedEvent?.Invoke(this, new ActorFinishedMovementEventArgs(_currentNodeIndex));
+        }
+
+
         public void MoveAlongPath(Path path)
         {
             if (path == null)
@@ -106,6 +163,7 @@ namespace Navigation
 
             StartCoroutine(MoveAlongPathCoroutine());
         }
+
 
         private IEnumerator MoveAlongPathCoroutine()
         {
@@ -208,6 +266,29 @@ namespace Navigation
         }
 
 
+        public async Task FaceTowardsAsync(Vector3 worldPosition)
+        {
+            if (_state != ActorState.Idle)
+            {
+                return;
+            }
+
+            _state = ActorState.Moving;
+            Quaternion startRotation = transform.rotation;
+            Quaternion targetRotation = Quaternion.LookRotation(worldPosition - transform.position);
+            float progress = _rotationSpeed * _speedModifier * Time.deltaTime;
+
+            while (progress < 1)
+            {
+                transform.rotation = Quaternion.Slerp(startRotation, targetRotation, progress);
+                progress += _rotationSpeed * _speedModifier * Time.deltaTime;
+                await Awaitable.NextFrameAsync();
+            }
+            _state = ActorState.Idle;
+            await Awaitable.NextFrameAsync();
+        }
+
+
         public void FaceTowards(Vector3 worldPosition)
         {
             if (_state != ActorState.Idle)
@@ -233,6 +314,10 @@ namespace Navigation
             _state = ActorState.Idle;
             yield return null;
         }
+
+
+
+        ///--------
 
         public void FaceTowardsInstantly(Vector3 worldPosition)
         {
