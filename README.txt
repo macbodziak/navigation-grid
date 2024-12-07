@@ -11,7 +11,7 @@ Created by: Maciej Bodziak, maciej.bodziak@gmail.com
 - Go to Edit > Project Settings > Player, under Other Settings find and check "Allow 'unsafe' code"
 
 ---Example:
-- Folder Navigation/Examples contains an exampple scene as well as example scripts to demonstrate
+- Folder Navigation/Examples contains an example scene as well as example scripts to demonstrate
 how to use this package.
 - In the example scene, click the "test" game object. It has the example scripts attached. to Switch
 between examples, enable the chosen example, and disable all other.
@@ -44,3 +44,5 @@ and finish.
 sync methods for simple cases (short paths, small movement range in walkable areas), as those methods 
 seem to execute fast, faster than async. Further optimalisation will be needed in order to improve async, 
 altough it is still good.
+- It is also advices to use Task.Run with the sync method as parameter, as this has shown better performance
+results. However, make sure to not edit the map until the task completes
