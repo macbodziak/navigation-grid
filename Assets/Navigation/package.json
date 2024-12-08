@@ -1,0 +1,16 @@
+{
+  "name": "com.MaciejBodziak.NavigationGrid",
+  "version": "1.0.0",
+  "displayName": "Navigation Grid System",
+  "description": "Navigation Grid system for turn based games",
+  "unity": "6000.0",
+  "dependencies": {
+    "com.unity.burst": "1.8.18",
+    "com.unity.mathematics": "1.3.2",
+    "com.unity.collections": "2.5.1"
+  },
+  "author": {
+    "name": "Maciej Bodziak",
+    "email": "maciej.bodziak@gmail.com"
+  }
+}

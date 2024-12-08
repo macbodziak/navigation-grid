@@ -1,0 +1,16 @@
+{
+    "name": "com.MaciejBodziak.NavigationGrid.Editor",
+    "rootNamespace": "Navigation",
+    "references": [
+        "GUID:9107f719c257f974994969da06aaad3d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

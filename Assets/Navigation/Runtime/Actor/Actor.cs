@@ -369,12 +369,12 @@ namespace Navigation
             _state = ActorState.Moving;
             Quaternion startRotation = transform.rotation;
             Quaternion targetRotation = Quaternion.LookRotation(worldPosition - transform.position);
-            float progress = _rotationSpeed * _speedModifier * Time.deltaTime;
+            float progress = 0f;
 
             while (progress < 1)
             {
-                transform.rotation = Quaternion.Slerp(startRotation, targetRotation, progress);
                 progress += _rotationSpeed * _speedModifier * Time.deltaTime;
+                transform.rotation = Quaternion.Slerp(startRotation, targetRotation, progress);
                 yield return null;
             }
             _state = ActorState.Idle;
