@@ -481,7 +481,7 @@ namespace Navigation
 
 
         //<summary>
-        // This method places the removes actor refernece on the map at the given node index. 
+        // This method removes actor reference on the map at the given node index. 
         // It does not alter the actor fields, thus should be used when actor gets Destoroyed
         //</summary>
         public void RemoveActor(int index)
