@@ -282,14 +282,12 @@ public class TestScriptHex : MonoBehaviour
         }
     }
 
-    private void OnMovementFinished(object sender, ActorFinishedMovementEventArgs args)
+    private void OnMovementFinished(ActorFinishedMovementEventArgs args)
     {
-        Actor actor = sender as Actor;
-        // grid.UninstallActor(args.GoalIndex);
-        Debug.Log(actor.gameObject.name + " finished movement at " + grid.GridCoordinatesAt(args.GoalIndex));
+        Debug.Log(args.Actor.gameObject.name + " finished movement at " + grid.GridCoordinatesAt(args.GoalIndex));
         Debug.Break();
 
-        int nodeIndex = actor.NodeIndex;
+        int nodeIndex = args.Actor.NodeIndex;
         Vector2Int start = grid.GridCoordinatesAt(nodeIndex);
         HexGrid hexGrid = grid as HexGrid;
         if (hexGrid != null)
@@ -302,19 +300,18 @@ public class TestScriptHex : MonoBehaviour
             path = Pathfinder.FindPath(squareGrid, start.x, start.y, 0, 0, excludeGoal);
         }
 
-        actor.MoveAlongPath(path);
+        args.Actor.MoveAlongPath(path);
 
     }
 
-    private void OnActorExitedNode(object sender, ActorExitedNodeEventArgs args)
+    private void OnActorExitedNode(ActorExitedNodeEventArgs args)
     {
-        Actor actor = sender as Actor;
-        Debug.Log(actor.gameObject.name + " exited from " + grid.GridCoordinatesAt(args.FromIndex));
+        Debug.Log(args.Actor.gameObject.name + " exited from " + grid.GridCoordinatesAt(args.FromIndex));
     }
 
-    private void OnActorEnteredNode(object sender, ActorEnteredNodeEventArgs args)
+    private void OnActorEnteredNode(ActorEnteredNodeEventArgs args)
     {
-        Actor actor = sender as Actor;
-        Debug.Log(actor.gameObject.name + " entered at " + grid.GridCoordinatesAt(args.ToIndex));
+
+        Debug.Log(args.Actor.gameObject.name + " entered at " + grid.GridCoordinatesAt(args.ToIndex));
     }
 }

@@ -122,9 +122,9 @@ public class PathfindingAsyncExample : MonoBehaviour
         pathFlags.Clear();
     }
 
-    private void OnActorFinishedMovement(object sender, ActorFinishedMovementEventArgs e)
+    private void OnActorFinishedMovement(ActorFinishedMovementEventArgs e)
     {
-        Actor actor = sender as Actor;
+        Actor actor = e.Actor;
         Debug.Log(actor.gameObject.name + " has finished movement at " + grid.GridCoordinatesAt(e.GoalIndex));
         inputBlocked = false;
         selectedActor.MovementFinishedEvent -= OnActorFinishedMovement;

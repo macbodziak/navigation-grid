@@ -106,10 +106,9 @@ public class WalkableAreaExample : MonoBehaviour
         areaMarkers.Clear();
     }
 
-    private void OnActorFinishedMovement(object sender, ActorFinishedMovementEventArgs e)
+    private void OnActorFinishedMovement(ActorFinishedMovementEventArgs e)
     {
-        Actor actor = sender as Actor;
-        Debug.Log(actor.gameObject.name + " has finished movement at " + grid.GridCoordinatesAt(e.GoalIndex));
+        Debug.Log(e.Actor.gameObject.name + " has finished movement at " + grid.GridCoordinatesAt(e.GoalIndex));
         inputBlocked = false;
         area = Pathfinder.FindWalkableArea(grid, selectedActor.NodeIndex, budget);
         PreviewArea(area);
