@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Navigation
 {
@@ -25,6 +26,7 @@ namespace Navigation
         int _pathIndex;
         Vector3 _targetPosition;
         Quaternion _targetRotation;
+        CancellationTokenSource _tokenSource;
         #endregion
 
         #region Properties
@@ -91,8 +93,27 @@ namespace Navigation
             _state = ActorState.Uninitilized;
         }
 
+        private void Awake()
+        {
+            //unserialized fields need to be initialized
+            _previousNodeIndex = -1;
+            _state = ActorState.Idle;
+
+            _tokenSource = new();
+        }
+
+
+        private void OnDestroy()
+        {
+            _grid?.RemoveActor(_currentNodeIndex);
+            _tokenSource.Cancel();
+            _tokenSource.Dispose();
+        }
+
         public async Task MoveAlongPathAsync(Path path)
         {
+            CancellationToken cancelToken = _tokenSource.Token;
+
             if (path == null)
             {
                 return;
@@ -131,6 +152,12 @@ namespace Navigation
                         transform.rotation = Quaternion.Slerp(previousRotation, _targetRotation, rotationProgress);
                     }
                     await Awaitable.NextFrameAsync();
+
+                    if (cancelToken.IsCancellationRequested)
+                    {
+                        cancelToken.ThrowIfCancellationRequested();
+                        return;
+                    }
                 }
 
                 OnNodeEntered();
