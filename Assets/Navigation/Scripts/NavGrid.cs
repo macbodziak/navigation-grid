@@ -44,10 +44,10 @@ namespace Navigation
 #endif
         #endregion
 
-        //<summary>
-        //This method initializes the grid. It creates the node array and configures each node with its index, position, and walkability status.
-        //It also configures the map's collision box. 
-        //</summary>
+        /// <summary>
+        /// This method initializes the grid. It creates the node array and configures each node with its index, position, and walkability status.
+        /// It also configures the map's collision box. 
+        /// </summary>
         public void CreateMap(int width, int height, float tileSize, LayerMask notWalkableLayers, int collisionLayer, float colliderSize, float rayLength)
         {
             this.Width = width;
@@ -75,19 +75,21 @@ namespace Navigation
             SetupCollider(collisionLayer);
         }
 
-
+        /// <summary>
+        /// Tests if a node is walkable based on its position and collision detection.
+        /// </summary>
         protected abstract bool TestForWalkability(Vector3 nodeWorldPosition, LayerMask notWalkableLayers, float colliderSize, float rayLength);
 
 
-        //<summary>
-        // This method sets up the collider
-        //</summary>
+        /// <summary>
+        /// Sets up a collider to represent the grid's boundaries.
+        /// </summary>
         protected abstract void SetupCollider(int collisionLayer);
 
 
-        //<summary>
-        // This method scans the scene for Actors. If it finds actors above the grid, it tries to Intall them on the grid
-        //</summary>
+        /// /// <summary>
+        /// Scans the scene for actors and installs them on the grid if they are above walkable nodes.
+        /// </summary>
         public void ScanForActors(float rayLength = 100f)
         {
             Actor[] actorsInScene = FindObjectsByType<Actor>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
@@ -112,7 +114,9 @@ namespace Navigation
         }
 
         #region Index Getters
-
+        /// <summary>
+        /// Returns the index of a node at the specified grid coordinates.
+        /// </summary>
         public int IndexAt(int x, int z)
         {
             if (x >= Width || x < 0 || z >= Height || z < 0)
@@ -122,13 +126,17 @@ namespace Navigation
             return x + z * Width;
         }
 
-
+        /// <summary>
+        /// Returns the index of a node at the specified grid position.
+        /// </summary>
         public int IndexAt(Vector2Int p)
         {
             return IndexAt(p.x, p.y);
         }
 
-
+        /// <summary>
+        /// Returns the index of a node based on a world position.
+        /// </summary>
         public int IndexAt(Vector3 worldPosition)
         {
             Vector2Int gridPos = WorldPositionToGridCoordinates(worldPosition);
@@ -138,6 +146,9 @@ namespace Navigation
 
 
         #region Node Getters
+        /// <summary>
+        /// Retrieves the node at the specified index or returns a null node if the index is invalid.
+        /// </summary>
         public Node NodeAt(int index)
         {
             if (index < 0 || index >= width * height)
@@ -147,7 +158,9 @@ namespace Navigation
             return nodes[index];
         }
 
-
+        /// <summary>
+        /// Retrieves the node at the specified grid coordinates or returns a null node if the coordinates are invalid.
+        /// </summary>
         public Node NodeAt(int x, int z)
         {
             int index = IndexAt(x, z);
@@ -158,7 +171,9 @@ namespace Navigation
             return nodes[IndexAt(x, z)];
         }
 
-
+        /// <summary>
+        /// Retrieves the node at the specified grid position.
+        /// </summary>
         public Node NodeAt(Vector2Int gridPosition)
         {
             int index = IndexAt(gridPosition);
@@ -169,7 +184,9 @@ namespace Navigation
             return nodes[IndexAt(gridPosition)];
         }
 
-
+        /// <summary>
+        /// Retrieves the node at the specified world position.
+        /// </summary>
         public Node NodeAt(Vector3 worldPosition)
         {
             int index = IndexAt(worldPosition);
@@ -184,7 +201,9 @@ namespace Navigation
 
 
         #region Grid Position Getters
-
+        /// <summary>
+        /// Converts a node index to grid coordinates.
+        /// </summary>
         public Vector2Int GridCoordinatesAt(int index)
         {
             int x = index % width;
@@ -193,7 +212,9 @@ namespace Navigation
         }
         #endregion
 
-
+        /// <summary>
+        /// Converts a world position to grid coordinates.
+        /// </summary>
         public Vector2Int GridCoordinatesAt(Vector3 worldPosition)
         {
             return WorldPositionToGridCoordinates(worldPosition);
@@ -201,43 +222,63 @@ namespace Navigation
 
 
         #region World Position Getters and Conversion
+        /// <summary>
+        /// Returns the world position of a node at the specified grid coordinates.
+        /// </summary>
         public Vector3 WorldPositionAt(int x, int z)
         {
             return nodeWorldPositions[IndexAt(x, z)];
         }
 
-
+        /// <summary>
+        /// Returns the world position of a node at the specified grid position.
+        /// </summary>
         public Vector3 WorldPositionAt(Vector2Int p)
         {
             return nodeWorldPositions[IndexAt(p)];
         }
 
-
+        /// <summary>
+        /// Returns the world position of a node at the specified index.
+        /// </summary>
         public Vector3 WorldPositionAt(int index)
         {
             return nodeWorldPositions[index];
         }
 
+        /// <summary>
+        /// Converts a world position to grid coordinates.
+        /// </summary>
         protected abstract Vector2Int WorldPositionToGridCoordinates(Vector3 worldPosition);
+
+        /// <summary>
+        /// Converts grid coordinates to a world position.
+        /// </summary>
         protected abstract Vector3 GridCoordinatesToWorldPosition(int x, int z);
 
         #endregion
 
 
         #region Walkability Checkers
-
+        /// <summary>
+        /// Checks if the node at the specified index is walkable and not occupied.
+        /// </summary>
         public bool IsWalkable(int index)
         {
             return nodes[index].walkable && actors.ContainsKey(index) == false;
         }
 
-
+        /// <summary>
+        /// Checks if the node at the specified grid coordinates is walkable and not occupied.
+        /// </summary>
         public bool IsWalkable(int x, int z)
         {
             return IsWalkable(IndexAt(x, z));
         }
 
-
+        /// <summary>
+        /// Checks if the node at the specified grid position is walkable and not occupied.
+        /// </summary>
         public bool IsWalkable(Vector2Int gridPosition)
         {
             return IsWalkable(IndexAt(gridPosition));
@@ -375,26 +416,33 @@ namespace Navigation
 
 
         #region Bound Checking
-
-        public bool CheckIfInBound(int startX, int startZ)
+        /// <summary>
+        /// Checks whether the given grid coordinates are within the grid bounds.
+        /// </summary>
+        public bool CheckIfInBound(int x, int z)
         {
-            if (startX < 0 || startX >= Width || startZ < 0 || startZ >= Height)
+            if (x < 0 || x >= Width || z < 0 || z >= Height)
             {
                 return false;
             }
             return true;
         }
 
-
-        public bool CheckIfInBound(Vector2Int start)
+        /// <summary>
+        /// Checks whether the specified grid position is within the grid bounds.
+        /// </summary>
+        public bool CheckIfInBound(Vector2Int coordinates)
         {
-            if (start.x < 0 || start.x >= Width || start.y < 0 || start.y >= Height)
+            if (coordinates.x < 0 || coordinates.x >= Width || coordinates.y < 0 || coordinates.y >= Height)
             {
                 return false;
             }
             return true;
         }
 
+        /// <summary>
+        /// Checks whether the given index is within the grid bounds.
+        /// </summary>
         public bool CheckIfInBound(int index)
         {
             if (index < 0 || index >= width * height)
@@ -405,51 +453,76 @@ namespace Navigation
         }
 
         #endregion
-
+        /// <summary>
+        /// Sets the movement cost modifier of a node at the specified index.
+        /// </summary>
         public void SetMovementCostModifierAt(int index, float value)
         {
             nodes[index].movementCostModifier = value;
         }
 
+        /// <summary>
+        /// Sets the movement cost modifier of a node at the specified grid coordinates.
+        /// </summary>
         public void SetMovementCostModifierAt(int x, int z, float value)
         {
             nodes[IndexAt(x, z)].movementCostModifier = value;
         }
 
+        /// <summary>
+        /// Retrieves the movement cost modifier of a node at the specified index.
+        /// </summary>
         public float MovementCostModifierAt(int index)
         {
             return nodes[index].movementCostModifier;
         }
 
+        /// <summary>
+        /// Retrieves the movement cost modifier of a node at the specified grid coordinates.
+        /// </summary>
         public float MovementCostModifierAt(int x, int z)
         {
             return nodes[IndexAt(x, z)].movementCostModifier;
         }
 
-
+        /// <summary>
+        /// Returns a list of adjacent node indexes to the specified index.
+        /// </summary>
         public abstract List<int> AdjacentNodeIndexes(int index);
 
+        /// <summary>
+        /// Returns a list of adjacent node indexes to the specified grid coordinates.
+        /// </summary>
         public List<int> AdjacentNodeIndexes(int x, int z)
         {
             return AdjacentNodeIndexes(IndexAt(x, z));
         }
 
+        /// <summary>
+        /// Returns a list of adjacent node indexes to the specified grid position.
+        /// </summary>
         public List<int> AdjacentNodeIndexes(Vector2Int coordinates)
         {
             return AdjacentNodeIndexes(IndexAt(coordinates));
         }
 
+        /// <summary>
+        /// Returns a list of adjacent node indexes to the specified world position.
+        /// </summary>
         public List<int> AdjacentNodeIndexes(Vector3 worldPosition)
         {
             return AdjacentNodeIndexes(IndexAt(worldPosition));
         }
 
+        /// <summary>
+        /// Determines if two nodes at the specified indexes are adjacent.
+        /// </summary>
         public abstract bool AreAdjacent(int firstIndex, int secondIndex);
 
 
-        //<summary>
-        // This method places the provided actor on the map at the given node index, registers it and sets it up
-        //</summary>
+        /// <summary>
+        /// This method places the provided actor on the map at the given node index, registers it and sets it up
+        /// </summary>
         public bool InstallActor(Actor actor, int index)
         {
             if (index < 0 || index >= width * height)
@@ -471,29 +544,28 @@ namespace Navigation
         }
 
 
-        //<summary>
-        // This method places the provided actor on the map at the given x,y coordinates, registers it and sets it up
-        //</summary>
+        /// <summary>
+        /// This method places the provided actor on the map at the given x,y coordinates, registers it and sets it up
+        /// </summary>
         public bool InstallActor(Actor actor, int x, int z)
         {
             return InstallActor(actor, IndexAt(x, z));
         }
 
 
-        //<summary>
-        // This method removes actor reference on the map at the given node index. 
-        // It does not alter the actor fields, thus should be used when actor gets Destoroyed
-        //</summary>
+        /// <summary>
+        /// This method removes actor reference on the map at the given node index. 
+        /// It does not alter the actor fields, thus should be used when actor gets Destoroyed
+        /// </summary>
         public void RemoveActor(int index)
         {
             actors.Remove(index);
         }
 
 
-        //<summary>
-        // This method places the removes actor refernece on the map at the given node index 
-        // and resets the actor
-        //</summary>
+        /// <summary>
+        /// Uninstalls an actor from the grid, resetting its fields and clearing its reference.
+        /// </summary>
         public void UninstallActor(int index)
         {
             if (actors.ContainsKey(index))
@@ -504,7 +576,9 @@ namespace Navigation
             actors.Remove(index);
         }
 
-
+        /// <summary>
+        /// Uninstalls all actors from the grid and resets their references.
+        /// </summary>
         public void UninstallAllActors()
         {
             foreach (var pair in actors)
@@ -517,7 +591,9 @@ namespace Navigation
             actors.Clear();
         }
 
-
+        /// <summary>
+        /// Retrieves the actor at the specified node index.
+        /// </summary>
         public Actor ActorAt(int index)
         {
             if (actors.ContainsKey(index))
@@ -528,45 +604,62 @@ namespace Navigation
             return null;
         }
 
-
+        /// <summary>
+        /// Retrieves the actor at the specified grid coordinates.
+        /// </summary>
         public Actor ActorAt(int x, int z)
         {
             return ActorAt(IndexAt(x, z));
         }
 
-
+        /// <summary>
+        /// Retrieves the actor at the specified grid coordinates.
+        /// </summary>
         public Actor ActorAt(Vector2Int coordinates)
         {
             return ActorAt(IndexAt(coordinates));
         }
 
-
+        /// <summary>
+        /// Retrieves the actor at the specified world position.
+        /// </summary>
         public Actor ActorAt(Vector3 worldPosition)
         {
             return ActorAt(IndexAt(worldPosition));
         }
 
-
+        /// <summary>
+        /// Returns a list of adjacent actors to the node at the specified index.
+        /// </summary>
         public abstract List<Actor> AdjacentActors(int index);
 
+        /// <summary>
+        /// Returns a list of adjacent actors to the node at the specified grid coordinates.
+        /// </summary>
         public List<Actor> AdjacentActors(int x, int z)
         {
             return AdjacentActors(IndexAt(x, z));
         }
 
-
+        /// <summary>
+        /// Returns a list of adjacent actors to the node at the specified grid position.
+        /// </summary>
         public List<Actor> AdjacentActors(Vector2Int coordinates)
         {
             return AdjacentActors(IndexAt(coordinates));
         }
 
-
+        /// <summary>
+        /// Returns a list of adjacent actors to the node at the specified world position.
+        /// </summary>
         public List<Actor> AdjacentActors(Vector3 worldPosition)
         {
             return AdjacentActors(IndexAt(worldPosition));
         }
 
-
+        /// <summary>
+        /// Handles logic when an actor exits a node and updates its reference to the new node.
+        /// </summary>
         public void OnActorExitsNode(Actor actor, int FromIndex, int ToIndex)
         {
             if (FromIndex != -1)
@@ -580,7 +673,9 @@ namespace Navigation
             }
         }
 
-
+        /// <summary>
+        /// Returns a debug string with detailed information about the specified node.
+        /// </summary>
         public string NodeDebugString(int index)
         {
             string debugText;
@@ -600,6 +695,9 @@ namespace Navigation
             return debugText;
         }
 
+        /// <summary>
+        /// Retrieves all actors currently installed on the grid.
+        /// </summary>
         public List<Actor> GetActors()
         {
             List<Actor> actorList = new();

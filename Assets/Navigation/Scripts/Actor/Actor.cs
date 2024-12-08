@@ -76,6 +76,9 @@ namespace Navigation
 
         #region Methods
 
+        /// <summary>
+        /// Initializes the actor by setting its grid reference and starting position.
+        /// </summary>
         public void Initilize(NavGrid navGrid, int nodeIndex)
         {
             _grid = navGrid;
@@ -85,6 +88,9 @@ namespace Navigation
             _state = ActorState.Idle;
         }
 
+        /// <summary>
+        /// Deinitializes the actor by clearing grid references and resetting its state.
+        /// </summary>
         public void Deinitialize()
         {
             _grid = null;
@@ -93,6 +99,9 @@ namespace Navigation
             _state = ActorState.Uninitilized;
         }
 
+        /// <summary>
+        /// Initializes non-serialized fields during the Awake phase.
+        /// </summary>
         private void Awake()
         {
             //unserialized fields need to be initialized
@@ -102,7 +111,9 @@ namespace Navigation
             _tokenSource = new();
         }
 
-
+        /// <summary>
+        /// Cleans up resources, such as token sources, when the object is destroyed.
+        /// </summary>
         private void OnDestroy()
         {
             _grid?.RemoveActor(_currentNodeIndex);
@@ -110,6 +121,10 @@ namespace Navigation
             _tokenSource.Dispose();
         }
 
+        /// <summary>
+        /// Moves the actor along a given path asynchronously.
+        /// returns a Task to evaluate the state of execution.
+        /// </summary>
         public async Task MoveAlongPathAsync(Path path)
         {
             CancellationToken cancelToken = _tokenSource.Token;
@@ -173,7 +188,9 @@ namespace Navigation
             MovementFinishedEvent?.Invoke(this, new ActorFinishedMovementEventArgs(_currentNodeIndex));
         }
 
-
+        /// <summary>
+        /// Starts the actor's movement along a path using a coroutine.
+        /// </summary>
         public void MoveAlongPath(Path path)
         {
             if (path == null)
@@ -191,7 +208,9 @@ namespace Navigation
             StartCoroutine(MoveAlongPathCoroutine());
         }
 
-
+        /// <summary>
+        /// Coroutine that handles the actor's movement along a path.
+        /// </summary>
         private IEnumerator MoveAlongPathCoroutine()
         {
             OnMovementStarted();
@@ -235,6 +254,9 @@ namespace Navigation
             MovementFinishedEvent?.Invoke(this, new ActorFinishedMovementEventArgs(_currentNodeIndex));
         }
 
+        /// <summary>
+        /// Updates the target rotation and resets rotation progress if the direction changes.
+        /// </summary>
         private void UpdateRotationTarget(ref float rotationProgress, ref Quaternion previousRotation)
         {
             Quaternion nextTargetRotation = Quaternion.LookRotation(_targetPosition - transform.position);
@@ -249,6 +271,9 @@ namespace Navigation
 
         }
 
+        /// <summary>
+        /// Teleports the actor to a specific grid node.
+        /// </summary>
         public void Teleport(int nodeIndex)
         {
             if (_state != ActorState.Idle)
@@ -281,18 +306,25 @@ namespace Navigation
 
         }
 
+        /// <summary>
+        /// Teleports the actor to specific grid coordinates.
+        /// </summary>
         public void Teleport(Vector2Int coordinates)
         {
             Teleport(_grid.IndexAt(coordinates));
         }
 
-
+        /// <summary>
+        /// Teleports the actor to specific grid coordinates.
+        /// </summary>
         public void Teleport(int x, int z)
         {
             Teleport(_grid.IndexAt(x, z));
         }
 
-
+        /// <summary>
+        /// Makes the actor face towards a specific world position asynchronously.
+        /// </summary>
         public async Task FaceTowardsAsync(Vector3 worldPosition)
         {
             if (_state != ActorState.Idle)
@@ -315,7 +347,9 @@ namespace Navigation
             await Awaitable.NextFrameAsync();
         }
 
-
+        /// <summary>
+        /// Makes the actor face towards a specific world position using a coroutine.
+        /// </summary>
         public void FaceTowards(Vector3 worldPosition)
         {
             if (_state != ActorState.Idle)
@@ -325,6 +359,9 @@ namespace Navigation
             StartCoroutine(FaceTowardsCoroutine(worldPosition));
         }
 
+        /// <summary>
+        /// Coroutine for rotating the actor to face towards a specific world position.
+        /// </summary>
         private IEnumerator FaceTowardsCoroutine(Vector3 worldPosition)
         {
             _state = ActorState.Moving;
@@ -344,8 +381,9 @@ namespace Navigation
 
 
 
-        ///--------
-
+        /// <summary>
+        /// Instantly rotates the actor to face a specific position.
+        /// </summary>
         public void FaceTowardsInstantly(Vector3 worldPosition)
         {
             if (_state != ActorState.Moving || _state != ActorState.Paused)
@@ -354,6 +392,9 @@ namespace Navigation
             }
         }
 
+        /// <summary>
+        /// Pauses the actor's movement.
+        /// </summary>
         public void Pause()
         {
             if (_state == ActorState.Moving)
@@ -362,6 +403,9 @@ namespace Navigation
             }
         }
 
+        /// <summary>
+        /// Resumes the actor's movement if paused.
+        /// </summary>
         public void Continue()
         {
             if (_state == ActorState.Paused)
@@ -370,11 +414,17 @@ namespace Navigation
             }
         }
 
+        /// <summary>
+        /// Cancels the current movement by setting the cancellation flag.
+        /// </summary>
         public void Cancel()
         {
             _cancelFlag = true;
         }
 
+        /// <summary>
+        /// Handles logic when movement starts, such as setting the state, path index, and invoking the movement start event.
+        /// </summary>
         private void OnMovementStarted()
         {
             _state = ActorState.Moving;
@@ -388,7 +438,9 @@ namespace Navigation
             MovementStartedEvent?.Invoke(this, new ActorStartedMovementEventArgs(_currentNodeIndex));
         }
 
-
+        /// <summary>
+        /// Invokes events and handles logic when the actor exits a node.
+        /// </summary>
         private void OnNodeExiting()
         {
             _grid.OnActorExitsNode(this, _previousNodeIndex, _currentNodeIndex);
@@ -396,6 +448,9 @@ namespace Navigation
             NodeExitedEvent?.Invoke(this, new ActorExitedNodeEventArgs(_previousNodeIndex, _currentNodeIndex));
         }
 
+        /// <summary>
+        /// Invokes events and handles logic when the actor enters a new node.
+        /// </summary>
         private void OnNodeEntered()
         {
             NodeEnteredEvent?.Invoke(this, new ActorEnteredNodeEventArgs(_previousNodeIndex, _currentNodeIndex));
