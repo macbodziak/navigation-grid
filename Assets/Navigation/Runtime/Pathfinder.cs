@@ -4,15 +4,16 @@ using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
 using System;
+using System.Threading.Tasks;
 
 
 namespace Navigation
 {
     public class Pathfinder
     {
-        //<summary>
-        //Synchronous method for finding a Path on a Square Grid that takes start and goal node indexes as arguments. Return a Path if one is found or null if not
-        //</summary>
+        /// <summary>
+        /// Synchronous method for finding a Path on a Square Grid that takes start and goal node indexes as arguments. Return a Path if one is found or null if not
+        /// </summary>
         static public Path FindPath(SquareGrid grid, int startIndex, int goalIndex, bool excludeGoal = false)
         {
             int currentIndex;
@@ -101,9 +102,9 @@ namespace Navigation
         }
 
 
-        //<summary>
-        //Synchronous method for finding a Path on a Square Grid that takes start and goal grid coordinates as arguments. Return a Path if one is found or null if not
-        //</summary>
+        /// <summary>
+        /// Synchronous method for finding a Path on a Square Grid that takes start and goal grid coordinates as arguments. Return a Path if one is found or null if not
+        /// </summary>
         static public Path FindPath(SquareGrid grid, int start_x, int start_z, int goal_x, int goal_z, bool excludeGoal = false)
         {
             if (grid.CheckIfInBound(start_x, start_z) == false)
@@ -120,9 +121,9 @@ namespace Navigation
         }
 
 
-        //<summary>
-        //Synchronous method for finding a Path on a Hex Grid that takes start and goal node indexes as arguments. Return a Path if one is found or null if not
-        //</summary>
+        /// <summary>
+        /// Synchronous method for finding a Path on a Hex Grid that takes start and goal node indexes as arguments. Return a Path if one is found or null if not
+        /// </summary>
         static public Path FindPath(HexGrid grid, int startIndex, int goalIndex, bool excludeGoal = false)
         {
 
@@ -209,9 +210,9 @@ namespace Navigation
             return null;
         }
 
-        //<summary>
-        //Synchronous method for finding a Path on a Hex Grid that takes start and goal grid coordinates as arguments. Return a Path if one is found or null if not
-        //</summary>
+        /// <summary>
+        /// Synchronous method for finding a Path on a Hex Grid that takes start and goal grid coordinates as arguments. Return a Path if one is found or null if not
+        /// </summary>
         static public Path FindPath(HexGrid hexGrid, int start_x, int start_z, int goal_x, int goal_z, bool excludeGoal = false)
         {
             if (hexGrid.CheckIfInBound(start_x, start_z) == false)
@@ -227,10 +228,10 @@ namespace Navigation
             return FindPath(hexGrid, hexGrid.NodeAt(start_x, start_z).id, hexGrid.NodeAt(goal_x, goal_z).id, excludeGoal);
         }
 
-        //<summary>
-        //Method for finding a Path on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
-        //It also takes start and goal grid coordinates as arguments.
-        //</summary>
+        /// <summary>
+        /// Method for finding a Path on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
+        /// It also takes start and goal grid coordinates as arguments.
+        /// </summary>
         static public Path FindPath(NavGrid navGrid, int start_x, int start_z, int goal_x, int goal_z, bool excludeGoal = false)
         {
             HexGrid hexGrid = navGrid as HexGrid;
@@ -248,10 +249,10 @@ namespace Navigation
             return null;
         }
 
-        //<summary>
-        //Method for finding a Path on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
-        //It also takes node Indexes of the start and goal node as arguments.
-        //</summary>
+        /// <summary>
+        /// Method for finding a Path on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
+        /// It also takes node Indexes of the start and goal node as arguments.
+        /// </summary>
         static public Path FindPath(NavGrid navGrid, int startIndex, int goalIndex, bool excludeGoal = false)
         {
             HexGrid hexGrid = navGrid as HexGrid;
@@ -269,9 +270,37 @@ namespace Navigation
             return null;
         }
 
-        //<summary>
-        //Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
-        //</summary>
+        /// <summary>
+        /// Searches for a path on a background thread.
+        /// Returns a Task with the Path as its return value.
+        /// Does not support cancellation, so make sure to not delete the NavGrid before task finishes.
+        /// </summary>
+        static public async Task<Path> FindPathAsync(NavGrid navGrid, int startIndex, int goalIndex, bool excludeGoal = false)
+        {
+            await Awaitable.BackgroundThreadAsync();
+
+            Path path = null;
+
+            HexGrid hexGrid = navGrid as HexGrid;
+            if (hexGrid != null)
+            {
+                path = Pathfinder.FindPath(hexGrid, startIndex, goalIndex, excludeGoal);
+            }
+
+            SquareGrid squareGrid = navGrid as SquareGrid;
+            if (squareGrid != null)
+            {
+                path = Pathfinder.FindPath(squareGrid, startIndex, goalIndex, excludeGoal);
+            }
+
+            await Awaitable.MainThreadAsync();
+            return path;
+        }
+
+
+        /// <summary>
+        /// Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
+        /// </summary>
         static public PathRequest SchedulePath(SquareGrid navGrid, int start_x, int start_z, int goal_x, int goal_z, bool excludeGoal = false)
         {
             if (navGrid.CheckIfInBound(start_x, start_z) == false)
@@ -287,9 +316,9 @@ namespace Navigation
             return SchedulePath(navGrid, navGrid.IndexAt(start_x, start_z), navGrid.IndexAt(goal_x, goal_z), excludeGoal);
         }
 
-        //<summary>
-        //Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
-        //</summary>
+        /// <summary>
+        /// Asynchronous method for finding a Path. Return a PathQuery, that can then be checked if Path is already found
+        /// </summary>
         static public PathRequest SchedulePath(SquareGrid navGrid, int startIndex, int goalIndex, bool excludeGoal = false)
         {
 
@@ -379,6 +408,40 @@ namespace Navigation
             return pathQuery;
         }
 
+        static public PathRequest SchedulePath(NavGrid navGrid, int startIndex, int goalIndex, bool excludeGoal = false)
+        {
+            HexGrid hexGrid = navGrid as HexGrid;
+            if (hexGrid != null)
+            {
+                return Pathfinder.SchedulePath(hexGrid, startIndex, goalIndex, excludeGoal);
+            }
+
+            SquareGrid squareGrid = navGrid as SquareGrid;
+            if (squareGrid != null)
+            {
+                return Pathfinder.SchedulePath(squareGrid, startIndex, goalIndex, excludeGoal);
+            }
+
+            return null;
+        }
+
+        static public PathRequest SchedulePath(NavGrid navGrid, int start_x, int start_z, int goal_x, int goal_z, bool excludeGoal = false)
+        {
+            HexGrid hexGrid = navGrid as HexGrid;
+            if (hexGrid != null)
+            {
+                return Pathfinder.SchedulePath(hexGrid, start_x, start_z, goal_x, goal_z, excludeGoal);
+            }
+
+            SquareGrid squareGrid = navGrid as SquareGrid;
+            if (squareGrid != null)
+            {
+                return Pathfinder.SchedulePath(squareGrid, start_x, start_z, goal_x, goal_z, excludeGoal);
+            }
+
+            return null;
+        }
+
         static private void DebugPrintPath(SquareGrid navGrid, int goalIndex, AStarSearchNodeData[] nodeData)
         {
             int currentIndex = goalIndex;
@@ -434,17 +497,17 @@ namespace Navigation
             return (int)((b - a).magnitude);
         }
 
-        //<summary>
-        //Synchronous method for finding Reachable Nodes on a Square Grid, given origin grid coordinates and movement budget. Returns a Walkable Area if one is found or null if not
-        //</summary>
+        /// <summary>
+        /// Synchronous method for finding Reachable Nodes on a Square Grid, given origin grid coordinates and movement budget. Returns a Walkable Area if one is found or null if not
+        /// </summary>
         static public WalkableArea FindWalkableArea(SquareGrid grid, int start_x, int start_z, int budget)
         {
             return FindWalkableArea(grid, grid.IndexAt(start_x, start_z), budget);
         }
 
-        //<summary>
-        //Synchronous method for finding Reachable Nodes on a Square Grid, given origin node index and movement budget. Returns a Walkable Area if one is found or null if not
-        //</summary>
+        /// <summary>
+        /// Synchronous method for finding Reachable Nodes on a Square Grid, given origin node index and movement budget. Returns a Walkable Area if one is found or null if not
+        /// </summary>
         static public WalkableArea FindWalkableArea(SquareGrid grid, int startIndex, int budget)
         {
             if (grid.CheckIfInBound(startIndex) == false)
@@ -549,10 +612,10 @@ namespace Navigation
             return new WalkableArea(grid, startIndex, walkableAreaElements);
         }
 
-        //<summary>
-        //Method for finding a Walkable Area on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
-        //It also takes node Index of the start node and the budget as arguments.
-        //</summary>
+        /// <summary>
+        /// Method for finding a Walkable Area on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
+        /// It also takes node Index of the start node and the budget as arguments.
+        /// </summary>
         static public WalkableArea FindWalkableArea(NavGrid grid, int startIndex, int budget)
         {
             HexGrid hexGrid = grid as HexGrid;
@@ -569,10 +632,10 @@ namespace Navigation
             return null;
         }
 
-        //<summary>
-        //Method for finding a Walkable Area on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
-        //It also takes node Coordinates of the start node and the budget as arguments.
-        //</summary>
+        /// <summary>
+        /// Method for finding a Walkable Area on a NavGrid that takes the base class of Navgrid as argument and checks the specific type of the NavGrid. 
+        /// It also takes node Coordinates of the start node and the budget as arguments.
+        /// </summary>
         static public WalkableArea FindWalkableArea(NavGrid grid, int start_x, int start_z, int budget)
         {
             HexGrid hexGrid = grid as HexGrid;
@@ -589,17 +652,17 @@ namespace Navigation
             return null;
         }
 
-        //<summary>
-        //Synchronous method for finding Reachable Nodes on a Hex Grid, given origin grid coordinates and movement budget. Returns a Walkable Area if one is found or null if not
-        //</summary>
+        /// <summary>
+        /// Synchronous method for finding Reachable Nodes on a Hex Grid, given origin grid coordinates and movement budget. Returns a Walkable Area if one is found or null if not
+        /// </summary>
         static public WalkableArea FindWalkableArea(HexGrid grid, int start_x, int start_z, int budget)
         {
             return FindWalkableArea(grid, grid.IndexAt(start_x, start_z), budget);
         }
 
-        //<summary>
-        //Synchronous method for finding Reachable Nodes on a Hex Grid, given origin node index and movement budget. Returns a Walkable Area if one is found or null if not
-        //</summary>
+        /// <summary>
+        /// Synchronous method for finding Reachable Nodes on a Hex Grid, given origin node index and movement budget. Returns a Walkable Area if one is found or null if not
+        /// </summary>
         static public WalkableArea FindWalkableArea(HexGrid grid, int startIndex, int budget)
         {
             if (grid.CheckIfInBound(startIndex) == false)
@@ -702,6 +765,34 @@ namespace Navigation
                 walkableAreaElements.Add(areaIndex, new WalkableAreaElement(areaIndex, gridPosition, worldPosition, nodeData[areaIndex].costSoFar, nodeData[areaIndex].cameFrom));
             }
             return new WalkableArea(grid, startIndex, walkableAreaElements);
+        }
+
+
+        /// <summary>
+        /// Searches for the walkable area on a background thread.
+        /// Returns a Task with the Path as its return value.
+        /// Does not support cancellation, so make sure to not delete the NavGrid before task finishes.
+        /// </summary>
+        static async public Task<WalkableArea> FindWalkableAreaAsync(NavGrid navGrid, int startIndex, int budget)
+        {
+            await Awaitable.BackgroundThreadAsync();
+
+            WalkableArea walkableArea = null;
+
+            HexGrid hexGrid = navGrid as HexGrid;
+            if (hexGrid != null)
+            {
+                walkableArea = Pathfinder.FindWalkableArea(hexGrid, startIndex, budget);
+            }
+
+            SquareGrid squareGrid = navGrid as SquareGrid;
+            if (squareGrid != null)
+            {
+                walkableArea = Pathfinder.FindWalkableArea(squareGrid, startIndex, budget);
+            }
+
+            await Awaitable.MainThreadAsync();
+            return walkableArea;
         }
 
 
