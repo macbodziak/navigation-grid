@@ -1,7 +1,0 @@
-How to run:
-1. Create and set proper Layers 
-  set Actors to Layer: Actor
-  set Grid Layer to: Grid
-  set Obstacle Layer to : Obstacle
-2. Select "Test" game object, enable chosen test script, disable remaining test scripts
-3. Click on any Actor

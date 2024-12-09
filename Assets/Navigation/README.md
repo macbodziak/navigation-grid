@@ -97,12 +97,15 @@ There are three types of methods for finding paths and walkable areas:
 - **Example Method:**
 
    ``static public PathRequest SchedulePath(HexGrid grid, int startIndex, int goalIndex, bool excludeGoal = false)``
+- **Performance:**  
+   - Further optimization may be needed. Test and profile for your specific needs.  
 
 ### 3. Asynchronous Methods  
 - **Description:**  
-   - These methods allow pathfinding to run asynchronously without blocking the main thread.  
-- **Performance:**  
-   - Further optimization may be needed. Test and profile for your specific needs.  
+   - These methods allow pathfinding to run asynchronously without blocking the main thread.
+   - They do not use Unity Jobs or Burst Compilation, instead they just take the synchrounous implementation and run it on a background thread.
+   - easily integrate into c# async workflow.  
+
 
 ### Recommendation  
 - Profile your game and test execution times with different methods.  

@@ -9,6 +9,13 @@
     "com.unity.mathematics": "1.3.2",
     "com.unity.collections": "2.5.1"
   },
+  "samples": [
+    {
+      "displayName": "Sample Scene",
+      "description": "Scene with example grid showcasing basic usage",
+      "path": "Samples~/SamplesExample"
+    }
+  ],
   "author": {
     "name": "Maciej Bodziak",
     "email": "maciej.bodziak@gmail.com"

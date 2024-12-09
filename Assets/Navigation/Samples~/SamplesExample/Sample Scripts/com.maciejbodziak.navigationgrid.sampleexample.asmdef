@@ -1,0 +1,17 @@
+{
+    "name": "com.maciejbodziak.navigationgrid.sampleexample",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9107f719c257f974994969da06aaad3d",
+        "GUID:43756d1042c0c304995466a337272a27"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
