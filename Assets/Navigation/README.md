@@ -29,7 +29,8 @@ Additional requirements:
 2. Click the **"test"** GameObject (it has example scripts attached).  
 3. To switch between examples:  
    - Enable the chosen example.  
-   - Disable all other examples.  
+   - Disable all other examples.
+   - Only one test script should be enabled at the same time.  
 4. Ensure the layers are set correctly for the grid, actors, and obstacles.  
 
 ---
