@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using System;
-using Utils;
+
 
 namespace Navigation
 {
@@ -15,7 +13,7 @@ namespace Navigation
         [SerializeField] int height;
         [SerializeField] protected Node[] nodes;
         [SerializeField] protected Vector3[] nodeWorldPositions;
-        [SerializeField] protected SerializableDictionary<int, Actor> actors;
+        [SerializeField] protected Utilities.SerializableDictionary<int, Actor> actors;
 
 #if UNITY_EDITOR
         [SerializeField] bool showTileOutlineFlag = true;
