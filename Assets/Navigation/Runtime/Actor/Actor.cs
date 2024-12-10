@@ -126,9 +126,9 @@ namespace Navigation
         /// returns a Task to evaluate the state of execution.
         /// Throws an OperationCanceledException exception if the Actor is deleted before task completes.
         /// </summary>
-        public async Task MoveAlongPathAsync(Path path)
+        public async Task MoveAlongPathAsync(Path path, CancellationToken cancellationToken)
         {
-            CancellationToken cancelToken = _tokenSource.Token;
+            CancellationToken thisCancelationToken = _tokenSource.Token;
 
             if (path == null)
             {
@@ -169,9 +169,10 @@ namespace Navigation
                     }
                     await Awaitable.NextFrameAsync();
 
-                    if (cancelToken.IsCancellationRequested)
+                    //this is the internal cancellation token, that should throw an exception when this componenet gets destroyed before finishing
+                    if (thisCancelationToken.IsCancellationRequested)
                     {
-                        cancelToken.ThrowIfCancellationRequested();
+                        thisCancelationToken.ThrowIfCancellationRequested();
                         return;
                     }
                 }
@@ -180,10 +181,11 @@ namespace Navigation
 
                 _pathIndex++;
 
-                if (_cancelFlag || _pathIndex == _path.Count)
+                if (_cancelFlag || _pathIndex == _path.Count || cancellationToken.IsCancellationRequested)
                 {
                     _cancelFlag = false;
                     _state = ActorState.Idle;
+                    break;
                 }
             }
             MovementFinishedEvent?.Invoke(new ActorFinishedMovementEventArgs(this, _grid, _currentNodeIndex));
@@ -194,26 +196,25 @@ namespace Navigation
         /// </summary>
         public void MoveAlongPath(Path path)
         {
-            if (path == null)
-            {
-                return;
-            }
-
-            if (_state != ActorState.Idle)
-            {
-                return;
-            }
-
-            _path = path;
-
-            StartCoroutine(MoveAlongPathCoroutine());
+            StartCoroutine(MoveAlongPathCoroutine(path));
         }
 
         /// <summary>
         /// Coroutine that handles the actor's movement along a path.
         /// </summary>
-        private IEnumerator MoveAlongPathCoroutine()
+        public IEnumerator MoveAlongPathCoroutine(Path path)
         {
+            if (path == null)
+            {
+                yield break;
+            }
+
+            if (_state != ActorState.Idle)
+            {
+                yield break;
+            }
+
+            _path = path;
             OnMovementStarted();
 
             Quaternion previousRotation = transform.rotation;
@@ -250,6 +251,7 @@ namespace Navigation
                 {
                     _cancelFlag = false;
                     _state = ActorState.Idle;
+                    break;
                 }
             }
             MovementFinishedEvent?.Invoke(new ActorFinishedMovementEventArgs(this, _grid, _currentNodeIndex));
@@ -346,7 +348,6 @@ namespace Navigation
                 await Awaitable.NextFrameAsync();
             }
             _state = ActorState.Idle;
-            await Awaitable.NextFrameAsync();
         }
 
         /// <summary>
@@ -354,10 +355,6 @@ namespace Navigation
         /// </summary>
         public void FaceTowards(Vector3 worldPosition)
         {
-            if (_state != ActorState.Idle)
-            {
-                return;
-            }
             StartCoroutine(FaceTowardsCoroutine(worldPosition));
         }
 
@@ -366,6 +363,10 @@ namespace Navigation
         /// </summary>
         private IEnumerator FaceTowardsCoroutine(Vector3 worldPosition)
         {
+            if (_state != ActorState.Idle)
+            {
+                yield break;
+            }
             _state = ActorState.Moving;
             Quaternion startRotation = transform.rotation;
             Quaternion targetRotation = Quaternion.LookRotation(worldPosition - transform.position);

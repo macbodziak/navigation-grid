@@ -1,6 +1,6 @@
 {
   "name": "com.maciejbodziak.navigationgrid",
-  "version": "0.9.0",
+  "version": "0.11.0",
   "displayName": "Navigation Grid System",
   "description": "Navigation Grid system for turn based games",
   "unity": "6000.0",
