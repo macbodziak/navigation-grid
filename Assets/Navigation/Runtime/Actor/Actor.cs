@@ -344,7 +344,6 @@ namespace Navigation
             {
                 progress += _rotationSpeed * _speedModifier * Time.deltaTime;
                 transform.rotation = Quaternion.Slerp(startRotation, targetRotation, progress);
-                Debug.Log($"progress {progress}, transform {transform.rotation}");
                 await Awaitable.NextFrameAsync();
             }
             _state = ActorState.Idle;
