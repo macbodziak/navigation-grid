@@ -11,7 +11,8 @@ namespace Navigation
         #region Fields
 
         static private readonly int MOVEMENT_COST = 10;
-        static private readonly Vector2Int[] neighboursOddRow = {
+        static private readonly Vector2Int[] neighboursOddRow =
+        {
             new Vector2Int(1, 1),
             new Vector2Int(1, 0),
             new Vector2Int(1, -1),
@@ -20,7 +21,8 @@ namespace Navigation
             new Vector2Int(0, 1),
         };
 
-        static private readonly Vector2Int[] neighboursEvenRow = {
+        static private readonly Vector2Int[] neighboursEvenRow =
+        {
             new Vector2Int(0, 1),
             new Vector2Int(1, 0),
             new Vector2Int(0, -1),
@@ -35,15 +37,18 @@ namespace Navigation
         #endregion
 
         #region Properties
+
         public Vector2Int[] NeighboursOdd { get => neighboursOddRow; }
         public Vector2Int[] NeighboursEven { get => neighboursEvenRow; }
         public int MovementCost { get => MOVEMENT_COST; }
+
         public override Bounds WorldBounds
         {
             get
             {
                 Bounds bounds = new Bounds();
-                bounds.size = new Vector3((Width + 0.5f) * TileSize, 1f, (Height - 1) * TileSize * VERTICAL_SPACING + HEX_HEIGHT);
+                bounds.size = new Vector3((Width + 0.5f) * TileSize, 1f,
+                    (Height - 1) * TileSize * VERTICAL_SPACING + HEX_HEIGHT);
                 bounds.center = new Vector3(
                     (Width - 0.5f) * TileSize * 0.5f + transform.position.x,
                     0.5f + transform.position.y,
@@ -55,9 +60,8 @@ namespace Navigation
         #endregion
 
 
-
-
-        protected override bool TestForWalkability(Vector3 nodeWorldPosition, LayerMask notWalkableLayers, float colliderSize, float rayLength)
+        protected override bool TestForWalkability(Vector3 nodeWorldPosition, LayerMask notWalkableLayers,
+                                                   float colliderSize, float rayLength)
         {
             Vector3 center = nodeWorldPosition + new Vector3(0f, rayLength, 0f);
             Vector3 direction = Vector3.down;
@@ -69,6 +73,7 @@ namespace Navigation
             {
                 return false;
             }
+
             return true;
         }
 
@@ -86,12 +91,11 @@ namespace Navigation
             gameObject.layer = collisionLayer;
 
             BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
-            boxCollider.size = new Vector3((Width + 0.5f) * TileSize, 0.1f, (Height - 1) * TileSize * VERTICAL_SPACING + HEX_HEIGHT);
-            boxCollider.center = new Vector3((Width - 0.5f) * TileSize * 0.5f, 0f, (Height - 1) * TileSize * VERTICAL_SPACING * 0.5f);
+            boxCollider.size = new Vector3((Width + 0.5f) * TileSize, 0.1f,
+                (Height - 1) * TileSize * VERTICAL_SPACING + HEX_HEIGHT);
+            boxCollider.center = new Vector3((Width - 0.5f) * TileSize * 0.5f, 0f,
+                (Height - 1) * TileSize * VERTICAL_SPACING * 0.5f);
         }
-
-
-
 
 
         protected override Vector3 GridCoordinatesToWorldPosition(int x, int z)
@@ -104,11 +108,11 @@ namespace Navigation
 
         protected override Vector2Int WorldPositionToGridCoordinates(Vector3 worldPosition)
         {
-
             float GridSpacePositionX = worldPosition.x - transform.position.x;
             float GridSpacePositionZ = worldPosition.z - transform.position.z;
 
-            float q = (0.57735027f * GridSpacePositionX - 0.33333333f * GridSpacePositionZ) / (HEX_HEIGHT * TileSize * 0.5f) + 0.5f;
+            float q = (0.57735027f * GridSpacePositionX - 0.33333333f * GridSpacePositionZ) /
+                (HEX_HEIGHT * TileSize * 0.5f) + 0.5f;
             float r = 0.66666667f * GridSpacePositionZ / (HEX_HEIGHT * TileSize * 0.5f) + 0.5f;
 
             float x = q + (r - r % 2) * 0.5f;
@@ -117,7 +121,7 @@ namespace Navigation
             return new Vector2Int((int)x, (int)z);
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         protected override void DrawNodeCenterOutineGizmos(Node n)
         {
             Vector3 worldPos = nodeWorldPositions[n.id];
@@ -131,14 +135,19 @@ namespace Navigation
             {
                 Vector3[] points = new Vector3[6];
                 points[0] = new Vector3(worldPos.x, worldPos.y, worldPos.z + TileSize * HEX_HEIGHT * 0.49f);
-                points[1] = new Vector3(worldPos.x + TileSize * 0.49f, worldPos.y, worldPos.z + TileSize * HEX_HEIGHT * 0.245f);
-                points[2] = new Vector3(worldPos.x + TileSize * 0.49f, worldPos.y, worldPos.z + TileSize * HEX_HEIGHT * -0.245f);
+                points[1] = new Vector3(worldPos.x + TileSize * 0.49f, worldPos.y,
+                    worldPos.z + TileSize * HEX_HEIGHT * 0.245f);
+                points[2] = new Vector3(worldPos.x + TileSize * 0.49f, worldPos.y,
+                    worldPos.z + TileSize * HEX_HEIGHT * -0.245f);
                 points[3] = new Vector3(worldPos.x, worldPos.y, worldPos.z + TileSize * HEX_HEIGHT * -0.49f);
-                points[4] = new Vector3(worldPos.x + TileSize * -0.49f, worldPos.y, worldPos.z + TileSize * HEX_HEIGHT * -0.245f);
-                points[5] = new Vector3(worldPos.x + TileSize * -0.49f, worldPos.y, worldPos.z + TileSize * HEX_HEIGHT * 0.245f);
+                points[4] = new Vector3(worldPos.x + TileSize * -0.49f, worldPos.y,
+                    worldPos.z + TileSize * HEX_HEIGHT * -0.245f);
+                points[5] = new Vector3(worldPos.x + TileSize * -0.49f, worldPos.y,
+                    worldPos.z + TileSize * HEX_HEIGHT * 0.245f);
                 Gizmos.DrawLineStrip(points, true);
             }
         }
+        #endif
 
         public override List<int> AdjacentNodeIndexes(int index)
         {
@@ -222,6 +231,5 @@ namespace Navigation
 
             return result;
         }
-#endif
     }
 }

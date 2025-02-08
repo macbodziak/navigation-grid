@@ -8,6 +8,7 @@ namespace Navigation
     public abstract class NavGrid : MonoBehaviour
     {
         #region Fields
+
         [SerializeField] float tileSize;
         [SerializeField] int width;
         [SerializeField] int height;
@@ -15,7 +16,7 @@ namespace Navigation
         [SerializeField] protected Vector3[] nodeWorldPositions;
         [SerializeField] protected Utilities.SerializableDictionary<int, Actor> actors;
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         [SerializeField] bool showTileOutlineFlag = true;
         [SerializeField] bool showTileCenterFlag = true;
         [SerializeField] bool showTileInfoTextFlag = false;
@@ -25,10 +26,12 @@ namespace Navigation
         [SerializeField] bool ShowOccupyingActorTextFlag = false;
         [SerializeField] int TileInfoTextFontSize = 10;
         [SerializeField] Color TileInfoTextColor = Color.white;
-#endif
+        #endif
+
         #endregion
 
         #region Properties
+
         public int Width { get => width; protected set => width = value; }
         public int Height { get => height; protected set => height = value; }
         public int Count { get => Height * Width; }
@@ -36,17 +39,19 @@ namespace Navigation
         public float TileSize { get => tileSize; protected set => tileSize = value; }
         public abstract Bounds WorldBounds { get; }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         protected bool DebugDrawTileOutline { get => showTileOutlineFlag; }
         protected bool DebugDrawTileCenter { get => showTileCenterFlag; }
-#endif
+        #endif
+
         #endregion
 
         /// <summary>
         /// This method initializes the grid. It creates the node array and configures each node with its index, position, and walkability status.
         /// It also configures the map's collision box. 
         /// </summary>
-        public void CreateMap(int width, int height, float tileSize, LayerMask notWalkableLayers, int collisionLayer, float colliderSize, float rayLength)
+        public void CreateMap(int width, int height, float tileSize, LayerMask notWalkableLayers, int collisionLayer,
+                              float colliderSize, float rayLength)
         {
             this.Width = width;
             this.Height = height;
@@ -65,7 +70,8 @@ namespace Navigation
                 {
                     gridIndex = IndexAt(w, h);
                     nodeWorldPositions[gridIndex] = GridCoordinatesToWorldPosition(w, h);
-                    walkable = TestForWalkability(nodeWorldPositions[gridIndex], notWalkableLayers, colliderSize, rayLength);
+                    walkable = TestForWalkability(nodeWorldPositions[gridIndex], notWalkableLayers, colliderSize,
+                        rayLength);
                     nodes[gridIndex].Setup(gridIndex, w, h, walkable);
                 }
             }
@@ -76,7 +82,8 @@ namespace Navigation
         /// <summary>
         /// Tests if a node is walkable based on its position and collision detection.
         /// </summary>
-        protected abstract bool TestForWalkability(Vector3 nodeWorldPosition, LayerMask notWalkableLayers, float colliderSize, float rayLength);
+        protected abstract bool TestForWalkability(Vector3 nodeWorldPosition, LayerMask notWalkableLayers,
+                                                   float colliderSize, float rayLength);
 
 
         /// <summary>
@@ -112,6 +119,7 @@ namespace Navigation
         }
 
         #region Index Getters
+
         /// <summary>
         /// Returns the index of a node at the specified grid coordinates.
         /// </summary>
@@ -121,6 +129,7 @@ namespace Navigation
             {
                 return -1;
             }
+
             return x + z * Width;
         }
 
@@ -140,10 +149,12 @@ namespace Navigation
             Vector2Int gridPos = WorldPositionToGridCoordinates(worldPosition);
             return IndexAt(gridPos.x, gridPos.y);
         }
+
         #endregion
 
 
         #region Node Getters
+
         /// <summary>
         /// Retrieves the node at the specified index or returns a null node if the index is invalid.
         /// </summary>
@@ -153,6 +164,7 @@ namespace Navigation
             {
                 return Node.NullNode();
             }
+
             return nodes[index];
         }
 
@@ -166,6 +178,7 @@ namespace Navigation
             {
                 return Node.NullNode();
             }
+
             return nodes[IndexAt(x, z)];
         }
 
@@ -179,6 +192,7 @@ namespace Navigation
             {
                 return Node.NullNode();
             }
+
             return nodes[IndexAt(gridPosition)];
         }
 
@@ -192,6 +206,7 @@ namespace Navigation
             {
                 return Node.NullNode();
             }
+
             return nodes[IndexAt(worldPosition)];
         }
 
@@ -199,6 +214,7 @@ namespace Navigation
 
 
         #region Grid Position Getters
+
         /// <summary>
         /// Converts a node index to grid coordinates.
         /// </summary>
@@ -208,6 +224,7 @@ namespace Navigation
             int z = index / width;
             return new Vector2Int(x, z);
         }
+
         #endregion
 
         /// <summary>
@@ -220,6 +237,7 @@ namespace Navigation
 
 
         #region World Position Getters and Conversion
+
         /// <summary>
         /// Returns the world position of a node at the specified grid coordinates.
         /// </summary>
@@ -258,6 +276,7 @@ namespace Navigation
 
 
         #region Walkability Checkers
+
         /// <summary>
         /// Checks if the node at the specified index is walkable and not occupied.
         /// </summary>
@@ -287,7 +306,7 @@ namespace Navigation
 
         private void OnDrawGizmos()
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
             if (showTileInfoTextFlag)
             {
                 GUIStyle style = new GUIStyle(GUI.skin.label);
@@ -330,11 +349,13 @@ namespace Navigation
                 {
                     Gizmos.color = Color.red;
                 }
+
                 DrawNodeCenterOutineGizmos(n);
             }
-#endif
+            #endif
         }
 
+        #if UNITY_EDITOR
         private Plane[] GetEditorCameraFrustrumPlanes()
         {
             Camera sceneCamera = SceneView.lastActiveSceneView.camera;
@@ -351,12 +372,13 @@ namespace Navigation
             planes[5] = customFarPlane;
             return planes;
         }
+        #endif
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         protected abstract void DrawNodeCenterOutineGizmos(Node node);
-#endif
+        #endif
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         protected void DrawTileInfoText(Node node, GUIStyle style)
         {
             bool addSeperator = false;
@@ -374,6 +396,7 @@ namespace Navigation
                 {
                     infoText += "| ";
                 }
+
                 infoText += $"{node.walkable} ";
                 addSeperator = true;
             }
@@ -384,6 +407,7 @@ namespace Navigation
                 {
                     infoText += "| ";
                 }
+
                 infoText += $"{node.movementCostModifier} ";
                 addSeperator = true;
             }
@@ -396,6 +420,7 @@ namespace Navigation
                     {
                         infoText += "| ";
                     }
+
                     if (actors[node.id] != null)
                     {
                         infoText += actors[node.id].gameObject.name;
@@ -410,10 +435,11 @@ namespace Navigation
 
             Handles.Label(nodeWorldPositions[node.id], infoText, style);
         }
-#endif
+        #endif
 
 
         #region Bound Checking
+
         /// <summary>
         /// Checks whether the given grid coordinates are within the grid bounds.
         /// </summary>
@@ -423,6 +449,7 @@ namespace Navigation
             {
                 return false;
             }
+
             return true;
         }
 
@@ -435,6 +462,7 @@ namespace Navigation
             {
                 return false;
             }
+
             return true;
         }
 
@@ -447,10 +475,12 @@ namespace Navigation
             {
                 return false;
             }
+
             return true;
         }
 
         #endregion
+
         /// <summary>
         /// Sets the movement cost modifier of a node at the specified index.
         /// </summary>
@@ -535,9 +565,9 @@ namespace Navigation
 
             actors[index] = actor;
             actor.Initilize(this, index);
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
             EditorUtility.SetDirty(actor);
-#endif
+            #endif
             return true;
         }
 
@@ -571,6 +601,7 @@ namespace Navigation
                 Actor actor = actors[index];
                 actor.Deinitialize();
             }
+
             actors.Remove(index);
         }
 
@@ -586,6 +617,7 @@ namespace Navigation
                     pair.Value.Deinitialize();
                 }
             }
+
             actors.Clear();
         }
 
@@ -711,6 +743,5 @@ namespace Navigation
 
             return actorList;
         }
-
     }
 }
